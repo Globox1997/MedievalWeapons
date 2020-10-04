@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "medievalweapons:item/stone_big_axe"
+  }
+}

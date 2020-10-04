@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.medievalweapons.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ItemRendererMixin",
+    "PlayerEntityMixin",
+    "MinecraftClientMixin",
+    "EnchantmentHelperMixin"
+  ],
+  "client": [
+    "BipedEntityModelMixin",
+    "HeldItemFeatureRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

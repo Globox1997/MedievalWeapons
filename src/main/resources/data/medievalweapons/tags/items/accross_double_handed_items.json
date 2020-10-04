@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "medievalweapons:diamond_big_axe",
+    "medievalweapons:golden_big_axe",
+    "medievalweapons:iron_big_axe",
+    "medievalweapons:netherite_big_axe",
+    "medievalweapons:stone_big_axe",
+    "medievalweapons:wooden_big_axe"
+  ]
+}
