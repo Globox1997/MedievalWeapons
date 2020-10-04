@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "eed",
+    "ed ",
+    "d  "
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:string"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:long_bow",
+    "count": 1
+  }
+}

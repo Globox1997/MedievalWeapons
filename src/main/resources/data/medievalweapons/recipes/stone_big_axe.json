@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " de",
+    " ed",
+    "ed "
+  ],
+  "key": {
+    "d": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:stone_big_axe",
+    "count": 1
+  }
+}

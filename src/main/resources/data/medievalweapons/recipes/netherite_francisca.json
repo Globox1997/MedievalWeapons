@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "de",
+    " e"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:netherite_francisca",
+    "count": 1
+  }
+}

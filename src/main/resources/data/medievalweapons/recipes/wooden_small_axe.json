@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " dd",
+    " ed",
+    "e  "
+  ],
+  "key": {
+    "d": {
+      "tag": "minecraft:planks"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:wooden_small_axe",
+    "count": 1
+  }
+}

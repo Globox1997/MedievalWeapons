@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "eed",
+    "edf",
+    "df "
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:string"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    },
+    "f": {
+      "item": "minecraft:black_dye"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:recurve_bow",
+    "count": 1
+  }
+}
