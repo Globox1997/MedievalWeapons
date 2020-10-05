@@ -8,9 +8,9 @@
     "Globox_Z"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod",
-    "issues": ""
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/medievalweapons",
+    "sources": "https://github.com/Globox1997/MedievalWeapons",
+    "issues": "https://github.com/Globox1997/MedievalWeapons/issues"
   },
   "license": "GLPv3",
   "icon": "assets/medievalweapons/icon.png",
