@@ -12,7 +12,7 @@
     "sources": "https://github.com/Globox1997/MedievalWeapons",
     "issues": "https://github.com/Globox1997/MedievalWeapons/issues"
   },
-  "license": "GLPv3",
+  "license": "MIT",
   "icon": "assets/medievalweapons/icon.png",
   "environment": "*",
   "entrypoints": {
