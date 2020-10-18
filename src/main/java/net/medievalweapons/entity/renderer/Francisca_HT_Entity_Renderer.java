@@ -34,7 +34,7 @@ public class Francisca_HT_Entity_Renderer extends EntityRenderer<Francisca_HT_En
         .getDegreesQuaternion(MathHelper.lerp(g, francisca_HT_Entity.prevYaw, francisca_HT_Entity.yaw) - 90.0F));
     matrixStack.multiply(Vector3f.POSITIVE_Z
         .getDegreesQuaternion(MathHelper.lerp(g, francisca_HT_Entity.prevPitch, francisca_HT_Entity.pitch) + 90.0F));
-    VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumerProvider,
+    VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumerProvider,
         model.getLayer(this.getTexture(francisca_HT_Entity)), false, francisca_HT_Entity.enchantingGlint());
 
     matrixStack.translate(0.0D, -0.75D, 0.0D);

@@ -125,7 +125,7 @@ public class Francisca_HT_Item extends Item implements Vanishable {
         if (!world.isClient) {
           stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
           Francisca_HT_Entity francisca_HT_Entity = new Francisca_HT_Entity(world, playerEntity, this, stack);
-          francisca_HT_Entity.setProperties(playerEntity, playerEntity.pitch, playerEntity.yaw, 0.0F, 2.5F, 1.0F);
+          francisca_HT_Entity.setProperties(playerEntity, playerEntity.pitch, playerEntity.yaw, 0.0F, 1.5F, 1.0F);
           if (playerEntity.abilities.creativeMode) {
             francisca_HT_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
           }

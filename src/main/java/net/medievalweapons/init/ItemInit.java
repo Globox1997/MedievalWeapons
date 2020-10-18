@@ -64,22 +64,22 @@ public class ItemInit {
                         ToolMaterials.NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Francisca_LT_Item WOODEN_FRANCISCA_LT_ITEM = register("wooden_francisca",
-                        new Francisca_LT_Item(ToolMaterials.WOOD, 3.0F, -2.5F, () -> EntityInit.WOODEN_FRANCISCA_LT,
+                        new Francisca_LT_Item(ToolMaterials.WOOD, 2.0F, -2.5F, () -> EntityInit.WOODEN_FRANCISCA_LT,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Francisca_LT_Item STONE_FRANCISCA_LT_ITEM = register("stone_francisca",
-                        new Francisca_LT_Item(ToolMaterials.STONE, 3.0F, -2.5F, () -> EntityInit.STONE_FRANCISCA_LT,
+                        new Francisca_LT_Item(ToolMaterials.STONE, 2.0F, -2.5F, () -> EntityInit.STONE_FRANCISCA_LT,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Francisca_HT_Item IRON_FRANCISCA_HT_ITEM = register("iron_francisca",
-                        new Francisca_HT_Item(ToolMaterials.IRON, 3.0F, -2.5F, () -> EntityInit.IRON_FRANCISCA_HT,
+                        new Francisca_HT_Item(ToolMaterials.IRON, 2.0F, -2.5F, () -> EntityInit.IRON_FRANCISCA_HT,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Francisca_HT_Item GOLDEN_FRANCISCA_HT_ITEM = register("golden_francisca",
-                        new Francisca_HT_Item(ToolMaterials.GOLD, 3.0F, -2.5F, () -> EntityInit.GOLDEN_FRANCISCA_HT,
+                        new Francisca_HT_Item(ToolMaterials.GOLD, 2.0F, -2.5F, () -> EntityInit.GOLDEN_FRANCISCA_HT,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Francisca_HT_Item DIAMOND_FRANCISCA_HT_ITEM = register("diamond_francisca",
-                        new Francisca_HT_Item(ToolMaterials.DIAMOND, 3.0F, -2.5F, () -> EntityInit.DIAMOND_FRANCISCA_HT,
+                        new Francisca_HT_Item(ToolMaterials.DIAMOND, 2.0F, -2.5F, () -> EntityInit.DIAMOND_FRANCISCA_HT,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Francisca_HT_Item NETHERITE_FRANCISCA_HT_ITEM = register("netherite_francisca",
-                        new Francisca_HT_Item(ToolMaterials.NETHERITE, 3.0F, -2.5F,
+                        new Francisca_HT_Item(ToolMaterials.NETHERITE, 2.0F, -2.5F,
                                         () -> EntityInit.NETHERITE_FRANCISCA_HT,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof().fireproof()));
 
@@ -103,22 +103,22 @@ public class ItemInit {
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Javelin_Item WOODEN_JAVELIN_ITEM = register("wooden_javelin",
-                        new Javelin_Item(ToolMaterials.WOOD, 2.5F, -2.6F, () -> EntityInit.WOODEN_JAVELIN,
+                        new Javelin_Item(ToolMaterials.WOOD, 2.2F, -2.6F, () -> EntityInit.WOODEN_JAVELIN,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Javelin_Item STONE_JAVELIN_ITEM = register("stone_javelin",
-                        new Javelin_Item(ToolMaterials.STONE, 2.5F, -2.6F, () -> EntityInit.STONE_JAVELIN,
+                        new Javelin_Item(ToolMaterials.STONE, 2.2F, -2.6F, () -> EntityInit.STONE_JAVELIN,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Javelin_Item IRON_JAVELIN_ITEM = register("iron_javelin",
-                        new Javelin_Item(ToolMaterials.IRON, 2.5F, -2.6F, () -> EntityInit.IRON_JAVELIN,
+                        new Javelin_Item(ToolMaterials.IRON, 2.2F, -2.6F, () -> EntityInit.IRON_JAVELIN,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Javelin_Item GOLDEN_JAVELIN_ITEM = register("golden_javelin",
-                        new Javelin_Item(ToolMaterials.GOLD, 2.5F, -2.6F, () -> EntityInit.GOLDEN_JAVELIN,
+                        new Javelin_Item(ToolMaterials.GOLD, 2.2F, -2.6F, () -> EntityInit.GOLDEN_JAVELIN,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Javelin_Item DIAMOND_JAVELIN_ITEM = register("diamond_javelin",
-                        new Javelin_Item(ToolMaterials.DIAMOND, 2.5F, -2.6F, () -> EntityInit.DIAMOND_JAVELIN,
+                        new Javelin_Item(ToolMaterials.DIAMOND, 2.2F, -2.6F, () -> EntityInit.DIAMOND_JAVELIN,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Javelin_Item NETHERITE_JAVELIN_ITEM = register("netherite_javelin",
-                        new Javelin_Item(ToolMaterials.NETHERITE, 2.5F, -2.6F, () -> EntityInit.NETHERITE_JAVELIN,
+                        new Javelin_Item(ToolMaterials.NETHERITE, 2.2F, -2.6F, () -> EntityInit.NETHERITE_JAVELIN,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow",

@@ -28,7 +28,7 @@ public class Big_Axe_Entity_Renderer extends EntityRenderer<Big_Axe_Entity> {
   public void render(Big_Axe_Entity big_Axe_Entity, float f, float g, MatrixStack matrixStack,
       VertexConsumerProvider vertexConsumerProvider, int i) {
     matrixStack.push();
-    VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumerProvider,
+    VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumerProvider,
         model.getLayer(this.getTexture(big_Axe_Entity)), false, big_Axe_Entity.enchantingGlint());
 
     // matrixStack.multiply(Vector3f.POSITIVE_Y

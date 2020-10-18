@@ -30,7 +30,7 @@ public class Francisca_LT_Entity_Renderer extends EntityRenderer<Francisca_LT_En
   public void render(Francisca_LT_Entity francisca_LT_Entity, float f, float g, MatrixStack matrixStack,
       VertexConsumerProvider vertexConsumerProvider, int i) {
     matrixStack.push();
-    VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumerProvider,
+    VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumerProvider,
         model.getLayer(this.getTexture(francisca_LT_Entity)), false, francisca_LT_Entity.enchantingGlint());
 
     matrixStack.multiply(Vector3f.POSITIVE_Y

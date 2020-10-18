@@ -47,7 +47,7 @@ public enum Big_Axe_Item_Renderer {
       }
     }
     matrices.scale(1.0F, -1.0F, -1.0F);
-    VertexConsumer spear = ItemRenderer.getArmorVertexConsumer(vertexConsumers, this.big_Axe_Entity_Model.getLayer(
+    VertexConsumer spear = ItemRenderer.getItemGlintConsumer(vertexConsumers, this.big_Axe_Entity_Model.getLayer(
         Big_Axe_Entity_Renderer.getTexture(((Big_Axe_Item) stack.getItem()).getType())), false, stack.hasGlint());
     this.big_Axe_Entity_Model.render(matrices, spear, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
 

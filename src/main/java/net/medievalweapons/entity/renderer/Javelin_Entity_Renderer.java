@@ -30,7 +30,7 @@ public class Javelin_Entity_Renderer extends EntityRenderer<Javelin_Entity> {
   public void render(Javelin_Entity javelin_Entity, float f, float g, MatrixStack matrixStack,
       VertexConsumerProvider vertexConsumerProvider, int i) {
     matrixStack.push();
-    VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumerProvider,
+    VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumerProvider,
         model.getLayer(this.getTexture(javelin_Entity)), false, javelin_Entity.enchantingGlint());
 
     matrixStack.multiply(Vector3f.POSITIVE_Y
