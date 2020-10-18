@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  d",
+    "dd ",
+    "ed "
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:gold_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:golden_long_sword",
+    "count": 1
+  }
+}

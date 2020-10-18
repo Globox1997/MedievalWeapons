@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  d",
+    "dd ",
+    "ed "
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "medievalweapons:netherite_long_sword",
+    "count": 1
+  }
+}
