@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class MedievalMain implements ModInitializer {
 
-  // All credits go Plasma Studios: https://youtu.be/Uc7YMW3AKpg?t=1152
+  // All credits go to Plasma Studios: https://youtu.be/Uc7YMW3AKpg?t=1152
   // Thanks for the awesome series
   // Check it out here: https://youtu.be/yCNUP2NAt-A
 
