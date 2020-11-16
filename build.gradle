@@ -16,6 +16,7 @@ minecraft {
 
 repositories {
     maven {url "https://maven.jamieswhiteshirt.com/libs-release/"}
+	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -23,9 +24,14 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	//Reach Entity Attributes
+
+	// Reach Entity Attributes
 	modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"
   	include "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"
+
+	// Fixing Recipes
+	modImplementation 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
+    include 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
 
 	// Config
 	modApi("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
@@ -40,6 +46,7 @@ dependencies {
 	include("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}") {
       exclude(group: "net.fabricmc.fabric-api")
   	}
+
 	// Modmenu dev
 	modCompile "io.github.prospector:modmenu:${project.mod_menu_version}",{
 			exclude(group: "net.fabricmc.fabric-api")
