@@ -56,7 +56,7 @@ public class Big_Axe_Entity extends Entity {
   }
 
   static {
-    ENCHANTMENT_GLINT = DataTracker.registerData(Francisca_HT_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    ENCHANTMENT_GLINT = DataTracker.registerData(Big_Axe_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
   }
 
 }
