@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:iron_big_axe",
+            "medievalweapons:iron_dagger",
+            "medievalweapons:iron_francisca",
+            "medievalweapons:iron_javelin",
+            "medievalweapons:iron_lance",
+            "medievalweapons:iron_long_sword",
+            "medievalweapons:iron_small_axe"
+        ]
+    },
+    "criteria": {
+        "medieval_iron_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}

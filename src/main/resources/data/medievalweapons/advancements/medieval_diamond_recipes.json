@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:diamond_big_axe",
+            "medievalweapons:diamond_dagger",
+            "medievalweapons:diamond_francisca",
+            "medievalweapons:diamond_javelin",
+            "medievalweapons:diamond_lance",
+            "medievalweapons:diamond_long_sword",
+            "medievalweapons:diamond_small_axe"
+        ]
+    },
+    "criteria": {
+        "medieval_diamond_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:diamond"
+                    }
+                ]
+            }
+        }
+    }
+}

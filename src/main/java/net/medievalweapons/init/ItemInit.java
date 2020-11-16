@@ -9,6 +9,7 @@ import net.medievalweapons.item.Dagger_Item;
 import net.medievalweapons.item.Francisca_HT_Item;
 import net.medievalweapons.item.Francisca_LT_Item;
 import net.medievalweapons.item.Javelin_Item;
+import net.medievalweapons.item.Lance_Item;
 import net.medievalweapons.item.Long_Bow_Item;
 import net.medievalweapons.item.Long_Sword_Item;
 import net.medievalweapons.item.Recurve_Bow_Item;
@@ -22,32 +23,32 @@ public class ItemInit {
         private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
 
         public static final Small_Axe_Item WOOD_SMALL_AXE_ITEM = register("wooden_small_axe", new Small_Axe_Item(
-                        ToolMaterials.WOOD, 3, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.WOOD, 4, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Small_Axe_Item STONE_SMALL_AXE_ITEM = register("stone_small_axe", new Small_Axe_Item(
-                        ToolMaterials.STONE, 3, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.STONE, 4, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Small_Axe_Item IRON_SMALL_AXE_ITEM = register("iron_small_axe", new Small_Axe_Item(
-                        ToolMaterials.IRON, 3, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.IRON, 4, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Small_Axe_Item GOLDEN_SMALL_AXE_ITEM = register("golden_small_axe", new Small_Axe_Item(
-                        ToolMaterials.GOLD, 3, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.GOLD, 4, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Small_Axe_Item DIAMOND_SMALL_AXE_ITEM = register("diamond_small_axe", new Small_Axe_Item(
-                        ToolMaterials.DIAMOND, 3, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.DIAMOND, 4, -2.6F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Small_Axe_Item NETHERITE_SMALL_AXE_ITEM = register("netherite_small_axe",
-                        new Small_Axe_Item(ToolMaterials.NETHERITE, 3, -2.6F,
+                        new Small_Axe_Item(ToolMaterials.NETHERITE, 4, -2.6F,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Long_Sword_Item WOOD_LONG_SWORD_ITEM = register("wooden_long_sword", new Long_Sword_Item(
-                        ToolMaterials.WOOD, 4, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.WOOD, 5, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Long_Sword_Item STONE_LONG_SWORD_ITEM = register("stone_long_sword", new Long_Sword_Item(
-                        ToolMaterials.STONE, 4, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.STONE, 5, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Long_Sword_Item IRON_LONG_SWORD_ITEM = register("iron_long_sword", new Long_Sword_Item(
-                        ToolMaterials.IRON, 4, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.IRON, 5, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Long_Sword_Item GOLDEN_LONG_SWORD_ITEM = register("golden_long_sword", new Long_Sword_Item(
-                        ToolMaterials.GOLD, 4, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
+                        ToolMaterials.GOLD, 5, -2.8F, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Long_Sword_Item DIAMOND_LONG_SWORD_ITEM = register("diamond_long_sword",
-                        new Long_Sword_Item(ToolMaterials.DIAMOND, 4, -2.8F,
+                        new Long_Sword_Item(ToolMaterials.DIAMOND, 5, -2.8F,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Long_Sword_Item NETHERITE_LONG_SWORD_ITEM = register("netherite_long_sword",
-                        new Long_Sword_Item(ToolMaterials.NETHERITE, 4, -2.8F,
+                        new Long_Sword_Item(ToolMaterials.NETHERITE, 5, -2.8F,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Dagger_Item WOOD_DAGGER_ITEM = register("wooden_dagger",
@@ -84,22 +85,22 @@ public class ItemInit {
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof().fireproof()));
 
         public static final Big_Axe_Item WOODEN_BIG_AXE_ITEM = register("wooden_big_axe",
-                        new Big_Axe_Item(ToolMaterials.WOOD, 4, -3.0F, () -> EntityInit.WOODEN_BIG_AXE,
+                        new Big_Axe_Item(ToolMaterials.WOOD, 5, -3.0F, () -> EntityInit.WOODEN_BIG_AXE,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Big_Axe_Item STONE_BIG_AXE_ITEM = register("stone_big_axe",
-                        new Big_Axe_Item(ToolMaterials.STONE, 4, -3.0F, () -> EntityInit.STONE_BIG_AXE,
+                        new Big_Axe_Item(ToolMaterials.STONE, 5, -3.0F, () -> EntityInit.STONE_BIG_AXE,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Big_Axe_Item IRON_BIG_AXE_ITEM = register("iron_big_axe",
-                        new Big_Axe_Item(ToolMaterials.IRON, 4, -3.0F, () -> EntityInit.IRON_BIG_AXE,
+                        new Big_Axe_Item(ToolMaterials.IRON, 5, -3.0F, () -> EntityInit.IRON_BIG_AXE,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Big_Axe_Item GOLDEN_BIG_AXE_ITEM = register("golden_big_axe",
-                        new Big_Axe_Item(ToolMaterials.GOLD, 4, -3.0F, () -> EntityInit.GOLDEN_BIG_AXE,
+                        new Big_Axe_Item(ToolMaterials.GOLD, 5, -3.0F, () -> EntityInit.GOLDEN_BIG_AXE,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Big_Axe_Item DIAMOND_BIG_AXE_ITEM = register("diamond_big_axe",
-                        new Big_Axe_Item(ToolMaterials.DIAMOND, 4, -3.0F, () -> EntityInit.DIAMOND_BIG_AXE,
+                        new Big_Axe_Item(ToolMaterials.DIAMOND, 5, -3.0F, () -> EntityInit.DIAMOND_BIG_AXE,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Big_Axe_Item NETHERITE_BIG_AXE_ITEM = register("netherite_big_axe",
-                        new Big_Axe_Item(ToolMaterials.NETHERITE, 4, -3.0F, () -> EntityInit.NETHERITE_BIG_AXE,
+                        new Big_Axe_Item(ToolMaterials.NETHERITE, 5, -3.0F, () -> EntityInit.NETHERITE_BIG_AXE,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Javelin_Item WOODEN_JAVELIN_ITEM = register("wooden_javelin",
@@ -119,6 +120,21 @@ public class ItemInit {
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Javelin_Item NETHERITE_JAVELIN_ITEM = register("netherite_javelin",
                         new Javelin_Item(ToolMaterials.NETHERITE, 2.2F, -2.6F, () -> EntityInit.NETHERITE_JAVELIN,
+                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+
+        public static final Lance_Item WOODEN_LANCE_ITEM = register("wooden_lance", new Lance_Item(ToolMaterials.WOOD,
+                        3, -2.8F, () -> EntityInit.WOODEN_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Lance_Item STONE_LANCE_ITEM = register("stone_lance", new Lance_Item(ToolMaterials.STONE, 3,
+                        -2.8F, () -> EntityInit.STONE_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Lance_Item IRON_LANCE_ITEM = register("iron_lance", new Lance_Item(ToolMaterials.IRON, 3,
+                        -2.8F, () -> EntityInit.IRON_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Lance_Item GOLDEN_LANCE_ITEM = register("golden_lance", new Lance_Item(ToolMaterials.GOLD,
+                        3, -2.8F, () -> EntityInit.GOLDEN_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Lance_Item DIAMOND_LANCE_ITEM = register("diamond_lance",
+                        new Lance_Item(ToolMaterials.DIAMOND, 3, -2.8F, () -> EntityInit.DIAMOND_LANCE,
+                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Lance_Item NETHERITE_LANCE_ITEM = register("netherite_lance",
+                        new Lance_Item(ToolMaterials.NETHERITE, 3, -2.8F, () -> EntityInit.NETHERITE_LANCE,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow",

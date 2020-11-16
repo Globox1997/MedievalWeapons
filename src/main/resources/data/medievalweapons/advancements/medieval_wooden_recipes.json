@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:wooden_big_axe",
+            "medievalweapons:wooden_dagger",
+            "medievalweapons:wooden_francisca",
+            "medievalweapons:wooden_javelin",
+            "medievalweapons:wooden_lance",
+            "medievalweapons:wooden_long_sword",
+            "medievalweapons:wooden_small_axe"
+        ]
+    },
+    "criteria": {
+        "medieval_wooden_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:stick"
+                    }
+                ]
+            }
+        }
+    }
+}

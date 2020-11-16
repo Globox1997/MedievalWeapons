@@ -6,6 +6,7 @@ import net.medievalweapons.entity.renderer.Big_Axe_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Francisca_HT_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Francisca_LT_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Javelin_Entity_Renderer;
+import net.medievalweapons.entity.renderer.Lance_Entity_Renderer;
 import net.medievalweapons.network.EntitySpawnPacket;
 
 public class RenderInit {
@@ -52,6 +53,19 @@ public class RenderInit {
                                 (dispatcher, context) -> new Big_Axe_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_BIG_AXE,
                                 (dispatcher, context) -> new Big_Axe_Entity_Renderer(dispatcher));
+
+                EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_LANCE,
+                                (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_LANCE,
+                                (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.IRON_LANCE,
+                                (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.GOLDEN_LANCE,
+                                (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.DIAMOND_LANCE,
+                                (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_LANCE,
+                                (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
 
         }
 

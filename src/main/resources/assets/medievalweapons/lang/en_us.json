@@ -59,6 +59,19 @@
   "entity.medievalweapons.stone_big_axe": "Stone Big Axe",
   "entity.medievalweapons.wooden_big_axe": "Wooden Big Axe",
 
+  "item.medievalweapons.diamond_lance": "Diamond Lance",
+  "item.medievalweapons.golden_lance": "Golden Lance",
+  "item.medievalweapons.iron_lance": "Iron Lance",
+  "item.medievalweapons.netherite_lance": "Netherite Lance",
+  "item.medievalweapons.stone_lance": "Stone Lance",
+  "item.medievalweapons.wooden_lance": "Wooden Lance",
+  "entity.medievalweapons.diamond_lance": "Diamond Lance",
+  "entity.medievalweapons.golden_lance": "Golden Lance",
+  "entity.medievalweapons.iron_lance": "Iron Lance",
+  "entity.medievalweapons.netherite_lance": "Netherite Lance",
+  "entity.medievalweapons.stone_lance": "Stone Lance",
+  "entity.medievalweapons.wooden_lance": "Wooden Lance",
+
   "item.medievalweapons.long_bow": "Long Bow",
   "item.medievalweapons.recurve_bow": "Recurve Bow",
 

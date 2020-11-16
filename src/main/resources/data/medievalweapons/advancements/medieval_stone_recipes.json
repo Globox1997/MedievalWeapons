@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:stone_big_axe",
+            "medievalweapons:stone_dagger",
+            "medievalweapons:stone_francisca",
+            "medievalweapons:stone_javelin",
+            "medievalweapons:stone_lance",
+            "medievalweapons:stone_long_sword",
+            "medievalweapons:stone_small_axe"
+        ]
+    },
+    "criteria": {
+        "medieval_stone_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "tag": "minecraft:stone_tool_materials"
+                    }
+                ]
+            }
+        }
+    }
+}

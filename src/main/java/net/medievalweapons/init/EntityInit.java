@@ -8,10 +8,12 @@ import net.medievalweapons.entity.Big_Axe_Entity;
 import net.medievalweapons.entity.Francisca_HT_Entity;
 import net.medievalweapons.entity.Francisca_LT_Entity;
 import net.medievalweapons.entity.Javelin_Entity;
+import net.medievalweapons.entity.Lance_Entity;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Francisca_HT_Item;
 import net.medievalweapons.item.Francisca_LT_Item;
 import net.medievalweapons.item.Javelin_Item;
+import net.medievalweapons.item.Lance_Item;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -61,6 +63,19 @@ public class EntityInit {
         public static final EntityType<Big_Axe_Entity> NETHERITE_BIG_AXE = register("netherite_big_axe",
                         create_Big_Axe(ItemInit.NETHERITE_BIG_AXE_ITEM));
 
+        public static final EntityType<Lance_Entity> WOODEN_LANCE = register("wooden_lance",
+                        create_Lance(ItemInit.WOODEN_LANCE_ITEM));
+        public static final EntityType<Lance_Entity> STONE_LANCE = register("stone_lance",
+                        create_Lance(ItemInit.STONE_LANCE_ITEM));
+        public static final EntityType<Lance_Entity> IRON_LANCE = register("iron_lance",
+                        create_Lance(ItemInit.IRON_LANCE_ITEM));
+        public static final EntityType<Lance_Entity> GOLDEN_LANCE = register("golden_lance",
+                        create_Lance(ItemInit.GOLDEN_LANCE_ITEM));
+        public static final EntityType<Lance_Entity> DIAMOND_LANCE = register("diamond_lance",
+                        create_Lance(ItemInit.DIAMOND_LANCE_ITEM));
+        public static final EntityType<Lance_Entity> NETHERITE_LANCE = register("netherite_blance",
+                        create_Lance(ItemInit.NETHERITE_LANCE_ITEM));
+
         public static void init() {
                 for (Identifier id : ENTITY_TYPES.keySet()) {
                         Registry.register(Registry.ENTITY_TYPE, id, ENTITY_TYPES.get(id));
@@ -98,6 +113,13 @@ public class EntityInit {
                 return FabricEntityTypeBuilder
                                 .<Big_Axe_Entity>create(SpawnGroup.MISC,
                                                 (entity, world) -> new Big_Axe_Entity(entity, world, item))
+                                .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
+        }
+
+        private static EntityType<Lance_Entity> create_Lance(Lance_Item item) {
+                return FabricEntityTypeBuilder
+                                .<Lance_Entity>create(SpawnGroup.MISC,
+                                                (entity, world) -> new Lance_Entity(entity, world, item))
                                 .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
         }
 
