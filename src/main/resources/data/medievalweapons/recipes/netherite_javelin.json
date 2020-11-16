@@ -1,20 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "  d",
-    " e ",
-    "e  "
-  ],
-  "key": {
-    "d": {
-      "item": "minecraft:netherite_ingot"
-    },
-    "e": {
-      "item": "minecraft:stick"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "medievalweapons:diamond_javelin"
+  },
+  "addition": {
+    "item": "minecraft:netherite_ingot"
   },
   "result": {
-    "item": "medievalweapons:netherite_javelin",
-    "count": 1
+    "item": "medievalweapons:netherite_javelin"
   }
 }
