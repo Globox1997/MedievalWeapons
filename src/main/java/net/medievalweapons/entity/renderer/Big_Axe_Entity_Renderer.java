@@ -30,14 +30,6 @@ public class Big_Axe_Entity_Renderer extends EntityRenderer<Big_Axe_Entity> {
     matrixStack.push();
     VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumerProvider,
         model.getLayer(this.getTexture(big_Axe_Entity)), false, big_Axe_Entity.enchantingGlint());
-
-    // matrixStack.multiply(Vector3f.POSITIVE_Y
-    // .getDegreesQuaternion(MathHelper.lerp(g, big_Axe_Entity.prevYaw,
-    // big_Axe_Entity.yaw) - 90.0F));
-    // matrixStack.multiply(Vector3f.POSITIVE_Z
-    // .getDegreesQuaternion(MathHelper.lerp(g, big_Axe_Entity.prevPitch,
-    // big_Axe_Entity.pitch) + 90.0F));
-
     model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
     matrixStack.scale(1.0F, -1.0F, 1.0F);
     matrixStack.translate(0.0D, -4.0D, 0.0D);

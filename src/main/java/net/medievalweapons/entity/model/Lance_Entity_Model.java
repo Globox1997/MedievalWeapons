@@ -54,7 +54,6 @@ public class Lance_Entity_Model extends Model {
     @Override
     public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red,
             float green, float blue, float alpha) {
-        // this.base.yaw = 1.5708F;
         this.base.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
     }
 }
