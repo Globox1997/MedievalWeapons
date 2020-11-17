@@ -73,7 +73,7 @@ public class EntityInit {
                         create_Lance(ItemInit.GOLDEN_LANCE_ITEM));
         public static final EntityType<Lance_Entity> DIAMOND_LANCE = register("diamond_lance",
                         create_Lance(ItemInit.DIAMOND_LANCE_ITEM));
-        public static final EntityType<Lance_Entity> NETHERITE_LANCE = register("netherite_blance",
+        public static final EntityType<Lance_Entity> NETHERITE_LANCE = register("netherite_lance",
                         create_Lance(ItemInit.NETHERITE_LANCE_ITEM));
 
         public static void init() {

@@ -56,7 +56,7 @@ public class Lance_Entity extends Entity {
     }
 
     static {
-        ENCHANTMENT_GLINT = DataTracker.registerData(Francisca_HT_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        ENCHANTMENT_GLINT = DataTracker.registerData(Lance_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
 }

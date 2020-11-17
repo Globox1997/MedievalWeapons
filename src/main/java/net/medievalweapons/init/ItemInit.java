@@ -123,18 +123,18 @@ public class ItemInit {
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Lance_Item WOODEN_LANCE_ITEM = register("wooden_lance", new Lance_Item(ToolMaterials.WOOD,
-                        3, -2.8F, () -> EntityInit.WOODEN_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+                        3, -2.9F, () -> EntityInit.WOODEN_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Lance_Item STONE_LANCE_ITEM = register("stone_lance", new Lance_Item(ToolMaterials.STONE, 3,
-                        -2.8F, () -> EntityInit.STONE_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+                        -2.9F, () -> EntityInit.STONE_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Lance_Item IRON_LANCE_ITEM = register("iron_lance", new Lance_Item(ToolMaterials.IRON, 3,
-                        -2.8F, () -> EntityInit.IRON_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+                        -2.9F, () -> EntityInit.IRON_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Lance_Item GOLDEN_LANCE_ITEM = register("golden_lance", new Lance_Item(ToolMaterials.GOLD,
-                        3, -2.8F, () -> EntityInit.GOLDEN_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
+                        3, -2.9F, () -> EntityInit.GOLDEN_LANCE, new Item.Settings().group(MedievalMain.GROUP)));
         public static final Lance_Item DIAMOND_LANCE_ITEM = register("diamond_lance",
-                        new Lance_Item(ToolMaterials.DIAMOND, 3, -2.8F, () -> EntityInit.DIAMOND_LANCE,
+                        new Lance_Item(ToolMaterials.DIAMOND, 3, -2.9F, () -> EntityInit.DIAMOND_LANCE,
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Lance_Item NETHERITE_LANCE_ITEM = register("netherite_lance",
-                        new Lance_Item(ToolMaterials.NETHERITE, 3, -2.8F, () -> EntityInit.NETHERITE_LANCE,
+                        new Lance_Item(ToolMaterials.NETHERITE, 3, -2.9F, () -> EntityInit.NETHERITE_LANCE,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow",

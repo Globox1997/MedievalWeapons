@@ -22,6 +22,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Packet;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 
@@ -64,12 +66,6 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
     return EntitySpawnPacket.createPacket(this);
   }
 
-  // public Packet<?> createSpawnPacket() {
-  // Entity entity = this.getOwner();
-  // return new EntitySpawnS2CPacket(this, entity == null ? 0 :
-  // entity.getEntityId());
-  // }
-
   @Override
   protected ItemStack asItemStack() {
     return this.francisca_LT.copy();
@@ -98,7 +94,7 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
 
     Entity owner = this.getOwner();
     DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
-    // SoundEvent soundEvent = CampanionSoundEvents.SPEAR_HIT_FLESH;
+    SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
     if (hitEntity.damage(damageSource, damage)) {
       if (hitEntity.getType() == EntityType.ENDERMAN) {
         return;
@@ -110,7 +106,7 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
           EnchantmentHelper.onUserDamaged(hitLivingEntity, owner);
           EnchantmentHelper.onTargetDamaged((LivingEntity) owner, hitLivingEntity);
         }
-
+        this.playSound(soundEvent, 1.0F, 1.0F);
         this.onHit(hitLivingEntity);
       }
     }
@@ -120,13 +116,8 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
     } else {
       this.setVelocity(this.getVelocity().multiply(0.75));
     }
-    // this.playSound(soundEvent, 1.0F, 1.0F);
-  }
 
-  // @Override
-  // protected SoundEvent getHitSound() {
-  // return CampanionSoundEvents.SPEAR_HIT_GROUND;
-  // }
+  }
 
   @Override
   public void onPlayerCollision(PlayerEntity player) {
