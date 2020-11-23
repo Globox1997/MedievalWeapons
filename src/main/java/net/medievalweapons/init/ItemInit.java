@@ -8,6 +8,7 @@ import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Dagger_Item;
 import net.medievalweapons.item.Francisca_HT_Item;
 import net.medievalweapons.item.Francisca_LT_Item;
+import net.medievalweapons.item.Healing_Staff_Item;
 import net.medievalweapons.item.Javelin_Item;
 import net.medievalweapons.item.Lance_Item;
 import net.medievalweapons.item.Long_Bow_Item;
@@ -135,6 +136,27 @@ public class ItemInit {
                                         new Item.Settings().group(MedievalMain.GROUP)));
         public static final Lance_Item NETHERITE_LANCE_ITEM = register("netherite_lance",
                         new Lance_Item(ToolMaterials.NETHERITE, 3, -2.9F, () -> EntityInit.NETHERITE_LANCE,
+                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+
+        public static final Healing_Staff_Item WOODEN_HEALING_STAFF = register("wooden_healing_staff",
+                        new Healing_Staff_Item(ToolMaterials.WOOD, 1, -3.0F, 1, () -> EntityInit.WOODEN_HEALING_STAFF,
+                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Healing_Staff_Item STONE_HEALING_STAFF = register("stone_healing_staff",
+                        new Healing_Staff_Item(ToolMaterials.STONE, 1, -3.0F, 2, () -> EntityInit.STONE_HEALING_STAFF,
+                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Healing_Staff_Item IRON_HEALING_STAFF = register("iron_healing_staff",
+                        new Healing_Staff_Item(ToolMaterials.IRON, 1, -3.0F, 3, () -> EntityInit.IRON_HEALING_STAFF,
+                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Healing_Staff_Item GOLDEN_HEALING_STAFF = register("golden_healing_staff",
+                        new Healing_Staff_Item(ToolMaterials.GOLD, 1, -3.0F, 3, () -> EntityInit.GOLDEN_HEALING_STAFF,
+                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Healing_Staff_Item DIAMOND_HEALING_STAFF = register("diamond_healing_staff",
+                        new Healing_Staff_Item(ToolMaterials.DIAMOND, 1, -3.0F, 4,
+                                        () -> EntityInit.DIAMOND_HEALING_STAFF,
+                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static final Healing_Staff_Item NETHERITE_HEALING_STAFF = register("netherite_healing_staff",
+                        new Healing_Staff_Item(ToolMaterials.NETHERITE, 1, -3.0F, 5,
+                                        () -> EntityInit.NETHERITE_HEALING_STAFF,
                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
         public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow",

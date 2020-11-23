@@ -7,11 +7,14 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.medievalweapons.entity.Big_Axe_Entity;
 import net.medievalweapons.entity.Francisca_HT_Entity;
 import net.medievalweapons.entity.Francisca_LT_Entity;
+import net.medievalweapons.entity.Healing_Ball_Entity;
+import net.medievalweapons.entity.Healing_Staff_Entity;
 import net.medievalweapons.entity.Javelin_Entity;
 import net.medievalweapons.entity.Lance_Entity;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Francisca_HT_Item;
 import net.medievalweapons.item.Francisca_LT_Item;
+import net.medievalweapons.item.Healing_Staff_Item;
 import net.medievalweapons.item.Javelin_Item;
 import net.medievalweapons.item.Lance_Item;
 import net.minecraft.entity.EntityDimensions;
@@ -76,6 +79,23 @@ public class EntityInit {
         public static final EntityType<Lance_Entity> NETHERITE_LANCE = register("netherite_lance",
                         create_Lance(ItemInit.NETHERITE_LANCE_ITEM));
 
+        public static final EntityType<Healing_Staff_Entity> WOODEN_HEALING_STAFF = register("wooden_healing_staff",
+                        create_Healing_Staff(ItemInit.WOODEN_HEALING_STAFF));
+        public static final EntityType<Healing_Staff_Entity> STONE_HEALING_STAFF = register("stone_healing_staff",
+                        create_Healing_Staff(ItemInit.STONE_HEALING_STAFF));
+        public static final EntityType<Healing_Staff_Entity> IRON_HEALING_STAFF = register("iron_healing_staff",
+                        create_Healing_Staff(ItemInit.IRON_HEALING_STAFF));
+        public static final EntityType<Healing_Staff_Entity> GOLDEN_HEALING_STAFF = register("golden_healing_staff",
+                        create_Healing_Staff(ItemInit.GOLDEN_HEALING_STAFF));
+        public static final EntityType<Healing_Staff_Entity> DIAMOND_HEALING_STAFF = register("diamond_healing_staff",
+                        create_Healing_Staff(ItemInit.DIAMOND_HEALING_STAFF));
+        public static final EntityType<Healing_Staff_Entity> NETHERITE_HEALING_STAFF = register(
+                        "netherite_healing_staff", create_Healing_Staff(ItemInit.NETHERITE_HEALING_STAFF));
+
+        public static final EntityType<Healing_Ball_Entity> HEALING_BALL_ENTITY = register("healing_ball",
+                        FabricEntityTypeBuilder.<Healing_Ball_Entity>create(SpawnGroup.MISC, Healing_Ball_Entity::new)
+                                        .dimensions(EntityDimensions.fixed(0.3F, 0.3F)).build());
+
         public static void init() {
                 for (Identifier id : ENTITY_TYPES.keySet()) {
                         Registry.register(Registry.ENTITY_TYPE, id, ENTITY_TYPES.get(id));
@@ -120,6 +140,13 @@ public class EntityInit {
                 return FabricEntityTypeBuilder
                                 .<Lance_Entity>create(SpawnGroup.MISC,
                                                 (entity, world) -> new Lance_Entity(entity, world, item))
+                                .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
+        }
+
+        private static EntityType<Healing_Staff_Entity> create_Healing_Staff(Healing_Staff_Item item) {
+                return FabricEntityTypeBuilder
+                                .<Healing_Staff_Entity>create(SpawnGroup.MISC,
+                                                (entity, world) -> new Healing_Staff_Entity(entity, world, item))
                                 .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
         }
 

@@ -72,6 +72,19 @@
   "entity.medievalweapons.stone_lance": "Stone Lance",
   "entity.medievalweapons.wooden_lance": "Wooden Lance",
 
+  "item.medievalweapons.diamond_healing_staff": "Diamond Staff of Healing",
+  "item.medievalweapons.golden_healing_staff": "Golden Staff of Healing",
+  "item.medievalweapons.iron_healing_staff": "Iron Staff of Healing",
+  "item.medievalweapons.netherite_healing_staff": "Netherite Staff of Healing",
+  "item.medievalweapons.stone_healing_staff": "Stone Staff of Healing",
+  "item.medievalweapons.wooden_healing_staff": "Wooden Staff of Healing",
+  "entity.medievalweapons.diamond_healing_staff": "Diamond Staff of Healing",
+  "entity.medievalweapons.golden_healing_staff": "Golden Staff of Healing",
+  "entity.medievalweapons.iron_healing_staff": "Iron Staff of Healing",
+  "entity.medievalweapons.netherite_healing_staff": "Netherite Staff of Healing",
+  "entity.medievalweapons.stone_healing_staff": "Stone Staff of Healing",
+  "entity.medievalweapons.wooden_healing_staff": "Wooden Staff of Healing",
+
   "item.medievalweapons.long_bow": "Long Bow",
   "item.medievalweapons.recurve_bow": "Recurve Bow",
 

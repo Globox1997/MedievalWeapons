@@ -1,0 +1,14 @@
+{
+    "magic_heal_aura": {
+        "sounds": [
+            "medievalweapons:magic_heal_aura1",
+            "medievalweapons:magic_heal_aura2"
+        ]
+    },
+    "magic_shot": {
+        "sounds": [
+            "medievalweapons:magic_shot1",
+            "medievalweapons:magic_shot2"
+        ]
+    }
+}

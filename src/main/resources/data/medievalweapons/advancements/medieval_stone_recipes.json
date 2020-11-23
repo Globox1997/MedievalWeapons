@@ -8,7 +8,8 @@
             "medievalweapons:stone_javelin",
             "medievalweapons:stone_lance",
             "medievalweapons:stone_long_sword",
-            "medievalweapons:stone_small_axe"
+            "medievalweapons:stone_small_axe",
+            "medievalweapons:stone_healing_staff"
         ]
     },
     "criteria": {

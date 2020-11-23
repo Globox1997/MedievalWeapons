@@ -21,6 +21,8 @@ public class MedievalMain implements ModInitializer {
     ConfigInit.init();
     EntityInit.init();
     ItemInit.init();
+    ParticleInit.init();
+    SoundInit.init();
     TagInit.init();
 
   }

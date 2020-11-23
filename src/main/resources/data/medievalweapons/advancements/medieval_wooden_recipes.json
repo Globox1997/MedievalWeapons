@@ -8,7 +8,8 @@
             "medievalweapons:wooden_javelin",
             "medievalweapons:wooden_lance",
             "medievalweapons:wooden_long_sword",
-            "medievalweapons:wooden_small_axe"
+            "medievalweapons:wooden_small_axe",
+            "medievalweapons:wooden_healing_staff"
         ]
     },
     "criteria": {
