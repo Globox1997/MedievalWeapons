@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Javelin_Item;
+import net.medievalweapons.item.Lance_Item;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -22,11 +23,14 @@ import net.minecraft.item.ItemStack;
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
   @Inject(method = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F", at = @At(value = "HEAD"), cancellable = true)
-  private static void getSweepingMultiplier(LivingEntity entity, CallbackInfoReturnable<Float> info) {
+  private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info) {
     if (entity.getMainHandStack().getItem().isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)) {
       int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
       info.setReturnValue(lvl + 1.0F);
-
+    }
+    if (entity.getMainHandStack().getItem() instanceof Lance_Item) {
+      int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
+      info.setReturnValue(lvl - 1.0F);
     }
   }
 
