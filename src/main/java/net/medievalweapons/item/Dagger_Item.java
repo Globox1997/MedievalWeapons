@@ -55,7 +55,7 @@ public class Dagger_Item extends SwordItem {
     if (entity instanceof PlayerEntity) {
       PlayerEntity player = (PlayerEntity) entity;
       if ((player.isSneaking() || player.hasStatusEffect(StatusEffects.INVISIBILITY)) && !player.getAttributes()
-          .hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID)) {
+          .hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID) && selected) {
         EntityAttributeInstance entityAttributeInstance = player
             .getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
         entityAttributeInstance.removeModifier(ATTACK_BONUS_MODIFIER);
