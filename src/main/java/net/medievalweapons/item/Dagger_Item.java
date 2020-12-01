@@ -36,7 +36,7 @@ public class Dagger_Item extends SwordItem {
     builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID,
         "Tool modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
     builder.put(ReachEntityAttributes.ATTACK_RANGE,
-        new EntityAttributeModifier("Attack range", -1.5D, EntityAttributeModifier.Operation.ADDITION));
+        new EntityAttributeModifier("Attack range", -1.0D, EntityAttributeModifier.Operation.ADDITION));
     this.attributeModifiers = builder.build();
   }
 
