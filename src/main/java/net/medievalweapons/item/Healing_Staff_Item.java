@@ -53,7 +53,9 @@ public class Healing_Staff_Item extends SwordItem {
           world.spawnEntity(healing_Ball_Entity);
           world.playSound(null, playerEntity.getBlockPos(), SoundInit.MAGIC_SHOT_EVENT, SoundCategory.PLAYERS, 0.9F,
               1.0F);
-          playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 2, false, false));
+          // Debuff
+          // playerEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,
+          // 200, 2, false, false));
         }
         playerEntity.getItemCooldownManager().set(this, 100 + (this.addition * 20));
       }

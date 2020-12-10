@@ -9,7 +9,8 @@
     "MinecraftClientMixin",
     "EnchantmentHelperMixin",
     "EnchantmentMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "AreaEffectCloudEntityMixin"
   ],
   "client": [
     "BipedEntityModelMixin",
