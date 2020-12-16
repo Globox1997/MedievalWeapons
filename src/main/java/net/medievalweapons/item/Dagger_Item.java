@@ -52,23 +52,23 @@ public class Dagger_Item extends SwordItem {
 
   @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-    if (entity instanceof PlayerEntity) {
+    if (entity instanceof PlayerEntity && !world.isClient) {
       PlayerEntity player = (PlayerEntity) entity;
-      if ((player.isSneaking() || player.hasStatusEffect(StatusEffects.INVISIBILITY)) && !player.getAttributes()
-          .hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID) && selected) {
+      Boolean extra = player.isSneaking() || player.hasStatusEffect(StatusEffects.INVISIBILITY);
+      if (selected && extra && !player.getAttributes().hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+          ATTACK_BONUS_MODIFIER_ID)) {
         EntityAttributeInstance entityAttributeInstance = player
             .getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        entityAttributeInstance.removeModifier(ATTACK_BONUS_MODIFIER);
         entityAttributeInstance.addTemporaryModifier(ATTACK_BONUS_MODIFIER);
       } else if (player.getAttributes().hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-          ATTACK_BONUS_MODIFIER_ID)) {
+          ATTACK_BONUS_MODIFIER_ID) && !extra) {
         player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).removeModifier(ATTACK_BONUS_MODIFIER_ID);
       }
     }
   }
 
   static {
-    ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 1.5D,
+    ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 2.0D,
         EntityAttributeModifier.Operation.ADDITION);
   }
 

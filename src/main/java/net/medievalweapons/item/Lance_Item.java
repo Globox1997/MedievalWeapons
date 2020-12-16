@@ -66,17 +66,15 @@ public class Lance_Item extends SwordItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (entity instanceof PlayerEntity) {
+        if (entity instanceof PlayerEntity && !world.isClient) {
             PlayerEntity player = (PlayerEntity) entity;
-            if (player.hasVehicle() && !player.getAttributes()
-                    .hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID)
-                    && selected) {
+            if (selected && player.hasVehicle() && !player.getAttributes()
+                    .hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID)) {
                 EntityAttributeInstance entityAttributeInstance = player
                         .getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-                entityAttributeInstance.removeModifier(ATTACK_BONUS_MODIFIER);
                 entityAttributeInstance.addTemporaryModifier(ATTACK_BONUS_MODIFIER);
             } else if (player.getAttributes().hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    ATTACK_BONUS_MODIFIER_ID)) {
+                    ATTACK_BONUS_MODIFIER_ID) && !player.hasVehicle()) {
                 player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE)
                         .removeModifier(ATTACK_BONUS_MODIFIER_ID);
             }
@@ -84,7 +82,7 @@ public class Lance_Item extends SwordItem {
     }
 
     static {
-        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 1.5D,
+        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 2.0D,
                 EntityAttributeModifier.Operation.ADDITION);
     }
 
