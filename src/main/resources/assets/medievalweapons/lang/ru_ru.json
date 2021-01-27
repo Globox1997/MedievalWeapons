@@ -88,9 +88,9 @@
   "item.medievalweapons.long_bow": "Длинный лук",
   "item.medievalweapons.recurve_bow": "Изогнутый лук",
 
-  "itemGroup.medievalweapons.group": "Оружия Средневековья",
+  "itemGroup.medievalweapons.group": "MedievalWeapons",
 
-  "text.autoconfig.medievalweapons.title": "Настройка Оружия Средневековья",
+  "text.autoconfig.medievalweapons.title": "Настройка MedievalWeapons",
   "text.autoconfig.medievalweapons.option.auto_switch.@PrefixText": "Двойной хват оружия",
   "text.autoconfig.medievalweapons.option.auto_switch": "Автоматический перехват"
 
