@@ -17,10 +17,7 @@ minecraft {
 repositories {
     maven {url "https://maven.jamieswhiteshirt.com/libs-release/"}
 	maven {url 'https://jitpack.io'}
-	maven {
-        name = "Ladysnake Libs"
-        url = "https://dl.bintray.com/ladysnake/libs"
-    }
+	maven {url = "https://dl.bintray.com/ladysnake/libs"}
 }
 
 dependencies {
@@ -57,7 +54,7 @@ dependencies {
 
 	// Modmenu dev
 	modCompile "io.github.prospector:modmenu:${project.mod_menu_version}",{
-			exclude(group: "net.fabricmc.fabric-api")
+	  exclude(group: "net.fabricmc.fabric-api")
 	}
 
 }
