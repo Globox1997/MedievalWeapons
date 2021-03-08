@@ -1,8 +1,8 @@
 package net.medievalweapons.init;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.medievalweapons.entity.renderer.Big_Axe_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Francisca_HT_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Francisca_LT_Entity_Renderer;
@@ -17,7 +17,7 @@ public class RenderInit {
 
         public static void init() {
 
-                ClientSidePacketRegistry.INSTANCE.register(EntitySpawnPacket.ID, EntitySpawnPacket::onPacket);
+                ClientPlayNetworking.registerGlobalReceiver(EntitySpawnPacket.ID, EntitySpawnPacket::onPacket);
 
                 EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_FRANCISCA_LT,
                                 (dispatcher, context) -> new Francisca_LT_Entity_Renderer(dispatcher));
