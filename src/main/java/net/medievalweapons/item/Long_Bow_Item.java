@@ -96,7 +96,6 @@ public class Long_Bow_Item extends BowItem {
     if (f > 1.0F) {
       f = 1.0F;
     }
-    System.out.print(f + "_");
     return f;
   }
 
