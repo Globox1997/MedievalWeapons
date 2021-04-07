@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Javelin_Item;
 import net.medievalweapons.item.Lance_Item;
+import net.medievalweapons.item.Small_Axe_Item;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -19,6 +20,7 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
@@ -32,11 +34,6 @@ public class EnchantmentHelperMixin {
       int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
       info.setReturnValue(lvl - 1.0F);
     }
-  }
-
-  @Shadow
-  public static int getEquipmentLevel(Enchantment enchantment, LivingEntity entity) {
-    return 1;
   }
 
   @Inject(method = "getPossibleEntries(ILnet/minecraft/item/ItemStack;Z)Ljava/util/List;", at = @At("RETURN"), cancellable = true)
@@ -60,6 +57,19 @@ public class EnchantmentHelperMixin {
       }
       info.setReturnValue(enchantments);
     }
+  }
+
+  @Inject(method = "getKnockback", at = @At("HEAD"), cancellable = true)
+  private static void getKnockbackMixin(LivingEntity entity, CallbackInfoReturnable<Integer> info) {
+    ItemStack itemStack = entity.getStackInHand(Hand.MAIN_HAND);
+    if (itemStack.getItem() instanceof Small_Axe_Item) {
+      info.setReturnValue(1 + getEquipmentLevel(Enchantments.KNOCKBACK, entity));
+    }
+  }
+
+  @Shadow
+  public static int getEquipmentLevel(Enchantment enchantment, LivingEntity entity) {
+    return 1;
   }
 
 }
