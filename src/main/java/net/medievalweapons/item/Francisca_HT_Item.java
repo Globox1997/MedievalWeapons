@@ -1,15 +1,19 @@
 package net.medievalweapons.item;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
 import net.medievalweapons.entity.Francisca_HT_Entity;
+import net.medievalweapons.init.ConfigInit;
+import net.medievalweapons.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -26,6 +30,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -161,6 +166,13 @@ public class Francisca_HT_Item extends Item implements Vanishable {
   @Override
   public int getMaxUseTime(ItemStack stack) {
     return 72000;
+  }
+
+  @Override
+  public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    if (ConfigInit.CONFIG.display_rareness) {
+      tooltip.add(ItemInit.rareness(this.getMaterial()));
+    }
   }
 
 }

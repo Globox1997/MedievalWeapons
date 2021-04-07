@@ -9,4 +9,6 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 public class MedievalConfig implements ConfigData {
   @ConfigEntry.Gui.PrefixText
   public boolean auto_switch = false;
+  public boolean display_rareness = true;
+
 }

@@ -1,15 +1,27 @@
 package net.medievalweapons.item;
 
+import java.util.List;
+
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
+import net.medievalweapons.init.ConfigInit;
+import net.medievalweapons.init.ItemInit;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
+import net.minecraft.world.World;
 
 public class Long_Sword_Item extends SwordItem {
   private final ToolMaterial material;
@@ -38,6 +50,25 @@ public class Long_Sword_Item extends SwordItem {
   @Override
   public ToolMaterial getMaterial() {
     return this.material;
+  }
+
+  @Override
+  public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    if (ConfigInit.CONFIG.display_rareness) {
+      tooltip.add(ItemInit.rareness(this.getMaterial()));
+    }
+  }
+
+  @Override
+  public UseAction getUseAction(ItemStack stack) {
+    return UseAction.BLOCK;
+  }
+
+  @Override
+  public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    ItemStack itemStack = user.getStackInHand(hand);
+    user.setCurrentHand(hand);
+    return TypedActionResult.consume(itemStack);
   }
 
 }
