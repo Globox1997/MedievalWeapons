@@ -4,10 +4,14 @@ import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Healing_Staff_Item;
 import net.medievalweapons.item.Javelin_Item;
 import net.medievalweapons.item.Lance_Item;
+import net.medievalweapons.item.Mace_Item;
+import net.medievalweapons.item.Thalleous_Sword_Item;
 import net.medievalweapons.item.renderer.Big_Axe_Item_Renderer;
 import net.medievalweapons.item.renderer.Healing_Staff_Item_Renderer;
 import net.medievalweapons.item.renderer.Javelin_Item_Renderer;
 import net.medievalweapons.item.renderer.Lance_Item_Renderer;
+import net.medievalweapons.item.renderer.Mace_Item_Renderer;
+import net.medievalweapons.item.renderer.Thalleous_Sword_Item_Renderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -37,7 +41,11 @@ public class ItemRendererMixin {
         || (stack.getItem() instanceof Lance_Item && Lance_Item_Renderer.INSTANCE.render(entity, stack, renderMode,
             leftHanded, matrices, vertexConsumers, light, overlay, model))
         || (stack.getItem() instanceof Healing_Staff_Item && Healing_Staff_Item_Renderer.INSTANCE.render(entity, stack,
-            renderMode, leftHanded, matrices, vertexConsumers, light, overlay, model))) {
+            renderMode, leftHanded, matrices, vertexConsumers, light, overlay, model))
+        || (stack.getItem() instanceof Thalleous_Sword_Item && Thalleous_Sword_Item_Renderer.INSTANCE.render(entity,
+            stack, renderMode, leftHanded, matrices, vertexConsumers, light, overlay, model))
+        || (stack.getItem() instanceof Mace_Item && Mace_Item_Renderer.INSTANCE.render(entity, stack, renderMode,
+            leftHanded, matrices, vertexConsumers, light, overlay, model))) {
       info.cancel();
     }
   }
