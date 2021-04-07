@@ -10,5 +10,17 @@
             "medievalweapons:magic_shot1",
             "medievalweapons:magic_shot2"
         ]
+    },
+    "parrying": {
+        "sounds": [
+            "medievalweapons:parrying_1",
+            "medievalweapons:parrying_2"
+        ]
+    },
+    "sword_parrying": {
+        "sounds": [
+            "medievalweapons:sword_parrying_1",
+            "medievalweapons:sword_parrying_2"
+        ]
     }
 }
