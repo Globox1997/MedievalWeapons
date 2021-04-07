@@ -10,15 +10,17 @@ import net.medievalweapons.entity.renderer.Healing_Ball_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Healing_Staff_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Javelin_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Lance_Entity_Renderer;
+import net.medievalweapons.entity.renderer.Mace_Entity_Renderer;
+import net.medievalweapons.entity.renderer.Thalleous_Sword_Entity_Renderer;
 import net.medievalweapons.init.ParticleInit.HealingAuraParticle;
 import net.medievalweapons.network.EntitySpawnPacket;
 
 public class RenderInit {
 
         public static void init() {
-
+                // Packet
                 ClientPlayNetworking.registerGlobalReceiver(EntitySpawnPacket.ID, EntitySpawnPacket::onPacket);
-
+                // Francisca
                 EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_FRANCISCA_LT,
                                 (dispatcher, context) -> new Francisca_LT_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_FRANCISCA_LT,
@@ -31,7 +33,7 @@ public class RenderInit {
                                 (dispatcher, context) -> new Francisca_HT_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_FRANCISCA_HT,
                                 (dispatcher, context) -> new Francisca_HT_Entity_Renderer(dispatcher));
-
+                // Javelin
                 EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_JAVELIN,
                                 (dispatcher, context) -> new Javelin_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_JAVELIN,
@@ -44,7 +46,7 @@ public class RenderInit {
                                 (dispatcher, context) -> new Javelin_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_JAVELIN,
                                 (dispatcher, context) -> new Javelin_Entity_Renderer(dispatcher));
-
+                // Big Axe
                 EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_BIG_AXE,
                                 (dispatcher, context) -> new Big_Axe_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_BIG_AXE,
@@ -57,7 +59,7 @@ public class RenderInit {
                                 (dispatcher, context) -> new Big_Axe_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_BIG_AXE,
                                 (dispatcher, context) -> new Big_Axe_Entity_Renderer(dispatcher));
-
+                // Lance
                 EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_LANCE,
                                 (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_LANCE,
@@ -70,7 +72,7 @@ public class RenderInit {
                                 (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_LANCE,
                                 (dispatcher, context) -> new Lance_Entity_Renderer(dispatcher));
-
+                // Healing Staff
                 EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_HEALING_STAFF,
                                 (dispatcher, context) -> new Healing_Staff_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_HEALING_STAFF,
@@ -83,12 +85,28 @@ public class RenderInit {
                                 (dispatcher, context) -> new Healing_Staff_Entity_Renderer(dispatcher));
                 EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_HEALING_STAFF,
                                 (dispatcher, context) -> new Healing_Staff_Entity_Renderer(dispatcher));
-
+                // Mace
+                EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_MACE,
+                                (dispatcher, context) -> new Mace_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_MACE,
+                                (dispatcher, context) -> new Mace_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.IRON_MACE,
+                                (dispatcher, context) -> new Mace_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.GOLDEN_MACE,
+                                (dispatcher, context) -> new Mace_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.DIAMOND_MACE,
+                                (dispatcher, context) -> new Mace_Entity_Renderer(dispatcher));
+                EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_MACE,
+                                (dispatcher, context) -> new Mace_Entity_Renderer(dispatcher));
+                // Healing Ball
                 EntityRendererRegistry.INSTANCE.register(EntityInit.HEALING_BALL_ENTITY,
                                 (dispatcher, context) -> new Healing_Ball_Entity_Renderer(dispatcher));
-
+                // Particle
                 ParticleFactoryRegistry.getInstance().register(ParticleInit.HEALING_AURA_PARTICLE,
                                 HealingAuraParticle.Factory::new);
+                // Thalleous Sword
+                EntityRendererRegistry.INSTANCE.register(EntityInit.THALLEOUS_SWORD,
+                                (dispatcher, context) -> new Thalleous_Sword_Entity_Renderer(dispatcher));
 
         }
 

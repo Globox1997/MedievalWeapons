@@ -11,12 +11,15 @@ import net.medievalweapons.entity.Healing_Ball_Entity;
 import net.medievalweapons.entity.Healing_Staff_Entity;
 import net.medievalweapons.entity.Javelin_Entity;
 import net.medievalweapons.entity.Lance_Entity;
+import net.medievalweapons.entity.Mace_Entity;
+import net.medievalweapons.entity.Thalleous_Sword_Entity;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Francisca_HT_Item;
 import net.medievalweapons.item.Francisca_LT_Item;
 import net.medievalweapons.item.Healing_Staff_Item;
 import net.medievalweapons.item.Javelin_Item;
 import net.medievalweapons.item.Lance_Item;
+import net.medievalweapons.item.Mace_Item;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -24,9 +27,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class EntityInit {
-
+        // Map
         private static final Map<Identifier, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();
-
+        // Francisca
         public static final EntityType<Francisca_LT_Entity> WOODEN_FRANCISCA_LT = register("wooden_francisca",
                         create_LT_Francisca(ItemInit.WOODEN_FRANCISCA_LT_ITEM));
         public static final EntityType<Francisca_LT_Entity> STONE_FRANCISCA_LT = register("stone_francisca",
@@ -39,7 +42,7 @@ public class EntityInit {
                         create_HT_Francisca(ItemInit.DIAMOND_FRANCISCA_HT_ITEM));
         public static final EntityType<Francisca_HT_Entity> NETHERITE_FRANCISCA_HT = register("netherite_francisca",
                         create_HT_Francisca(ItemInit.NETHERITE_FRANCISCA_HT_ITEM));
-
+        // Javelin
         public static final EntityType<Javelin_Entity> WOODEN_JAVELIN = register("wooden_javelin",
                         create_Javelin(ItemInit.WOODEN_JAVELIN_ITEM));
         public static final EntityType<Javelin_Entity> STONE_JAVELIN = register("stone_javelin",
@@ -52,7 +55,7 @@ public class EntityInit {
                         create_Javelin(ItemInit.DIAMOND_JAVELIN_ITEM));
         public static final EntityType<Javelin_Entity> NETHERITE_JAVELIN = register("netherite_javelin",
                         create_Javelin(ItemInit.NETHERITE_JAVELIN_ITEM));
-
+        // Big Axe
         public static final EntityType<Big_Axe_Entity> WOODEN_BIG_AXE = register("wooden_big_axe",
                         create_Big_Axe(ItemInit.WOODEN_BIG_AXE_ITEM));
         public static final EntityType<Big_Axe_Entity> STONE_BIG_AXE = register("stone_big_axe",
@@ -65,7 +68,7 @@ public class EntityInit {
                         create_Big_Axe(ItemInit.DIAMOND_BIG_AXE_ITEM));
         public static final EntityType<Big_Axe_Entity> NETHERITE_BIG_AXE = register("netherite_big_axe",
                         create_Big_Axe(ItemInit.NETHERITE_BIG_AXE_ITEM));
-
+        // Lance
         public static final EntityType<Lance_Entity> WOODEN_LANCE = register("wooden_lance",
                         create_Lance(ItemInit.WOODEN_LANCE_ITEM));
         public static final EntityType<Lance_Entity> STONE_LANCE = register("stone_lance",
@@ -78,23 +81,43 @@ public class EntityInit {
                         create_Lance(ItemInit.DIAMOND_LANCE_ITEM));
         public static final EntityType<Lance_Entity> NETHERITE_LANCE = register("netherite_lance",
                         create_Lance(ItemInit.NETHERITE_LANCE_ITEM));
-
+        // Healing Staff
         public static final EntityType<Healing_Staff_Entity> WOODEN_HEALING_STAFF = register("wooden_healing_staff",
-                        create_Healing_Staff(ItemInit.WOODEN_HEALING_STAFF));
+                        create_Healing_Staff(ItemInit.WOODEN_HEALING_STAFF_ITEM));
         public static final EntityType<Healing_Staff_Entity> STONE_HEALING_STAFF = register("stone_healing_staff",
-                        create_Healing_Staff(ItemInit.STONE_HEALING_STAFF));
+                        create_Healing_Staff(ItemInit.STONE_HEALING_STAFF_ITEM));
         public static final EntityType<Healing_Staff_Entity> IRON_HEALING_STAFF = register("iron_healing_staff",
-                        create_Healing_Staff(ItemInit.IRON_HEALING_STAFF));
+                        create_Healing_Staff(ItemInit.IRON_HEALING_STAFF_ITEM));
         public static final EntityType<Healing_Staff_Entity> GOLDEN_HEALING_STAFF = register("golden_healing_staff",
-                        create_Healing_Staff(ItemInit.GOLDEN_HEALING_STAFF));
+                        create_Healing_Staff(ItemInit.GOLDEN_HEALING_STAFF_ITEM));
         public static final EntityType<Healing_Staff_Entity> DIAMOND_HEALING_STAFF = register("diamond_healing_staff",
-                        create_Healing_Staff(ItemInit.DIAMOND_HEALING_STAFF));
+                        create_Healing_Staff(ItemInit.DIAMOND_HEALING_STAFF_ITEM));
         public static final EntityType<Healing_Staff_Entity> NETHERITE_HEALING_STAFF = register(
-                        "netherite_healing_staff", create_Healing_Staff(ItemInit.NETHERITE_HEALING_STAFF));
-
+                        "netherite_healing_staff", create_Healing_Staff(ItemInit.NETHERITE_HEALING_STAFF_ITEM));
+        // Mace
+        public static final EntityType<Mace_Entity> WOODEN_MACE = register("wooden_mace",
+                        create_Mace(ItemInit.WOODEN_MACE_ITEM));
+        public static final EntityType<Mace_Entity> STONE_MACE = register("stone_mace",
+                        create_Mace(ItemInit.STONE_MACE_ITEM));
+        public static final EntityType<Mace_Entity> IRON_MACE = register("iron_mace",
+                        create_Mace(ItemInit.IRON_MACE_ITEM));
+        public static final EntityType<Mace_Entity> GOLDEN_MACE = register("golden_mace",
+                        create_Mace(ItemInit.GOLDEN_MACE_ITEM));
+        public static final EntityType<Mace_Entity> DIAMOND_MACE = register("diamond_mace",
+                        create_Mace(ItemInit.DIAMOND_MACE_ITEM));
+        public static final EntityType<Mace_Entity> NETHERITE_MACE = register("netherite_mace",
+                        create_Mace(ItemInit.NETHERITE_MACE_ITEM));
+        // Healing Ball
         public static final EntityType<Healing_Ball_Entity> HEALING_BALL_ENTITY = register("healing_ball",
                         FabricEntityTypeBuilder.<Healing_Ball_Entity>create(SpawnGroup.MISC, Healing_Ball_Entity::new)
                                         .dimensions(EntityDimensions.fixed(0.3F, 0.3F)).build());
+        // Thalleous Sword
+        public static final EntityType<Thalleous_Sword_Entity> THALLEOUS_SWORD = register("thalleous_sword",
+                        FabricEntityTypeBuilder
+                                        .<Thalleous_Sword_Entity>create(SpawnGroup.MISC,
+                                                        (entity, world) -> new Thalleous_Sword_Entity(entity, world,
+                                                                        ItemInit.THALLEOUS_SWORD))
+                                        .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build());
 
         public static void init() {
                 for (Identifier id : ENTITY_TYPES.keySet()) {
@@ -147,6 +170,13 @@ public class EntityInit {
                 return FabricEntityTypeBuilder
                                 .<Healing_Staff_Entity>create(SpawnGroup.MISC,
                                                 (entity, world) -> new Healing_Staff_Entity(entity, world, item))
+                                .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
+        }
+
+        private static EntityType<Mace_Entity> create_Mace(Mace_Item item) {
+                return FabricEntityTypeBuilder
+                                .<Mace_Entity>create(SpawnGroup.MISC,
+                                                (entity, world) -> new Mace_Entity(entity, world, item))
                                 .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
         }
 
