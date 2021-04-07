@@ -15,7 +15,8 @@
   "client": [
     "BipedEntityModelMixin",
     "HeldItemFeatureRendererMixin",
-    "AbstractClientPlayerEntityMixin"
+    "AbstractClientPlayerEntityMixin",
+    "ClientLivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
