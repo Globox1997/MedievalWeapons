@@ -15,9 +15,9 @@ minecraft {
 }
 
 repositories {
-    maven {url "https://maven.jamieswhiteshirt.com/libs-release/"}
-	maven {url 'https://jitpack.io'}
-	maven {url = "https://dl.bintray.com/ladysnake/libs"}
+    maven {url "https://maven.jamieswhiteshirt.com/libs-release/" }
+	maven {url 'https://jitpack.io' }
+	maven {url "https://dl.bintray.com/ladysnake/libs" }
 }
 
 dependencies {
@@ -31,9 +31,9 @@ dependencies {
   	include "com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"
 
 	// Fixing Recipes
-	modImplementation 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
-	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.7.10"
-	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:2.7.10"
+	modCompileOnly 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
+	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.7.10"
+	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:2.7.10"
 
 	// Config
 	modApi("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
