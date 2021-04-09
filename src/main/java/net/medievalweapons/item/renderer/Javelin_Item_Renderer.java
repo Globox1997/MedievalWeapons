@@ -43,10 +43,9 @@ public enum Javelin_Item_Renderer {
     }
 
     matrices.scale(1.0F, -1.0F, -1.0F);
-    VertexConsumer spear = ItemRenderer.getItemGlintConsumer(vertexConsumers, this.javelinEntityModel.getLayer(
+    VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers, this.javelinEntityModel.getLayer(
         Javelin_Entity_Renderer.getTexture(((Javelin_Item) stack.getItem()).getType())), false, stack.hasGlint());
-    this.javelinEntityModel.render(matrices, spear, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-
+    this.javelinEntityModel.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
     matrices.pop();
     return true;
   }

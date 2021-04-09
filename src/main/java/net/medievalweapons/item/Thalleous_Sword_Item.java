@@ -1,16 +1,13 @@
 package net.medievalweapons.item;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
-import net.medievalweapons.entity.Thalleous_Sword_Entity;
 import net.medievalweapons.init.ConfigInit;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -28,16 +25,12 @@ import net.minecraft.world.World;
 
 public class Thalleous_Sword_Item extends SwordItem {
 
-    private final Supplier<EntityType<Thalleous_Sword_Entity>> typeSupplier;
-    private EntityType<Thalleous_Sword_Entity> cachedType = null;
     private final ToolMaterial material;
     private final float attackDamage;
     public final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public Thalleous_Sword_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed,
-            Supplier<EntityType<Thalleous_Sword_Entity>> typeSupplier, Settings settings) {
+    public Thalleous_Sword_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
-        this.typeSupplier = typeSupplier;
         this.material = toolMaterial;
         this.attackDamage = attackDamage + material.getAttackDamage();
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
@@ -48,13 +41,6 @@ public class Thalleous_Sword_Item extends SwordItem {
         builder.put(ReachEntityAttributes.ATTACK_RANGE,
                 new EntityAttributeModifier("Attack range", 1.0D, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
-    }
-
-    public EntityType<Thalleous_Sword_Entity> getType() {
-        if (cachedType == null) {
-            cachedType = typeSupplier.get();
-        }
-        return cachedType;
     }
 
     @Override

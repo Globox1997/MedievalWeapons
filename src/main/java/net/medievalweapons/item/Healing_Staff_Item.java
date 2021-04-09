@@ -1,16 +1,13 @@
 package net.medievalweapons.item;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import net.medievalweapons.entity.Healing_Ball_Entity;
-import net.medievalweapons.entity.Healing_Staff_Entity;
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -26,22 +23,12 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class Healing_Staff_Item extends SwordItem {
-  private final Supplier<EntityType<Healing_Staff_Entity>> typeSupplier;
-  private EntityType<Healing_Staff_Entity> cachedType = null;
   private int addition;
 
   public Healing_Staff_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, int addition,
-      Supplier<EntityType<Healing_Staff_Entity>> typeSupplier, Settings settings) {
+      Settings settings) {
     super(toolMaterial, attackDamage, attackSpeed, settings);
-    this.typeSupplier = typeSupplier;
     this.addition = addition;
-  }
-
-  public EntityType<Healing_Staff_Entity> getType() {
-    if (cachedType == null) {
-      cachedType = typeSupplier.get();
-    }
-    return cachedType;
   }
 
   @Override

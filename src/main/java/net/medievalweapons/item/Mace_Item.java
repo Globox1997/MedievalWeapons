@@ -1,17 +1,14 @@
 package net.medievalweapons.item;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
-import net.medievalweapons.entity.Mace_Entity;
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.ItemInit;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -24,17 +21,13 @@ import net.minecraft.world.World;
 
 public class Mace_Item extends SwordItem {
 
-    private final Supplier<EntityType<Mace_Entity>> typeSupplier;
-    private EntityType<Mace_Entity> cachedType = null;
     private final ToolMaterial material;
     private final float attackDamage;
     public final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
     private int addition;
 
-    public Mace_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, int addition,
-            Supplier<EntityType<Mace_Entity>> typeSupplier, Settings settings) {
+    public Mace_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, int addition, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
-        this.typeSupplier = typeSupplier;
         this.material = toolMaterial;
         this.attackDamage = attackDamage + material.getAttackDamage();
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
@@ -46,13 +39,6 @@ public class Mace_Item extends SwordItem {
                 new EntityAttributeModifier("Attack range", -0.5D, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
         this.addition = addition;
-    }
-
-    public EntityType<Mace_Entity> getType() {
-        if (cachedType == null) {
-            cachedType = typeSupplier.get();
-        }
-        return cachedType;
     }
 
     @Override

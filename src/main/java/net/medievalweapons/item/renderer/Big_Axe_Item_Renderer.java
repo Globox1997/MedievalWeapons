@@ -1,8 +1,6 @@
 package net.medievalweapons.item.renderer;
 
 import net.medievalweapons.entity.model.Big_Axe_Entity_Model;
-import net.medievalweapons.entity.renderer.Big_Axe_Entity_Renderer;
-import net.medievalweapons.item.Big_Axe_Item;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -12,6 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 
 public enum Big_Axe_Item_Renderer {
   INSTANCE;
@@ -39,6 +38,10 @@ public enum Big_Axe_Item_Renderer {
         matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(-20.0F));
         matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(50.0F));
         matrices.translate(-0.1D, 1.6D, 0.3D);
+        matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(10));
+        if (entity.isBlocking()) {
+          matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(-15F));
+        }
       } else {
         matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(180.0F));
         matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(-30.0F));
@@ -47,10 +50,12 @@ public enum Big_Axe_Item_Renderer {
       }
     }
     matrices.scale(1.0F, -1.0F, -1.0F);
-    VertexConsumer spear = ItemRenderer.getItemGlintConsumer(vertexConsumers, this.big_Axe_Entity_Model.getLayer(
-        Big_Axe_Entity_Renderer.getTexture(((Big_Axe_Item) stack.getItem()).getType())), false, stack.hasGlint());
-    this.big_Axe_Entity_Model.render(matrices, spear, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-
+    VertexConsumer vertexConsumer = ItemRenderer
+        .getItemGlintConsumer(vertexConsumers,
+            this.big_Axe_Entity_Model
+                .getLayer(new Identifier("medievalweapons", "textures/entity/" + stack.getItem() + ".png")),
+            false, stack.hasGlint());
+    this.big_Axe_Entity_Model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
     matrices.pop();
     return true;
   }

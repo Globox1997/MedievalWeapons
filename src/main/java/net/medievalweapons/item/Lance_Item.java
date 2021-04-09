@@ -2,18 +2,15 @@ package net.medievalweapons.item;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Supplier;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
-import net.medievalweapons.entity.Lance_Entity;
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.ItemInit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -30,15 +27,11 @@ public class Lance_Item extends SwordItem {
     private final ToolMaterial material;
     private final float attackDamage;
     public final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
-    private final Supplier<EntityType<Lance_Entity>> typeSupplier;
-    private EntityType<Lance_Entity> cachedType = null;
     private static final UUID ATTACK_BONUS_MODIFIER_ID = UUID.fromString("fbd4e4e4-62f7-4108-9be3-eb6781231298");
     private static final EntityAttributeModifier ATTACK_BONUS_MODIFIER;
 
-    public Lance_Item(ToolMaterial material, int attackDamage, float attackSpeed,
-            Supplier<EntityType<Lance_Entity>> typeSupplier, Settings settings) {
+    public Lance_Item(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
-        this.typeSupplier = typeSupplier;
         this.material = material;
         this.attackDamage = attackDamage + material.getAttackDamage();
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
@@ -49,13 +42,6 @@ public class Lance_Item extends SwordItem {
         builder.put(ReachEntityAttributes.ATTACK_RANGE,
                 new EntityAttributeModifier("Attack range", 1.5D, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
-    }
-
-    public EntityType<Lance_Entity> getType() {
-        if (cachedType == null) {
-            cachedType = typeSupplier.get();
-        }
-        return cachedType;
     }
 
     @Override

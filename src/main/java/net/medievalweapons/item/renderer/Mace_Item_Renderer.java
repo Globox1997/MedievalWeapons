@@ -1,8 +1,6 @@
 package net.medievalweapons.item.renderer;
 
 import net.medievalweapons.entity.model.Mace_Entity_Model;
-import net.medievalweapons.entity.renderer.Mace_Entity_Renderer;
-import net.medievalweapons.item.Mace_Item;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -11,6 +9,7 @@ import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 
 public enum Mace_Item_Renderer {
     INSTANCE;
@@ -28,12 +27,11 @@ public enum Mace_Item_Renderer {
         model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
         matrices.translate(-0.1F, 0.86F, 0.0F);
         matrices.scale(1.0F, -1.0F, -1.0F);
-        VertexConsumer spear = ItemRenderer.getItemGlintConsumer(vertexConsumers,
+        VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers,
                 this.mace_Entity_Model
-                        .getLayer(Mace_Entity_Renderer.getTexture(((Mace_Item) stack.getItem()).getType())),
+                        .getLayer(new Identifier("medievalweapons", "textures/entity/" + stack.getItem() + ".png")),
                 false, stack.hasGlint());
-        this.mace_Entity_Model.render(matrices, spear, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-
+        this.mace_Entity_Model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
         matrices.pop();
         return true;
     }
