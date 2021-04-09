@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " dd",
+        " dd",
+        "e  "
+    ],
+    "key": {
+        "d": {
+            "tag": "minecraft:stone_tool_materials"
+        },
+        "e": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "medievalweapons:stone_mace",
+        "count": 1
+    }
+}

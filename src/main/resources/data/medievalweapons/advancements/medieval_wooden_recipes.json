@@ -9,7 +9,10 @@
             "medievalweapons:wooden_lance",
             "medievalweapons:wooden_long_sword",
             "medievalweapons:wooden_small_axe",
-            "medievalweapons:wooden_healing_staff"
+            "medievalweapons:wooden_healing_staff",
+            "medievalweapons:wooden_mace",
+            "medievalweapons:long_bow",
+            "medievalweapons:recurve_bow"
         ]
     },
     "criteria": {
