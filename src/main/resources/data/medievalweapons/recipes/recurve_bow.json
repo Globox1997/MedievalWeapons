@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "eed",
-    "edf",
-    "df "
+    "ed ",
+    "d  "
   ],
   "key": {
     "d": {
@@ -11,9 +11,6 @@
     },
     "e": {
       "item": "minecraft:stick"
-    },
-    "f": {
-      "item": "minecraft:black_dye"
     }
   },
   "result": {
