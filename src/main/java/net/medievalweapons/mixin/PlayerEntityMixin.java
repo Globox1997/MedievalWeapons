@@ -45,7 +45,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
       }
       this.inventory.offHand.clear();
     }
-  }// Lnet/minecraft/entity/LivingEntity;takeKnockback(FDD)V
+  }
 
   @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F"))
   public void attackMixin(Entity target, CallbackInfo info) {
