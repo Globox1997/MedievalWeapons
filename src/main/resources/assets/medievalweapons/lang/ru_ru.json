@@ -85,13 +85,36 @@
   "entity.medievalweapons.stone_healing_staff": "Каменный Посох Лечения",
   "entity.medievalweapons.wooden_healing_staff": "Деревянный Посох Лечения",
 
+  "item.medievalweapons.diamond_mace": "Алмазная булава",
+  "item.medievalweapons.golden_mace": "Золотая булава",
+  "item.medievalweapons.iron_mace": "Железная булава",
+  "item.medievalweapons.netherite_mace": "Незеритовая булава",
+  "item.medievalweapons.stone_mace": "Каменная булава",
+  "item.medievalweapons.wooden_mace": "Деревянная булава",
+  "entity.medievalweapons.diamond_mace": "Алмазная булава",
+  "entity.medievalweapons.golden_mace": "Золотая булава",
+  "entity.medievalweapons.iron_mace": "Железная булава",
+  "entity.medievalweapons.netherite_mace": "Незеритовая булава",
+  "entity.medievalweapons.stone_mace": "Каменная булава",
+  "entity.medievalweapons.wooden_mace": "Деревянная булава",
+
   "item.medievalweapons.long_bow": "Длинный лук",
   "item.medievalweapons.recurve_bow": "Изогнутый лук",
+
+  "item.medievalweapons.thalleous_sword": "Меч Таллия",
+  "entity.medievalweapons.thalleous_sword": "Меч Таллия",
+
+  "item.medievalweapons.common_item.tooltip": "§7Обычный",
+  "item.medievalweapons.uncommon_item.tooltip": "§2Необычный",
+  "item.medievalweapons.rare_item.tooltip": "§cРедкий",
+  "item.medievalweapons.epic_item.tooltip": "§5Эпический",
+  "item.medievalweapons.legendary_item.tooltip": "§6Легендарный",
+
 
   "itemGroup.medievalweapons.group": "MedievalWeapons",
 
   "text.autoconfig.medievalweapons.title": "Настройка MedievalWeapons",
   "text.autoconfig.medievalweapons.option.auto_switch.@PrefixText": "Двойной хват оружия",
-  "text.autoconfig.medievalweapons.option.auto_switch": "Автоматический перехват"
-
+  "text.autoconfig.medievalweapons.option.auto_switch": "Автоматический перехват",
+  "text.autoconfig.medievalweapons.option.display_rareness": "Отображать редкость"
 }
