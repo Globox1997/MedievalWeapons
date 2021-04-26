@@ -1,0 +1,25 @@
+{
+    "replace": false,
+    "values": [
+        "medievalweapons:wooden_small_axe",
+        "medievalweapons:stone_small_axe",
+        "medievalweapons:wooden_long_sword",
+        "medievalweapons:stone_long_sword",
+        "medievalweapons:wooden_dagger",
+        "medievalweapons:stone_dagger",
+        "medievalweapons:wooden_francisca",
+        "medievalweapons:stone_francisca",
+        "medievalweapons:wooden_big_axe",
+        "medievalweapons:stone_big_axe",
+        "medievalweapons:wooden_javelin",
+        "medievalweapons:stone_javelin",
+        "medievalweapons:wooden_lance",
+        "medievalweapons:stone_lance",
+        "medievalweapons:wooden_healing_staff",
+        "medievalweapons:stone_healing_staff",
+        "medievalweapons:wooden_mace",
+        "medievalweapons:stone_mace",
+        "medievalweapons:long_bow",
+        "medievalweapons:recurve_bow"
+    ]
+}

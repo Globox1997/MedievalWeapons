@@ -1,15 +1,9 @@
 package net.medievalweapons.item;
 
-import java.util.List;
-
-import net.medievalweapons.init.ConfigInit;
-import net.medievalweapons.init.ItemInit;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -19,13 +13,6 @@ public class Big_Axe_Item extends SwordItem {
 
   public Big_Axe_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
     super(toolMaterial, attackDamage, attackSpeed, settings);
-  }
-
-  @Override
-  public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-    if (ConfigInit.CONFIG.display_rareness) {
-      tooltip.add(ItemInit.rareness(this.getMaterial()));
-    }
   }
 
   @Override

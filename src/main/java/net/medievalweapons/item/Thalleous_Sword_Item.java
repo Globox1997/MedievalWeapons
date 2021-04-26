@@ -1,13 +1,9 @@
 package net.medievalweapons.item;
 
-import java.util.List;
-
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
-import net.medievalweapons.init.ConfigInit;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -16,8 +12,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -52,13 +46,6 @@ public class Thalleous_Sword_Item extends SwordItem {
     @Override
     public ToolMaterial getMaterial() {
         return this.material;
-    }
-
-    @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        if (ConfigInit.CONFIG.display_rareness) {
-            tooltip.add(new TranslatableText("item.medievalweapons.legendary_item.tooltip"));
-        }
     }
 
     @Override

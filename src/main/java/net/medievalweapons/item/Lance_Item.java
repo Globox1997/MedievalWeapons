@@ -1,15 +1,11 @@
 package net.medievalweapons.item;
 
-import java.util.List;
 import java.util.UUID;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
-import net.medievalweapons.init.ConfigInit;
-import net.medievalweapons.init.ItemInit;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -20,7 +16,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class Lance_Item extends SwordItem {
@@ -69,13 +64,6 @@ public class Lance_Item extends SwordItem {
                 player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE)
                         .removeModifier(ATTACK_BONUS_MODIFIER_ID);
             }
-        }
-    }
-
-    @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        if (ConfigInit.CONFIG.display_rareness) {
-            tooltip.add(ItemInit.rareness(this.getMaterial()));
         }
     }
 

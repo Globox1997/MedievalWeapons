@@ -1,23 +1,15 @@
 package net.medievalweapons.item;
 
-import java.util.List;
-
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
-import net.medievalweapons.init.ConfigInit;
-import net.medievalweapons.init.ItemInit;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.text.Text;
-import net.minecraft.world.World;
 
 public class Mace_Item extends SwordItem {
 
@@ -50,13 +42,6 @@ public class Mace_Item extends SwordItem {
     @Override
     public ToolMaterial getMaterial() {
         return this.material;
-    }
-
-    @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        if (ConfigInit.CONFIG.display_rareness) {
-            tooltip.add(ItemInit.rareness(this.getMaterial()));
-        }
     }
 
     public int getAddition() {

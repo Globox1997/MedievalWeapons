@@ -1,13 +1,8 @@
 package net.medievalweapons.item;
 
-import java.util.List;
-
 import net.medievalweapons.entity.Healing_Ball_Entity;
-import net.medievalweapons.init.ConfigInit;
-import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -16,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -88,13 +82,6 @@ public class Healing_Staff_Item extends SwordItem {
   @Override
   public int getMaxUseTime(ItemStack stack) {
     return 72000;
-  }
-
-  @Override
-  public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-    if (ConfigInit.CONFIG.display_rareness) {
-      tooltip.add(ItemInit.rareness(this.getMaterial()));
-    }
   }
 
 }

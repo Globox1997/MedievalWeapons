@@ -1,0 +1,23 @@
+{
+    "replace": false,
+    "values": [
+        "medievalweapons:iron_small_axe",
+        "medievalweapons:golden_small_axe",
+        "medievalweapons:iron_long_sword",
+        "medievalweapons:golden_long_sword",
+        "medievalweapons:iron_dagger",
+        "medievalweapons:golden_dagger",
+        "medievalweapons:iron_francisca",
+        "medievalweapons:golden_francisca",
+        "medievalweapons:iron_big_axe",
+        "medievalweapons:golden_big_axe",
+        "medievalweapons:iron_javelin",
+        "medievalweapons:golden_javelin",
+        "medievalweapons:iron_lance",
+        "medievalweapons:golden_lance",
+        "medievalweapons:iron_healing_staff",
+        "medievalweapons:golden_healing_staff",
+        "medievalweapons:iron_mace",
+        "medievalweapons:golden_mace"
+    ]
+}

@@ -104,17 +104,9 @@
   "item.medievalweapons.thalleous_sword": "Thalleous Sword",
   "entity.medievalweapons.thalleous_sword": "Thalleous Sword",
 
-  "item.medievalweapons.common_item.tooltip": "§7Common",
-  "item.medievalweapons.uncommon_item.tooltip": "§2Uncommon",
-  "item.medievalweapons.rare_item.tooltip": "§cRare",
-  "item.medievalweapons.epic_item.tooltip": "§5Epic",
-  "item.medievalweapons.legendary_item.tooltip": "§6Legendary",
-
   "itemGroup.medievalweapons.group": "Medieval Weapons",
 
   "text.autoconfig.medievalweapons.title": "Medieval Weapons Config",
   "text.autoconfig.medievalweapons.option.auto_switch.@PrefixText": "Double handed weapons",
-  "text.autoconfig.medievalweapons.option.auto_switch": "Automatic Offhand Switch",
-  "text.autoconfig.medievalweapons.option.display_rareness": "Display Rareness"
-
+  "text.autoconfig.medievalweapons.option.auto_switch": "Automatic Offhand Switch"
 }

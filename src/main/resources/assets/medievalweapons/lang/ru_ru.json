@@ -104,17 +104,9 @@
   "item.medievalweapons.thalleous_sword": "Меч Таллия",
   "entity.medievalweapons.thalleous_sword": "Меч Таллия",
 
-  "item.medievalweapons.common_item.tooltip": "§7Обычный",
-  "item.medievalweapons.uncommon_item.tooltip": "§2Необычный",
-  "item.medievalweapons.rare_item.tooltip": "§cРедкий",
-  "item.medievalweapons.epic_item.tooltip": "§5Эпический",
-  "item.medievalweapons.legendary_item.tooltip": "§6Легендарный",
-
-
   "itemGroup.medievalweapons.group": "MedievalWeapons",
 
   "text.autoconfig.medievalweapons.title": "Настройка MedievalWeapons",
   "text.autoconfig.medievalweapons.option.auto_switch.@PrefixText": "Двойной хват оружия",
-  "text.autoconfig.medievalweapons.option.auto_switch": "Автоматический перехват",
-  "text.autoconfig.medievalweapons.option.display_rareness": "Отображать редкость"
+  "text.autoconfig.medievalweapons.option.auto_switch": "Автоматический перехват"
 }

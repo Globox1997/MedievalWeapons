@@ -1,10 +1,7 @@
 package net.medievalweapons.item;
 
-import java.util.List;
 import java.util.function.Predicate;
 
-import net.medievalweapons.init.ConfigInit;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -17,8 +14,6 @@ import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -134,13 +129,6 @@ public class Long_Bow_Item extends BowItem {
   @Override
   public int getRange() {
     return 20;
-  }
-
-  @Override
-  public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-    if (ConfigInit.CONFIG.display_rareness) {
-      tooltip.add(new TranslatableText("item.medievalweapons.uncommon_item.tooltip"));
-    }
   }
 
 }

@@ -18,10 +18,7 @@ import net.medievalweapons.item.Recurve_Bow_Item;
 import net.medievalweapons.item.Small_Axe_Item;
 import net.medievalweapons.item.Thalleous_Sword_Item;
 import net.minecraft.item.Item;
-import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -187,28 +184,6 @@ public class ItemInit {
                 for (Identifier id : ITEMS.keySet()) {
                         Registry.register(Registry.ITEM, id, ITEMS.get(id));
                 }
-        }
-
-        public static Text rareness(ToolMaterial toolMaterial) {
-                if (toolMaterial.equals(ToolMaterials.WOOD)) {
-                        return new TranslatableText("item.medievalweapons.common_item.tooltip");
-                }
-                if (toolMaterial.equals(ToolMaterials.STONE)) {
-                        return new TranslatableText("item.medievalweapons.common_item.tooltip");
-                }
-                if (toolMaterial.equals(ToolMaterials.IRON)) {
-                        return new TranslatableText("item.medievalweapons.uncommon_item.tooltip");
-                }
-                if (toolMaterial.equals(ToolMaterials.GOLD)) {
-                        return new TranslatableText("item.medievalweapons.uncommon_item.tooltip");
-                }
-                if (toolMaterial.equals(ToolMaterials.DIAMOND)) {
-                        return new TranslatableText("item.medievalweapons.rare_item.tooltip");
-                }
-                if (toolMaterial.equals(ToolMaterials.NETHERITE)) {
-                        return new TranslatableText("item.medievalweapons.epic_item.tooltip");
-                } else
-                        return new TranslatableText("item.medievalweapons.common_item.tooltip");
         }
 
 }
