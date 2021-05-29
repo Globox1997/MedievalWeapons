@@ -19,7 +19,7 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "betterend:nether_ruby"
+                        "item": "betternether:nether_ruby"
                     }
                 ]
             }
