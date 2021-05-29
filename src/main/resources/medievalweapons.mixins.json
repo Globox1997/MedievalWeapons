@@ -10,7 +10,8 @@
     "EnchantmentHelperMixin",
     "EnchantmentMixin",
     "LivingEntityMixin",
-    "AreaEffectCloudEntityMixin"
+    "AreaEffectCloudEntityMixin",
+    "RecipeManagerMixin"
   ],
   "client": [
     "BipedEntityModelMixin",

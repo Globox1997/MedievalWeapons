@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.TagInit;
+import net.medievalweapons.item.Big_Axe_Item;
+import net.medievalweapons.item.Long_Sword_Item;
 import net.medievalweapons.item.Mace_Item;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -18,6 +20,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -36,9 +39,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
   // Auto switch
   @Inject(method = "tickMovement", at = @At("HEAD"))
   public void tickMovementMixin(CallbackInfo info) {
+    Item item = this.getMainHandStack().getItem();
     if (!this.world.isClient && ConfigInit.CONFIG.auto_switch && !this.inventory.offHand.get(0).isEmpty()
-        && (this.getMainHandStack().getItem().isIn(TagInit.DOUBLE_HANDED_ITEMS)
-            || this.getMainHandStack().getItem().isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS))) {
+        && (item.isIn(TagInit.DOUBLE_HANDED_ITEMS) || item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)
+            || item instanceof Long_Sword_Item || item instanceof Big_Axe_Item)) {
       for (int k = 0; k < this.inventory.offHand.size(); ++k) {
         ItemStack stack = this.inventory.offHand.get(k);
         this.inventory.setStack(this.inventory.getEmptySlot(), stack);

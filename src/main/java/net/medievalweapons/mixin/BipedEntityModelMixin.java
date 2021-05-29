@@ -7,6 +7,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.TagInit;
+import net.medievalweapons.item.Big_Axe_Item;
+import net.medievalweapons.item.Long_Sword_Item;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.AnimalModel;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -29,7 +31,8 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
   public void setAnglesMixin(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo info) {
 
     if (livingEntity.getOffHandStack().isEmpty() && !livingEntity.isSwimming() && !livingEntity.hasVehicle()) {
-      if (livingEntity.getMainHandStack().getItem().isIn(TagInit.DOUBLE_HANDED_ITEMS)) {
+      if (livingEntity.getMainHandStack().getItem().isIn(TagInit.DOUBLE_HANDED_ITEMS)
+          || livingEntity.getMainHandStack().getItem() instanceof Long_Sword_Item) {
         this.rightArm.pitch = -0.8727F + (MathHelper.cos(f * 0.6662F) * 2.0F * g * 0.5F / 15);
         this.rightArm.yaw = -0.5672F;
         this.rightArm.roll = 0.0F;
@@ -54,7 +57,8 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
           this.leftArm.pitch = -1.17F;
           this.rightArm.roll = 0.7F;
         }
-      } else if (livingEntity.getMainHandStack().getItem().isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)) {
+      } else if (livingEntity.getMainHandStack().getItem().isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)
+          || livingEntity.getMainHandStack().getItem() instanceof Big_Axe_Item) {
         this.rightArm.pitch = -0.5236F + (MathHelper.cos(f * 0.6662F) * 2.0F * g * 0.5F / 15);
         this.rightArm.yaw = 0.0F;
         this.rightArm.roll = 0.0F;

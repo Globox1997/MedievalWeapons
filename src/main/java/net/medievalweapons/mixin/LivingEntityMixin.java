@@ -7,7 +7,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.TagInit;
+import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Lance_Item;
+import net.medievalweapons.item.Long_Sword_Item;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -28,7 +30,7 @@ public abstract class LivingEntityMixin extends Entity {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         Item item = livingEntity.getMainHandStack().getItem();
         if (item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || item.isIn(TagInit.DOUBLE_HANDED_ITEMS)
-                || item instanceof Lance_Item) {
+                || item instanceof Long_Sword_Item || item instanceof Big_Axe_Item || item instanceof Lance_Item) {
             info.setReturnValue(10);
         }
     }
@@ -37,7 +39,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void blockedByShieldMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         Item item = livingEntity.getMainHandStack().getItem();
-        if (item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || item.isIn(TagInit.DOUBLE_HANDED_ITEMS)) {
+        if (item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || item.isIn(TagInit.DOUBLE_HANDED_ITEMS)
+                || item instanceof Long_Sword_Item || item instanceof Big_Axe_Item) {
             info.setReturnValue(false);
         }
     }
@@ -46,7 +49,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void blockedByShieldDamageWeaponMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         Item item = livingEntity.getMainHandStack().getItem();
-        if (item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || item.isIn(TagInit.DOUBLE_HANDED_ITEMS)) {
+        if (item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || item.isIn(TagInit.DOUBLE_HANDED_ITEMS)
+                || item instanceof Long_Sword_Item || item instanceof Big_Axe_Item) {
             if (livingEntity instanceof PlayerEntity) {
                 ((PlayerEntity) livingEntity).getItemCooldownManager().set(item, 80);
             }

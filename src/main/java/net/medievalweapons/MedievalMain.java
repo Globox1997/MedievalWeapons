@@ -16,6 +16,10 @@ public class MedievalMain implements ModInitializer {
   public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("medievalweapons", "group"),
       () -> new ItemStack(ItemInit.DIAMOND_FRANCISCA_HT_ITEM));
 
+  public static final Identifier ID(String path) {
+    return new Identifier("medievalweapons", path);
+  }
+
   @Override
   public void onInitialize() {
     ConfigInit.init();

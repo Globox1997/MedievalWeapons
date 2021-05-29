@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -15,9 +15,12 @@ minecraft {
 }
 
 repositories {
-    maven {url "https://maven.jamieswhiteshirt.com/libs-release/" }
-	maven {url 'https://jitpack.io' }
-	maven {url "https://dl.bintray.com/ladysnake/libs" }
+	maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
+	maven { url "https://jitpack.io" }
+	maven { url "https://dl.bintray.com/ladysnake/libs" }
+	maven { url "https://www.cursemaven.com" }
+	maven { url "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
@@ -32,27 +35,26 @@ dependencies {
 
 	// Fixing Recipes
 	modCompileOnly 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
-	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.7.10"
-	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:2.7.10"
+	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.8.3"
+	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:2.8.3"
 
 	// Config
-	modApi("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
-      exclude(group: "net.fabricmc.fabric-api")
+	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+    	exclude(group: "net.fabricmc.fabric-api")
   	}
-	include("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
-      exclude(group: "net.fabricmc.fabric-api")
+	include("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+    	exclude(group: "net.fabricmc.fabric-api")
   	}
-	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}") {
-      exclude(group: "net.fabricmc.fabric-api")
-  	}
-	include("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}") {
-      exclude(group: "net.fabricmc.fabric-api")
-  	}
-
 	// Modmenu dev
-	modCompile "io.github.prospector:modmenu:${project.mod_menu_version}",{
-	  exclude(group: "net.fabricmc.fabric-api")
+	modCompile "com.terraformersmc:modmenu:${project.mod_menu_version}",{
+		exclude(group: "net.fabricmc.fabric-api")
 	}
+
+	//DragonLoot
+	modCompileOnly 'curse.maven:dragonloot-424480:3304678'
+	//Better End/Nether
+	modCompileOnly 'curse.maven:betterend-413596:3300748'
+	modCompileOnly 'curse.maven:betternether-311377:3133763'
 
 }
 

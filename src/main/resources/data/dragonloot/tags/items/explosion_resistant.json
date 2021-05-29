@@ -1,0 +1,14 @@
+{
+    "replace": false,
+    "values": [
+        "medievalweapons:dragon_small_axe",
+        "medievalweapons:dragon_long_sword",
+        "medievalweapons:dragon_dagger",
+        "medievalweapons:dragon_big_axe",
+        "medievalweapons:dragon_lance",
+        "medievalweapons:dragon_healing_staff",
+        "medievalweapons:dragon_mace",
+        "medievalweapons:dragon_francisca",
+        "medievalweapons:dragon_javelin"
+    ]
+}

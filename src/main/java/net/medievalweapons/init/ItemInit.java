@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.medievalweapons.MedievalMain;
+import net.medievalweapons.compat.CompatItems;
+import net.medievalweapons.compat.CompatRecipes;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Dagger_Item;
 import net.medievalweapons.item.Francisca_HT_Item;
@@ -24,7 +26,7 @@ import net.minecraft.util.registry.Registry;
 
 public class ItemInit {
         // Map
-        private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
+        public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
         // Small Axe
         public static final Small_Axe_Item WOOD_SMALL_AXE_ITEM = register("wooden_small_axe", new Small_Axe_Item(
                         ToolMaterials.WOOD, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -175,12 +177,15 @@ public class ItemInit {
         public static final Thalleous_Sword_Item THALLEOUS_SWORD = register("thalleous_sword", new Thalleous_Sword_Item(
                         ToolMaterials.DIAMOND, 10, -3.0F, new Item.Settings().group(MedievalMain.GROUP)));
 
-        private static <I extends Item> I register(String name, I item) {
+        public static <I extends Item> I register(String name, I item) {
                 ITEMS.put(new Identifier("medievalweapons", name), item);
                 return item;
         }
 
         public static void init() {
+                CompatItems.loadItems();
+                CompatRecipes.createRecipes();
+                CompatRecipes.loadRecipes();
                 for (Identifier id : ITEMS.keySet()) {
                         Registry.register(Registry.ITEM, id, ITEMS.get(id));
                 }

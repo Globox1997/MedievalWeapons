@@ -3,6 +3,7 @@ package net.medievalweapons.init;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.medievalweapons.compat.CompatRender;
 import net.medievalweapons.entity.renderer.Francisca_HT_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Francisca_LT_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Healing_Ball_Entity_Renderer;
@@ -47,6 +48,8 @@ public class RenderInit {
                 // Particle
                 ParticleFactoryRegistry.getInstance().register(ParticleInit.HEALING_AURA_PARTICLE,
                                 HealingAuraParticle.Factory::new);
+                // Compat
+                CompatRender.loadRenderer();
 
         }
 

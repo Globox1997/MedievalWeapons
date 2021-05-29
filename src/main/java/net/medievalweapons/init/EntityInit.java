@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.medievalweapons.compat.CompatEntities;
 import net.medievalweapons.entity.Francisca_HT_Entity;
 import net.medievalweapons.entity.Francisca_LT_Entity;
 import net.medievalweapons.entity.Healing_Ball_Entity;
@@ -19,7 +20,7 @@ import net.minecraft.util.registry.Registry;
 
 public class EntityInit {
         // Map
-        private static final Map<Identifier, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();
+        public static final Map<Identifier, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();
         // Francisca
         public static final EntityType<Francisca_LT_Entity> WOODEN_FRANCISCA_LT = register("wooden_francisca",
                         create_LT_Francisca(ItemInit.WOODEN_FRANCISCA_LT_ITEM));
@@ -52,12 +53,13 @@ public class EntityInit {
                                         .dimensions(EntityDimensions.fixed(0.3F, 0.3F)).build());
 
         public static void init() {
+                CompatEntities.loadEntities();
                 for (Identifier id : ENTITY_TYPES.keySet()) {
                         Registry.register(Registry.ENTITY_TYPE, id, ENTITY_TYPES.get(id));
                 }
         }
 
-        private static <T extends EntityType<?>> T register(String name, T type) {
+        public static <T extends EntityType<?>> T register(String name, T type) {
                 Identifier id = new Identifier("medievalweapons", name);
                 ENTITY_TYPES.put(id, type);
                 return type;
@@ -70,14 +72,14 @@ public class EntityInit {
                                 .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
         }
 
-        private static EntityType<Francisca_HT_Entity> create_HT_Francisca(Francisca_HT_Item item) {
+        public static EntityType<Francisca_HT_Entity> create_HT_Francisca(Francisca_HT_Item item) {
                 return FabricEntityTypeBuilder
                                 .<Francisca_HT_Entity>create(SpawnGroup.MISC,
                                                 (entity, world) -> new Francisca_HT_Entity(entity, world, item))
                                 .dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
         }
 
-        private static EntityType<Javelin_Entity> create_Javelin(Javelin_Item item) {
+        public static EntityType<Javelin_Entity> create_Javelin(Javelin_Item item) {
                 return FabricEntityTypeBuilder
                                 .<Javelin_Entity>create(SpawnGroup.MISC,
                                                 (entity, world) -> new Javelin_Entity(entity, world, item))
