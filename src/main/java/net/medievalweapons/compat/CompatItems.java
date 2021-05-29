@@ -6,7 +6,6 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
-import net.minecraft.item.ToolMaterials;
 import paulevs.betternether.items.materials.BNItemMaterials;
 import ru.betterend.item.material.EndToolMaterial;
 
@@ -16,80 +15,24 @@ public class CompatItems {
         public static Boolean isBetterEndLoaded = fabricLoader.isModLoaded("betterend");
         public static Boolean isBetterNetherLoaded = fabricLoader.isModLoaded("betternether");
         // DragonLoot
-        public static final Francisca_HT_Item DRAGON_FRANCISCA_HT_ITEM = ItemInit.register("dragon_francisca",
-                        new Francisca_HT_Item(
-                                        isDragonLootLoaded ? DragonToolMaterial.getInstance() : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.DRAGON_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-        public static final Javelin_Item DRAGON_JAVELIN_ITEM = ItemInit.register("dragon_javelin",
-                        new Javelin_Item(isDragonLootLoaded ? DragonToolMaterial.getInstance() : ToolMaterials.DIAMOND,
-                                        2.2F, -2.7F, () -> CompatEntities.DRAGON_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+        public static Francisca_HT_Item DRAGON_FRANCISCA_HT_ITEM;
+        public static Javelin_Item DRAGON_JAVELIN_ITEM;
+
         // Better Nether
-        public static final Francisca_HT_Item NETHER_RUBY_FRANCISCA_HT_ITEM = ItemInit.register("nether_ruby_francisca",
-                        new Francisca_HT_Item(
-                                        isBetterNetherLoaded ? BNItemMaterials.NETHER_RUBY_TOOLS
-                                                        : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.NETHER_RUBY_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-        public static final Javelin_Item NETHER_RUBY_JAVELIN_ITEM = ItemInit.register("nether_ruby_javelin",
-                        new Javelin_Item(
-                                        isBetterNetherLoaded ? BNItemMaterials.NETHER_RUBY_TOOLS
-                                                        : ToolMaterials.DIAMOND,
-                                        2.2F, -2.7F, () -> CompatEntities.NETHER_RUBY_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-        public static final Francisca_HT_Item CINCINNASITE_FRANCISCA_HT_ITEM = ItemInit.register(
-                        "cincinnasite_francisca",
-                        new Francisca_HT_Item(
-                                        isBetterNetherLoaded ? BNItemMaterials.CINCINNASITE_TOOLS
-                                                        : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.CINCINNASITE_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-        public static final Javelin_Item CINCINNASITE_JAVELIN_ITEM = ItemInit.register("cincinnasite_javelin",
-                        new Javelin_Item(
-                                        isBetterNetherLoaded ? BNItemMaterials.CINCINNASITE_TOOLS
-                                                        : ToolMaterials.DIAMOND,
-                                        2.2F, -2.7F, () -> CompatEntities.CINCINNASITE_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-        public static final Francisca_HT_Item CINCINNASITE_DIAMOND_FRANCISCA_HT_ITEM = ItemInit.register(
-                        "cincinnasite_diamond_francisca",
-                        new Francisca_HT_Item(
-                                        isBetterNetherLoaded ? BNItemMaterials.CINCINNASITE_DIAMOND_TOOLS
-                                                        : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.CINCINNASITE_DIAMOND_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-        public static final Javelin_Item CINCINNASITE_DIAMOND_JAVELIN_ITEM = ItemInit.register(
-                        "cincinnasite_diamond_javelin",
-                        new Javelin_Item(
-                                        isBetterNetherLoaded ? BNItemMaterials.CINCINNASITE_DIAMOND_TOOLS
-                                                        : ToolMaterials.DIAMOND,
-                                        2.2F, -2.7F, () -> CompatEntities.CINCINNASITE_DIAMOND_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+        public static Francisca_HT_Item NETHER_RUBY_FRANCISCA_HT_ITEM;
+        public static Javelin_Item NETHER_RUBY_JAVELIN_ITEM;
+        public static Francisca_HT_Item CINCINNASITE_FRANCISCA_HT_ITEM;
+        public static Javelin_Item CINCINNASITE_JAVELIN_ITEM;
+        public static Francisca_HT_Item CINCINNASITE_DIAMOND_FRANCISCA_HT_ITEM;
+        public static Javelin_Item CINCINNASITE_DIAMOND_JAVELIN_ITEM;
+
         // Better End
-        public static final Francisca_HT_Item TERMINITE_FRANCISCA_HT_ITEM = ItemInit.register("terminite_francisca",
-                        new Francisca_HT_Item(isBetterEndLoaded ? EndToolMaterial.TERMINITE : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.TERMINITE_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP)));
-        public static final Javelin_Item TERMINITE_JAVELIN_ITEM = ItemInit.register("terminite_javelin",
-                        new Javelin_Item(isBetterEndLoaded ? EndToolMaterial.TERMINITE : ToolMaterials.DIAMOND, 2.2F,
-                                        -2.7F, () -> CompatEntities.TERMINITE_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP)));
-        public static final Francisca_HT_Item AETERNIUM_FRANCISCA_HT_ITEM = ItemInit.register("aeternium_francisca",
-                        new Francisca_HT_Item(isBetterEndLoaded ? EndToolMaterial.AETERNIUM : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.AETERNIUM_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP)));
-        public static final Javelin_Item AETERNIUM_JAVELIN_ITEM = ItemInit.register("aeternium_javelin",
-                        new Javelin_Item(isBetterEndLoaded ? EndToolMaterial.AETERNIUM : ToolMaterials.DIAMOND, 2.2F,
-                                        -2.7F, () -> CompatEntities.AETERNIUM_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP)));
-        public static final Francisca_HT_Item THALLASIUM_FRANCISCA_HT_ITEM = ItemInit.register("thallasium_francisca",
-                        new Francisca_HT_Item(isBetterEndLoaded ? EndToolMaterial.THALLASIUM : ToolMaterials.DIAMOND,
-                                        2.0F, -2.6F, () -> CompatEntities.THALLASIUM_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP)));
-        public static final Javelin_Item THALLASIUM_JAVELIN_ITEM = ItemInit.register("thallasium_javelin",
-                        new Javelin_Item(isBetterEndLoaded ? EndToolMaterial.THALLASIUM : ToolMaterials.DIAMOND, 2.2F,
-                                        -2.7F, () -> CompatEntities.THALLASIUM_JAVELIN,
-                                        new Item.Settings().group(MedievalMain.GROUP)));
+        public static Francisca_HT_Item TERMINITE_FRANCISCA_HT_ITEM;
+        public static Javelin_Item TERMINITE_JAVELIN_ITEM;
+        public static Francisca_HT_Item AETERNIUM_FRANCISCA_HT_ITEM;
+        public static Javelin_Item AETERNIUM_JAVELIN_ITEM;
+        public static Francisca_HT_Item THALLASIUM_FRANCISCA_HT_ITEM;
+        public static Javelin_Item THALLASIUM_JAVELIN_ITEM;
 
         public static void loadItems() {
                 if (isBetterEndLoaded) {
@@ -112,6 +55,14 @@ public class CompatItems {
                                                         new Item.Settings().group(MedievalMain.GROUP)));
                         ItemInit.ITEMS.put(MedievalMain.ID("terminite_mace"), new Mace_Item(EndToolMaterial.TERMINITE,
                                         4, -3.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+                        TERMINITE_FRANCISCA_HT_ITEM = ItemInit.register("terminite_francisca",
+                                        new Francisca_HT_Item(EndToolMaterial.TERMINITE, 2.0F, -2.6F,
+                                                        () -> CompatEntities.TERMINITE_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP)));
+                        TERMINITE_JAVELIN_ITEM = ItemInit.register("terminite_javelin",
+                                        new Javelin_Item(EndToolMaterial.TERMINITE, 2.2F, -2.7F,
+                                                        () -> CompatEntities.TERMINITE_JAVELIN,
+                                                        new Item.Settings().group(MedievalMain.GROUP)));
                         ItemInit.ITEMS.put(MedievalMain.ID("terminite_francisca"), TERMINITE_FRANCISCA_HT_ITEM);
                         ItemInit.ITEMS.put(MedievalMain.ID("terminite_javelin"), TERMINITE_JAVELIN_ITEM);
 
@@ -134,6 +85,14 @@ public class CompatItems {
                                                         new Item.Settings().group(MedievalMain.GROUP)));
                         ItemInit.ITEMS.put(MedievalMain.ID("aeternium_mace"), new Mace_Item(EndToolMaterial.AETERNIUM,
                                         4, -3.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+                        AETERNIUM_FRANCISCA_HT_ITEM = ItemInit.register("aeternium_francisca",
+                                        new Francisca_HT_Item(EndToolMaterial.AETERNIUM, 2.0F, -2.6F,
+                                                        () -> CompatEntities.AETERNIUM_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP)));
+                        AETERNIUM_JAVELIN_ITEM = ItemInit.register("aeternium_javelin",
+                                        new Javelin_Item(EndToolMaterial.AETERNIUM, 2.2F, -2.7F,
+                                                        () -> CompatEntities.AETERNIUM_JAVELIN,
+                                                        new Item.Settings().group(MedievalMain.GROUP)));
                         ItemInit.ITEMS.put(MedievalMain.ID("aeternium_francisca"), AETERNIUM_FRANCISCA_HT_ITEM);
                         ItemInit.ITEMS.put(MedievalMain.ID("aeternium_javelin"), AETERNIUM_JAVELIN_ITEM);
 
@@ -157,6 +116,14 @@ public class CompatItems {
                                                         new Item.Settings().group(MedievalMain.GROUP)));
                         ItemInit.ITEMS.put(MedievalMain.ID("thallasium_mace"), new Mace_Item(EndToolMaterial.THALLASIUM,
                                         4, -3.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+                        THALLASIUM_FRANCISCA_HT_ITEM = ItemInit.register("thallasium_francisca",
+                                        new Francisca_HT_Item(EndToolMaterial.THALLASIUM, 2.0F, -2.6F,
+                                                        () -> CompatEntities.THALLASIUM_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP)));
+                        THALLASIUM_JAVELIN_ITEM = ItemInit.register("thallasium_javelin",
+                                        new Javelin_Item(EndToolMaterial.THALLASIUM, 2.2F, -2.7F,
+                                                        () -> CompatEntities.THALLASIUM_JAVELIN,
+                                                        new Item.Settings().group(MedievalMain.GROUP)));
                         ItemInit.ITEMS.put(MedievalMain.ID("thallasium_francisca"), THALLASIUM_FRANCISCA_HT_ITEM);
                         ItemInit.ITEMS.put(MedievalMain.ID("thallasium_javelin"), THALLASIUM_JAVELIN_ITEM);
                 }
@@ -182,6 +149,14 @@ public class CompatItems {
                         ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_mace"),
                                         new Mace_Item(BNItemMaterials.NETHER_RUBY_TOOLS, 4, -3.0F, 2,
                                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        NETHER_RUBY_FRANCISCA_HT_ITEM = ItemInit.register("nether_ruby_francisca",
+                                        new Francisca_HT_Item(BNItemMaterials.NETHER_RUBY_TOOLS, 2.0F, -2.6F,
+                                                        () -> CompatEntities.NETHER_RUBY_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        NETHER_RUBY_JAVELIN_ITEM = ItemInit.register("nether_ruby_javelin",
+                                        new Javelin_Item(BNItemMaterials.NETHER_RUBY_TOOLS, 2.2F, -2.7F,
+                                                        () -> CompatEntities.NETHER_RUBY_JAVELIN,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
                         ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_francisca"), NETHER_RUBY_FRANCISCA_HT_ITEM);
                         ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_javelin"), NETHER_RUBY_JAVELIN_ITEM);
 
@@ -206,6 +181,14 @@ public class CompatItems {
                         ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_mace"),
                                         new Mace_Item(BNItemMaterials.CINCINNASITE_TOOLS, 4, -3.0F, 2,
                                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        CINCINNASITE_FRANCISCA_HT_ITEM = ItemInit.register("cincinnasite_francisca",
+                                        new Francisca_HT_Item(BNItemMaterials.CINCINNASITE_TOOLS, 2.0F, -2.6F,
+                                                        () -> CompatEntities.CINCINNASITE_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        CINCINNASITE_JAVELIN_ITEM = ItemInit.register("cincinnasite_javelin",
+                                        new Javelin_Item(BNItemMaterials.CINCINNASITE_TOOLS, 2.2F, -2.7F,
+                                                        () -> CompatEntities.CINCINNASITE_JAVELIN,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
                         ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_francisca"), CINCINNASITE_FRANCISCA_HT_ITEM);
                         ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_javelin"), CINCINNASITE_JAVELIN_ITEM);
 
@@ -229,6 +212,14 @@ public class CompatItems {
                                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
                         ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_mace"),
                                         new Mace_Item(BNItemMaterials.CINCINNASITE_DIAMOND_TOOLS, 4, -3.0F, 3,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        CINCINNASITE_DIAMOND_FRANCISCA_HT_ITEM = ItemInit.register("cincinnasite_diamond_francisca",
+                                        new Francisca_HT_Item(BNItemMaterials.CINCINNASITE_DIAMOND_TOOLS, 2.0F, -2.6F,
+                                                        () -> CompatEntities.CINCINNASITE_DIAMOND_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        CINCINNASITE_DIAMOND_JAVELIN_ITEM = ItemInit.register("cincinnasite_diamond_javelin",
+                                        new Javelin_Item(BNItemMaterials.CINCINNASITE_DIAMOND_TOOLS, 2.2F, -2.7F,
+                                                        () -> CompatEntities.CINCINNASITE_DIAMOND_JAVELIN,
                                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
                         ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_francisca"),
                                         CINCINNASITE_DIAMOND_FRANCISCA_HT_ITEM);
@@ -256,6 +247,14 @@ public class CompatItems {
                                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
                         ItemInit.ITEMS.put(MedievalMain.ID("dragon_mace"),
                                         new Mace_Item(DragonToolMaterial.getInstance(), 4, -3.0F, 2,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        DRAGON_FRANCISCA_HT_ITEM = ItemInit.register("dragon_francisca",
+                                        new Francisca_HT_Item(DragonToolMaterial.getInstance(), 2.0F, -2.6F,
+                                                        () -> CompatEntities.DRAGON_FRANCISCA_HT,
+                                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                        DRAGON_JAVELIN_ITEM = ItemInit.register("dragon_javelin",
+                                        new Javelin_Item(DragonToolMaterial.getInstance(), 2.2F, -2.7F,
+                                                        () -> CompatEntities.DRAGON_JAVELIN,
                                                         new Item.Settings().group(MedievalMain.GROUP).fireproof()));
                         ItemInit.ITEMS.put(MedievalMain.ID("dragon_francisca"), DRAGON_FRANCISCA_HT_ITEM);
                         ItemInit.ITEMS.put(MedievalMain.ID("dragon_javelin"), DRAGON_JAVELIN_ITEM);
