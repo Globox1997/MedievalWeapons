@@ -6,6 +6,3 @@ MedievalWeapons is a mod built for the [Fabric Loader](https://fabricmc.net/). I
 
 ### License
 MedievalWeapons is licensed under MIT.
-
-### Credits
-This mod JIJs Polymorph by TheIllusiveC4, which is licensed under the GNU Lesser General Public License. You can find more information on the mod at https://www.curseforge.com/minecraft/mc-mods/polymorph-fabric, and visit its source at https://github.com/TheIllusiveC4/Polymorph.
