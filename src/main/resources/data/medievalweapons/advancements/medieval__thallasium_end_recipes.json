@@ -1,0 +1,28 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:thallasium_small_axe",
+            "medievalweapons:thallasium_long_sword",
+            "medievalweapons:thallasium_dagger",
+            "medievalweapons:thallasium_javelin",
+            "medievalweapons:thallasium_lance",
+            "medievalweapons:thallasium_long_sword",
+            "medievalweapons:thallasium_small_axe",
+            "medievalweapons:thallasium_healing_staff",
+            "medievalweapons:thallasium_mace"
+        ]
+    },
+    "criteria": {
+        "medieval__thallasium_end_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "betterend:thallasium_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}

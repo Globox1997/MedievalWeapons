@@ -1,0 +1,28 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:aeternium_small_axe",
+            "medievalweapons:aeternium_long_sword",
+            "medievalweapons:aeternium_dagger",
+            "medievalweapons:aeternium_javelin",
+            "medievalweapons:aeternium_lance",
+            "medievalweapons:aeternium_long_sword",
+            "medievalweapons:aeternium_small_axe",
+            "medievalweapons:aeternium_healing_staff",
+            "medievalweapons:aeternium_mace"
+        ]
+    },
+    "criteria": {
+        "medieval__aternium_end_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "betterend:aeternium_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}

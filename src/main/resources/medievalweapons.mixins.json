@@ -11,7 +11,9 @@
     "EnchantmentMixin",
     "LivingEntityMixin",
     "AreaEffectCloudEntityMixin",
-    "RecipeManagerMixin"
+    "RecipeManagerMixin",
+    "ServerAdvancementLoaderMixin",
+    "TagGroupLoaderMixin"
   ],
   "client": [
     "BipedEntityModelMixin",

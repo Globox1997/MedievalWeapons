@@ -1,0 +1,28 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:terminite_small_axe",
+            "medievalweapons:terminite_long_sword",
+            "medievalweapons:terminite_dagger",
+            "medievalweapons:terminite_javelin",
+            "medievalweapons:terminite_lance",
+            "medievalweapons:terminite_long_sword",
+            "medievalweapons:terminite_small_axe",
+            "medievalweapons:terminite_healing_staff",
+            "medievalweapons:terminite_mace"
+        ]
+    },
+    "criteria": {
+        "medieval__terminite_end_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "betterend:terminite_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}

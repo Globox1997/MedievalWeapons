@@ -1,0 +1,28 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:dragon_big_axe",
+            "medievalweapons:dragon_dagger",
+            "medievalweapons:dragon_francisca",
+            "medievalweapons:dragon_javelin",
+            "medievalweapons:dragon_lance",
+            "medievalweapons:dragon_long_sword",
+            "medievalweapons:dragon_small_axe",
+            "medievalweapons:dragon_healing_staff",
+            "medievalweapons:dragon_mace"
+        ]
+    },
+    "criteria": {
+        "medieval_dragon_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "dragonloot:dragon_scale"
+                    }
+                ]
+            }
+        }
+    }
+}

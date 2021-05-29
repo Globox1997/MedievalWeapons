@@ -1,0 +1,28 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:cincinnasite_diamond_small_axe",
+            "medievalweapons:cincinnasite_diamond_long_sword",
+            "medievalweapons:cincinnasite_diamond_dagger",
+            "medievalweapons:cincinnasite_diamond_javelin",
+            "medievalweapons:cincinnasite_diamond_lance",
+            "medievalweapons:cincinnasite_diamond_long_sword",
+            "medievalweapons:cincinnasite_diamond_small_axe",
+            "medievalweapons:cincinnasite_diamond_healing_staff",
+            "medievalweapons:cincinnasite_diamond_mace"
+        ]
+    },
+    "criteria": {
+        "medieval__cincinnasite_diamond_end_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "betterend:cincinnasite_diamond_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}
