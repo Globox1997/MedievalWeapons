@@ -68,9 +68,9 @@ public class CompatEntities {
                         EntityInit.ENTITY_TYPES.put(MedievalMain.ID("cincinnasite_francisca"),
                                         CINCINNASITE_FRANCISCA_HT);
                         EntityInit.ENTITY_TYPES.put(MedievalMain.ID("cincinnasite_javelin"), CINCINNASITE_JAVELIN);
-                        EntityInit.ENTITY_TYPES.put(MedievalMain.ID("cincinnasite_diamond_francisca"),
-                                        CINCINNASITE_DIAMOND_JAVELIN);
                         EntityInit.ENTITY_TYPES.put(MedievalMain.ID("cincinnasite_diamond_javelin"),
+                                        CINCINNASITE_DIAMOND_JAVELIN);
+                        EntityInit.ENTITY_TYPES.put(MedievalMain.ID("cincinnasite_diamond_francisca"),
                                         CINCINNASITE_DIAMOND_FRANCISCA_HT);
                 }
                 if (CompatItems.isDragonLootLoaded) {

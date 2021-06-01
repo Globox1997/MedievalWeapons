@@ -88,7 +88,7 @@ public class ItemInit {
         public static final Francisca_HT_Item NETHERITE_FRANCISCA_HT_ITEM = register("netherite_francisca",
                         new Francisca_HT_Item(ToolMaterials.NETHERITE, 2.0F, -2.6F,
                                         () -> EntityInit.NETHERITE_FRANCISCA_HT,
-                                        new Item.Settings().group(MedievalMain.GROUP).fireproof().fireproof()));
+                                        new Item.Settings().group(MedievalMain.GROUP).fireproof()));
         // Big Axe
         public static final Big_Axe_Item WOODEN_BIG_AXE_ITEM = register("wooden_big_axe",
                         new Big_Axe_Item(ToolMaterials.WOOD, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP)));

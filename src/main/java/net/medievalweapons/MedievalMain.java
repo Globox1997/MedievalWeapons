@@ -23,8 +23,8 @@ public class MedievalMain implements ModInitializer {
   @Override
   public void onInitialize() {
     ConfigInit.init();
-    EntityInit.init();
     ItemInit.init();
+    EntityInit.init();
     ParticleInit.init();
     SoundInit.init();
     TagInit.init();
