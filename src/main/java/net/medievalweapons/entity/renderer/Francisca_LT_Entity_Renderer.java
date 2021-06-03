@@ -1,5 +1,7 @@
 package net.medievalweapons.entity.renderer;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.medievalweapons.entity.Francisca_LT_Entity;
 import net.medievalweapons.entity.model.Francisca_LT_Entity_Model;
 import net.minecraft.client.render.OverlayTexture;
@@ -18,6 +20,7 @@ import net.minecraft.util.registry.Registry;
 import java.util.HashMap;
 import java.util.Map;
 
+@Environment(EnvType.CLIENT)
 public class Francisca_LT_Entity_Renderer extends EntityRenderer<Francisca_LT_Entity> {
   private static final Map<EntityType<?>, Identifier> TEXTURES = new HashMap<>();
   private final Francisca_LT_Entity_Model model = new Francisca_LT_Entity_Model();

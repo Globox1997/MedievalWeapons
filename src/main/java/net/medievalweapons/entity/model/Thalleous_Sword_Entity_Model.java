@@ -1,11 +1,14 @@
 package net.medievalweapons.entity.model;
 
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.util.math.MatrixStack;
 
+@Environment(EnvType.CLIENT)
 public class Thalleous_Sword_Entity_Model extends Model {
     private final ModelPart base = new ModelPart(64, 64, 0, 0);
 

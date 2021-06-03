@@ -12,11 +12,14 @@ import net.minecraft.client.render.entity.feature.HeldItemFeatureRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Dagger_Item;
 import net.medievalweapons.item.Long_Sword_Item;
 import net.minecraft.client.render.VertexConsumerProvider;
 
+@Environment(EnvType.CLIENT)
 @Mixin(HeldItemFeatureRenderer.class)
 public abstract class HeldItemFeatureRendererMixin {
 

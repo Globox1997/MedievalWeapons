@@ -3,6 +3,8 @@ package net.medievalweapons.entity.renderer;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.medievalweapons.entity.Javelin_Entity;
 import net.medievalweapons.entity.model.Javelin_Entity_Model;
 import net.minecraft.client.render.OverlayTexture;
@@ -18,6 +20,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 
+@Environment(EnvType.CLIENT)
 public class Javelin_Entity_Renderer extends EntityRenderer<Javelin_Entity> {
   private static final Map<EntityType<?>, Identifier> TEXTURES = new HashMap<>();
   private final Javelin_Entity_Model model = new Javelin_Entity_Model();

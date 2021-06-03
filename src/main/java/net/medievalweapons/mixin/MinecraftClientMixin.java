@@ -7,6 +7,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Long_Sword_Item;
@@ -14,6 +16,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.item.Item;
 
+@Environment(EnvType.CLIENT)
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
   @Shadow

@@ -1,5 +1,7 @@
 package net.medievalweapons.item.renderer;
 
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 import net.medievalweapons.entity.model.Mace_Entity_Model;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -11,6 +13,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
+@Environment(EnvType.CLIENT)
 public enum Mace_Item_Renderer {
     INSTANCE;
 

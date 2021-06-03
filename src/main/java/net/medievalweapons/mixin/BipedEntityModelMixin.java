@@ -6,6 +6,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Long_Sword_Item;
@@ -17,6 +19,7 @@ import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 
+@Environment(EnvType.CLIENT)
 @Mixin(BipedEntityModel.class)
 public abstract class BipedEntityModelMixin<T extends LivingEntity> extends AnimalModel<T>
     implements ModelWithArms, ModelWithHead {

@@ -1,5 +1,7 @@
 package net.medievalweapons.item.renderer;
 
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
 import net.medievalweapons.entity.model.Javelin_Entity_Model;
 import net.medievalweapons.entity.renderer.Javelin_Entity_Renderer;
 import net.medievalweapons.item.Javelin_Item;
@@ -13,6 +15,7 @@ import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 
+@Environment(EnvType.CLIENT)
 public enum Javelin_Item_Renderer {
   INSTANCE;
 

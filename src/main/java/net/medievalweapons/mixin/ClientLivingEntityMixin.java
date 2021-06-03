@@ -14,10 +14,10 @@ import net.medievalweapons.item.Long_Sword_Item;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 
+@Environment(EnvType.CLIENT)
 @Mixin(LivingEntity.class)
 public class ClientLivingEntityMixin {
 
-    @Environment(EnvType.CLIENT)
     @Inject(method = "handleStatus", at = @At(value = "FIELD", target = "Lnet/minecraft/sound/SoundEvents;ITEM_SHIELD_BLOCK:Lnet/minecraft/sound/SoundEvent;"), cancellable = true)
     public void handleStatusMixin(byte status, CallbackInfo info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
