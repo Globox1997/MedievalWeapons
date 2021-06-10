@@ -11,7 +11,7 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.math.Vector3f;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 
@@ -19,7 +19,8 @@ import net.minecraft.item.ItemStack;
 public enum Javelin_Item_Renderer {
   INSTANCE;
 
-  private final Javelin_Entity_Model javelinEntityModel = new Javelin_Entity_Model();
+  private final Javelin_Entity_Model javelinEntityModel = new Javelin_Entity_Model(
+      Javelin_Entity_Model.getTexturedModelData().createModel());
 
   public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
       MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {
@@ -35,11 +36,11 @@ public enum Javelin_Item_Renderer {
     if (entity != null && entity.isUsingItem() && entity.getActiveItem() == stack
         && (renderMode == ModelTransformation.Mode.THIRD_PERSON_LEFT_HAND
             || renderMode == ModelTransformation.Mode.THIRD_PERSON_RIGHT_HAND)) {
-      matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(120F));
+      matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(120F));
       matrices.translate(0.0D, 0.7D, 0.0D);
     } else if (renderMode != ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND
         && renderMode != ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND) {
-      matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(-60F));
+      matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-60F));
       matrices.translate(0.0D, 0.85D, 0.0D);
     } else {
       matrices.translate(0.0D, 0.85D, 0.0D);

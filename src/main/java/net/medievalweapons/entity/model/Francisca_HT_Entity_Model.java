@@ -2,36 +2,34 @@ package net.medievalweapons.entity.model;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.util.math.MatrixStack;
 
 @Environment(EnvType.CLIENT)
 public class Francisca_HT_Entity_Model extends Model {
-  private final ModelPart base = new ModelPart(32, 32, 0, 0);
+  private final ModelPart base;
 
-  public Francisca_HT_Entity_Model() {
+  public Francisca_HT_Entity_Model(ModelPart base) {
     super(RenderLayer::getEntitySolid);
-    base.setPivot(0.5F, 16.0F, 1.0F);
-    base.setTextureOffset(16, 0).addCuboid(0.0F, -1.0F, 4.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(0, 9).addCuboid(0.0F, 7.0F, -8.0F, 1.0F, 1.0F, 2.0F, 0.0F);
-    base.setTextureOffset(0, 21).addCuboid(0.0F, 6.0F, -8.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(10, 20).addCuboid(0.0F, 5.0F, -7.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(19, 19).addCuboid(0.0F, 4.0F, -6.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(18, 14).addCuboid(0.0F, 3.0F, -5.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(5, 18).addCuboid(0.0F, 2.0F, -4.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(0, 17).addCuboid(0.0F, 1.0F, -3.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(16, 10).addCuboid(0.0F, 0.0F, -2.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(16, 6).addCuboid(0.0F, -1.0F, -1.0F, 1.0F, 1.0F, 3.0F, 0.0F);
-    base.setTextureOffset(0, 9).addCuboid(0.0F, -2.0F, 0.0F, 1.0F, 1.0F, 7.0F, 0.0F);
-    base.setTextureOffset(9, 0).addCuboid(0.0F, -3.0F, 1.0F, 1.0F, 1.0F, 5.0F, 0.0F);
-    base.setTextureOffset(0, 0).addCuboid(0.0F, -5.0F, -2.0F, 1.0F, 2.0F, 7.0F, 0.0F);
-    base.setTextureOffset(9, 9).addCuboid(0.0F, -6.0F, -1.0F, 1.0F, 1.0F, 5.0F, 0.0F);
-    base.setTextureOffset(12, 15).addCuboid(0.0F, -7.0F, -1.0F, 1.0F, 1.0F, 4.0F, 0.0F);
-    base.setTextureOffset(0, 3).addCuboid(0.0F, -8.0F, 1.0F, 1.0F, 1.0F, 2.0F, 0.0F);
-    base.setTextureOffset(0, 0).addCuboid(0.0F, 0.0F, 5.0F, 1.0F, 1.0F, 2.0F, 0.0F);
+    this.base = base.getChild("base");
+  }
+
+  public static TexturedModelData getTexturedModelData() {
+    ModelData modelData = new ModelData();
+    ModelPartData modelPartData = modelData.getRoot();
+    modelPartData.addChild("base", ModelPartBuilder.create().uv(16, 0).cuboid(0.0F, -1.0F, 4.0F, 1.0F, 1.0F, 3.0F)
+        .uv(0, 9).cuboid(0.0F, 7.0F, -8.0F, 1.0F, 1.0F, 2.0F).uv(0, 21).cuboid(0.0F, 6.0F, -8.0F, 1.0F, 1.0F, 3.0F)
+        .uv(10, 20).cuboid(0.0F, 5.0F, -7.0F, 1.0F, 1.0F, 3.0F).uv(19, 19).cuboid(0.0F, 4.0F, -6.0F, 1.0F, 1.0F, 3.0F)
+        .uv(18, 14).cuboid(0.0F, 3.0F, -5.0F, 1.0F, 1.0F, 3.0F).uv(5, 18).cuboid(0.0F, 2.0F, -4.0F, 1.0F, 1.0F, 3.0F)
+        .uv(0, 17).cuboid(0.0F, 1.0F, -3.0F, 1.0F, 1.0F, 3.0F).uv(16, 10).cuboid(0.0F, 0.0F, -2.0F, 1.0F, 1.0F, 3.0F)
+        .uv(16, 6).cuboid(0.0F, -1.0F, -1.0F, 1.0F, 1.0F, 3.0F).uv(0, 9).cuboid(0.0F, -2.0F, 0.0F, 1.0F, 1.0F, 7.0F)
+        .uv(9, 0).cuboid(0.0F, -3.0F, 1.0F, 1.0F, 1.0F, 5.0F).uv(0, 0).cuboid(0.0F, -5.0F, -2.0F, 1.0F, 2.0F, 7.0F)
+        .uv(9, 9).cuboid(0.0F, -6.0F, -1.0F, 1.0F, 1.0F, 5.0F).uv(12, 15).cuboid(0.0F, -7.0F, -1.0F, 1.0F, 1.0F, 4.0F)
+        .uv(0, 3).cuboid(0.0F, -8.0F, 1.0F, 1.0F, 1.0F, 2.0F).uv(0, 0).cuboid(0.0F, 0.0F, 5.0F, 1.0F, 1.0F, 2.0F),
+        ModelTransform.pivot(0.5F, 16.0F, 1.0F));
+    return TexturedModelData.of(modelData, 32, 32);
   }
 
   @Override

@@ -17,7 +17,8 @@ import net.minecraft.util.Identifier;
 public enum Mace_Item_Renderer {
     INSTANCE;
 
-    private final Mace_Entity_Model mace_Entity_Model = new Mace_Entity_Model();
+    private final Mace_Entity_Model mace_Entity_Model = new Mace_Entity_Model(
+            Mace_Entity_Model.getTexturedModelData().createModel());
 
     public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
             MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {

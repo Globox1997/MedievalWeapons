@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "medievalweapons",
-  "version": "1.1.3",
+  "version": "${version}",
   "name": "Medieval Weapons",
   "description": "Old but gold weapons from the series Songs of War which is made by Plasma Studios. All credits go to Plasma Studios",
   "authors": [
@@ -32,7 +32,7 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.17.x"
   },
   "suggests": {
     "flamingo": "*"

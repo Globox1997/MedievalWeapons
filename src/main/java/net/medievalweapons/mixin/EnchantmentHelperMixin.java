@@ -20,7 +20,6 @@ import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
@@ -28,12 +27,12 @@ import net.minecraft.util.Hand;
 public class EnchantmentHelperMixin {
   @Inject(method = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F", at = @At(value = "HEAD"), cancellable = true)
   private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info) {
-    Item item = entity.getMainHandStack().getItem();
-    if (item.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || item instanceof Big_Axe_Item) {
+    ItemStack itemStack = entity.getMainHandStack();
+    if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
       int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
       info.setReturnValue(lvl + 1.0F);
     }
-    if (item instanceof Lance_Item) {
+    if (itemStack.getItem() instanceof Lance_Item) {
       int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
       info.setReturnValue(lvl - 1.0F);
     }

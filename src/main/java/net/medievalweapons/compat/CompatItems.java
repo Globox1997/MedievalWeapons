@@ -6,8 +6,8 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
-import paulevs.betternether.items.materials.BNItemMaterials;
 import ru.betterend.item.material.EndToolMaterial;
+import paulevs.betternether.items.materials.BNItemMaterials;
 
 public class CompatItems {
         private static FabricLoader fabricLoader = FabricLoader.getInstance();

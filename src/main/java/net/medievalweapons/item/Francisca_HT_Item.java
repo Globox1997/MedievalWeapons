@@ -91,7 +91,8 @@ public class Francisca_HT_Item extends Item implements Vanishable {
       return 15.0F;
     } else {
       Material material = state.getMaterial();
-      return material != Material.PLANT && material != Material.REPLACEABLE_PLANT && material != Material.UNUSED_PLANT
+      return material != Material.PLANT && material != Material.REPLACEABLE_PLANT
+          && material != Material.UNDERWATER_PLANT && material != Material.REPLACEABLE_UNDERWATER_PLANT
           && !state.isIn(BlockTags.LEAVES) && material != Material.GOURD ? 1.0F : 1.5F;
     }
   }
@@ -125,15 +126,16 @@ public class Francisca_HT_Item extends Item implements Vanishable {
         if (!world.isClient) {
           stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
           Francisca_HT_Entity francisca_HT_Entity = new Francisca_HT_Entity(world, playerEntity, this, stack);
-          francisca_HT_Entity.setProperties(playerEntity, playerEntity.pitch, playerEntity.yaw, 0.0F, 1.5F, 1.0F);
-          if (playerEntity.abilities.creativeMode) {
+          francisca_HT_Entity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F,
+              1.0F);
+          if (playerEntity.isCreative()) {
             francisca_HT_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
           }
           world.spawnEntity(francisca_HT_Entity);
           world.playSoundFromEntity(null, francisca_HT_Entity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS,
               1.0F, 1.0F);
-          if (!playerEntity.abilities.creativeMode) {
-            playerEntity.inventory.removeOne(stack);
+          if (!playerEntity.isCreative()) {
+            playerEntity.getInventory().removeOne(stack);
           }
         }
 

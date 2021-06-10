@@ -18,9 +18,9 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.Packet;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -128,33 +128,33 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
   }
 
   @Override
-  public void readCustomDataFromTag(CompoundTag tag) {
-    super.readCustomDataFromTag(tag);
-    if (tag.contains("francisca_lt", 10)) {
-      this.francisca_LT = ItemStack.fromTag(tag.getCompound("francisca_lt"));
+  public void readCustomDataFromNbt(NbtCompound nbt) {
+    super.readCustomDataFromNbt(nbt);
+    if (nbt.contains("francisca_lt", 10)) {
+      this.francisca_LT = ItemStack.fromNbt(nbt.getCompound("francisca_lt"));
       this.dataTracker.set(ENCHANTMENT_GLINT, this.francisca_LT.hasGlint());
     }
 
     this.piercedEntities.clear();
-    if (tag.contains("francisca_lt_hit", 9)) {
-      for (Tag hitEntity : tag.getList("francisca_lt_hit", 10)) {
-        this.piercedEntities.add(((CompoundTag) hitEntity).getUuid("UUID"));
+    if (nbt.contains("francisca_lt_hit", 9)) {
+      for (NbtElement hitEntity : nbt.getList("francisca_lt_hit", 10)) {
+        this.piercedEntities.add(((NbtCompound) hitEntity).getUuid("UUID"));
       }
     }
   }
 
   @Override
-  public void writeCustomDataToTag(CompoundTag tag) {
-    super.writeCustomDataToTag(tag);
-    tag.put("francisca_lt", this.francisca_LT.toTag(new CompoundTag()));
+  public void writeCustomDataToNbt(NbtCompound nbt) {
+    super.writeCustomDataToNbt(nbt);
+    nbt.put("francisca_lt", this.francisca_LT.writeNbt(new NbtCompound()));
 
-    ListTag tags = new ListTag();
+    NbtList tags = new NbtList();
     for (UUID uuid : this.piercedEntities) {
-      CompoundTag c = new CompoundTag();
+      NbtCompound c = new NbtCompound();
       c.putUuid("UUID", uuid);
       tags.add(c);
     }
-    tag.put("francisca_lt_hit", tags);
+    nbt.put("francisca_lt_hit", tags);
   }
 
   @Override

@@ -17,7 +17,8 @@ import net.minecraft.util.Identifier;
 public enum Healing_Staff_Item_Renderer {
     INSTANCE;
 
-    private final Healing_Staff_Entity_Model healing_Staff_Entity_Model = new Healing_Staff_Entity_Model();
+    private final Healing_Staff_Entity_Model healing_Staff_Entity_Model = new Healing_Staff_Entity_Model(
+            Healing_Staff_Entity_Model.getTexturedModelData().createModel());
 
     public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
             MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {

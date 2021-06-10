@@ -9,7 +9,7 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.math.Vector3f;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -18,7 +18,8 @@ import net.minecraft.util.Identifier;
 public enum Thalleous_Sword_Item_Renderer {
     INSTANCE;
 
-    private final Thalleous_Sword_Entity_Model thalleous_Sword_Entity_Model = new Thalleous_Sword_Entity_Model();
+    private final Thalleous_Sword_Entity_Model thalleous_Sword_Entity_Model = new Thalleous_Sword_Entity_Model(
+            Thalleous_Sword_Entity_Model.getTexturedModelData().createModel());
 
     public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
             MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {
@@ -30,8 +31,8 @@ public enum Thalleous_Sword_Item_Renderer {
         matrices.push();
         model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
         if (entity.isBlocking()) {
-            matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(20F));
-            matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(-20F));
+            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(20F));
+            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-20F));
         }
         matrices.translate(-0.05D, 0.84D, 0.0D);
         matrices.scale(1.0F, -1.0F, -1.0F);

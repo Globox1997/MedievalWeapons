@@ -7,11 +7,11 @@ import net.medievalweapons.entity.model.Francisca_HT_Entity_Model;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.math.Vector3f;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -23,20 +23,21 @@ import java.util.Map;
 @Environment(EnvType.CLIENT)
 public class Francisca_HT_Entity_Renderer extends EntityRenderer<Francisca_HT_Entity> {
   private static final Map<EntityType<?>, Identifier> TEXTURES = new HashMap<>();
-  private final Francisca_HT_Entity_Model model = new Francisca_HT_Entity_Model();
+  private final Francisca_HT_Entity_Model model = new Francisca_HT_Entity_Model(
+      Francisca_HT_Entity_Model.getTexturedModelData().createModel());
 
-  public Francisca_HT_Entity_Renderer(EntityRenderDispatcher entityRenderDispatcher) {
-    super(entityRenderDispatcher);
+  public Francisca_HT_Entity_Renderer(EntityRendererFactory.Context context) {
+    super(context);
   }
 
   @Override
   public void render(Francisca_HT_Entity francisca_HT_Entity, float f, float g, MatrixStack matrixStack,
       VertexConsumerProvider vertexConsumerProvider, int i) {
     matrixStack.push();
-    matrixStack.multiply(Vector3f.POSITIVE_Y
-        .getDegreesQuaternion(MathHelper.lerp(g, francisca_HT_Entity.prevYaw, francisca_HT_Entity.yaw) - 90.0F));
-    matrixStack.multiply(Vector3f.POSITIVE_Z
-        .getDegreesQuaternion(MathHelper.lerp(g, francisca_HT_Entity.prevPitch, francisca_HT_Entity.pitch) + 90.0F));
+    matrixStack.multiply(Vec3f.POSITIVE_Y
+        .getDegreesQuaternion(MathHelper.lerp(g, francisca_HT_Entity.prevYaw, francisca_HT_Entity.getYaw()) - 90.0F));
+    matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(
+        MathHelper.lerp(g, francisca_HT_Entity.prevPitch, francisca_HT_Entity.getPitch()) + 90.0F));
     VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumerProvider,
         model.getLayer(this.getTexture(francisca_HT_Entity)), false, francisca_HT_Entity.enchantingGlint());
 

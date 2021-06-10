@@ -83,11 +83,10 @@ public class Healing_Ball_Entity extends ThrownEntity {
                         }
                     }
                 }
-
                 this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT,
                         SoundCategory.NEUTRAL, 0.9F, 1.0F);
                 this.world.spawnEntity(areaEffectCloudEntity);
-                this.remove();
+                this.discard();
             }
 
         }
@@ -101,7 +100,7 @@ public class Healing_Ball_Entity extends ThrownEntity {
         double d = this.getX() + vec3d.x;
         double e = this.getY() + vec3d.y;
         double f = this.getZ() + vec3d.z;
-        this.method_26962();
+        this.updateRotation();
         float j;
         if (this.isTouchingWater()) {
             for (int i = 0; i < 4; ++i) {

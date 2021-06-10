@@ -17,7 +17,8 @@ import net.minecraft.util.Identifier;
 public enum Lance_Item_Renderer {
     INSTANCE;
 
-    private final Lance_Entity_Model lance_Entity_Model = new Lance_Entity_Model();
+    private final Lance_Entity_Model lance_Entity_Model = new Lance_Entity_Model(
+            Lance_Entity_Model.getTexturedModelData().createModel());
 
     public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
             MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {

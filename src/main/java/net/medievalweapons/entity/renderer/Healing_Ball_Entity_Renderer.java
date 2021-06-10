@@ -7,10 +7,10 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.util.math.Vector3f;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Matrix3f;
@@ -21,8 +21,8 @@ public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_En
     private static final Identifier TEXTURE = new Identifier("medievalweapons:textures/entity/healing_ball.png");
     private static final RenderLayer LAYER;
 
-    public Healing_Ball_Entity_Renderer(EntityRenderDispatcher entityRenderDispatcher) {
-        super(entityRenderDispatcher);
+    public Healing_Ball_Entity_Renderer(EntityRendererFactory.Context context) {
+        super(context);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_En
         matrixStack.push();
         matrixStack.scale(0.4F, 0.4F, 0.4F);
         matrixStack.multiply(this.dispatcher.getRotation());
-        matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
+        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
         MatrixStack.Entry entry = matrixStack.peek();
         Matrix4f matrix4f = entry.getModel();
         Matrix3f matrix3f = entry.getNormal();

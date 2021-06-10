@@ -16,8 +16,8 @@ import net.minecraft.util.Identifier;
 @Mixin(TagGroupLoader.class)
 public class TagGroupLoaderMixin<T> {
 
-    @Inject(method = "applyReload", at = @At("HEAD"))
-    private void applyReloadMixin(Map<Identifier, Tag.Builder> tags, CallbackInfoReturnable<TagGroup<T>> info) {
+    @Inject(method = "buildGroup", at = @At("HEAD"))
+    private void buildGroupMixin(Map<Identifier, Tag.Builder> tags, CallbackInfoReturnable<TagGroup<T>> info) {
         if (!CompatItems.isDragonLootLoaded) {
             tags.remove(new Identifier("dragonloot", "explosion_resistant"));
         }

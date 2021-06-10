@@ -18,9 +18,9 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.Packet;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
@@ -147,7 +147,7 @@ public class Javelin_Entity extends PersistentProjectileEntity {
           this.dropStack(this.asItemStack(), 0.1F);
         }
 
-        this.remove();
+        this.discard();
       } else if (i > 0) {
         this.setNoClip(true);
         Vec3d vec3d = new Vec3d(entity.getX() - this.getX(), entity.getEyeY() - this.getY(),
@@ -188,36 +188,36 @@ public class Javelin_Entity extends PersistentProjectileEntity {
   }
 
   @Override
-  public void readCustomDataFromTag(CompoundTag tag) {
-    super.readCustomDataFromTag(tag);
-    if (tag.contains("javelin", 10)) {
-      this.javelin = ItemStack.fromTag(tag.getCompound("javelin"));
+  public void readCustomDataFromNbt(NbtCompound nbt) {
+    super.readCustomDataFromNbt(nbt);
+    if (nbt.contains("javelin", 10)) {
+      this.javelin = ItemStack.fromNbt(nbt.getCompound("javelin"));
       this.dataTracker.set(ENCHANTMENT_GLINT, this.javelin.hasGlint());
     }
 
     this.piercedEntities.clear();
-    if (tag.contains("javelin_hit", 9)) {
-      for (Tag hitEntity : tag.getList("javelin_hit", 10)) {
-        this.piercedEntities.add(((CompoundTag) hitEntity).getUuid("UUID"));
+    if (nbt.contains("javelin_hit", 9)) {
+      for (NbtElement hitEntity : nbt.getList("javelin_hit", 10)) {
+        this.piercedEntities.add(((NbtCompound) hitEntity).getUuid("UUID"));
       }
     }
-    this.dealtDamage = tag.getBoolean("DealtDamage");
+    this.dealtDamage = nbt.getBoolean("DealtDamage");
     this.dataTracker.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(this.javelin));
   }
 
   @Override
-  public void writeCustomDataToTag(CompoundTag tag) {
-    super.writeCustomDataToTag(tag);
-    tag.put("javelin", this.javelin.toTag(new CompoundTag()));
+  public void writeCustomDataToNbt(NbtCompound nbt) {
+    super.writeCustomDataToNbt(nbt);
+    nbt.put("javelin", this.javelin.writeNbt(new NbtCompound()));
 
-    ListTag tags = new ListTag();
+    NbtList tags = new NbtList();
     for (UUID uuid : this.piercedEntities) {
-      CompoundTag c = new CompoundTag();
+      NbtCompound c = new NbtCompound();
       c.putUuid("UUID", uuid);
       tags.add(c);
     }
-    tag.putBoolean("DealtDamage", this.dealtDamage);
-    tag.put("javelin_hit", tags);
+    nbt.putBoolean("DealtDamage", this.dealtDamage);
+    nbt.put("javelin_hit", tags);
   }
 
   @Override
