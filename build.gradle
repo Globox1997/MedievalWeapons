@@ -3,8 +3,8 @@ plugins {
 	id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
@@ -30,12 +30,14 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Reach Entity Attributes
-	modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}")
+	modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"){
+    	exclude(group: "net.fabricmc.fabric-api")
+  	}
 
 	// Fixing Recipes
-	modCompileOnly 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
-	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.8.3"
-	modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:2.8.3"
+	// modCompileOnly 'com.github.TheIllusiveC4:Polymorph:1.16.x-fabric-SNAPSHOT'
+	// modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.8.3"
+	// modCompileOnly "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:2.8.3"
 
 	// Config
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
@@ -46,10 +48,15 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
-	//DragonLoot
-	modCompileOnly('curse.maven:dragonloot-424480:3304678'){
+	// DragonLoot
+	modCompileOnly modRuntime('curse.maven:dragonloot-424480:3351715'){
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	// modCompileOnly modRuntime('com.github.GitPois1x:DragonLoot:c864c33461'){
+	// 	exclude(group: "net.fabricmc.fabric-api")
+	// 	exclude(group: "me.shedaniel.cloth")
+	// 	exclude(group: "io.github.prospector")
+	// }
 	//Better End/Nether
 	 modCompileOnly 'curse.maven:betterend-413596:3291829',{
 	 	exclude(group: "net.fabricmc.fabric-api")
