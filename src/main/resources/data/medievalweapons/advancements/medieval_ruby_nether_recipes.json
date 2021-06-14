@@ -19,7 +19,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "betternether:nether_ruby"
+                        "items": [
+                            "betternether:nether_ruby"
+                        ]
                     }
                 ]
             }

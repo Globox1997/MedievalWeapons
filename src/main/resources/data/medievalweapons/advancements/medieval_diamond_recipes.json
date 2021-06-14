@@ -19,7 +19,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "minecraft:diamond"
+                        "items": [
+                            "minecraft:diamond"
+                        ]
                     }
                 ]
             }

@@ -28,7 +28,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "betternether:cincinnasite_ingot"
+                        "items": [
+                            "betternether:cincinnasite_ingot"
+                        ]
                     }
                 ]
             }

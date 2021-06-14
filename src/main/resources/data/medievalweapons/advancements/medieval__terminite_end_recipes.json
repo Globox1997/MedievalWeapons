@@ -19,7 +19,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "betterend:terminite_ingot"
+                        "items": [
+                            "betterend:terminite_ingot"
+                        ]
                     }
                 ]
             }

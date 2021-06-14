@@ -19,7 +19,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "betterend:aeternium_ingot"
+                        "items": [
+                            "betterend:aeternium_ingot"
+                        ]
                     }
                 ]
             }

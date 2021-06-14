@@ -19,7 +19,9 @@
             "conditions": {
                 "items": [
                     {
-                        "item": "dragonloot:dragon_scale"
+                        "items": [
+                            "dragonloot:dragon_scale"
+                        ]
                     }
                 ]
             }
