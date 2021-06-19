@@ -26,8 +26,7 @@ public class ClientLivingEntityMixin {
             livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.world.random.nextFloat() * 0.2F);
             info.cancel();
         } else if (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item) {
-            livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F,
-                    0.9F + livingEntity.world.random.nextFloat() * 0.2F);
+            livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F, 0.9F + livingEntity.world.random.nextFloat() * 0.2F);
             info.cancel();
         }
     }

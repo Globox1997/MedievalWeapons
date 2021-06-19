@@ -36,212 +36,211 @@ import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
 public class Javelin_Entity extends PersistentProjectileEntity {
-  private static final TrackedData<Byte> LOYALTY;
-  private static final TrackedData<Boolean> ENCHANTMENT_GLINT;
-  private ItemStack javelin;
-  private final Set<UUID> piercedEntities = new HashSet<>();
-  public int returnTimer;
-  private boolean dealtDamage;
+    private static final TrackedData<Byte> LOYALTY;
+    private static final TrackedData<Boolean> ENCHANTMENT_GLINT;
+    private ItemStack javelin;
+    private final Set<UUID> piercedEntities = new HashSet<>();
+    public int returnTimer;
+    private boolean dealtDamage;
 
-  public Javelin_Entity(EntityType<? extends Javelin_Entity> entityType, World world, Javelin_Item item) {
-    super(entityType, world);
-    this.javelin = new ItemStack(item);
-  }
-
-  public Javelin_Entity(World world, LivingEntity owner, Javelin_Item item, ItemStack stack) {
-    super(item.getType(), owner, world);
-    this.javelin = new ItemStack(item);
-    this.javelin = stack.copy();
-    this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
-    this.dataTracker.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(stack));
-  }
-
-  @Environment(EnvType.CLIENT)
-  public Javelin_Entity(World world, double x, double y, double z, Javelin_Item item) {
-    super(item.getType(), x, y, z, world);
-    this.javelin = new ItemStack(item);
-  }
-
-  @Override
-  protected void initDataTracker() {
-    super.initDataTracker();
-    this.dataTracker.startTracking(LOYALTY, (byte) 0);
-    this.dataTracker.startTracking(ENCHANTMENT_GLINT, false);
-  }
-
-  @Override
-  public Packet<?> createSpawnPacket() {
-    return EntitySpawnPacket.createPacket(this);
-  }
-
-  @Override
-  protected ItemStack asItemStack() {
-    return this.javelin.copy();
-  }
-
-  @Environment(EnvType.CLIENT)
-  public boolean enchantingGlint() {
-    return this.dataTracker.get(ENCHANTMENT_GLINT);
-  }
-
-  @Override
-  protected void onEntityHit(EntityHitResult entityHitResult) {
-    int level = EnchantmentHelper.getLevel(Enchantments.PIERCING, this.javelin);
-    Entity hitEntity = entityHitResult.getEntity();
-    if (this.piercedEntities.contains(hitEntity.getUuid()) || this.piercedEntities.size() > level) {
-      return;
+    public Javelin_Entity(EntityType<? extends Javelin_Entity> entityType, World world, Javelin_Item item) {
+        super(entityType, world);
+        this.javelin = new ItemStack(item);
     }
-    this.piercedEntities.add(hitEntity.getUuid());
-    float damage = ((Javelin_Item) this.javelin.getItem()).getAttackDamage() * 2;
-    if (hitEntity instanceof AnimalEntity) {
-      int impalingLevel = EnchantmentHelper.getLevel(Enchantments.IMPALING, this.javelin);
-      if (impalingLevel > 0) {
-        damage += impalingLevel * 1.5F;
-      }
-    }
-    this.dealtDamage = true;
-    Entity owner = this.getOwner();
-    DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
-    SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
 
-    if (hitEntity.damage(damageSource, damage)) {
-      if (hitEntity.getType() == EntityType.ENDERMAN) {
-        return;
-      }
-      if (hitEntity instanceof LivingEntity) {
-        LivingEntity hitLivingEntity = (LivingEntity) hitEntity;
-        if (owner instanceof LivingEntity) {
-          EnchantmentHelper.onUserDamaged(hitLivingEntity, owner);
-          EnchantmentHelper.onTargetDamaged((LivingEntity) owner, hitLivingEntity);
+    public Javelin_Entity(World world, LivingEntity owner, Javelin_Item item, ItemStack stack) {
+        super(item.getType(), owner, world);
+        this.javelin = new ItemStack(item);
+        this.javelin = stack.copy();
+        this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
+        this.dataTracker.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(stack));
+    }
+
+    @Environment(EnvType.CLIENT)
+    public Javelin_Entity(World world, double x, double y, double z, Javelin_Item item) {
+        super(item.getType(), x, y, z, world);
+        this.javelin = new ItemStack(item);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(LOYALTY, (byte) 0);
+        this.dataTracker.startTracking(ENCHANTMENT_GLINT, false);
+    }
+
+    @Override
+    public Packet<?> createSpawnPacket() {
+        return EntitySpawnPacket.createPacket(this);
+    }
+
+    @Override
+    protected ItemStack asItemStack() {
+        return this.javelin.copy();
+    }
+
+    @Environment(EnvType.CLIENT)
+    public boolean enchantingGlint() {
+        return this.dataTracker.get(ENCHANTMENT_GLINT);
+    }
+
+    @Override
+    protected void onEntityHit(EntityHitResult entityHitResult) {
+        int level = EnchantmentHelper.getLevel(Enchantments.PIERCING, this.javelin);
+        Entity hitEntity = entityHitResult.getEntity();
+        if (this.piercedEntities.contains(hitEntity.getUuid()) || this.piercedEntities.size() > level) {
+            return;
         }
-        this.playSound(soundEvent, 1.0F, 1.0F);
-        this.onHit(hitLivingEntity);
-      }
-    }
+        this.piercedEntities.add(hitEntity.getUuid());
+        float damage = ((Javelin_Item) this.javelin.getItem()).getAttackDamage() * 2;
+        if (hitEntity instanceof AnimalEntity) {
+            int impalingLevel = EnchantmentHelper.getLevel(Enchantments.IMPALING, this.javelin);
+            if (impalingLevel > 0) {
+                damage += impalingLevel * 1.5F;
+            }
+        }
+        this.dealtDamage = true;
+        Entity owner = this.getOwner();
+        DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
+        SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
 
-    if (this.piercedEntities.size() > level) {
-      this.setVelocity(this.getVelocity().multiply(-0.01D, -0.1D, -0.01D));
-    } else {
-      this.setVelocity(this.getVelocity().multiply(0.75));
-    }
-
-  }
-
-  @Override
-  @Nullable
-  protected EntityHitResult getEntityCollision(Vec3d currentPosition, Vec3d nextPosition) {
-    return this.dealtDamage ? null : super.getEntityCollision(currentPosition, nextPosition);
-  }
-
-  @Override
-  public void tick() {
-    if (this.inGroundTime > 4) {
-      this.dealtDamage = true;
-    }
-
-    Entity entity = this.getOwner();
-    if ((this.dealtDamage || this.isNoClip()) && entity != null) {
-      int i = (Byte) this.dataTracker.get(LOYALTY);
-      if (i > 0 && !this.isOwnerAlive()) {
-        if (!this.world.isClient && this.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED) {
-          this.dropStack(this.asItemStack(), 0.1F);
+        if (hitEntity.damage(damageSource, damage)) {
+            if (hitEntity.getType() == EntityType.ENDERMAN) {
+                return;
+            }
+            if (hitEntity instanceof LivingEntity) {
+                LivingEntity hitLivingEntity = (LivingEntity) hitEntity;
+                if (owner instanceof LivingEntity) {
+                    EnchantmentHelper.onUserDamaged(hitLivingEntity, owner);
+                    EnchantmentHelper.onTargetDamaged((LivingEntity) owner, hitLivingEntity);
+                }
+                this.playSound(soundEvent, 1.0F, 1.0F);
+                this.onHit(hitLivingEntity);
+            }
         }
 
-        this.discard();
-      } else if (i > 0) {
-        this.setNoClip(true);
-        Vec3d vec3d = new Vec3d(entity.getX() - this.getX(), entity.getEyeY() - this.getY(),
-            entity.getZ() - this.getZ());
-        this.setPos(this.getX(), this.getY() + vec3d.y * 0.015D * (double) i, this.getZ());
-        if (this.world.isClient) {
-          this.lastRenderY = this.getY();
+        if (this.piercedEntities.size() > level) {
+            this.setVelocity(this.getVelocity().multiply(-0.01D, -0.1D, -0.01D));
+        } else {
+            this.setVelocity(this.getVelocity().multiply(0.75));
         }
 
-        double d = 0.05D * (double) i;
-        this.setVelocity(this.getVelocity().multiply(0.95D).add(vec3d.normalize().multiply(d)));
-        if (this.returnTimer == 0) {
-          this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0F, 1.0F);
+    }
+
+    @Override
+    @Nullable
+    protected EntityHitResult getEntityCollision(Vec3d currentPosition, Vec3d nextPosition) {
+        return this.dealtDamage ? null : super.getEntityCollision(currentPosition, nextPosition);
+    }
+
+    @Override
+    public void tick() {
+        if (this.inGroundTime > 4) {
+            this.dealtDamage = true;
         }
 
-        ++this.returnTimer;
-      }
+        Entity entity = this.getOwner();
+        if ((this.dealtDamage || this.isNoClip()) && entity != null) {
+            int i = (Byte) this.dataTracker.get(LOYALTY);
+            if (i > 0 && !this.isOwnerAlive()) {
+                if (!this.world.isClient && this.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED) {
+                    this.dropStack(this.asItemStack(), 0.1F);
+                }
+
+                this.discard();
+            } else if (i > 0) {
+                this.setNoClip(true);
+                Vec3d vec3d = new Vec3d(entity.getX() - this.getX(), entity.getEyeY() - this.getY(), entity.getZ() - this.getZ());
+                this.setPos(this.getX(), this.getY() + vec3d.y * 0.015D * (double) i, this.getZ());
+                if (this.world.isClient) {
+                    this.lastRenderY = this.getY();
+                }
+
+                double d = 0.05D * (double) i;
+                this.setVelocity(this.getVelocity().multiply(0.95D).add(vec3d.normalize().multiply(d)));
+                if (this.returnTimer == 0) {
+                    this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0F, 1.0F);
+                }
+
+                ++this.returnTimer;
+            }
+        }
+
+        super.tick();
     }
 
-    super.tick();
-  }
-
-  private boolean isOwnerAlive() {
-    Entity entity = this.getOwner();
-    if (entity != null && entity.isAlive()) {
-      return !(entity instanceof ServerPlayerEntity) || !entity.isSpectator();
-    } else {
-      return false;
-    }
-  }
-
-  @Override
-  public void onPlayerCollision(PlayerEntity player) {
-    Entity entity = this.getOwner();
-    if (entity == null || entity.getUuid() == player.getUuid()) {
-      super.onPlayerCollision(player);
-    }
-  }
-
-  @Override
-  public void readCustomDataFromNbt(NbtCompound nbt) {
-    super.readCustomDataFromNbt(nbt);
-    if (nbt.contains("javelin", 10)) {
-      this.javelin = ItemStack.fromNbt(nbt.getCompound("javelin"));
-      this.dataTracker.set(ENCHANTMENT_GLINT, this.javelin.hasGlint());
+    private boolean isOwnerAlive() {
+        Entity entity = this.getOwner();
+        if (entity != null && entity.isAlive()) {
+            return !(entity instanceof ServerPlayerEntity) || !entity.isSpectator();
+        } else {
+            return false;
+        }
     }
 
-    this.piercedEntities.clear();
-    if (nbt.contains("javelin_hit", 9)) {
-      for (NbtElement hitEntity : nbt.getList("javelin_hit", 10)) {
-        this.piercedEntities.add(((NbtCompound) hitEntity).getUuid("UUID"));
-      }
-    }
-    this.dealtDamage = nbt.getBoolean("DealtDamage");
-    this.dataTracker.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(this.javelin));
-  }
-
-  @Override
-  public void writeCustomDataToNbt(NbtCompound nbt) {
-    super.writeCustomDataToNbt(nbt);
-    nbt.put("javelin", this.javelin.writeNbt(new NbtCompound()));
-
-    NbtList tags = new NbtList();
-    for (UUID uuid : this.piercedEntities) {
-      NbtCompound c = new NbtCompound();
-      c.putUuid("UUID", uuid);
-      tags.add(c);
-    }
-    nbt.putBoolean("DealtDamage", this.dealtDamage);
-    nbt.put("javelin_hit", tags);
-  }
-
-  @Override
-  public void age() {
-    int i = (Byte) this.dataTracker.get(LOYALTY);
-    if (this.pickupType != PersistentProjectileEntity.PickupPermission.ALLOWED || i <= 0) {
-      super.age();
+    @Override
+    public void onPlayerCollision(PlayerEntity player) {
+        Entity entity = this.getOwner();
+        if (entity == null || entity.getUuid() == player.getUuid()) {
+            super.onPlayerCollision(player);
+        }
     }
 
-  }
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        if (nbt.contains("javelin", 10)) {
+            this.javelin = ItemStack.fromNbt(nbt.getCompound("javelin"));
+            this.dataTracker.set(ENCHANTMENT_GLINT, this.javelin.hasGlint());
+        }
 
-  @Override
-  @Environment(EnvType.CLIENT)
-  public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
-    return true;
-  }
+        this.piercedEntities.clear();
+        if (nbt.contains("javelin_hit", 9)) {
+            for (NbtElement hitEntity : nbt.getList("javelin_hit", 10)) {
+                this.piercedEntities.add(((NbtCompound) hitEntity).getUuid("UUID"));
+            }
+        }
+        this.dealtDamage = nbt.getBoolean("DealtDamage");
+        this.dataTracker.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(this.javelin));
+    }
 
-  static {
-    LOYALTY = DataTracker.registerData(Javelin_Entity.class, TrackedDataHandlerRegistry.BYTE);
-    ENCHANTMENT_GLINT = DataTracker.registerData(Javelin_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
-  }
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.put("javelin", this.javelin.writeNbt(new NbtCompound()));
 
-  public static DamageSource createDamageSource(Entity entity, Entity owner) {
-    return new ProjectileDamageSource("javelin", entity, owner).setProjectile();
-  }
+        NbtList tags = new NbtList();
+        for (UUID uuid : this.piercedEntities) {
+            NbtCompound c = new NbtCompound();
+            c.putUuid("UUID", uuid);
+            tags.add(c);
+        }
+        nbt.putBoolean("DealtDamage", this.dealtDamage);
+        nbt.put("javelin_hit", tags);
+    }
+
+    @Override
+    public void age() {
+        int i = (Byte) this.dataTracker.get(LOYALTY);
+        if (this.pickupType != PersistentProjectileEntity.PickupPermission.ALLOWED || i <= 0) {
+            super.age();
+        }
+
+    }
+
+    @Override
+    @Environment(EnvType.CLIENT)
+    public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
+        return true;
+    }
+
+    static {
+        LOYALTY = DataTracker.registerData(Javelin_Entity.class, TrackedDataHandlerRegistry.BYTE);
+        ENCHANTMENT_GLINT = DataTracker.registerData(Javelin_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    }
+
+    public static DamageSource createDamageSource(Entity entity, Entity owner) {
+        return new ProjectileDamageSource("javelin", entity, owner).setProjectile();
+    }
 
 }

@@ -18,13 +18,11 @@ import net.minecraft.util.Identifier;
 public enum Thalleous_Sword_Item_Renderer {
     INSTANCE;
 
-    private final Thalleous_Sword_Entity_Model thalleous_Sword_Entity_Model = new Thalleous_Sword_Entity_Model(
-            Thalleous_Sword_Entity_Model.getTexturedModelData().createModel());
+    private final Thalleous_Sword_Entity_Model thalleous_Sword_Entity_Model = new Thalleous_Sword_Entity_Model(Thalleous_Sword_Entity_Model.getTexturedModelData().createModel());
 
-    public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
-            MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {
-        if (renderMode == ModelTransformation.Mode.GUI || renderMode == ModelTransformation.Mode.GROUND
-                || renderMode == ModelTransformation.Mode.FIXED) {
+    public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light,
+            int overlay, BakedModel model) {
+        if (renderMode == ModelTransformation.Mode.GUI || renderMode == ModelTransformation.Mode.GROUND || renderMode == ModelTransformation.Mode.FIXED) {
             return false;
         }
 
@@ -37,9 +35,7 @@ public enum Thalleous_Sword_Item_Renderer {
         matrices.translate(-0.05D, 0.84D, 0.0D);
         matrices.scale(1.0F, -1.0F, -1.0F);
         VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers,
-                this.thalleous_Sword_Entity_Model
-                        .getLayer(new Identifier("medievalweapons", "textures/entity/thalleous_sword.png")),
-                false, stack.hasGlint());
+                this.thalleous_Sword_Entity_Model.getLayer(new Identifier("medievalweapons", "textures/entity/thalleous_sword.png")), false, stack.hasGlint());
         this.thalleous_Sword_Entity_Model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
         matrices.pop();
         return true;

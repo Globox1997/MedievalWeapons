@@ -31,8 +31,7 @@ public class Healing_Ball_Entity extends ThrownEntity {
         super(entityType, world);
     }
 
-    public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, double d, double e, double f,
-            World world) {
+    public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, double d, double e, double f, World world) {
         super(entityType, d, e, f, world);
     }
 
@@ -42,8 +41,7 @@ public class Healing_Ball_Entity extends ThrownEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    public Healing_Ball_Entity(World world, double x, double y, double z, double directionX, double directionY,
-            double directionZ) {
+    public Healing_Ball_Entity(World world, double x, double y, double z, double directionX, double directionY, double directionZ) {
         super(EntityInit.HEALING_BALL_ENTITY, x, y, z, world);
     }
 
@@ -56,13 +54,10 @@ public class Healing_Ball_Entity extends ThrownEntity {
     public void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         Entity entity = this.getOwner();
-        if (hitResult.getType() != HitResult.Type.ENTITY
-                || !((EntityHitResult) hitResult).getEntity().isPartOf(entity)) {
+        if (hitResult.getType() != HitResult.Type.ENTITY || !((EntityHitResult) hitResult).getEntity().isPartOf(entity)) {
             if (!this.world.isClient) {
-                List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class,
-                        this.getBoundingBox().expand(4.0D, 2.0D, 4.0D));
-                AreaEffectCloudEntity areaEffectCloudEntity = new AreaEffectCloudEntity(this.world, this.getX(),
-                        this.getY(), this.getZ());
+                List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(4.0D, 2.0D, 4.0D));
+                AreaEffectCloudEntity areaEffectCloudEntity = new AreaEffectCloudEntity(this.world, this.getX(), this.getY(), this.getZ());
                 if (entity instanceof LivingEntity) {
                     areaEffectCloudEntity.setOwner((LivingEntity) entity);
                 }
@@ -77,14 +72,12 @@ public class Healing_Ball_Entity extends ThrownEntity {
                         LivingEntity livingEntity = (LivingEntity) var5.next();
                         double d = this.squaredDistanceTo(livingEntity);
                         if (d < 16.0D) {
-                            areaEffectCloudEntity.updatePosition(livingEntity.getX(), livingEntity.getY(),
-                                    livingEntity.getZ());
+                            areaEffectCloudEntity.updatePosition(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
                             break;
                         }
                     }
                 }
-                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT,
-                        SoundCategory.NEUTRAL, 0.9F, 1.0F);
+                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT, SoundCategory.NEUTRAL, 0.9F, 1.0F);
                 this.world.spawnEntity(areaEffectCloudEntity);
                 this.discard();
             }
@@ -104,8 +97,7 @@ public class Healing_Ball_Entity extends ThrownEntity {
         float j;
         if (this.isTouchingWater()) {
             for (int i = 0; i < 4; ++i) {
-                this.world.addParticle(ParticleTypes.BUBBLE, d - vec3d.x * 0.25D, e - vec3d.y * 0.25D,
-                        f - vec3d.z * 0.25D, vec3d.x, vec3d.y, vec3d.z);
+                this.world.addParticle(ParticleTypes.BUBBLE, d - vec3d.x * 0.25D, e - vec3d.y * 0.25D, f - vec3d.z * 0.25D, vec3d.x, vec3d.y, vec3d.z);
             }
 
             j = 0.8F;

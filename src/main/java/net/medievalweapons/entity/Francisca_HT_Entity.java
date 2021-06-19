@@ -36,8 +36,7 @@ public class Francisca_HT_Entity extends PersistentProjectileEntity {
     private ItemStack francisca_HT;
     private final Set<UUID> piercedEntities = new HashSet<>();
 
-    public Francisca_HT_Entity(EntityType<? extends Francisca_HT_Entity> entityType, World world,
-            Francisca_HT_Item item) {
+    public Francisca_HT_Entity(EntityType<? extends Francisca_HT_Entity> entityType, World world, Francisca_HT_Item item) {
         super(entityType, world);
         this.francisca_HT = new ItemStack(item);
     }

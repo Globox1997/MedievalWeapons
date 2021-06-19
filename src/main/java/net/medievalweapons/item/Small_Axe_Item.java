@@ -5,10 +5,10 @@ import net.minecraft.item.ToolMaterial;
 
 public class Small_Axe_Item extends SwordItem {
 
-  public Small_Axe_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-    super(toolMaterial, attackDamage, attackSpeed, settings);
-  }
+    public Small_Axe_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+        super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
 
-  // Built in knockback is done by mixin
+    // Built in knockback is done by mixin
 
 }

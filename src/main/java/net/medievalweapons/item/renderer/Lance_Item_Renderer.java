@@ -17,13 +17,11 @@ import net.minecraft.util.Identifier;
 public enum Lance_Item_Renderer {
     INSTANCE;
 
-    private final Lance_Entity_Model lance_Entity_Model = new Lance_Entity_Model(
-            Lance_Entity_Model.getTexturedModelData().createModel());
+    private final Lance_Entity_Model lance_Entity_Model = new Lance_Entity_Model(Lance_Entity_Model.getTexturedModelData().createModel());
 
-    public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
-            MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model) {
-        if (renderMode == ModelTransformation.Mode.GUI || renderMode == ModelTransformation.Mode.GROUND
-                || renderMode == ModelTransformation.Mode.FIXED) {
+    public boolean render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light,
+            int overlay, BakedModel model) {
+        if (renderMode == ModelTransformation.Mode.GUI || renderMode == ModelTransformation.Mode.GROUND || renderMode == ModelTransformation.Mode.FIXED) {
             return false;
         }
 
@@ -32,9 +30,7 @@ public enum Lance_Item_Renderer {
         matrices.translate(-0.7D, 0.27D, 0.0D);
         matrices.scale(1.0F, -1.0F, -1.0F);
         VertexConsumer vertexConsumer = ItemRenderer.getItemGlintConsumer(vertexConsumers,
-                this.lance_Entity_Model
-                        .getLayer(new Identifier("medievalweapons", "textures/entity/" + stack.getItem() + ".png")),
-                false, stack.hasGlint());
+                this.lance_Entity_Model.getLayer(new Identifier("medievalweapons", "textures/entity/" + stack.getItem() + ".png")), false, stack.hasGlint());
         this.lance_Entity_Model.render(matrices, vertexConsumer, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
         matrices.pop();
         return true;

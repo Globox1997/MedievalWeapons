@@ -33,136 +33,130 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class Francisca_LT_Item extends Item implements Vanishable {
-  private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+    private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-  private final ToolMaterial material;
-  private final float attackDamage;
-  private final Supplier<EntityType<Francisca_LT_Entity>> typeSupplier;
-  private EntityType<Francisca_LT_Entity> cachedType = null;
+    private final ToolMaterial material;
+    private final float attackDamage;
+    private final Supplier<EntityType<Francisca_LT_Entity>> typeSupplier;
+    private EntityType<Francisca_LT_Entity> cachedType = null;
 
-  public Francisca_LT_Item(ToolMaterial material, float attackDamage, float attackSpeed,
-      Supplier<EntityType<Francisca_LT_Entity>> typeSupplier, Item.Settings settings) {
-    super(settings.maxDamageIfAbsent(material.getDurability()));
-    this.material = material;
-    this.attackDamage = attackDamage + material.getAttackDamage();
-    this.typeSupplier = typeSupplier;
-    ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-    builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID,
-        "Tool modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
-    builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID,
-        "Tool modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
-    this.attributeModifiers = builder.build();
-  }
-
-  public EntityType<Francisca_LT_Entity> getType() {
-    if (cachedType == null) {
-      cachedType = typeSupplier.get();
-    }
-    return cachedType;
-  }
-
-  public ToolMaterial getMaterial() {
-    return this.material;
-  }
-
-  @Override
-  public int getEnchantability() {
-    return this.material.getEnchantability();
-  }
-
-  @Override
-  public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-    return this.material.getRepairIngredient().test(ingredient) || super.canRepair(stack, ingredient);
-  }
-
-  public float getAttackDamage() {
-    return this.attackDamage;
-  }
-
-  @Override
-  public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-    return !miner.isCreative();
-  }
-
-  @Override
-  public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
-    Block block = state.getBlock();
-    if (block == Blocks.COBWEB) {
-      return 15.0F;
-    } else {
-      Material material = state.getMaterial();
-      return material != Material.PLANT && material != Material.REPLACEABLE_PLANT
-          && material != Material.UNDERWATER_PLANT && material != Material.REPLACEABLE_UNDERWATER_PLANT
-          && !state.isIn(BlockTags.LEAVES) && material != Material.GOURD ? 1.0F : 1.5F;
-    }
-  }
-
-  @Override
-  public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-    stack.damage(1, attacker, entity -> entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-    return true;
-  }
-
-  @Override
-  public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-    if (state.getHardness(world, pos) != 0.0F) {
-      stack.damage(2, miner, entity -> entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+    public Francisca_LT_Item(ToolMaterial material, float attackDamage, float attackSpeed, Supplier<EntityType<Francisca_LT_Entity>> typeSupplier, Item.Settings settings) {
+        super(settings.maxDamageIfAbsent(material.getDurability()));
+        this.material = material;
+        this.attackDamage = attackDamage + material.getAttackDamage();
+        this.typeSupplier = typeSupplier;
+        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
+        builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
+        this.attributeModifiers = builder.build();
     }
 
-    return true;
-  }
+    public EntityType<Francisca_LT_Entity> getType() {
+        if (cachedType == null) {
+            cachedType = typeSupplier.get();
+        }
+        return cachedType;
+    }
 
-  @Override
-  public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot equipmentSlot) {
-    return equipmentSlot == EquipmentSlot.MAINHAND ? attributeModifiers : super.getAttributeModifiers(equipmentSlot);
-  }
+    public ToolMaterial getMaterial() {
+        return this.material;
+    }
 
-  @Override
-  public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-    if (user instanceof PlayerEntity) {
-      PlayerEntity playerEntity = (PlayerEntity) user;
-      int i = this.getMaxUseTime(stack) - remainingUseTicks;
-      if (i >= 10) {
-        if (!world.isClient) {
-          stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
-          Francisca_LT_Entity francisca_LT_Entity = new Francisca_LT_Entity(world, playerEntity, this, stack);
-          francisca_LT_Entity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.2F,
-              1.0F);
-          if (playerEntity.isCreative()) {
-            francisca_LT_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
-          }
-          world.spawnEntity(francisca_LT_Entity);
-          world.playSoundFromEntity(null, francisca_LT_Entity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS,
-              1.0F, 1.0F);
-          if (!playerEntity.isCreative()) {
-            playerEntity.getInventory().removeOne(stack);
-          }
+    @Override
+    public int getEnchantability() {
+        return this.material.getEnchantability();
+    }
+
+    @Override
+    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+        return this.material.getRepairIngredient().test(ingredient) || super.canRepair(stack, ingredient);
+    }
+
+    public float getAttackDamage() {
+        return this.attackDamage;
+    }
+
+    @Override
+    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        return !miner.isCreative();
+    }
+
+    @Override
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        Block block = state.getBlock();
+        if (block == Blocks.COBWEB) {
+            return 15.0F;
+        } else {
+            Material material = state.getMaterial();
+            return material != Material.PLANT && material != Material.REPLACEABLE_PLANT && material != Material.UNDERWATER_PLANT && material != Material.REPLACEABLE_UNDERWATER_PLANT
+                    && !state.isIn(BlockTags.LEAVES) && material != Material.GOURD ? 1.0F : 1.5F;
+        }
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(1, attacker, entity -> entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+        return true;
+    }
+
+    @Override
+    public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
+        if (state.getHardness(world, pos) != 0.0F) {
+            stack.damage(2, miner, entity -> entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         }
 
-        playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-      }
+        return true;
     }
-  }
 
-  @Override
-  public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-    ItemStack itemStack = user.getStackInHand(hand);
-    if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
-      return TypedActionResult.fail(itemStack);
-    } else {
-      user.setCurrentHand(hand);
-      return TypedActionResult.consume(itemStack);
+    @Override
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot equipmentSlot) {
+        return equipmentSlot == EquipmentSlot.MAINHAND ? attributeModifiers : super.getAttributeModifiers(equipmentSlot);
     }
-  }
 
-  @Override
-  public UseAction getUseAction(ItemStack stack) {
-    return UseAction.SPEAR;
-  }
+    @Override
+    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        if (user instanceof PlayerEntity) {
+            PlayerEntity playerEntity = (PlayerEntity) user;
+            int i = this.getMaxUseTime(stack) - remainingUseTicks;
+            if (i >= 10) {
+                if (!world.isClient) {
+                    stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
+                    Francisca_LT_Entity francisca_LT_Entity = new Francisca_LT_Entity(world, playerEntity, this, stack);
+                    francisca_LT_Entity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.2F, 1.0F);
+                    if (playerEntity.isCreative()) {
+                        francisca_LT_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
+                    }
+                    world.spawnEntity(francisca_LT_Entity);
+                    world.playSoundFromEntity(null, francisca_LT_Entity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    if (!playerEntity.isCreative()) {
+                        playerEntity.getInventory().removeOne(stack);
+                    }
+                }
 
-  @Override
-  public int getMaxUseTime(ItemStack stack) {
-    return 72000;
-  }
+                playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+            }
+        }
+    }
+
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        ItemStack itemStack = user.getStackInHand(hand);
+        if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
+            return TypedActionResult.fail(itemStack);
+        } else {
+            user.setCurrentHand(hand);
+            return TypedActionResult.consume(itemStack);
+        }
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.SPEAR;
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 72000;
+    }
 
 }

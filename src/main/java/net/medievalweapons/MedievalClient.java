@@ -6,11 +6,10 @@ import net.medievalweapons.init.RenderInit;
 
 public class MedievalClient implements ClientModInitializer {
 
-  @Override
-  public void onInitializeClient() {
-    ModelProviderInit.init();
-    RenderInit.init();
-
-  }
+    @Override
+    public void onInitializeClient() {
+        ModelProviderInit.init();
+        RenderInit.init();
+    }
 
 }

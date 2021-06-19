@@ -29,9 +29,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void getHandSwingDuration(CallbackInfoReturnable<Integer> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS)
-                || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item
-                || itemStack.getItem() instanceof Lance_Item) {
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item || itemStack.getItem() instanceof Lance_Item) {
             info.setReturnValue(10);
         }
     }
@@ -40,8 +39,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void blockedByShieldMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS)
-                || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item) {
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item) {
             info.setReturnValue(false);
         }
     }
@@ -50,14 +49,13 @@ public abstract class LivingEntityMixin extends Entity {
     private void blockedByShieldDamageWeaponMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS)
-                || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item) {
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item) {
             if (livingEntity instanceof PlayerEntity) {
                 ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), 80);
             }
             if (!world.isClient) {
-                livingEntity.getMainHandStack().damage(1, livingEntity,
-                        (p) -> p.sendToolBreakStatus(p.getActiveHand()));
+                livingEntity.getMainHandStack().damage(1, livingEntity, (p) -> p.sendToolBreakStatus(p.getActiveHand()));
             }
         }
     }

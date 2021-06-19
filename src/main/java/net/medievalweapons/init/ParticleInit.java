@@ -20,8 +20,7 @@ public class ParticleInit {
     public static final DefaultParticleType HEALING_AURA_PARTICLE = FabricParticleTypes.simple();
 
     public static void init() {
-        Registry.register(Registry.PARTICLE_TYPE, new Identifier("medievalweapons", "healing_aura_particle"),
-                HEALING_AURA_PARTICLE);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier("medievalweapons", "healing_aura_particle"), HEALING_AURA_PARTICLE);
     }
 
     @Environment(EnvType.CLIENT)
@@ -29,8 +28,7 @@ public class ParticleInit {
         private final FabricSpriteProvider sprites;
         private boolean reachedGround;
 
-        public HealingAuraParticle(ClientWorld clientWorld, double d, double e, double f, double g, double h, double i,
-                SpriteProvider sprites) {
+        public HealingAuraParticle(ClientWorld clientWorld, double d, double e, double f, double g, double h, double i, SpriteProvider sprites) {
             super(clientWorld, d, e, f, g, h, i);
             setSprite(sprites.getSprite(world.random));
             this.colorRed = MathHelper.nextFloat(this.random, 0.182645F, 0.787239F);
@@ -88,8 +86,7 @@ public class ParticleInit {
 
         @Override
         public float getSize(float tickDelta) {
-            return this.scale
-                    * MathHelper.clamp(((float) this.age + tickDelta) / (float) this.maxAge * 32.0F, 0.0F, 1.0F);
+            return this.scale * MathHelper.clamp(((float) this.age + tickDelta) / (float) this.maxAge * 32.0F, 0.0F, 1.0F);
         }
 
         @Environment(EnvType.CLIENT)
@@ -101,8 +98,7 @@ public class ParticleInit {
             }
 
             @Override
-            public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z,
-                    double vX, double vY, double vZ) {
+            public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double vX, double vY, double vZ) {
                 return new HealingAuraParticle(world, x, y, z, vX, vY, vZ, sprites);
             }
         }

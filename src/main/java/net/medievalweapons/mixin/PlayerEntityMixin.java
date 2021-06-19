@@ -28,38 +28,36 @@ import net.minecraft.world.World;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
 
-  @Shadow
-  public final PlayerInventory inventory = new PlayerInventory((PlayerEntity) (Object) this);
+    @Shadow
+    public final PlayerInventory inventory = new PlayerInventory((PlayerEntity) (Object) this);
 
-  public PlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
-    super(EntityType.PLAYER, world);
-  }
-
-  // Auto switch
-  @Inject(method = "tickMovement", at = @At("HEAD"))
-  public void tickMovementMixin(CallbackInfo info) {
-    ItemStack itemStack = this.getMainHandStack();
-    if (!this.world.isClient && ConfigInit.CONFIG.auto_switch && !this.inventory.offHand.get(0).isEmpty()
-        && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)
-            || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item)) {
-      for (int k = 0; k < this.inventory.offHand.size(); ++k) {
-        ItemStack stack = this.inventory.offHand.get(k);
-        this.inventory.setStack(this.inventory.getEmptySlot(), stack);
-      }
-      this.inventory.offHand.clear();
+    public PlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
+        super(EntityType.PLAYER, world);
     }
-  }
 
-  @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F"))
-  public void attackMixin(Entity target, CallbackInfo info) {
-    ItemStack itemStack = this.getStackInHand(Hand.MAIN_HAND);
-    if (!this.world.isClient && itemStack.getItem() instanceof Mace_Item && target instanceof LivingEntity) {
-      Mace_Item mace_Item = (Mace_Item) itemStack.getItem();
-      if (this.world.random.nextFloat() <= 0.1F + ((float) mace_Item.getAddition() / 10F)) {
-        ((LivingEntity) target).addStatusEffect(
-            new StatusEffectInstance(StatusEffects.WEAKNESS, 60 + mace_Item.getAddition() * 20, 0, false, false, true));
-      }
+    // Auto switch
+    @Inject(method = "tickMovement", at = @At("HEAD"))
+    public void tickMovementMixin(CallbackInfo info) {
+        ItemStack itemStack = this.getMainHandStack();
+        if (!this.world.isClient && ConfigInit.CONFIG.auto_switch && !this.inventory.offHand.get(0).isEmpty() && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS)
+                || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item)) {
+            for (int k = 0; k < this.inventory.offHand.size(); ++k) {
+                ItemStack stack = this.inventory.offHand.get(k);
+                this.inventory.setStack(this.inventory.getEmptySlot(), stack);
+            }
+            this.inventory.offHand.clear();
+        }
     }
-  }
+
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F"))
+    public void attackMixin(Entity target, CallbackInfo info) {
+        ItemStack itemStack = this.getStackInHand(Hand.MAIN_HAND);
+        if (!this.world.isClient && itemStack.getItem() instanceof Mace_Item && target instanceof LivingEntity) {
+            Mace_Item mace_Item = (Mace_Item) itemStack.getItem();
+            if (this.world.random.nextFloat() <= 0.1F + ((float) mace_Item.getAddition() / 10F)) {
+                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60 + mace_Item.getAddition() * 20, 0, false, false, true));
+            }
+        }
+    }
 
 }

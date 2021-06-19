@@ -19,8 +19,7 @@ import net.minecraft.util.profiler.Profiler;
 public class ServerAdvancementLoaderMixin {
 
     @Inject(method = "apply", at = @At("HEAD"))
-    protected void applyMixin(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler,
-            CallbackInfo info) {
+    protected void applyMixin(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
         if (!CompatItems.isBetterEndLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_ruby_nether_recipes"));
             map.remove(new Identifier("medievalweapons", "medieval_cincinnasite_nether_recipes"));

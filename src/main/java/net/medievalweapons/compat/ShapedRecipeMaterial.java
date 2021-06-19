@@ -11,8 +11,7 @@ public class ShapedRecipeMaterial {
     public Identifier output;
     public String itemName;
 
-    public ShapedRecipeMaterial(Identifier headItem, Identifier handleItem, String headType, String handleType,
-            Identifier output, String itemName) {
+    public ShapedRecipeMaterial(Identifier headItem, Identifier handleItem, String headType, String handleType, Identifier output, String itemName) {
         this.headItem = headItem;
         this.handleItem = handleItem;
         this.headType = headType;

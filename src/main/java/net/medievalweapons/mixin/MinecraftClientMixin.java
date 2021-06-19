@@ -19,41 +19,35 @@ import net.minecraft.client.network.ClientPlayerEntity;
 @Environment(EnvType.CLIENT)
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
-  @Shadow
-  @Nullable
-  public ClientPlayerEntity player;
+    @Shadow
+    @Nullable
+    public ClientPlayerEntity player;
 
-  @Inject(method = "doAttack", at = @At(value = "HEAD"), cancellable = true)
-  public void doAttackMixin(CallbackInfo info) {
-    ItemStack itemStack = player.getMainHandStack();
-    if (player != null
-        && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)
-            || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item)
-        && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
-      info.cancel();
+    @Inject(method = "doAttack", at = @At(value = "HEAD"), cancellable = true)
+    public void doAttackMixin(CallbackInfo info) {
+        ItemStack itemStack = player.getMainHandStack();
+        if (player != null && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
+            info.cancel();
+        }
     }
-  }
 
-  @Inject(method = "doItemUse", at = @At(value = "HEAD"), cancellable = true)
-  private void doItemUseMixin(CallbackInfo info) {
-    ItemStack itemStack = player.getMainHandStack();
-    if (player != null
-        && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)
-            || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item)
-        && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
-      info.cancel();
+    @Inject(method = "doItemUse", at = @At(value = "HEAD"), cancellable = true)
+    private void doItemUseMixin(CallbackInfo info) {
+        ItemStack itemStack = player.getMainHandStack();
+        if (player != null && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
+            info.cancel();
+        }
     }
-  }
 
-  @Inject(method = "handleBlockBreaking", at = @At(value = "HEAD"), cancellable = true)
-  private void handleBlockBreakingMixin(boolean bl, CallbackInfo info) {
-    ItemStack itemStack = player.getMainHandStack();
-    if (player != null
-        && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS)
-            || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item)
-        && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
-      info.cancel();
+    @Inject(method = "handleBlockBreaking", at = @At(value = "HEAD"), cancellable = true)
+    private void handleBlockBreakingMixin(boolean bl, CallbackInfo info) {
+        ItemStack itemStack = player.getMainHandStack();
+        if (player != null && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
+            info.cancel();
+        }
     }
-  }
 
 }

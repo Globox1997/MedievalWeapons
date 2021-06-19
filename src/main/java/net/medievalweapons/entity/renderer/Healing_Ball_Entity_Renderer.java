@@ -31,8 +31,7 @@ public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_En
     }
 
     @Override
-    public void render(Healing_Ball_Entity healing_Ball_Entity, float f, float g, MatrixStack matrixStack,
-            VertexConsumerProvider vertexConsumerProvider, int i) {
+    public void render(Healing_Ball_Entity healing_Ball_Entity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrixStack.push();
         matrixStack.scale(0.4F, 0.4F, 0.4F);
         matrixStack.multiply(this.dispatcher.getRotation());
@@ -49,10 +48,8 @@ public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_En
         super.render(healing_Ball_Entity, f, g, matrixStack, vertexConsumerProvider, i);
     }
 
-    private static void produceVertex(VertexConsumer vertexConsumer, Matrix4f modelMatrix, Matrix3f normalMatrix,
-            int light, float x, int y, int textureU, int textureV) {
-        vertexConsumer.vertex(modelMatrix, x - 0.5F, (float) y - 0.25F, 0.0F).color(255, 255, 255, 255)
-                .texture((float) textureU, (float) textureV).overlay(OverlayTexture.DEFAULT_UV).light(light)
+    private static void produceVertex(VertexConsumer vertexConsumer, Matrix4f modelMatrix, Matrix3f normalMatrix, int light, float x, int y, int textureU, int textureV) {
+        vertexConsumer.vertex(modelMatrix, x - 0.5F, (float) y - 0.25F, 0.0F).color(255, 255, 255, 255).texture((float) textureU, (float) textureV).overlay(OverlayTexture.DEFAULT_UV).light(light)
                 .normal(normalMatrix, 0.0F, 1.0F, 0.0F).next();
     }
 

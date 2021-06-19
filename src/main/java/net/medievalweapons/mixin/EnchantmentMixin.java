@@ -14,8 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EnchantmentMixin {
     @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
     private void isAcceptableItemMixin(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
-        if (((Object) this == Enchantments.PIERCING || (Object) this == Enchantments.IMPALING
-                || (Object) this == Enchantments.LOYALTY) && stack.getItem() instanceof Javelin_Item) {
+        if (((Object) this == Enchantments.PIERCING || (Object) this == Enchantments.IMPALING || (Object) this == Enchantments.LOYALTY) && stack.getItem() instanceof Javelin_Item) {
             info.setReturnValue(true);
         }
     }

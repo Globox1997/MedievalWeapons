@@ -22,8 +22,7 @@ public abstract class AreaEffectCloudEntityMixin {
     private LivingEntity owner;
 
     @Inject(method = "Lnet/minecraft/entity/AreaEffectCloudEntity;tick()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/effect/StatusEffect;applyInstantEffect(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/LivingEntity;ID)V"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void tickMixin(CallbackInfo info, boolean bl, float f, List<StatusEffectInstance> list,
-            List<LivingEntity> list2, Iterator<LivingEntity> var6, LivingEntity livingEntity) {
+    private void tickMixin(CallbackInfo info, boolean bl, float f, List<StatusEffectInstance> list, List<LivingEntity> list2, Iterator<LivingEntity> var6, LivingEntity livingEntity) {
         if (livingEntity.equals(owner) && getParticleType().equals(ParticleInit.HEALING_AURA_PARTICLE)) {
             info.cancel();
         }

@@ -25,53 +25,51 @@ import net.minecraft.util.Hand;
 
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
-  @Inject(method = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F", at = @At(value = "HEAD"), cancellable = true)
-  private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info) {
-    ItemStack itemStack = entity.getMainHandStack();
-    if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
-      int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
-      info.setReturnValue(lvl + 1.0F);
-    }
-    if (itemStack.getItem() instanceof Lance_Item) {
-      int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
-      info.setReturnValue(lvl - 1.0F);
-    }
-  }
-
-  @Inject(method = "getPossibleEntries(ILnet/minecraft/item/ItemStack;Z)Ljava/util/List;", at = @At("RETURN"), cancellable = true)
-  private static void getPossibleEntriesMixin(int i, ItemStack stack, boolean treasureAllowed,
-      CallbackInfoReturnable<List<EnchantmentLevelEntry>> info) {
-    if (stack.getItem() instanceof Javelin_Item) {
-      List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
-      List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
-      currentEnchantments.forEach(enchantment -> {
-        if (!(enchantment.enchantment.type == EnchantmentTarget.TRIDENT)
-            || enchantment.enchantment == Enchantments.IMPALING) {
-          enchantments.add(enchantment);
+    @Inject(method = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F", at = @At(value = "HEAD"), cancellable = true)
+    private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info) {
+        ItemStack itemStack = entity.getMainHandStack();
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
+            int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
+            info.setReturnValue(lvl + 1.0F);
         }
-      });
-      Enchantment piercing = Enchantments.PIERCING;
-      for (int level = piercing.getMaxLevel(); level > piercing.getMinLevel() - 1; --level) {
-        if (i >= piercing.getMinPower(level) && i <= piercing.getMaxPower(level)) {
-          enchantments.add(new EnchantmentLevelEntry(piercing, level));
-          break;
+        if (itemStack.getItem() instanceof Lance_Item) {
+            int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
+            info.setReturnValue(lvl - 1.0F);
         }
-      }
-      info.setReturnValue(enchantments);
     }
-  }
 
-  @Inject(method = "getKnockback", at = @At("HEAD"), cancellable = true)
-  private static void getKnockbackMixin(LivingEntity entity, CallbackInfoReturnable<Integer> info) {
-    ItemStack itemStack = entity.getStackInHand(Hand.MAIN_HAND);
-    if (itemStack.getItem() instanceof Small_Axe_Item) {
-      info.setReturnValue(1 + getEquipmentLevel(Enchantments.KNOCKBACK, entity));
+    @Inject(method = "getPossibleEntries(ILnet/minecraft/item/ItemStack;Z)Ljava/util/List;", at = @At("RETURN"), cancellable = true)
+    private static void getPossibleEntriesMixin(int i, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> info) {
+        if (stack.getItem() instanceof Javelin_Item) {
+            List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
+            List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
+            currentEnchantments.forEach(enchantment -> {
+                if (!(enchantment.enchantment.type == EnchantmentTarget.TRIDENT) || enchantment.enchantment == Enchantments.IMPALING) {
+                    enchantments.add(enchantment);
+                }
+            });
+            Enchantment piercing = Enchantments.PIERCING;
+            for (int level = piercing.getMaxLevel(); level > piercing.getMinLevel() - 1; --level) {
+                if (i >= piercing.getMinPower(level) && i <= piercing.getMaxPower(level)) {
+                    enchantments.add(new EnchantmentLevelEntry(piercing, level));
+                    break;
+                }
+            }
+            info.setReturnValue(enchantments);
+        }
     }
-  }
 
-  @Shadow
-  public static int getEquipmentLevel(Enchantment enchantment, LivingEntity entity) {
-    return 1;
-  }
+    @Inject(method = "getKnockback", at = @At("HEAD"), cancellable = true)
+    private static void getKnockbackMixin(LivingEntity entity, CallbackInfoReturnable<Integer> info) {
+        ItemStack itemStack = entity.getStackInHand(Hand.MAIN_HAND);
+        if (itemStack.getItem() instanceof Small_Axe_Item) {
+            info.setReturnValue(1 + getEquipmentLevel(Enchantments.KNOCKBACK, entity));
+        }
+    }
+
+    @Shadow
+    public static int getEquipmentLevel(Enchantment enchantment, LivingEntity entity) {
+        return 1;
+    }
 
 }
