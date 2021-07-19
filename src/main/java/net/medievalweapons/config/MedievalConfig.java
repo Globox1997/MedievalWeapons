@@ -9,5 +9,6 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 public class MedievalConfig implements ConfigData {
     @Comment("Only for double handed weapons")
     public boolean auto_switch = false;
+    public int weapon_blocking_cooldown = 60;
 
 }

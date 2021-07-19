@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.At;
 
+import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Lance_Item;
@@ -52,7 +53,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
                 || itemStack.getItem() instanceof Big_Axe_Item) {
             if (livingEntity instanceof PlayerEntity) {
-                ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), 80);
+                ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), ConfigInit.CONFIG.weapon_blocking_cooldown);
             }
             if (!world.isClient) {
                 livingEntity.getMainHandStack().damage(1, livingEntity, (p) -> p.sendToolBreakStatus(p.getActiveHand()));

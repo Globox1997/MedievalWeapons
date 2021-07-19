@@ -158,7 +158,9 @@
   "entity.medievalweapons.thalleous_sword": "Thalleous Sword",
 
   "itemGroup.medievalweapons.group": "Medieval Weapons",
+  "item.medievalweapons.double_handed.tooltip": "§cDouble Handed",
 
   "text.autoconfig.medievalweapons.title": "Medieval Weapons Config",
-  "text.autoconfig.medievalweapons.option.auto_switch": "Automatic Offhand Switch"
+  "text.autoconfig.medievalweapons.option.auto_switch": "Automatic Offhand Switch",
+  "text.autoconfig.medievalweapons.option.weapon_blocking_cooldown": "Weapon Blocking Cooldown"
 }
