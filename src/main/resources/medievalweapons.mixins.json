@@ -11,7 +11,8 @@
     "AreaEffectCloudEntityMixin",
     "RecipeManagerMixin",
     "ServerAdvancementLoaderMixin",
-    "TagGroupLoaderMixin"
+    "TagGroupLoaderMixin",
+    "BowItemMixin"
   ],
   "client": [
     "BipedEntityModelMixin",

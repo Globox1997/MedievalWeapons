@@ -14,6 +14,7 @@ import net.medievalweapons.init.ItemInit;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -28,9 +29,16 @@ public abstract class AbstractClientPlayerEntityMixin extends PlayerEntity {
 
     @Inject(method = "getSpeed", at = @At(value = "TAIL"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     public void getSpeedMixin(CallbackInfoReturnable<Float> info, float f) {
-        if (this.isUsingItem() && (this.getActiveItem().getItem() == ItemInit.LONG_BOW_ITEM || this.getActiveItem().getItem() == ItemInit.RECURVE_BOW_ITEM)) {
+        Item item = this.getActiveItem().getItem();
+        if (this.isUsingItem() && (item == ItemInit.LONG_BOW_ITEM || item == ItemInit.RECURVE_BOW_ITEM)) {
             int i = this.getItemUseTime();
-            float g = (float) i / 20.0F;
+            float g;
+            if (item == ItemInit.LONG_BOW_ITEM) {
+                g = (float) i / 50.0F;
+            } else {
+                g = (float) i / 16.0F;
+            }
+
             if (g > 1.0F) {
                 g = 1.0F;
             } else {
