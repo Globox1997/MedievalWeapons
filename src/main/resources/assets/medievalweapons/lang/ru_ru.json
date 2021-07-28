@@ -158,7 +158,7 @@
   "entity.medievalweapons.thalleous_sword": "Меч Таллия",
 
   "itemGroup.medievalweapons.group": "Medieval Weapons",
-  "item.medievalweapons.double_handed.tooltip": "§cДвуручный",
+  "item.medievalweapons.double_handed.tooltip": "§cДвуручное",
 
   "text.autoconfig.medievalweapons.title": "Medieval Weapons Config",
   "text.autoconfig.medievalweapons.option.auto_switch": "Automatic Offhand Switch",
