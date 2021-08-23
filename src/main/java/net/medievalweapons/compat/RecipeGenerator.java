@@ -33,14 +33,14 @@ public class RecipeGenerator {
             jsonArray.add("d  ");
             break;
         case "javelin":
-            jsonArray.add("  d");
+            jsonArray.add("d  ");
             jsonArray.add(" e ");
-            jsonArray.add("e  ");
+            jsonArray.add("  e");
             break;
         case "lance":
             jsonArray.add("  d");
-            jsonArray.add(" e ");
-            jsonArray.add("e  ");
+            jsonArray.add("ee ");
+            jsonArray.add("ee ");
             break;
         case "long_sword":
             jsonArray.add("  d");
