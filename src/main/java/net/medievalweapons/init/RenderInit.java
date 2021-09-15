@@ -2,8 +2,8 @@ package net.medievalweapons.init;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.medievalweapons.compat.CompatRender;
 import net.medievalweapons.entity.model.*;
 import net.medievalweapons.entity.renderer.Francisca_HT_Entity_Renderer;
@@ -30,21 +30,22 @@ public class RenderInit {
         // Packet
         ClientPlayNetworking.registerGlobalReceiver(EntitySpawnPacket.ID, EntitySpawnPacket::onPacket);
         // Francisca
-        EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_FRANCISCA_LT, Francisca_LT_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_FRANCISCA_LT, Francisca_LT_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.IRON_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.GOLDEN_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.DIAMOND_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
+
+        EntityRendererRegistry.register(EntityInit.WOODEN_FRANCISCA_LT, Francisca_LT_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.STONE_FRANCISCA_LT, Francisca_LT_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.IRON_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.GOLDEN_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.DIAMOND_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.NETHERITE_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
         // Javelin
-        EntityRendererRegistry.INSTANCE.register(EntityInit.WOODEN_JAVELIN, Javelin_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.STONE_JAVELIN, Javelin_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.IRON_JAVELIN, Javelin_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.GOLDEN_JAVELIN, Javelin_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.DIAMOND_JAVELIN, Javelin_Entity_Renderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityInit.NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.WOODEN_JAVELIN, Javelin_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.STONE_JAVELIN, Javelin_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.IRON_JAVELIN, Javelin_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.GOLDEN_JAVELIN, Javelin_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.DIAMOND_JAVELIN, Javelin_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
         // Healing Ball
-        EntityRendererRegistry.INSTANCE.register(EntityInit.HEALING_BALL_ENTITY, Healing_Ball_Entity_Renderer::new);
+        EntityRendererRegistry.register(EntityInit.HEALING_BALL_ENTITY, Healing_Ball_Entity_Renderer::new);
         // Particle
         ParticleFactoryRegistry.getInstance().register(ParticleInit.HEALING_AURA_PARTICLE, HealingAuraParticle.Factory::new);
         // Compat

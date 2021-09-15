@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.8-SNAPSHOT'
+	id 'fabric-loom' version '0.9-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -10,8 +10,8 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
-minecraft {
-	accessWidener "src/main/resources/medievalweapons.aw"
+loom {
+	accessWidenerPath = file("src/main/resources/medievalweapons.aw")
 }
 
 repositories {
@@ -20,8 +20,7 @@ repositories {
 	maven { url "https://jitpack.io" }
 	//maven { url "https://dl.bintray.com/ladysnake/libs" }
 	maven { url "https://www.cursemaven.com" }
-	//maven { url "https://maven.terraformersmc.com/" }
-	maven { url "https://raw.githubusercontent.com/TerraformersMC/Archive/main/releases/" }
+	maven { url "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
@@ -53,19 +52,24 @@ dependencies {
 	modCompileOnly modRuntime('curse.maven:dragonloot-424480:3351715'){
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	// modCompileOnly modRuntime('com.github.GitPois1x:DragonLoot:c864c33461'){
-	// 	exclude(group: "net.fabricmc.fabric-api")
-	// 	exclude(group: "me.shedaniel.cloth")
-	// 	exclude(group: "io.github.prospector")
-	// }
 	//Better End/Nether
-	 modCompileOnly 'curse.maven:betterend-413596:3291829',{
+	modCompileOnly 'curse.maven:betterend-413596:3291829',{
 	 	exclude(group: "net.fabricmc.fabric-api")
-	 }
-	 modCompileOnly 'curse.maven:betternether-311377:3173627',{
+	}
+	modCompileOnly 'curse.maven:betternether-311377:3173627',{
 	 	exclude(group: "net.fabricmc.fabric-api")
-	 }
-
+	}
+	// Mythic Metals
+	modCompileOnly ('curse.maven:mythicmetals-410127:3393989') {
+	 	exclude(group: "net.fabricmc.fabric-api")
+	}
+	//modRuntime
+	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
+	//  	exclude(group: "net.fabricmc.fabric-api")
+	// }
+	// modCompileOnly modRuntime('curse.maven:enchantgiver-434579:3347061') {
+	//  	exclude(group: "net.fabricmc.fabric-api")
+	// }
 }
 
 processResources {
