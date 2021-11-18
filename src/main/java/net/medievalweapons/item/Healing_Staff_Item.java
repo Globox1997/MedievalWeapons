@@ -33,7 +33,7 @@ public class Healing_Staff_Item extends SwordItem {
                 if (!world.isClient) {
                     stack.damage(2, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
                     Healing_Ball_Entity healing_Ball_Entity = new Healing_Ball_Entity(user, world, this.addition);
-                    healing_Ball_Entity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 0.5F, 1.0F);
+                    healing_Ball_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 0.5F, 1.0F);
                     healing_Ball_Entity.setPos(playerEntity.getX(), playerEntity.getY() + 1.6D, playerEntity.getZ());
                     world.spawnEntity(healing_Ball_Entity);
                     world.playSound(null, playerEntity.getBlockPos(), SoundInit.MAGIC_SHOT_EVENT, SoundCategory.PLAYERS, 0.9F, 1.0F);

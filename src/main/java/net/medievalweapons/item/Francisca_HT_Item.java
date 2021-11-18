@@ -44,7 +44,7 @@ public class Francisca_HT_Item extends SwordItem {
                 if (!world.isClient) {
                     stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
                     Francisca_HT_Entity francisca_HT_Entity = new Francisca_HT_Entity(world, playerEntity, this, stack);
-                    francisca_HT_Entity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F, 1.0F);
+                    francisca_HT_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F, 1.0F);
                     if (playerEntity.isCreative()) {
                         francisca_HT_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
                     }

@@ -44,7 +44,7 @@ public class Javelin_Item extends SwordItem {
                 if (!world.isClient) {
                     stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
                     Javelin_Entity Javelin_Entity = new Javelin_Entity(world, playerEntity, this, stack);
-                    Javelin_Entity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
+                    Javelin_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
                     if (playerEntity.isCreative()) {
                         Javelin_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
                     }

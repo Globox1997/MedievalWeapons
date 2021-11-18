@@ -37,8 +37,8 @@ public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_En
         matrixStack.multiply(this.dispatcher.getRotation());
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
         MatrixStack.Entry entry = matrixStack.peek();
-        Matrix4f matrix4f = entry.getModel();
-        Matrix3f matrix3f = entry.getNormal();
+        Matrix4f matrix4f = entry.getPositionMatrix();
+        Matrix3f matrix3f = entry.getNormalMatrix();
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(LAYER);
         produceVertex(vertexConsumer, matrix4f, matrix3f, i, 0.0F, 0, 0, 1);
         produceVertex(vertexConsumer, matrix4f, matrix3f, i, 1.0F, 0, 1, 1);
