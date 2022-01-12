@@ -26,6 +26,10 @@ public class CompatEntities {
     public static EntityType<Francisca_HT_Entity> THALLASIUM_FRANCISCA_HT;
     public static EntityType<Javelin_Entity> THALLASIUM_JAVELIN;
 
+    // Mythic Metals
+    public static EntityType<Javelin_Entity> ADAMANTITE_JAVELIN;
+    public static EntityType<Francisca_HT_Entity> ADAMANTITE_FRANCISCA_HT;
+
     public static void loadEntities() {
         if (CompatItems.isBetterEndLoaded) {
             TERMINITE_FRANCISCA_HT = EntityInit.register("terminite_francisca", EntityInit.create_HT_Francisca(CompatItems.TERMINITE_FRANCISCA_HT_ITEM));
@@ -63,6 +67,13 @@ public class CompatEntities {
 
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("dragon_francisca"), DRAGON_FRANCISCA_HT);
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("dragon_javelin"), DRAGON_JAVELIN);
+        }
+        if (CompatItems.isMythicMetalsLoaded) {
+            // ADAMANTITE_JAVELIN = EntityInit.register("adamantite_javelin", EntityInit.create_Javelin(CompatItems.DRAGON_JAVELIN_ITEM));
+            // ADAMANTITE_FRANCISCA_HT = EntityInit.register("adamantite_francisca", EntityInit.create_HT_Francisca(CompatItems.DRAGON_FRANCISCA_HT_ITEM));
+
+            // EntityInit.ENTITY_TYPES.put(MedievalMain.ID("adamantite_francisca"), ADAMANTITE_FRANCISCA_HT);
+            // EntityInit.ENTITY_TYPES.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN);
         }
     }
 }

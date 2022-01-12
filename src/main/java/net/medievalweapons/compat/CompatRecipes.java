@@ -247,6 +247,9 @@ public class CompatRecipes {
             SMITHING_RECIPES.put("dragon_javelin",
                     new SmithingRecipeMaterial(MedievalMain.ID("netherite_javelin"), DragonLootMain.ID("dragon_scale"), "item", "item", MedievalMain.ID("dragon_javelin")));
         }
+        if (CompatItems.isMythicMetalsLoaded) {
+
+        }
 
     }
 
