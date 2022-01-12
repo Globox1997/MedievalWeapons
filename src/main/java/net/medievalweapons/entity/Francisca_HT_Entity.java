@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -92,7 +91,7 @@ public class Francisca_HT_Entity extends PersistentProjectileEntity {
         }
 
         Entity owner = this.getOwner();
-        DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
+        DamageSource damageSource = Francisca_LT_Entity.createDamageSource(this, owner == null ? this : owner);
         SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
         if (hitEntity.damage(damageSource, damage)) {
             if (hitEntity.getType() == EntityType.ENDERMAN) {
@@ -171,10 +170,6 @@ public class Francisca_HT_Entity extends PersistentProjectileEntity {
 
     static {
         ENCHANTMENT_GLINT = DataTracker.registerData(Francisca_HT_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    }
-
-    public static DamageSource createDamageSource(Entity entity, Entity owner) {
-        return new ProjectileDamageSource("francisca_ht", entity, owner).setProjectile();
     }
 
 }

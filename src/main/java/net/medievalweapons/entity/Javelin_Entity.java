@@ -239,7 +239,7 @@ public class Javelin_Entity extends PersistentProjectileEntity {
         ENCHANTMENT_GLINT = DataTracker.registerData(Javelin_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    public static DamageSource createDamageSource(Entity entity, Entity owner) {
+    private static DamageSource createDamageSource(Entity entity, Entity owner) {
         return new ProjectileDamageSource("javelin", entity, owner).setProjectile();
     }
 

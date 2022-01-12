@@ -174,7 +174,7 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
     }
 
     public static DamageSource createDamageSource(Entity entity, Entity owner) {
-        return new ProjectileDamageSource("francisca_lt", entity, owner).setProjectile();
+        return new ProjectileDamageSource("francisca", entity, owner).setProjectile();
     }
 
 }
