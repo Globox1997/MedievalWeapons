@@ -19,7 +19,7 @@ import net.minecraft.entity.LivingEntity;
 public class ClientLivingEntityMixin {
 
     @Inject(method = "handleStatus", at = @At(value = "FIELD", target = "Lnet/minecraft/sound/SoundEvents;ITEM_SHIELD_BLOCK:Lnet/minecraft/sound/SoundEvent;"), cancellable = true)
-    public void handleStatusMixin(byte status, CallbackInfo info) {
+    private void handleStatusMixin(byte status, CallbackInfo info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {

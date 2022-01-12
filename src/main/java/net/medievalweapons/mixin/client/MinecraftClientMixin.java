@@ -24,7 +24,7 @@ public class MinecraftClientMixin {
     public ClientPlayerEntity player;
 
     @Inject(method = "doAttack", at = @At(value = "HEAD"), cancellable = true)
-    public void doAttackMixin(CallbackInfo info) {
+    private void doAttackMixin(CallbackInfo info) {
         ItemStack itemStack = player.getMainHandStack();
         if (player != null && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
                 || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {

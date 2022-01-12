@@ -24,7 +24,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 public abstract class HeldItemFeatureRendererMixin {
 
     @Inject(method = "Lnet/minecraft/client/render/entity/feature/HeldItemFeatureRenderer;renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;Lnet/minecraft/util/Arm;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "HEAD"))
-    public void renderItemMixin(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light,
+    protected void renderItemMixin(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light,
             CallbackInfo info) {
         if ((stack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || stack.getItem() instanceof Long_Sword_Item) && entity.getOffHandStack().isEmpty() && !entity.isSwimming() && !entity.hasVehicle()) {
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(30.0F));
@@ -33,7 +33,7 @@ public abstract class HeldItemFeatureRendererMixin {
     }
 
     @Inject(method = "Lnet/minecraft/client/render/entity/feature/HeldItemFeatureRenderer;renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;Lnet/minecraft/util/Arm;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;multiply(Lnet/minecraft/util/math/Quaternion;)V"))
-    public void renderItemRedirectDaggerOne(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
+    protected void renderItemMixinTwo(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
             int light, CallbackInfo info) {
         if (stack.getItem() instanceof Dagger_Item) {
             matrices.multiply(Vec3f.NEGATIVE_Y.getDegreesQuaternion(180.0F));
@@ -42,7 +42,7 @@ public abstract class HeldItemFeatureRendererMixin {
     }
 
     @Inject(method = "Lnet/minecraft/client/render/entity/feature/HeldItemFeatureRenderer;renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;Lnet/minecraft/util/Arm;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V"))
-    public void renderItemRedirectDaggerTwo(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
+    protected void renderItemMixinThree(LivingEntity entity, ItemStack stack, ModelTransformation.Mode transformationMode, Arm arm, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
             int light, CallbackInfo info) {
         if (stack.getItem() instanceof Dagger_Item) {
             matrices.translate(0.0D, 0.1D, 1.0D);
