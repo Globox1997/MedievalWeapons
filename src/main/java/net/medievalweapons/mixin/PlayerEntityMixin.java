@@ -10,9 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.ConfigInit;
-import net.medievalweapons.init.TagInit;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Long_Sword_Item;
 import net.medievalweapons.item.Mace_Item;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -36,20 +33,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     public PlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
         super(EntityType.PLAYER, world);
-    }
-
-    // Auto switch
-    @Inject(method = "tickMovement", at = @At("HEAD"))
-    public void tickMovementMixin(CallbackInfo info) {
-        ItemStack itemStack = this.getMainHandStack();
-        if (!this.world.isClient && ConfigInit.CONFIG.auto_switch && !this.inventory.offHand.get(0).isEmpty() && (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS)
-                || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item || itemStack.getItem() instanceof Big_Axe_Item)) {
-            for (int k = 0; k < this.inventory.offHand.size(); ++k) {
-                ItemStack stack = this.inventory.offHand.get(k);
-                this.inventory.setStack(this.inventory.getEmptySlot(), stack);
-            }
-            this.inventory.offHand.clear();
-        }
     }
 
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F"))
