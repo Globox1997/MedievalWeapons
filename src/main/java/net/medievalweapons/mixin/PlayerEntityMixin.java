@@ -3,7 +3,6 @@ package net.medievalweapons.mixin;
 import com.mojang.authlib.GameProfile;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,7 +16,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -27,9 +25,6 @@ import net.minecraft.world.World;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
-
-    @Shadow
-    public final PlayerInventory inventory = new PlayerInventory((PlayerEntity) (Object) this);
 
     public PlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
         super(EntityType.PLAYER, world);

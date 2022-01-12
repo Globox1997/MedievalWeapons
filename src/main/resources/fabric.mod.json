@@ -37,6 +37,5 @@
   },
   "suggests": {
     "flamingo": "*"
-  },
-  "accessWidener": "medievalweapons.aw"
+  }
 }
