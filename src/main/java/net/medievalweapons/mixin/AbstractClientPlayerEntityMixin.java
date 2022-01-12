@@ -27,8 +27,8 @@ public abstract class AbstractClientPlayerEntityMixin extends PlayerEntity {
         super(world, pos, yaw, profile);
     }
 
-    @Inject(method = "getSpeed", at = @At(value = "TAIL"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
-    public void getSpeedMixin(CallbackInfoReturnable<Float> info, float f) {
+    @Inject(method = "getFovMultiplier", at = @At(value = "TAIL"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    private void getFovMultiplierMixin(CallbackInfoReturnable<Float> info, float f) {
         Item item = this.getActiveItem().getItem();
         if (this.isUsingItem() && (item == ItemInit.LONG_BOW_ITEM || item == ItemInit.RECURVE_BOW_ITEM)) {
             int i = this.getItemUseTime();

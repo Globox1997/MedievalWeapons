@@ -31,9 +31,9 @@ public class ParticleInit {
         public HealingAuraParticle(ClientWorld clientWorld, double d, double e, double f, double g, double h, double i, SpriteProvider sprites) {
             super(clientWorld, d, e, f, g, h, i);
             setSprite(sprites.getSprite(world.random));
-            this.colorRed = MathHelper.nextFloat(this.random, 0.182645F, 0.787239F);
-            this.colorBlue = MathHelper.nextFloat(this.random, 0.136784F, 0.756783F);
-            this.colorGreen = MathHelper.nextFloat(this.random, 0.8235294F, 0.9764706F);
+            this.red = MathHelper.nextFloat(this.random, 0.182645F, 0.787239F);
+            this.blue = MathHelper.nextFloat(this.random, 0.136784F, 0.756783F);
+            this.green = MathHelper.nextFloat(this.random, 0.8235294F, 0.9764706F);
             this.collidesWithWorld = true;
             this.scale *= 0.75F;
             this.maxAge = (int) (20.0D / ((double) this.random.nextFloat() * 0.8D + 0.2D));
