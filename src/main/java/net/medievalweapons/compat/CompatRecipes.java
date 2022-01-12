@@ -174,57 +174,57 @@ public class CompatRecipes {
                     MedievalMain.ID("aeternium_javelin"), "javelin"));
         }
         if (CompatItems.isBetterNetherLoaded) {
-            SHAPED_RECIPES.put("nether_ruby_small_axe", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_small_axe", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_small_axe"), "small_axe"));
-            SHAPED_RECIPES.put("cincinnasite_small_axe", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_small_axe", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_small_axe"), "small_axe"));
             SHAPED_RECIPES.put("cincinnasite_diamond_small_axe", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_small_axe"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_small_axe"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_long_sword", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_long_sword", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_long_sword"), "long_sword"));
-            SHAPED_RECIPES.put("cincinnasite_long_sword", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_long_sword", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_long_sword"), "long_sword"));
             SHAPED_RECIPES.put("cincinnasite_diamond_long_sword", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_long_sword"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_long_sword"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_dagger", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_dagger", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_dagger"), "dagger"));
-            SHAPED_RECIPES.put("cincinnasite_dagger", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_dagger", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_dagger"), "dagger"));
             SHAPED_RECIPES.put("cincinnasite_diamond_dagger", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_dagger"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_dagger"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_big_axe", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_big_axe", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_big_axe"), "big_axe"));
-            SHAPED_RECIPES.put("cincinnasite_big_axe", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_big_axe", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_big_axe"), "big_axe"));
             SHAPED_RECIPES.put("cincinnasite_diamond_big_axe", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_big_axe"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_big_axe"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_lance", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_lance", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_lance"), "lance"));
-            SHAPED_RECIPES.put("cincinnasite_lance", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_lance", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_lance"), "lance"));
             SHAPED_RECIPES.put("cincinnasite_diamond_lance", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_lance"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_lance"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_healing_staff", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_healing_staff", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_healing_staff"), "healing_staff"));
-            SHAPED_RECIPES.put("cincinnasite_healing_staff", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item",
+            SHAPED_RECIPES.put("cincinnasite_healing_staff", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item",
                     "item", MedievalMain.ID("cincinnasite_healing_staff"), "healing_staff"));
             SHAPED_RECIPES.put("cincinnasite_diamond_healing_staff", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_healing_staff"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_healing_staff"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_mace", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_mace", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_mace"), "mace"));
-            SHAPED_RECIPES.put("cincinnasite_mace", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_mace", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_mace"), "mace"));
             SHAPED_RECIPES.put("cincinnasite_diamond_mace", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_mace"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_mace"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_francisca", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_francisca", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_francisca"), "francisca"));
-            SHAPED_RECIPES.put("cincinnasite_francisca", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_francisca", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_francisca"), "francisca"));
             SHAPED_RECIPES.put("cincinnasite_diamond_francisca", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_francisca"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_francisca"), "cincinnasite"));
-            SHAPED_RECIPES.put("nether_ruby_javelin", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("nether_ruby_javelin", new ShapedRecipeMaterial(new Identifier("betternether", "nether_ruby"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("nether_ruby_javelin"), "javelin"));
-            SHAPED_RECIPES.put("cincinnasite_javelin", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed"), "item", "item",
+            SHAPED_RECIPES.put("cincinnasite_javelin", new ShapedRecipeMaterial(new Identifier("betternether", "cincinnasite_ingot"), new Identifier("betternether", "nether_reed_stem"), "item", "item",
                     MedievalMain.ID("cincinnasite_javelin"), "javelin"));
             SHAPED_RECIPES.put("cincinnasite_diamond_javelin", new ShapedRecipeMaterial(MedievalMain.ID("cincinnasite_javelin"), new Identifier("minecraft", "diamond"), "item", "item",
                     MedievalMain.ID("cincinnasite_diamond_javelin"), "cincinnasite"));
