@@ -1,4 +1,4 @@
-package net.medievalweapons.mixin;
+package net.medievalweapons.mixin.client;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;

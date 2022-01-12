@@ -1,4 +1,4 @@
-package net.medievalweapons.mixin;
+package net.medievalweapons.mixin.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

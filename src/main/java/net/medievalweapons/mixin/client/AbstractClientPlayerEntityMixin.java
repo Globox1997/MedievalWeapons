@@ -1,4 +1,4 @@
-package net.medievalweapons.mixin;
+package net.medievalweapons.mixin.client;
 
 import com.mojang.authlib.GameProfile;
 

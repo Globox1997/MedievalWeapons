@@ -1,4 +1,4 @@
-package net.medievalweapons.mixin;
+package net.medievalweapons.mixin.client;
 
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

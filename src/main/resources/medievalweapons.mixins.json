@@ -15,12 +15,12 @@
     "BowItemMixin"
   ],
   "client": [
-    "BipedEntityModelMixin",
-    "HeldItemFeatureRendererMixin",
-    "AbstractClientPlayerEntityMixin",
-    "ClientLivingEntityMixin",
-    "ItemRendererMixin",
-    "MinecraftClientMixin"
+    "client.BipedEntityModelMixin",
+    "client.HeldItemFeatureRendererMixin",
+    "client.AbstractClientPlayerEntityMixin",
+    "client.ClientLivingEntityMixin",
+    "client.ItemRendererMixin",
+    "client.MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
