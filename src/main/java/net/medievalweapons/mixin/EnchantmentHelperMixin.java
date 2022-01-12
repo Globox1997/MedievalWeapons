@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.TagInit;
@@ -25,20 +26,18 @@ import net.minecraft.util.Hand;
 
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
-    @Inject(method = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F", at = @At(value = "HEAD"), cancellable = true)
-    private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info) {
+
+    @Inject(method = "getSweepingMultiplier", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEquipmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/entity/LivingEntity;)I"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info, int i) {
         ItemStack itemStack = entity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
-            int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
-            info.setReturnValue(lvl + 1.0F);
-        }
-        if (itemStack.getItem() instanceof Lance_Item) {
-            int lvl = getEquipmentLevel(Enchantments.SWEEPING, entity);
-            info.setReturnValue(lvl - 1.0F);
-        }
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item)
+            info.setReturnValue(i + 1.0F);
+
+        if (itemStack.getItem() instanceof Lance_Item && i > 0.0F)
+            info.setReturnValue(i - 1.0F);
     }
 
-    @Inject(method = "getPossibleEntries(ILnet/minecraft/item/ItemStack;Z)Ljava/util/List;", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getPossibleEntries", at = @At("HEAD"), cancellable = true)
     private static void getPossibleEntriesMixin(int i, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> info) {
         if (stack.getItem() instanceof Javelin_Item) {
             List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
