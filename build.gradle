@@ -20,7 +20,7 @@ repositories {
 	maven { url "https://maven.terraformersmc.com/" }
 	maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
 	maven { url "https://cursemaven.com" }
-	flatDir { dirs "testmods" }
+	flatDir { dirs "libs" }
 }
 
 dependencies {
@@ -56,6 +56,8 @@ dependencies {
 	//
 	//modCompileOnly name: "better-end-1.0.0"
 	//modRuntime files("testmods/better-end-1.0.0.jar")
+	//modImplementation files("libs/better-end-1.0.0-dev.jar")
+	//modImplementation fileTree(dir: "libs", include: ['*.jar'])
 	//modRuntime fileTree(dir: "testmods", include: "*.jar")
 	//modRuntime fileTree(dir: "dir/path/here", include: "*.jar")	
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
