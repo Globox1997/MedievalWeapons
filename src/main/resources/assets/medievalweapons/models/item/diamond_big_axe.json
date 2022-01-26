@@ -2,5 +2,12 @@
 	"parent": "item/handheld",
 	"textures": {
 		"layer0": "medievalweapons:item/diamond_big_axe"
+	},
+	"display": {
+		"head": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 4, 6, 0],
+            "scale":[ 1, 1, 0.5]
+		}
 	}
 }
