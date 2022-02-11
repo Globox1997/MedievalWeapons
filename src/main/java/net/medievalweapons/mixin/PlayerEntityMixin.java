@@ -18,7 +18,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -43,9 +42,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "takeShieldHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;takeShieldHit(Lnet/minecraft/entity/LivingEntity;)V", shift = Shift.AFTER))
     public void takeShieldHitMixin(LivingEntity attacker, CallbackInfo info) {
-        if (!(attacker.getMainHandStack().getItem() instanceof AxeItem)) {
+        if (!(attacker.getMainHandStack().getItem() instanceof AxeItem) && ConfigInit.CONFIG.shield_blocking_cooldown != 0) {
             PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-            playerEntity.getItemCooldownManager().set(Items.SHIELD, ConfigInit.CONFIG.shield_blocking_cooldown);
+            playerEntity.getItemCooldownManager().set(playerEntity.getActiveItem().getItem(), ConfigInit.CONFIG.shield_blocking_cooldown);
             playerEntity.clearActiveItem();
         }
 
