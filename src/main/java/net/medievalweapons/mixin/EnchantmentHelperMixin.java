@@ -34,7 +34,7 @@ public class EnchantmentHelperMixin {
             info.setReturnValue(i + 1.0F);
 
         if (itemStack.getItem() instanceof Lance_Item && i > 0.0F)
-            info.setReturnValue(i - 1.0F);
+            info.setReturnValue(i > 1 ? i - 1.0F : 0.0F);
     }
 
     @Inject(method = "getPossibleEntries", at = @At("HEAD"), cancellable = true)
