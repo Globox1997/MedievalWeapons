@@ -62,7 +62,7 @@
 			"scale": [1.6, 1.6, 1]
 		},
 		"head": {
-			"rotation": [ 0, 0, 25 ],
+			"rotation": [ 0, 0, -90 ],
 			"translation": [ 0.5, 2, 0],
 			"scale":[ 1, 1, 0.5]
 		},
