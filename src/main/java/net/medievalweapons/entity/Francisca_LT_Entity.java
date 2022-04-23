@@ -83,7 +83,7 @@ public class Francisca_LT_Entity extends PersistentProjectileEntity {
             return;
         }
         this.piercedEntities.add(hitEntity.getUuid());
-        float damage = ((Francisca_LT_Item) this.francisca_LT.getItem()).getAttackDamage() * 2;
+        float damage = ((Francisca_LT_Item) this.francisca_LT.getItem()).getAttackDamage() * 2.3F;
         if (hitEntity instanceof AnimalEntity) {
             int impalingLevel = EnchantmentHelper.getLevel(Enchantments.IMPALING, this.francisca_LT);
             if (impalingLevel > 0) {

@@ -92,7 +92,7 @@ public class Javelin_Entity extends PersistentProjectileEntity {
             return;
         }
         this.piercedEntities.add(hitEntity.getUuid());
-        float damage = ((Javelin_Item) this.javelin.getItem()).getAttackDamage() * 2;
+        float damage = ((Javelin_Item) this.javelin.getItem()).getAttackDamage() * 2.35F;
         if (hitEntity instanceof AnimalEntity) {
             int impalingLevel = EnchantmentHelper.getLevel(Enchantments.IMPALING, this.javelin);
             if (impalingLevel > 0) {
