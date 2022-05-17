@@ -41,12 +41,11 @@ dependencies {
 	// DragonLoot
 	modCompileOnly "curse.maven:dragonloot-424480:3596055"
 	//Better End/Nether
-//	modCompileOnly "curse.maven:betterend-413596:3585311"
-//	modCompileOnly "curse.maven:betterend-413596:3541615"
-	modCompileOnly "curse.maven:betternether-311377:3680568"
-	modCompileOnly ("com.github.paulevsGitch:BetterEnd:1.0.3"),{
-		exclude(group: "net.fabricmc.fabric-api")
-	}
+	modCompileOnly "curse.maven:betterend-413596:3769273"
+	modCompileOnly "curse.maven:betternether-311377:3772085"
+	// modCompileOnly ("com.github.paulevsGitch:BetterEnd:1.0.3"),{
+	// 	exclude(group: "net.fabricmc.fabric-api")
+	// }
 	// Mythic Metals
 	modCompileOnly "curse.maven:mythicmetals-410127:3594030"
 	//
