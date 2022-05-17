@@ -29,7 +29,7 @@ public enum Big_Axe_Item_Renderer {
         matrices.push();
 
         model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
-        if (!entity.getOffHandStack().isEmpty()) {
+        if (entity != null && !entity.getOffHandStack().isEmpty()) {
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-90.0F));
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-90.0F));
             matrices.translate(-0.25D, 0.75D, 0.0D);
@@ -40,7 +40,7 @@ public enum Big_Axe_Item_Renderer {
                 matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(50.0F));
                 matrices.translate(-0.1D, 1.6D, 0.3D);
                 matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(10));
-                if (entity.isBlocking()) {
+                if (entity != null && entity.isBlocking()) {
                     matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-15F));
                 }
             } else {
