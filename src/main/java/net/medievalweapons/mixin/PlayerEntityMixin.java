@@ -34,13 +34,19 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
 
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getSweepingMultiplier(Lnet/minecraft/entity/LivingEntity;)F"))
-    public void attackMixin(Entity target, CallbackInfo info) {
+    private void attackMixin(Entity target, CallbackInfo info) {
         ItemStack itemStack = this.getStackInHand(Hand.MAIN_HAND);
         if (!this.world.isClient && itemStack.getItem() instanceof Mace_Item && target instanceof LivingEntity) {
             Mace_Item mace_Item = (Mace_Item) itemStack.getItem();
             if (this.world.random.nextFloat() <= 0.01F + ((float) mace_Item.getAddition() / 10F))
                 ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(EffectInit.STUN_EFFECT, 60 + mace_Item.getAddition() * 20, 0, false, false, true));
         }
+    }
+
+    @Inject(method = "attack", at = @At(value = "HEAD"), cancellable = true)
+    private void attackStunMixin(Entity target, CallbackInfo info) {
+        if (this.hasStatusEffect(EffectInit.STUN_EFFECT))
+            info.cancel();
     }
 
     @Inject(method = "takeShieldHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;takeShieldHit(Lnet/minecraft/entity/LivingEntity;)V", shift = Shift.AFTER))
