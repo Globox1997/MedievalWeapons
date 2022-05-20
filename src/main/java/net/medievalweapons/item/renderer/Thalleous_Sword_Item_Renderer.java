@@ -28,10 +28,10 @@ public enum Thalleous_Sword_Item_Renderer {
 
         matrices.push();
         model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
-        if (entity != null){
+        if (entity != null) {
             if ((renderMode == ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND || renderMode == ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND) && entity.isBlocking()) {
                 matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(30.0F));
-                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-20.0F));
+                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(leftHanded ? 20.0F : -20.0F));
             }
         }
         matrices.translate(-0.05D, 0.84D, 0.0D);

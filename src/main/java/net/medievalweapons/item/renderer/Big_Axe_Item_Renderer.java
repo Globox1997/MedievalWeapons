@@ -37,17 +37,17 @@ public enum Big_Axe_Item_Renderer {
             if (renderMode == ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND || renderMode == ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND) {
                 matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(-110.0F));
                 matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-20.0F));
-                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(50.0F));
-                matrices.translate(-0.1D, 1.6D, 0.3D);
+                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(leftHanded ? 30.0F : 50.0F));
+                matrices.translate(leftHanded ? -0.2D : -0.1D, leftHanded ? 0.0D : 1.6D, leftHanded ? 0.0D : 0.3D);
                 matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(10));
                 if (entity != null && entity.isBlocking()) {
                     matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-15F));
                 }
             } else {
-                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180.0F));
+                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(leftHanded ? 200.0F : 180.0F));
                 matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-30.0F));
-                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(50.0F));
-                matrices.translate(0.0D, 1.3D, 0.3D);
+                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(leftHanded ? 60.0F : 50.0F));
+                matrices.translate(0.0D, leftHanded ? 0.5D : 1.3D, leftHanded ? -0.3D : 0.3D);
             }
         }
         matrices.scale(1.0F, -1.0F, -1.0F);
