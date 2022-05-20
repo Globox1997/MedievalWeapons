@@ -20,6 +20,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.enchantment.SweepingEnchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -30,11 +31,12 @@ public class EnchantmentHelperMixin {
     @Inject(method = "getSweepingMultiplier", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEquipmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/entity/LivingEntity;)I"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info, int i) {
         ItemStack itemStack = entity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item)
-            info.setReturnValue(i + 1.0F);
 
-        if (itemStack.getItem() instanceof Lance_Item && i > 0.0F)
-            info.setReturnValue(i > 1 ? i - 1.0F : 0.0F);
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item)
+            info.setReturnValue(SweepingEnchantment.getMultiplier(i + 1));
+
+        if (i > 0 && itemStack.getItem() instanceof Lance_Item)
+            info.setReturnValue(SweepingEnchantment.getMultiplier(i > 1 ? i - 1 : 0));
     }
 
     @Inject(method = "getPossibleEntries", at = @At("HEAD"), cancellable = true)
