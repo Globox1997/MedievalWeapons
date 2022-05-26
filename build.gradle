@@ -49,7 +49,7 @@ dependencies {
 	// Mythic Metals
 	modCompileOnly "curse.maven:mythicmetals-410127:3594030"
 	// Paradise Lost
-	//modCompileOnly "curse.maven:paradise-lost-418680:3726050"
+	modCompileOnly "curse.maven:paradise-lost-418680:3777049"
 	// BYG
 	modCompileOnly "curse.maven:oh-the-biomes-youll-go-fabric-391378:3802793"
 

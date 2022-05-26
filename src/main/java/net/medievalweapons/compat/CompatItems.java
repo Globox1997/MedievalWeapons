@@ -2,6 +2,7 @@ package net.medievalweapons.compat;
 
 import net.dragonloot.item.DragonToolMaterial;
 import net.fabricmc.loader.api.FabricLoader;
+import net.id.aether.items.tools.AetherToolMaterials;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
@@ -186,6 +187,7 @@ public class CompatItems {
             // ItemInit.ITEMS.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN_ITEM);
         }
         if (isAetherLoaded) {
+
             // AetherToolMaterials
         }
         if (isBYGLoaded) {
