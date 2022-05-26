@@ -14,5 +14,6 @@ public class MedievalConfig implements ConfigData {
     public int shield_blocking_cooldown = 40;
     @Comment("Includes war axe and battle axe")
     public int extra_weapon_shield_blocking_cooldown = 60;
+    public boolean old_healing_staff_behavior = false;
 
 }
