@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.11-SNAPSHOT'
+	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -48,13 +48,11 @@ dependencies {
 	// }
 	// Mythic Metals
 	modCompileOnly "curse.maven:mythicmetals-410127:3594030"
-	//
-	//modCompileOnly name: "better-end-1.0.0"
-	//modRuntime files("testmods/better-end-1.0.0.jar")
-	//modImplementation files("libs/better-end-1.0.0-dev.jar")
-	//modImplementation fileTree(dir: "libs", include: ['*.jar'])
-	//modRuntime fileTree(dir: "testmods", include: "*.jar")
-	//modRuntime fileTree(dir: "dir/path/here", include: "*.jar")	
+	// Paradise Lost
+	//modCompileOnly "curse.maven:paradise-lost-418680:3726050"
+	// BYG
+	modCompileOnly "curse.maven:oh-the-biomes-youll-go-fabric-391378:3802793"
+
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
 	//  	exclude(group: "net.fabricmc.fabric-api")
 	// }

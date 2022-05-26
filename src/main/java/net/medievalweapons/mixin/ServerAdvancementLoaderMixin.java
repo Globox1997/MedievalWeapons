@@ -33,5 +33,8 @@ public class ServerAdvancementLoaderMixin {
         if (!CompatItems.isDragonLootLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_dragon_recipes"));
         }
+        if (!CompatItems.isBYGLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_pendorite_recipes"));
+        }
     }
 }

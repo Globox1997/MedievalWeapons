@@ -9,13 +9,18 @@ import net.minecraft.item.Item;
 import ru.betterend.item.material.EndToolMaterial;
 import nourl.mythicmetals.tools.ToolMaterials;
 import paulevs.betternether.items.materials.BNToolMaterial;
+import potionstudios.byg.common.item.BYGTier;
 
 public class CompatItems {
+
     private static final FabricLoader fabricLoader = FabricLoader.getInstance();
     public static Boolean isDragonLootLoaded = fabricLoader.isModLoaded("dragonloot");
     public static Boolean isBetterEndLoaded = fabricLoader.isModLoaded("betterend");
     public static Boolean isBetterNetherLoaded = fabricLoader.isModLoaded("betternether");
     public static Boolean isMythicMetalsLoaded = fabricLoader.isModLoaded("mythicmetals");
+    public static Boolean isAetherLoaded = fabricLoader.isModLoaded("the_aether");
+    public static Boolean isBYGLoaded = fabricLoader.isModLoaded("byg");
+
     // DragonLoot
     public static Francisca_HT_Item DRAGON_FRANCISCA_HT_ITEM;
     public static Javelin_Item DRAGON_JAVELIN_ITEM;
@@ -37,8 +42,12 @@ public class CompatItems {
     public static Javelin_Item THALLASIUM_JAVELIN_ITEM;
 
     // Mythic Metals
-    public static Francisca_HT_Item ADAMANTITE_FRANCISCA_HT_ITEM;
-    public static Javelin_Item ADAMANTITE_JAVELIN_ITEM;
+    // public static Francisca_HT_Item ADAMANTITE_FRANCISCA_HT_ITEM;
+    // public static Javelin_Item ADAMANTITE_JAVELIN_ITEM;
+
+    // BYG
+    public static Francisca_HT_Item PENDORITE_FRANCISCA_HT_ITEM;
+    public static Javelin_Item PENDORITE_JAVELIN_ITEM;
 
     public static void loadItems() {
         if (isBetterEndLoaded) {
@@ -55,6 +64,7 @@ public class CompatItems {
                     new Javelin_Item(EndToolMaterial.TERMINITE, 2.2F, -2.7F, () -> CompatEntities.TERMINITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("terminite_francisca"), TERMINITE_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("terminite_javelin"), TERMINITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("terminite_ninjato"), new Ninjato_Item(EndToolMaterial.TERMINITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
 
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_small_axe"), new Small_Axe_Item(EndToolMaterial.AETERNIUM, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_long_sword"), new Long_Sword_Item(EndToolMaterial.AETERNIUM, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -69,6 +79,7 @@ public class CompatItems {
                     new Javelin_Item(EndToolMaterial.AETERNIUM, 2.2F, -2.7F, () -> CompatEntities.AETERNIUM_JAVELIN, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_francisca"), AETERNIUM_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_javelin"), AETERNIUM_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("aeternium_ninjato"), new Ninjato_Item(EndToolMaterial.AETERNIUM, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
 
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_small_axe"), new Small_Axe_Item(EndToolMaterial.THALLASIUM, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_long_sword"), new Long_Sword_Item(EndToolMaterial.THALLASIUM, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -83,6 +94,7 @@ public class CompatItems {
                     new Javelin_Item(EndToolMaterial.THALLASIUM, 2.2F, -2.7F, () -> CompatEntities.THALLASIUM_JAVELIN, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_francisca"), THALLASIUM_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_javelin"), THALLASIUM_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("thallasium_ninjato"), new Ninjato_Item(EndToolMaterial.THALLASIUM, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
         }
         if (isBetterNetherLoaded) {
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_small_axe"), new Small_Axe_Item(BNToolMaterial.NETHER_RUBY, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -99,6 +111,7 @@ public class CompatItems {
                     new Javelin_Item(BNToolMaterial.NETHER_RUBY, 2.2F, -2.7F, () -> CompatEntities.NETHER_RUBY_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_francisca"), NETHER_RUBY_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_javelin"), NETHER_RUBY_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_ninjato"), new Ninjato_Item(BNToolMaterial.NETHER_RUBY, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_small_axe"), new Small_Axe_Item(BNToolMaterial.CINCINNASITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_long_sword"), new Long_Sword_Item(BNToolMaterial.CINCINNASITE, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -114,6 +127,7 @@ public class CompatItems {
                     new Javelin_Item(BNToolMaterial.CINCINNASITE, 2.2F, -2.7F, () -> CompatEntities.CINCINNASITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_francisca"), CINCINNASITE_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_javelin"), CINCINNASITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_ninjato"), new Ninjato_Item(BNToolMaterial.CINCINNASITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_small_axe"),
                     new Small_Axe_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -135,6 +149,8 @@ public class CompatItems {
                     new Javelin_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 2.2F, -2.7F, () -> CompatEntities.CINCINNASITE_DIAMOND_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_francisca"), CINCINNASITE_DIAMOND_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_javelin"), CINCINNASITE_DIAMOND_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_ninjato"),
+                    new Ninjato_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
         }
         if (isDragonLootLoaded) {
             ItemInit.ITEMS.put(MedievalMain.ID("dragon_small_axe"), new Small_Axe_Item(DragonToolMaterial.getInstance(), 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -151,6 +167,7 @@ public class CompatItems {
                     new Javelin_Item(DragonToolMaterial.getInstance(), 2.2F, -2.7F, () -> CompatEntities.DRAGON_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("dragon_francisca"), DRAGON_FRANCISCA_HT_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("dragon_javelin"), DRAGON_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("dragon_ninjato"), new Ninjato_Item(DragonToolMaterial.getInstance(), 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
         }
         if (isMythicMetalsLoaded) {
             // ItemInit.ITEMS.put(MedievalMain.ID("adamantite_small_axe"), new Small_Axe_Item(ToolMaterials.ADAMANTITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -167,6 +184,25 @@ public class CompatItems {
             // new Javelin_Item(ToolMaterials.ADAMANTITE, 2.2F, -2.7F, () -> CompatEntities.DRAGON_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             // ItemInit.ITEMS.put(MedievalMain.ID("adamantite_francisca"), ADAMANTITE_FRANCISCA_HT_ITEM);
             // ItemInit.ITEMS.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN_ITEM);
+        }
+        if (isAetherLoaded) {
+            // AetherToolMaterials
+        }
+        if (isBYGLoaded) {
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_small_axe"), new Small_Axe_Item(BYGTier.PENDORITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_long_sword"), new Long_Sword_Item(BYGTier.PENDORITE, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_dagger"), new Dagger_Item(BYGTier.PENDORITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_big_axe"), new Big_Axe_Item(BYGTier.PENDORITE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_lance"), new Lance_Item(BYGTier.PENDORITE, 3, -3.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_healing_staff"), new Healing_Staff_Item(BYGTier.PENDORITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_mace"), new Mace_Item(BYGTier.PENDORITE, 4, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            PENDORITE_FRANCISCA_HT_ITEM = ItemInit.register("pendorite_francisca",
+                    new Francisca_HT_Item(BYGTier.PENDORITE, 1.0F, -2.6F, () -> CompatEntities.PENDORITE_FRANCISCA_HT, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            PENDORITE_JAVELIN_ITEM = ItemInit.register("pendorite_javelin",
+                    new Javelin_Item(BYGTier.PENDORITE, 2.2F, -2.7F, () -> CompatEntities.PENDORITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_francisca"), PENDORITE_FRANCISCA_HT_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_javelin"), PENDORITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_ninjato"), new Ninjato_Item(BYGTier.PENDORITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
         }
     }
 }

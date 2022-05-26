@@ -30,6 +30,10 @@ public class CompatEntities {
     public static EntityType<Javelin_Entity> ADAMANTITE_JAVELIN;
     public static EntityType<Francisca_HT_Entity> ADAMANTITE_FRANCISCA_HT;
 
+    // BYG
+    public static EntityType<Javelin_Entity> PENDORITE_JAVELIN;
+    public static EntityType<Francisca_HT_Entity> PENDORITE_FRANCISCA_HT;
+
     public static void loadEntities() {
         if (CompatItems.isBetterEndLoaded) {
             TERMINITE_FRANCISCA_HT = EntityInit.register("terminite_francisca", EntityInit.create_HT_Francisca(CompatItems.TERMINITE_FRANCISCA_HT_ITEM));
@@ -74,6 +78,13 @@ public class CompatEntities {
 
             // EntityInit.ENTITY_TYPES.put(MedievalMain.ID("adamantite_francisca"), ADAMANTITE_FRANCISCA_HT);
             // EntityInit.ENTITY_TYPES.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN);
+        }
+        if (CompatItems.isBYGLoaded) {
+            PENDORITE_JAVELIN = EntityInit.register("pendorite_javelin", EntityInit.create_Javelin(CompatItems.PENDORITE_JAVELIN_ITEM));
+            PENDORITE_FRANCISCA_HT = EntityInit.register("pendorite_francisca", EntityInit.create_HT_Francisca(CompatItems.PENDORITE_FRANCISCA_HT_ITEM));
+
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("pendorite_francisca"), PENDORITE_FRANCISCA_HT);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("pendorite_javelin"), PENDORITE_JAVELIN);
         }
     }
 }

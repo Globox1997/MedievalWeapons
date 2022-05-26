@@ -12,6 +12,7 @@
   "item.medievalweapons.nether_ruby_small_axe": "Nether Ruby Battle Axe",
   "item.medievalweapons.cincinnasite_small_axe": "Cincinnasite Battle Axe",
   "item.medievalweapons.cincinnasite_diamond_small_axe": "Cincinnasite-Diamond Battle Axe",
+  "item.medievalweapons.pendorite_small_axe": "Pendorite Battle Axe",
 
   "item.medievalweapons.diamond_long_sword": "Diamond Longsword",
   "item.medievalweapons.golden_long_sword": "Golden Longsword",
@@ -26,6 +27,7 @@
   "item.medievalweapons.nether_ruby_long_sword": "Nether Ruby Longsword",
   "item.medievalweapons.cincinnasite_long_sword": "Cincinnasite Longsword",
   "item.medievalweapons.cincinnasite_diamond_long_sword": "Cincinnasite-Diamond Longsword",
+  "item.medievalweapons.pendorite_long_sword": "Pendorite Longsword",
 
   "item.medievalweapons.diamond_dagger": "Diamond Dagger",
   "item.medievalweapons.golden_dagger": "Golden Dagger",
@@ -40,6 +42,7 @@
   "item.medievalweapons.nether_ruby_dagger": "Nether Ruby Dagger",
   "item.medievalweapons.cincinnasite_dagger": "Cincinnasite Dagger",
   "item.medievalweapons.cincinnasite_diamond_dagger": "Cincinnasite-Diamond Dagger",
+  "item.medievalweapons.pendorite_dagger": "Pendorite Dagger",
 
   "item.medievalweapons.diamond_francisca": "Diamond Francisca",
   "item.medievalweapons.golden_francisca": "Golden Francisca",
@@ -54,6 +57,7 @@
   "item.medievalweapons.nether_ruby_francisca": "Nether Ruby Francisca",
   "item.medievalweapons.cincinnasite_francisca": "Cincinnasite Francisca",
   "item.medievalweapons.cincinnasite_diamond_francisca": "Cincinnasite-Diamond Francisca",
+  "item.medievalweapons.pendorite_francisca": "Pendorite Francisca",
   "entity.medievalweapons.diamond_francisca": "Diamond Francisca",
   "entity.medievalweapons.golden_francisca": "Golden Francisca",
   "entity.medievalweapons.iron_francisca": "Iron Francisca",
@@ -67,6 +71,7 @@
   "entity.medievalweapons.nether_ruby_francisca": "Nether Ruby Francisca",
   "entity.medievalweapons.cincinnasite_francisca": "Cincinnasite Francisca",
   "entity.medievalweapons.cincinnasite_diamond_francisca": "Cincinnasite-Diamond Francisca",
+  "entity.medievalweapons.pendorite_francisca": "Pendorite Francisca",
 
   "item.medievalweapons.diamond_javelin": "Diamond Javelin",
   "item.medievalweapons.golden_javelin": "Golden Javelin",
@@ -81,6 +86,7 @@
   "item.medievalweapons.nether_ruby_javelin": "Nether Ruby Javelin",
   "item.medievalweapons.cincinnasite_javelin": "Cincinnasite Javelin",
   "item.medievalweapons.cincinnasite_diamond_javelin": "Cincinnasite-Diamond Javelin",
+  "item.medievalweapons.pendorite_javelin": "Pendorite Javelin",
   "entity.medievalweapons.diamond_javelin": "Diamond Javelin",
   "entity.medievalweapons.golden_javelin": "Golden Javelin",
   "entity.medievalweapons.iron_javelin": "Iron Javelin",
@@ -94,6 +100,7 @@
   "entity.medievalweapons.nether_ruby_javelin": "Nether Ruby Javelin",
   "entity.medievalweapons.cincinnasite_javelin": "Cincinnasite Javelin",
   "entity.medievalweapons.cincinnasite_diamond_javelin": "Cincinnasite-Diamond Javelin",
+  "entity.medievalweapons.pendorite_javelin": "Pendorite Javelin",
 
   "item.medievalweapons.diamond_big_axe": "Diamond War Axe",
   "item.medievalweapons.golden_big_axe": "Golden War Axe",
@@ -108,6 +115,7 @@
   "item.medievalweapons.nether_ruby_big_axe": "Nether Ruby War Axe",
   "item.medievalweapons.cincinnasite_big_axe": "Cincinnasite War Axe",
   "item.medievalweapons.cincinnasite_diamond_big_axe": "Cincinnasite-Diamond War Axe",
+  "item.medievalweapons.pendorite_big_axe": "Pendorite War Axe",
 
   "item.medievalweapons.diamond_lance": "Diamond Lance",
   "item.medievalweapons.golden_lance": "Golden Lance",
@@ -122,6 +130,7 @@
   "item.medievalweapons.nether_ruby_lance": "Nether Ruby Lance",
   "item.medievalweapons.cincinnasite_lance": "Cincinnasite Lance",
   "item.medievalweapons.cincinnasite_diamond_lance": "Cincinnasite-Diamond Lance",
+  "item.medievalweapons.pendorite_lance": "Pendorite Lance",
 
   "item.medievalweapons.diamond_healing_staff": "Diamond Staff of Healing",
   "item.medievalweapons.golden_healing_staff": "Golden Staff of Healing",
@@ -136,6 +145,7 @@
   "item.medievalweapons.nether_ruby_healing_staff": "Nether Ruby Staff of Healing",
   "item.medievalweapons.cincinnasite_healing_staff": "Cincinnasite Staff of Healing",
   "item.medievalweapons.cincinnasite_diamond_healing_staff": "Cincinnasite-Diamond Staff of Healing",
+  "item.medievalweapons.pendorite_healing_staff": "Pendorite Staff of Healing",
 
   "item.medievalweapons.diamond_mace": "Diamond Mace",
   "item.medievalweapons.golden_mace": "Golden Mace",
@@ -150,6 +160,22 @@
   "item.medievalweapons.nether_ruby_mace": "Nether Ruby Mace",
   "item.medievalweapons.cincinnasite_mace": "Cincinnasite Mace",
   "item.medievalweapons.cincinnasite_diamond_mace": "Cincinnasite-Diamond Mace",
+  "item.medievalweapons.pendorite_mace": "Pendorite Mace",
+
+  "item.medievalweapons.diamond_ninjato": "Diamond Ninjato",
+  "item.medievalweapons.golden_ninjato": "Golden Ninjato",
+  "item.medievalweapons.iron_ninjato": "Iron Ninjato",
+  "item.medievalweapons.netherite_ninjato": "Netherite Ninjato",
+  "item.medievalweapons.stone_ninjato": "Stone Ninjato",
+  "item.medievalweapons.wooden_ninjato": "Wooden Ninjato",
+  "item.medievalweapons.dragon_ninjato": "Dragon Ninjato",
+  "item.medievalweapons.terminite_ninjato": "Terminite Ninjato",
+  "item.medievalweapons.aeternium_ninjato": "Aeternium Ninjato",
+  "item.medievalweapons.thallasium_ninjato": "Thallasium Ninjato",
+  "item.medievalweapons.nether_ruby_ninjato": "Nether Ruby Ninjato",
+  "item.medievalweapons.cincinnasite_ninjato": "Cincinnasite Ninjato",
+  "item.medievalweapons.cincinnasite_diamond_ninjato": "Cincinnasite-Diamond Ninjato",
+  "item.medievalweapons.pendorite_ninjato": "Pendorite Ninjato",
 
   "item.medievalweapons.long_bow": "Long Bow",
   "item.medievalweapons.recurve_bow": "Recurve Bow",

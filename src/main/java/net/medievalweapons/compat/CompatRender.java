@@ -26,5 +26,9 @@ public class CompatRender {
             EntityRendererRegistry.register(CompatEntities.DRAGON_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.DRAGON_JAVELIN, Javelin_Entity_Renderer::new);
         }
+        if (CompatItems.isBYGLoaded) {
+            EntityRendererRegistry.register(CompatEntities.PENDORITE_FRANCISCA_HT, Francisca_HT_Entity_Renderer::new);
+            EntityRendererRegistry.register(CompatEntities.PENDORITE_JAVELIN, Javelin_Entity_Renderer::new);
+        }
     }
 }
