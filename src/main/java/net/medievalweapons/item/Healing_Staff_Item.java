@@ -34,7 +34,7 @@ public class Healing_Staff_Item extends SwordItem {
             int i = this.getMaxUseTime(stack) - remainingUseTicks;
             if (i >= 30) {
                 if (!world.isClient) {
-                    stack.damage(2, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
+                    stack.damage(3, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
                     world.playSound(null, playerEntity.getBlockPos(), SoundInit.MAGIC_SHOT_EVENT, SoundCategory.PLAYERS, 0.9F, 1.0F);
                     if (ConfigInit.CONFIG.old_healing_staff_behavior) {
                         Healing_Ball_Entity healing_Ball_Entity = new Healing_Ball_Entity(user, world, this.addition);
@@ -80,6 +80,7 @@ public class Healing_Staff_Item extends SwordItem {
                                 0.0D);
                     }
                 } else if (i % 80 == 0 && i < 241) {
+                    stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
                     playerEntity.addStatusEffect((new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 0)));
                 }
             }
