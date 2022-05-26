@@ -60,6 +60,11 @@ public class RecipeGenerator {
         case "cincinnasite":
             jsonArray.add("ede");
             break;
+        case "ninjato":
+            jsonArray.add("  d");
+            jsonArray.add(" d ");
+            jsonArray.add("e  ");
+            break;
         }
 
         json.add("pattern", jsonArray);

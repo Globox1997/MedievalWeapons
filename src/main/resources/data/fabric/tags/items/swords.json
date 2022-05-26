@@ -55,6 +55,12 @@
     "medievalweapons:golden_mace",
     "medievalweapons:diamond_mace",
     "medievalweapons:netherite_mace",
-    "medievalweapons:thalleous_sword"
+    "medievalweapons:thalleous_sword",
+    "medievalweapons:wooden_ninjato",
+    "medievalweapons:stone_ninjato",
+    "medievalweapons:iron_ninjato",
+    "medievalweapons:golden_ninjato",
+    "medievalweapons:diamond_ninjato",
+    "medievalweapons:netherite_ninjato"
   ]
 }

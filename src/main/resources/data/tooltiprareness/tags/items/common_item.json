@@ -20,6 +20,8 @@
         "medievalweapons:wooden_mace",
         "medievalweapons:stone_mace",
         "medievalweapons:long_bow",
-        "medievalweapons:recurve_bow"
+        "medievalweapons:recurve_bow",
+        "medievalweapons:wooden_ninjato",
+        "medievalweapons:stone_small_axe"
     ]
 }

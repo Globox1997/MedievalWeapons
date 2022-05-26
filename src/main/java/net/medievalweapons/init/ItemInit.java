@@ -6,19 +6,7 @@ import java.util.Map;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.compat.CompatRecipes;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Dagger_Item;
-import net.medievalweapons.item.Francisca_HT_Item;
-import net.medievalweapons.item.Francisca_LT_Item;
-import net.medievalweapons.item.Healing_Staff_Item;
-import net.medievalweapons.item.Javelin_Item;
-import net.medievalweapons.item.Lance_Item;
-import net.medievalweapons.item.Long_Bow_Item;
-import net.medievalweapons.item.Long_Sword_Item;
-import net.medievalweapons.item.Mace_Item;
-import net.medievalweapons.item.Recurve_Bow_Item;
-import net.medievalweapons.item.Small_Axe_Item;
-import net.medievalweapons.item.Thalleous_Sword_Item;
+import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
@@ -28,7 +16,7 @@ public class ItemInit {
     // Map
     public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     // Small Axe
-    public static final Small_Axe_Item WOOD_SMALL_AXE_ITEM = register("wooden_small_axe", new Small_Axe_Item(ToolMaterials.WOOD, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Small_Axe_Item WOODEN_SMALL_AXE_ITEM = register("wooden_small_axe", new Small_Axe_Item(ToolMaterials.WOOD, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Small_Axe_Item STONE_SMALL_AXE_ITEM = register("stone_small_axe", new Small_Axe_Item(ToolMaterials.STONE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Small_Axe_Item IRON_SMALL_AXE_ITEM = register("iron_small_axe", new Small_Axe_Item(ToolMaterials.IRON, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Small_Axe_Item GOLDEN_SMALL_AXE_ITEM = register("golden_small_axe", new Small_Axe_Item(ToolMaterials.GOLD, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -112,6 +100,14 @@ public class ItemInit {
     public static final Mace_Item GOLDEN_MACE_ITEM = register("golden_mace", new Mace_Item(ToolMaterials.GOLD, 4, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Mace_Item DIAMOND_MACE_ITEM = register("diamond_mace", new Mace_Item(ToolMaterials.DIAMOND, 3, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Mace_Item NETHERITE_MACE_ITEM = register("netherite_mace", new Mace_Item(ToolMaterials.NETHERITE, 4, -2.8F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+    // Ninjato
+    public static final Ninjato_Item WOODEN_NINJATO_ITEM = register("wooden_ninjato", new Ninjato_Item(ToolMaterials.WOOD, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Ninjato_Item STONE_NINJATO_ITEM = register("stone_ninjato", new Ninjato_Item(ToolMaterials.STONE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Ninjato_Item IRON_NINJATO_ITEM = register("iron_ninjato", new Ninjato_Item(ToolMaterials.IRON, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Ninjato_Item GOLDEN_NINJATO_ITEM = register("golden_ninjato", new Ninjato_Item(ToolMaterials.GOLD, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Ninjato_Item DIAMOND_NINJATO_ITEM = register("diamond_ninjato", new Ninjato_Item(ToolMaterials.DIAMOND, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Ninjato_Item NETHERITE_NINJATO_ITEM = register("netherite_ninjato",
+            new Ninjato_Item(ToolMaterials.NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Long Bow
     public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow", new Long_Bow_Item(new Item.Settings().maxDamage(443).group(MedievalMain.GROUP)));
     // Recurve Bow
