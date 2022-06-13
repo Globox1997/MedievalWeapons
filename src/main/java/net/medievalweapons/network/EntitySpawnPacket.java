@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 
 import java.util.UUID;
 
+@SuppressWarnings("resource")
 public class EntitySpawnPacket {
     public static final Identifier ID = new Identifier("medievalweapons", "medievalspawn_entity");
 

@@ -18,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -44,7 +43,7 @@ public class Long_Sword_Item extends SwordItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
-        tooltip.add(new TranslatableText("item.medievalweapons.double_handed.tooltip"));
+        tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
     }
 
     @Override

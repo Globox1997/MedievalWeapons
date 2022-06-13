@@ -41,8 +41,8 @@ dependencies {
 	// DragonLoot
 	modCompileOnly "curse.maven:dragonloot-424480:3596055"
 	//Better End/Nether
-	modCompileOnly "curse.maven:betterend-413596:3769273"
-	modCompileOnly "curse.maven:betternether-311377:3772085"
+	modCompileOnly "curse.maven:betterend-413596:3825599"
+	modCompileOnly "curse.maven:betternether-311377:3823604"
 	// modCompileOnly ("com.github.paulevsGitch:BetterEnd:1.0.3"),{
 	// 	exclude(group: "net.fabricmc.fabric-api")
 	// }
@@ -51,7 +51,7 @@ dependencies {
 	// Paradise Lost
 	modCompileOnly "curse.maven:paradise-lost-418680:3777049"
 	// BYG
-	modCompileOnly "curse.maven:oh-the-biomes-youll-go-fabric-391378:3802793"
+	modCompileOnly "curse.maven:oh-the-biomes-youll-go-fabric-391378:3830133"
 
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
 	//  	exclude(group: "net.fabricmc.fabric-api")

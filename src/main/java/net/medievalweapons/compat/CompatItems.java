@@ -1,5 +1,8 @@
 package net.medievalweapons.compat;
 
+import org.betterx.betterend.item.material.EndToolMaterial;
+import org.betterx.betternether.items.materials.BNToolMaterial;
+
 import net.dragonloot.item.DragonToolMaterial;
 import net.fabricmc.loader.api.FabricLoader;
 import net.id.aether.items.tools.AetherToolMaterials;
@@ -7,13 +10,11 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
-import ru.betterend.item.material.EndToolMaterial;
 import nourl.mythicmetals.tools.ToolMaterials;
-import paulevs.betternether.items.materials.BNToolMaterial;
 import potionstudios.byg.common.item.BYGTier;
 
+@SuppressWarnings("unused")
 public class CompatItems {
-
     private static final FabricLoader fabricLoader = FabricLoader.getInstance();
     public static Boolean isDragonLootLoaded = fabricLoader.isModLoaded("dragonloot");
     public static Boolean isBetterEndLoaded = fabricLoader.isModLoaded("betterend");
