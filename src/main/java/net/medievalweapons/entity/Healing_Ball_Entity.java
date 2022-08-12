@@ -116,11 +116,6 @@ public class Healing_Ball_Entity extends ThrownEntity {
     }
 
     @Override
-    public boolean collides() {
-        return false;
-    }
-
-    @Override
     public boolean damage(DamageSource source, float amount) {
         return false;
     }
