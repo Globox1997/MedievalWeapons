@@ -11,7 +11,9 @@
             "medievalweapons:pendorite_small_axe",
             "medievalweapons:pendorite_healing_staff",
             "medievalweapons:pendorite_mace",
-            "medievalweapons:pendorite_ninjato"
+            "medievalweapons:pendorite_ninjato",
+            "medievalweapons:pendorite_sickle",
+            "medievalweapons:pendorite_rapier"
         ]
     },
     "criteria": {

@@ -11,7 +11,9 @@
             "medievalweapons:thallasium_small_axe",
             "medievalweapons:thallasium_healing_staff",
             "medievalweapons:thallasium_mace",
-            "medievalweapons:thallasium_ninjato"
+            "medievalweapons:thallasium_ninjato",
+            "medievalweapons:thallasium_sickle",
+            "medievalweapons:thallasium_rapier"
         ]
     },
     "criteria": {

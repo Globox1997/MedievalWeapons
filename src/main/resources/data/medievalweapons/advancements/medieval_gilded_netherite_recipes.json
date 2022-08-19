@@ -1,0 +1,33 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:gilded_netherite_big_axe",
+            "medievalweapons:gilded_netherite_dagger",
+            "medievalweapons:gilded_netherite_francisca",
+            "medievalweapons:gilded_netherite_javelin",
+            "medievalweapons:gilded_netherite_lance",
+            "medievalweapons:gilded_netherite_long_sword",
+            "medievalweapons:gilded_netherite_small_axe",
+            "medievalweapons:gilded_netherite_healing_staff",
+            "medievalweapons:gilded_netherite_mace",
+            "medievalweapons:gilded_netherite_ninjato",
+            "medievalweapons:gilded_netherite_sickle",
+            "medievalweapons:gilded_netherite_rapier"
+        ]
+    },
+    "criteria": {
+        "medieval_gilded_netherite_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:netherite_ingot"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:gravitite_big_axe",
+            "medievalweapons:gravitite_dagger",
+            "medievalweapons:gravitite_francisca",
+            "medievalweapons:gravitite_javelin",
+            "medievalweapons:gravitite_lance",
+            "medievalweapons:gravitite_long_sword",
+            "medievalweapons:gravitite_small_axe",
+            "medievalweapons:gravitite_healing_staff",
+            "medievalweapons:gravitite_mace",
+            "medievalweapons:gravitite_ninjato",
+            "medievalweapons:gravitite_sickle",
+            "medievalweapons:gravitite_rapier"
+        ]
+    },
+    "criteria": {
+        "medieval_gravitite_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "the_aether:gravitite_gemstone"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

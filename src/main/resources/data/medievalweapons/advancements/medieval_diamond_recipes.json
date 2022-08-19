@@ -11,7 +11,9 @@
             "medievalweapons:diamond_small_axe",
             "medievalweapons:diamond_healing_staff",
             "medievalweapons:diamond_mace",
-            "medievalweapons:diamond_ninjato"
+            "medievalweapons:diamond_ninjato",
+            "medievalweapons:diamond_sickle",
+            "medievalweapons:diamond_rapier"
         ]
     },
     "criteria": {

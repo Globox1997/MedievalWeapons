@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
 import org.jetbrains.annotations.Nullable;
 
+import net.medievalweapons.init.CompatInit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -36,15 +36,15 @@ public class Thalleous_Sword_Item extends SwordItem {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
-        builder.put(ReachEntityAttributes.REACH, new EntityAttributeModifier("Attack range", 1.0D, EntityAttributeModifier.Operation.ADDITION));
-        builder.put(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier("Attack range", 1.0D, EntityAttributeModifier.Operation.ADDITION));
+        CompatInit.addRange(1.0D, builder);
         this.attributeModifiers = builder.build();
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
-        tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
+        if (!CompatInit.isBetterCombatLoaded)
+            tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
     }
 
     @Override

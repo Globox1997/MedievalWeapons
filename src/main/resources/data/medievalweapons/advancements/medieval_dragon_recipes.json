@@ -11,7 +11,9 @@
             "medievalweapons:dragon_small_axe",
             "medievalweapons:dragon_healing_staff",
             "medievalweapons:dragon_mace",
-            "medievalweapons:dragon_ninjato"
+            "medievalweapons:dragon_ninjato",
+            "medievalweapons:dragon_sickle",
+            "medievalweapons:dragon_rapier"
         ]
     },
     "criteria": {

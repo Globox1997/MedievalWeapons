@@ -8,6 +8,7 @@ import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 
 import org.jetbrains.annotations.Nullable;
 
+import net.medievalweapons.init.CompatInit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -43,7 +44,8 @@ public class Long_Sword_Item extends SwordItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
-        tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
+        if (!CompatInit.isBetterCombatLoaded)
+            tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
     }
 
     @Override

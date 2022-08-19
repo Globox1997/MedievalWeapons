@@ -36,9 +36,9 @@ public abstract class AbstractClientPlayerEntityMixin extends PlayerEntity {
             int i = this.getItemUseTime();
             float g;
             if (item == ItemInit.LONG_BOW_ITEM) {
-                g = (float) i / 50.0F;
+                g = (float) i / 60.0F;
             } else {
-                g = (float) i / 16.0F;
+                g = (float) i / 12.0F;
             }
 
             if (g > 1.0F) {

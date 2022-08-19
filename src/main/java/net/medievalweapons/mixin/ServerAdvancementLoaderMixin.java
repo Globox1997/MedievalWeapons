@@ -33,8 +33,19 @@ public class ServerAdvancementLoaderMixin {
         if (!CompatItems.isDragonLootLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_dragon_recipes"));
         }
+        if (!CompatItems.isMythicMetalsLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_adamantite_recipes"));
+        }
         if (!CompatItems.isBYGLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_pendorite_recipes"));
+        }
+        if (!CompatItems.isAdditionalAdditionsLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_gilded_netherite_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_rose_gold_recipes"));
+        }
+        if (!CompatItems.isAetherLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_gravitite_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_zanite_recipes"));
         }
     }
 }

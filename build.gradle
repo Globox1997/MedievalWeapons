@@ -52,6 +52,8 @@ dependencies {
 	modCompileOnly "curse.maven:paradise-lost-418680:3777049"
 	// BYG
 	modCompileOnly "curse.maven:oh-the-biomes-youll-go-fabric-391378:3830133"
+	// Additional Additions
+	modCompileOnly "curse.maven:additional-additions-508556:3911998"
 
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
 	//  	exclude(group: "net.fabricmc.fabric-api")

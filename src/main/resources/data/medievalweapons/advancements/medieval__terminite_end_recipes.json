@@ -11,7 +11,9 @@
             "medievalweapons:terminite_small_axe",
             "medievalweapons:terminite_healing_staff",
             "medievalweapons:terminite_mace",
-            "medievalweapons:terminite_ninjato"
+            "medievalweapons:terminite_ninjato",
+            "medievalweapons:terminite_sickle",
+            "medievalweapons:terminite_rapier"
         ]
     },
     "criteria": {

@@ -1,0 +1,7 @@
+{
+    "parent": "bettercombat:dagger",
+    "attributes": {
+        "pose": "medievalweapons:pose_dual_handed_backwards_daggers",
+        "two_handed": false
+    }
+}

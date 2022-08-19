@@ -11,7 +11,9 @@
             "medievalweapons:netherite_small_axe",
             "medievalweapons:netherite_healing_staff",
             "medievalweapons:netherite_mace",
-            "medievalweapons:netherite_ninjato"
+            "medievalweapons:netherite_ninjato",
+            "medievalweapons:netherite_sickle",
+            "medievalweapons:netherite_rapier"
         ]
     },
     "criteria": {
