@@ -22,6 +22,9 @@
         "medievalweapons:long_bow",
         "medievalweapons:recurve_bow",
         "medievalweapons:wooden_ninjato",
-        "medievalweapons:stone_small_axe"
+        "medievalweapons:stone_rapier",
+        "medievalweapons:wooden_rapier",
+        "medievalweapons:stone_sickle",
+        "medievalweapons:wooden_sickle"
     ]
 }

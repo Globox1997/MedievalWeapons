@@ -16,7 +16,6 @@
   ],
   "client": [
     "client.BipedEntityModelMixin",
-    "client.HeldItemFeatureRendererMixin",
     "client.AbstractClientPlayerEntityMixin",
     "client.ClientLivingEntityMixin",
     "client.ItemRendererMixin",

@@ -40,18 +40,18 @@ public class ItemInit {
     public static final Dagger_Item NETHERITE_DAGGER_ITEM = register("netherite_dagger",
             new Dagger_Item(ToolMaterials.NETHERITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Francisca
-    public static final Francisca_LT_Item WOODEN_FRANCISCA_LT_ITEM = register("wooden_francisca",
-            new Francisca_LT_Item(ToolMaterials.WOOD, 1.0F, -2.6F, () -> EntityInit.WOODEN_FRANCISCA_LT, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Francisca_LT_Item STONE_FRANCISCA_LT_ITEM = register("stone_francisca",
-            new Francisca_LT_Item(ToolMaterials.STONE, 1.0F, -2.6F, () -> EntityInit.STONE_FRANCISCA_LT, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Francisca_HT_Item IRON_FRANCISCA_HT_ITEM = register("iron_francisca",
-            new Francisca_HT_Item(ToolMaterials.IRON, 1.0F, -2.6F, () -> EntityInit.IRON_FRANCISCA_HT, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Francisca_HT_Item GOLDEN_FRANCISCA_HT_ITEM = register("golden_francisca",
-            new Francisca_HT_Item(ToolMaterials.GOLD, 1.0F, -2.6F, () -> EntityInit.GOLDEN_FRANCISCA_HT, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Francisca_HT_Item DIAMOND_FRANCISCA_HT_ITEM = register("diamond_francisca",
-            new Francisca_HT_Item(ToolMaterials.DIAMOND, 1.0F, -2.6F, () -> EntityInit.DIAMOND_FRANCISCA_HT, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Francisca_HT_Item NETHERITE_FRANCISCA_HT_ITEM = register("netherite_francisca",
-            new Francisca_HT_Item(ToolMaterials.NETHERITE, 1.0F, -2.6F, () -> EntityInit.NETHERITE_FRANCISCA_HT, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+    public static final Francisca_Item WOODEN_FRANCISCA_ITEM = register("wooden_francisca",
+            new Francisca_Item(ToolMaterials.WOOD, 1.0F, -2.6F, () -> EntityInit.WOODEN_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Francisca_Item STONE_FRANCISCA_ITEM = register("stone_francisca",
+            new Francisca_Item(ToolMaterials.STONE, 1.0F, -2.6F, () -> EntityInit.STONE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Francisca_Item IRON_FRANCISCA_ITEM = register("iron_francisca",
+            new Francisca_Item(ToolMaterials.IRON, 1.0F, -2.6F, () -> EntityInit.IRON_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Francisca_Item GOLDEN_FRANCISCA_ITEM = register("golden_francisca",
+            new Francisca_Item(ToolMaterials.GOLD, 1.0F, -2.6F, () -> EntityInit.GOLDEN_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Francisca_Item DIAMOND_FRANCISCA_ITEM = register("diamond_francisca",
+            new Francisca_Item(ToolMaterials.DIAMOND, 1.0F, -2.6F, () -> EntityInit.DIAMOND_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Francisca_Item NETHERITE_FRANCISCA_ITEM = register("netherite_francisca",
+            new Francisca_Item(ToolMaterials.NETHERITE, 1.0F, -2.6F, () -> EntityInit.NETHERITE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Big Axe
     public static final Big_Axe_Item WOODEN_BIG_AXE_ITEM = register("wooden_big_axe", new Big_Axe_Item(ToolMaterials.WOOD, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Big_Axe_Item STONE_BIG_AXE_ITEM = register("stone_big_axe", new Big_Axe_Item(ToolMaterials.STONE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -98,7 +98,7 @@ public class ItemInit {
     public static final Mace_Item STONE_MACE_ITEM = register("stone_mace", new Mace_Item(ToolMaterials.STONE, 4, -2.8F, 0, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Mace_Item IRON_MACE_ITEM = register("iron_mace", new Mace_Item(ToolMaterials.IRON, 4, -2.8F, 1, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Mace_Item GOLDEN_MACE_ITEM = register("golden_mace", new Mace_Item(ToolMaterials.GOLD, 4, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Mace_Item DIAMOND_MACE_ITEM = register("diamond_mace", new Mace_Item(ToolMaterials.DIAMOND, 3, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Mace_Item DIAMOND_MACE_ITEM = register("diamond_mace", new Mace_Item(ToolMaterials.DIAMOND, 4, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Mace_Item NETHERITE_MACE_ITEM = register("netherite_mace", new Mace_Item(ToolMaterials.NETHERITE, 4, -2.8F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Ninjato
     public static final Ninjato_Item WOODEN_NINJATO_ITEM = register("wooden_ninjato", new Ninjato_Item(ToolMaterials.WOOD, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -108,6 +108,22 @@ public class ItemInit {
     public static final Ninjato_Item DIAMOND_NINJATO_ITEM = register("diamond_ninjato", new Ninjato_Item(ToolMaterials.DIAMOND, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Ninjato_Item NETHERITE_NINJATO_ITEM = register("netherite_ninjato",
             new Ninjato_Item(ToolMaterials.NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+    // Sickle
+    public static final Sickle_Item WOODEN_SICKLE_ITEM = register("wooden_sickle", new Sickle_Item(ToolMaterials.WOOD, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item STONE_SICKLE_ITEM = register("stone_sickle", new Sickle_Item(ToolMaterials.STONE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item IRON_SICKLE_ITEM = register("iron_sickle", new Sickle_Item(ToolMaterials.IRON, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item GOLDEN_SICKLE_ITEM = register("golden_sickle", new Sickle_Item(ToolMaterials.GOLD, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item DIAMOND_SICKLE_ITEM = register("diamond_sickle", new Sickle_Item(ToolMaterials.DIAMOND, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item NETHERITE_SICKLE_ITEM = register("netherite_sickle",
+            new Sickle_Item(ToolMaterials.NETHERITE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+    // Rapier
+    public static final Rapier_Item WOODEN_RAPIER_ITEM = register("wooden_rapier", new Rapier_Item(ToolMaterials.WOOD, 3, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item STONE_RAPIER_ITEM = register("stone_rapier", new Rapier_Item(ToolMaterials.STONE, 3, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item IRON_RAPIER_ITEM = register("iron_rapier", new Rapier_Item(ToolMaterials.IRON, 3, -2.0F, 1, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item GOLDEN_RAPIER_ITEM = register("golden_rapier", new Rapier_Item(ToolMaterials.GOLD, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item DIAMOND_RAPIER_ITEM = register("diamond_rapier", new Rapier_Item(ToolMaterials.DIAMOND, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item NETHERITE_RAPIER_ITEM = register("netherite_rapier",
+            new Rapier_Item(ToolMaterials.NETHERITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Long Bow
     public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow", new Long_Bow_Item(new Item.Settings().maxDamage(443).group(MedievalMain.GROUP)));
     // Recurve Bow

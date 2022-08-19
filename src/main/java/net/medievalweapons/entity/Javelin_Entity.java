@@ -8,6 +8,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.FlyingItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.ProjectileDamageSource;
@@ -35,7 +36,7 @@ import java.util.UUID;
 
 import org.jetbrains.annotations.Nullable;
 
-public class Javelin_Entity extends PersistentProjectileEntity {
+public class Javelin_Entity extends PersistentProjectileEntity implements FlyingItemEntity {
     private static final TrackedData<Byte> LOYALTY;
     private static final TrackedData<Boolean> ENCHANTMENT_GLINT;
     private ItemStack javelin;
@@ -138,34 +139,29 @@ public class Javelin_Entity extends PersistentProjectileEntity {
         if (this.inGroundTime > 4) {
             this.dealtDamage = true;
         }
-
         Entity entity = this.getOwner();
-        if ((this.dealtDamage || this.isNoClip()) && entity != null) {
-            int i = (Byte) this.dataTracker.get(LOYALTY);
-            if (i > 0 && !this.isOwnerAlive()) {
+        byte i = this.dataTracker.get(LOYALTY);
+        if (i > 0 && (this.dealtDamage || this.isNoClip()) && entity != null) {
+            if (!this.isOwnerAlive()) {
                 if (!this.world.isClient && this.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED) {
-                    this.dropStack(this.asItemStack(), 0.1F);
+                    this.dropStack(this.asItemStack(), 0.1f);
                 }
-
                 this.discard();
-            } else if (i > 0) {
+            } else {
                 this.setNoClip(true);
-                Vec3d vec3d = new Vec3d(entity.getX() - this.getX(), entity.getEyeY() - this.getY(), entity.getZ() - this.getZ());
-                this.setPos(this.getX(), this.getY() + vec3d.y * 0.015D * (double) i, this.getZ());
+                Vec3d vec3d = entity.getEyePos().subtract(this.getPos());
+                this.setPos(this.getX(), this.getY() + vec3d.y * 0.015 * (double) i, this.getZ());
                 if (this.world.isClient) {
                     this.lastRenderY = this.getY();
                 }
-
-                double d = 0.05D * (double) i;
-                this.setVelocity(this.getVelocity().multiply(0.95D).add(vec3d.normalize().multiply(d)));
+                double d = 0.05 * (double) i;
+                this.setVelocity(this.getVelocity().multiply(0.95).add(vec3d.normalize().multiply(d)));
                 if (this.returnTimer == 0) {
-                    this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0F, 1.0F);
+                    this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0f, 1.0f);
                 }
-
                 ++this.returnTimer;
             }
         }
-
         super.tick();
     }
 
@@ -232,6 +228,11 @@ public class Javelin_Entity extends PersistentProjectileEntity {
     @Environment(EnvType.CLIENT)
     public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
         return true;
+    }
+
+    @Override
+    public ItemStack getStack() {
+        return javelin;
     }
 
     static {

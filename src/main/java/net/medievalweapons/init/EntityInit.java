@@ -5,12 +5,10 @@ import java.util.Map;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.medievalweapons.compat.CompatEntities;
-import net.medievalweapons.entity.Francisca_HT_Entity;
-import net.medievalweapons.entity.Francisca_LT_Entity;
+import net.medievalweapons.entity.Francisca_Entity;
 import net.medievalweapons.entity.Healing_Ball_Entity;
 import net.medievalweapons.entity.Javelin_Entity;
-import net.medievalweapons.item.Francisca_HT_Item;
-import net.medievalweapons.item.Francisca_LT_Item;
+import net.medievalweapons.item.Francisca_Item;
 import net.medievalweapons.item.Javelin_Item;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -22,12 +20,12 @@ public class EntityInit {
     // Map
     public static final Map<Identifier, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();
     // Francisca
-    public static final EntityType<Francisca_LT_Entity> WOODEN_FRANCISCA_LT = register("wooden_francisca", create_LT_Francisca(ItemInit.WOODEN_FRANCISCA_LT_ITEM));
-    public static final EntityType<Francisca_LT_Entity> STONE_FRANCISCA_LT = register("stone_francisca", create_LT_Francisca(ItemInit.STONE_FRANCISCA_LT_ITEM));
-    public static final EntityType<Francisca_HT_Entity> IRON_FRANCISCA_HT = register("iron_francisca", create_HT_Francisca(ItemInit.IRON_FRANCISCA_HT_ITEM));
-    public static final EntityType<Francisca_HT_Entity> GOLDEN_FRANCISCA_HT = register("golden_francisca", create_HT_Francisca(ItemInit.GOLDEN_FRANCISCA_HT_ITEM));
-    public static final EntityType<Francisca_HT_Entity> DIAMOND_FRANCISCA_HT = register("diamond_francisca", create_HT_Francisca(ItemInit.DIAMOND_FRANCISCA_HT_ITEM));
-    public static final EntityType<Francisca_HT_Entity> NETHERITE_FRANCISCA_HT = register("netherite_francisca", create_HT_Francisca(ItemInit.NETHERITE_FRANCISCA_HT_ITEM));
+    public static final EntityType<Francisca_Entity> WOODEN_FRANCISCA = register("wooden_francisca", create_Francisca(ItemInit.WOODEN_FRANCISCA_ITEM));
+    public static final EntityType<Francisca_Entity> STONE_FRANCISCA = register("stone_francisca", create_Francisca(ItemInit.STONE_FRANCISCA_ITEM));
+    public static final EntityType<Francisca_Entity> IRON_FRANCISCA = register("iron_francisca", create_Francisca(ItemInit.IRON_FRANCISCA_ITEM));
+    public static final EntityType<Francisca_Entity> GOLDEN_FRANCISCA = register("golden_francisca", create_Francisca(ItemInit.GOLDEN_FRANCISCA_ITEM));
+    public static final EntityType<Francisca_Entity> DIAMOND_FRANCISCA = register("diamond_francisca", create_Francisca(ItemInit.DIAMOND_FRANCISCA_ITEM));
+    public static final EntityType<Francisca_Entity> NETHERITE_FRANCISCA = register("netherite_francisca", create_Francisca(ItemInit.NETHERITE_FRANCISCA_ITEM));
     // Javelin
     public static final EntityType<Javelin_Entity> WOODEN_JAVELIN = register("wooden_javelin", create_Javelin(ItemInit.WOODEN_JAVELIN_ITEM));
     public static final EntityType<Javelin_Entity> STONE_JAVELIN = register("stone_javelin", create_Javelin(ItemInit.STONE_JAVELIN_ITEM));
@@ -52,14 +50,8 @@ public class EntityInit {
         return type;
     }
 
-    private static EntityType<Francisca_LT_Entity> create_LT_Francisca(Francisca_LT_Item item) {
-        return FabricEntityTypeBuilder.<Francisca_LT_Entity>create(SpawnGroup.MISC, (entity, world) -> new Francisca_LT_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F))
-                .build();
-    }
-
-    public static EntityType<Francisca_HT_Entity> create_HT_Francisca(Francisca_HT_Item item) {
-        return FabricEntityTypeBuilder.<Francisca_HT_Entity>create(SpawnGroup.MISC, (entity, world) -> new Francisca_HT_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F))
-                .build();
+    public static EntityType<Francisca_Entity> create_Francisca(Francisca_Item item) {
+        return FabricEntityTypeBuilder.<Francisca_Entity>create(SpawnGroup.MISC, (entity, world) -> new Francisca_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
     }
 
     public static EntityType<Javelin_Entity> create_Javelin(Javelin_Item item) {

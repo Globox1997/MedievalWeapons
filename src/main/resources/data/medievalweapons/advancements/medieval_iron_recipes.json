@@ -11,7 +11,9 @@
             "medievalweapons:iron_small_axe",
             "medievalweapons:iron_healing_staff",
             "medievalweapons:iron_mace",
-            "medievalweapons:iron_ninjato"
+            "medievalweapons:iron_ninjato",
+            "medievalweapons:iron_sickle",
+            "medievalweapons:iron_rapier"
         ]
     },
     "criteria": {

@@ -61,6 +61,16 @@ public class RecipeGenerator {
             jsonArray.add("ede");
             break;
         case "ninjato":
+            jsonArray.add(" d ");
+            jsonArray.add("d  ");
+            jsonArray.add("e  ");
+            break;
+        case "sickle":
+            jsonArray.add(" dd");
+            jsonArray.add("  d");
+            jsonArray.add(" e ");
+            break;
+        case "rapier":
             jsonArray.add("  d");
             jsonArray.add(" d ");
             jsonArray.add("e  ");

@@ -11,7 +11,9 @@
             "medievalweapons:golden_small_axe",
             "medievalweapons:golden_healing_staff",
             "medievalweapons:golden_mace",
-            "medievalweapons:golden_ninjato"
+            "medievalweapons:golden_ninjato",
+            "medievalweapons:golden_sickle",
+            "medievalweapons:golden_rapier"
         ]
     },
     "criteria": {

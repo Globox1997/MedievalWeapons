@@ -19,6 +19,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 import net.medievalweapons.access.PlayerAccess;
+import net.medievalweapons.init.CompatInit;
+import net.medievalweapons.init.EffectInit;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Long_Sword_Item;
@@ -29,7 +31,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 
 @Environment(EnvType.CLIENT)
-@Mixin(MinecraftClient.class)
+@Mixin(value = MinecraftClient.class, priority = 999)
 public class MinecraftClientMixin {
     @Shadow
     @Nullable
@@ -56,56 +58,60 @@ public class MinecraftClientMixin {
     @Inject(method = "doAttack", at = @At(value = "HEAD"), cancellable = true)
     private void doAttackMixin(CallbackInfoReturnable<Boolean> info) {
         if (player != null) {
-            ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                    || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
-                info.setReturnValue(false);
+            if (player.hasStatusEffect(EffectInit.STUN_EFFECT))
+                info.cancel();
 
-            if (this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof Ninjato_Item
-                    && player.getOffHandStack().getItem() instanceof Ninjato_Item) {
+            if (!CompatInit.isBetterCombatLoaded) {
+                ItemStack itemStack = player.getMainHandStack();
+                if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                        || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
+                    info.setReturnValue(false);
 
-                if (this.attackedOffhand) {
-                    this.attackedOffhand = false;
-                    // this.player.getAttackCooldownProgress(1.0F) < 0.8F &&
+                if (this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof Ninjato_Item
+                        && player.getOffHandStack().getItem() instanceof Ninjato_Item) {
 
-                    switch (this.crosshairTarget.getType()) {
-                    case ENTITY: {
-                        MinecraftClient.getInstance().getNetworkHandler().sendPacket(PlayerPacket.attackPacket(((EntityHitResult) this.crosshairTarget).getEntity()));
-                        if (!this.player.isSpectator()) {
-                            ((PlayerAccess) this.player).doOffhandAttack(((EntityHitResult) this.crosshairTarget).getEntity());
-                            ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
-                        }
-                        this.offhandAttackCooldown = 5;
-                        break;
-                    }
-                    case BLOCK: {
-                        BlockHitResult blockHitResult = (BlockHitResult) this.crosshairTarget;
-                        BlockPos blockPos = blockHitResult.getBlockPos();
-                        if (!this.player.world.getBlockState(blockPos).isAir()) {
-                            this.interactionManager.attackBlock(blockPos, blockHitResult.getSide());
-                            if (!this.player.world.getBlockState(blockPos).isAir())
-                                break;
+                    if (this.attackedOffhand) {
+                        this.attackedOffhand = false;
+
+                        switch (this.crosshairTarget.getType()) {
+                        case ENTITY: {
+                            MinecraftClient.getInstance().getNetworkHandler().sendPacket(PlayerPacket.attackPacket(((EntityHitResult) this.crosshairTarget).getEntity()));
+                            if (!this.player.isSpectator()) {
+                                ((PlayerAccess) this.player).doOffhandAttack(((EntityHitResult) this.crosshairTarget).getEntity());
+                                ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
+                            }
+                            this.offhandAttackCooldown = 5;
                             break;
                         }
-                    }
-                    case MISS: {
-                        if (this.interactionManager.hasLimitedAttackSpeed()) {
-                            this.offhandAttackCooldown = 10;
+                        case BLOCK: {
+                            BlockHitResult blockHitResult = (BlockHitResult) this.crosshairTarget;
+                            BlockPos blockPos = blockHitResult.getBlockPos();
+                            if (!this.player.world.getBlockState(blockPos).isAir()) {
+                                this.interactionManager.attackBlock(blockPos, blockHitResult.getSide());
+                                if (!this.player.world.getBlockState(blockPos).isAir())
+                                    break;
+                                break;
+                            }
                         }
-                        ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
-                    }
-                    }
-                    this.player.swingHand(Hand.OFF_HAND);
-                    info.setReturnValue(false);
-                } else
-                    this.attackedOffhand = true;
+                        case MISS: {
+                            if (this.interactionManager.hasLimitedAttackSpeed()) {
+                                this.offhandAttackCooldown = 10;
+                            }
+                            ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
+                        }
+                        }
+                        this.player.swingHand(Hand.OFF_HAND);
+                        info.setReturnValue(false);
+                    } else
+                        this.attackedOffhand = true;
+                }
             }
         }
     }
 
     @Inject(method = "doItemUse", at = @At(value = "HEAD"), cancellable = true)
     private void doItemUseMixin(CallbackInfo info) {
-        if (player != null) {
+        if (!CompatInit.isBetterCombatLoaded && player != null) {
             ItemStack itemStack = player.getMainHandStack();
             if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
                     || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
@@ -115,7 +121,7 @@ public class MinecraftClientMixin {
 
     @Inject(method = "handleBlockBreaking", at = @At(value = "HEAD"), cancellable = true)
     private void handleBlockBreakingMixin(boolean bl, CallbackInfo info) {
-        if (player != null) {
+        if (!CompatInit.isBetterCombatLoaded && player != null) {
             ItemStack itemStack = player.getMainHandStack();
             if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
                     || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))

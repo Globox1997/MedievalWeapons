@@ -1,46 +1,55 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "medievalweapons:item/adamantite_big_axe"
-    },
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "medievalweapons:item/adamantite_big_axe"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"bettercombat:loaded": 1
+			},
+			"model": "medievalweapons:item/bc_adamantite_big_axe"
+		},
+		{
+			"predicate": {
+				"medievalweapons:offhand": 1
+			},
+			"model": "medievalweapons:item/bc_adamantite_big_axe"
+		}
+	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [0, 90, 45],
-			"translation": [0, 13.5, 2.5],
-			"scale": [2, 2, 1]
+			"rotation": [123, 150, -52],
+			"translation": [-14.5, 6.5, 2.75],
+			"scale": [1.7, 1.7, 1]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [0, 90, -45],
-			"translation": [0, 13.5, 2.5],
-			"scale": [2, 2, 1]
+			"rotation": [123, -150, 52],
+			"translation": [2.5, 6.5, 2.75],
+			"scale": [1.7, 1.7, 1]
 		},
 		"firstperson_righthand": {
-			"rotation": [7.5, 75, 32],
-			"translation": [8.75, 12.25, -3.5],
-			"scale": [2, 2, 1]
+			"rotation": [0, 90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [1.34, 1.34, 0.68]
 		},
 		"firstperson_lefthand": {
-			"rotation": [7.5, -105, -32],
-			"translation": [8.75, 12.25, -3.5],
-			"scale": [2, 2, 1]
+			"rotation": [0, -90, -25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [1.34, 1.34, 0.68]
 		},
 		"ground": {
-			"translation": [0, 4.25, 0],
-			"scale": [1, 1, 0.5]
-		},
-		"gui": {
-			"translation": [4.25, 4.25, 0],
-			"scale": [1.5, 1.5, 1.5]
+			"translation": [0, 4.5, 0],
+			"scale": [0.85, 0.85, 0.6]
 		},
 		"head": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 4, 6, 0],
-            "scale":[ 1, 1, 0.5]
+			"rotation": [0, 0, -180],
+			"translation": [-3, 1.25, 0],
+			"scale": [2, 2, 1]
 		},
 		"fixed": {
-			"rotation": [0, -180, 0],
-			"translation": [-4.25, 4.25, -0.25],
-			"scale": [1.5, 1.5, 1]
+			"translation": [1.25, 2, 0],
+			"scale": [1.3, 1.3, 1]
 		}
 	}
 }

@@ -26,7 +26,16 @@ public class ModelProviderInit {
         ModelPredicateProviderRegistry.register(ItemInit.RECURVE_BOW_ITEM, new Identifier("pulling"), (stack, world, entity, seed) -> {
             return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
         });
-
+        ModelPredicateProviderRegistry.register(new Identifier("medievalweapons", "offhand"), (stack, world, entity, seed) -> {
+            return entity != null && !entity.getOffHandStack().isEmpty() ? 1.0F : 0.0F;
+        });
+        ModelPredicateProviderRegistry.register(new Identifier("throwing"), (stack, world, entity, seed) -> {
+            return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f;
+        });
+        // For compatibility, can get removed, builtin within better combat
+        ModelPredicateProviderRegistry.register(new Identifier("medievalweapons", "bettercombat"), (stack, world, entity, seed) -> {
+            return CompatInit.isBetterCombatLoaded ? 1.0F : 0.0F;
+        });
     }
 
 }

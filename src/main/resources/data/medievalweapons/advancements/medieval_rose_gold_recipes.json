@@ -1,0 +1,33 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:rose_gold_big_axe",
+            "medievalweapons:rose_gold_dagger",
+            "medievalweapons:rose_gold_francisca",
+            "medievalweapons:rose_gold_javelin",
+            "medievalweapons:rose_gold_lance",
+            "medievalweapons:rose_gold_long_sword",
+            "medievalweapons:rose_gold_small_axe",
+            "medievalweapons:rose_gold_healing_staff",
+            "medievalweapons:rose_gold_mace",
+            "medievalweapons:rose_gold_ninjato",
+            "medievalweapons:rose_gold_sickle",
+            "medievalweapons:rose_gold_rapier"
+        ]
+    },
+    "criteria": {
+        "medieval_rose_gold_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:gold_ingot"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -12,6 +12,8 @@
             "medievalweapons:cincinnasite_healing_staff",
             "medievalweapons:cincinnasite_mace",
             "medievalweapons:cincinnasite_ninjato",
+            "medievalweapons:cincinnasite_sickle",
+            "medievalweapons:cincinnasite_rapier",
             "medievalweapons:cincinnasite_diamond_small_axe",
             "medievalweapons:cincinnasite_diamond_long_sword",
             "medievalweapons:cincinnasite_diamond_dagger",
@@ -21,7 +23,9 @@
             "medievalweapons:cincinnasite_diamond_small_axe",
             "medievalweapons:cincinnasite_diamond_healing_staff",
             "medievalweapons:cincinnasite_diamond_mace",
-            "medievalweapons:cincinnasite_diamond_ninjato"
+            "medievalweapons:cincinnasite_diamond_ninjato",
+            "medievalweapons:cincinnasite_diamond_sickle",
+            "medievalweapons:cincinnasite_diamond_rapier"
         ]
     },
     "criteria": {

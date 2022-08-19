@@ -2,7 +2,6 @@ package net.medievalweapons;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.loader.api.FabricLoader;
 import net.medievalweapons.init.*;
 import net.medievalweapons.network.PlayerPacket;
 import net.minecraft.item.ItemGroup;
@@ -15,9 +14,7 @@ public class MedievalMain implements ModInitializer {
     // Thanks for the awesome series
     // Check it out here: https://youtu.be/yCNUP2NAt-A
 
-    public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("medievalweapons", "group"), () -> new ItemStack(ItemInit.DIAMOND_FRANCISCA_HT_ITEM));
-
-    public static final boolean isBetterCombatLoaded = FabricLoader.getInstance().isModLoaded("bettercombat");
+    public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("medievalweapons", "group"), () -> new ItemStack(ItemInit.DIAMOND_FRANCISCA_ITEM));
 
     public static final Identifier ID(String path) {
         return new Identifier("medievalweapons", path);
@@ -25,6 +22,7 @@ public class MedievalMain implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        CompatInit.init();
         ConfigInit.init();
         ItemInit.init();
         EffectInit.init();

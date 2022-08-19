@@ -11,7 +11,9 @@
             "medievalweapons:stone_small_axe",
             "medievalweapons:stone_healing_staff",
             "medievalweapons:stone_mace",
-            "medievalweapons:stone_ninjato"
+            "medievalweapons:stone_ninjato",
+            "medievalweapons:stone_sickle",
+            "medievalweapons:stone_rapier"
         ]
     },
     "criteria": {
