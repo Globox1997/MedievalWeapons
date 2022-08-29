@@ -16,6 +16,7 @@ repositories {
 	maven { url "https://maven.terraformersmc.com/" }
 	maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
 	maven { url "https://cursemaven.com" }
+	maven { url = uri("https://storage.googleapis.com/devan-maven/") }
 }
 
 dependencies {
@@ -37,6 +38,8 @@ dependencies {
 	modCompileOnly modRuntimeOnly ("com.terraformersmc:modmenu:${project.mod_menu_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	// ARRP
+	modImplementation("net.devtech:arrp:0.6.4")
 
 	// DragonLoot
 	modCompileOnly "curse.maven:dragonloot-424480:3596055"

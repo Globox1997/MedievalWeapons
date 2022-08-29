@@ -1,5 +1,7 @@
 package net.medievalweapons.init;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,6 +15,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ItemInit {
+
+    // Lists
+    public static final ArrayList<String> MATERIAL_STRINGS = new ArrayList<String>(Arrays.asList("wooden", "stone", "iron", "golden", "diamond", "netherite"));
+    public static final ArrayList<String> ITEM_STRINGS = new ArrayList<String>(
+            Arrays.asList("small_axe", "long_sword", "dagger", "francisca", "big_axe", "javelin", "lance", "healing_staff", "mace", "ninjato", "sickle", "rapier"));
     // Map
     public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     // Small Axe
