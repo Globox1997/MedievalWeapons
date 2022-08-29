@@ -45,11 +45,6 @@ public class ModelProviderInit {
             return seed == 0 ? 1.0f : 0.0f;
         });
 
-        // For compatibility, can get removed, builtin within better combat
-        ModelPredicateProviderRegistry.register(new Identifier("medievalweapons", "bettercombat"), (stack, world, entity, seed) -> {
-            return CompatInit.isBetterCombatLoaded ? 1.0F : 0.0F;
-        });
-
         // Generate models
         Iterator<String> items = ItemInit.ITEM_STRINGS.iterator();
         while (items.hasNext()) {
