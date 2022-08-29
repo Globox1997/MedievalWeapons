@@ -34,7 +34,8 @@
     "fabric": "*",
     "minecraft": "1.19.x",
     "java": ">=17",
-    "cloth-config2": ">=8.0.75"
+    "cloth-config2": ">=8.0.75",
+    "advanced_runtime_resource_pack": ">=0.6.4"
   },
   "suggests": {
     "flamingo": "*"
