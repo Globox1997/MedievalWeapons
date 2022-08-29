@@ -30,7 +30,7 @@ public class CompatRender {
             EntityRendererRegistry.register(CompatEntities.ADAMANTITE_FRANCISCA, Francisca_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.ADAMANTITE_JAVELIN, Javelin_Entity_Renderer::new);
         }
-        if (CompatItems.isAdditionalAdditionsLoaded) {
+        if (CompatItems.isAetherLoaded) {
             EntityRendererRegistry.register(CompatEntities.GRAVITITE_FRANCISCA, Francisca_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.GRAVITITE_JAVELIN, Javelin_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.ZANITE_FRANCISCA, Francisca_Entity_Renderer::new);
