@@ -20,7 +20,7 @@
 			"predicate": {
 				"medievalweapons:gui": 1
 			},
-			"model": "medievalweapons:item/wooden_big_axe_gui"
+			"model": "medievalweapons:item/thalleous_sword_gui"
 		}
 	],
 	"display": {
