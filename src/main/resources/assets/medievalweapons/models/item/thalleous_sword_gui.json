@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "medievalweapons:item/extra/thalleous_sword"
+    }
+}

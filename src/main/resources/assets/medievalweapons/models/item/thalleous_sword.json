@@ -6,7 +6,7 @@
 	"overrides": [
 		{
 			"predicate": {
-				"medievalweapons:bettercombat": 1
+				"bettercombat:loaded": 1
 			},
 			"model": "medievalweapons:item/bc_thalleous_sword"
 		},
@@ -15,6 +15,12 @@
 				"medievalweapons:offhand": 1
 			},
 			"model": "medievalweapons:item/bc_thalleous_sword"
+		},
+		{
+			"predicate": {
+				"medievalweapons:gui": 1
+			},
+			"model": "medievalweapons:item/wooden_big_axe_gui"
 		}
 	],
 	"display": {
