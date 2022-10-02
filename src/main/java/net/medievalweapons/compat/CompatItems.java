@@ -12,7 +12,7 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
-import nourl.mythicmetals.tools.ToolMaterials;
+import nourl.mythicmetals.tools.MythicToolMaterials;
 import potionstudios.byg.common.item.BYGTier;
 
 public class CompatItems {
