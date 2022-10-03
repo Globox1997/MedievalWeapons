@@ -12,7 +12,7 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
-import nourl.mythicmetals.tools.ToolMaterials;
+import nourl.mythicmetals.tools.MythicToolMaterials;
 import potionstudios.byg.common.item.BYGTier;
 
 public class CompatItems {
@@ -212,22 +212,22 @@ public class CompatItems {
             ItemInit.MATERIAL_STRINGS.add("dragon");
         }
         if (isMythicMetalsLoaded) {
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_small_axe"), new Small_Axe_Item(ToolMaterials.ADAMANTITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_long_sword"), new Long_Sword_Item(ToolMaterials.ADAMANTITE, 5, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_dagger"), new Dagger_Item(ToolMaterials.ADAMANTITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_big_axe"), new Big_Axe_Item(ToolMaterials.ADAMANTITE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_lance"), new Lance_Item(ToolMaterials.ADAMANTITE, 3, -3.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_healing_staff"), new Healing_Staff_Item(ToolMaterials.ADAMANTITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_mace"), new Mace_Item(ToolMaterials.ADAMANTITE, 4, -3.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_small_axe"), new Small_Axe_Item(MythicToolMaterials.ADAMANTITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_long_sword"), new Long_Sword_Item(MythicToolMaterials.ADAMANTITE, 5, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_dagger"), new Dagger_Item(MythicToolMaterials.ADAMANTITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_big_axe"), new Big_Axe_Item(MythicToolMaterials.ADAMANTITE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_lance"), new Lance_Item(MythicToolMaterials.ADAMANTITE, 3, -3.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_healing_staff"), new Healing_Staff_Item(MythicToolMaterials.ADAMANTITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_mace"), new Mace_Item(MythicToolMaterials.ADAMANTITE, 4, -3.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ADAMANTITE_FRANCISCA_ITEM = ItemInit.register("adamantite_francisca",
-                    new Francisca_Item(ToolMaterials.ADAMANTITE, 2.0F, -2.6F, () -> CompatEntities.ADAMANTITE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                    new Francisca_Item(MythicToolMaterials.ADAMANTITE, 2.0F, -2.6F, () -> CompatEntities.ADAMANTITE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ADAMANTITE_JAVELIN_ITEM = ItemInit.register("adamantite_javelin",
-                    new Javelin_Item(ToolMaterials.ADAMANTITE, 2.2F, -2.7F, () -> CompatEntities.ADAMANTITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                    new Javelin_Item(MythicToolMaterials.ADAMANTITE, 2.2F, -2.7F, () -> CompatEntities.ADAMANTITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_francisca"), ADAMANTITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN_ITEM);
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_ninjato"), new Ninjato_Item(ToolMaterials.ADAMANTITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_sickle"), new Sickle_Item(ToolMaterials.ADAMANTITE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_rapier"), new Rapier_Item(ToolMaterials.ADAMANTITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_ninjato"), new Ninjato_Item(MythicToolMaterials.ADAMANTITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_sickle"), new Sickle_Item(MythicToolMaterials.ADAMANTITE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_rapier"), new Rapier_Item(MythicToolMaterials.ADAMANTITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("adamantite");
         }
