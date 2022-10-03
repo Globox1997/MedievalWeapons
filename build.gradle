@@ -50,7 +50,7 @@ dependencies {
 	// 	exclude(group: "net.fabricmc.fabric-api")
 	// }
 	// Mythic Metals
-	modCompileOnly "curse.maven:mythicmetals-410127:3594030"
+	modCompileOnly "curse.maven:mythicmetals-410127:4015956"
 	// Paradise Lost
 	modCompileOnly "curse.maven:paradise-lost-418680:3777049"
 	// BYG
