@@ -2,83 +2,83 @@ package net.medievalweapons.entity;
 
 import java.util.Iterator;
 import java.util.List;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+
+
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
 import net.medievalweapons.network.EntitySpawnPacket;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.projectile.thrown.ThrownEntity;
-import net.minecraft.network.Packet;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
-public class Healing_Ball_Entity extends ThrownEntity {
+public class Healing_Ball_Entity extends ThrowableProjectile {
     private int addition = 0;
 
-    public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, World world) {
+    public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, Level world) {
         super(entityType, world);
     }
 
-    public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, double d, double e, double f, World world) {
+    public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, double d, double e, double f, Level world) {
         super(entityType, d, e, f, world);
     }
 
-    public Healing_Ball_Entity(LivingEntity livingEntity, World world, int addition) {
+    public Healing_Ball_Entity(LivingEntity livingEntity, Level world, int addition) {
         super(EntityInit.HEALING_BALL_ENTITY, livingEntity, world);
         this.addition = addition;
     }
 
-    @Environment(EnvType.CLIENT)
-    public Healing_Ball_Entity(World world, double x, double y, double z, double directionX, double directionY, double directionZ) {
+    public Healing_Ball_Entity(Level world, double x, double y, double z, double directionX, double directionY, double directionZ) {
         super(EntityInit.HEALING_BALL_ENTITY, x, y, z, world);
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
+    public Packet<?> getAddEntityPacket() {
         return EntitySpawnPacket.createPacket(this);
     }
 
     @Override
-    public void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
+    public void onHit(HitResult hitResult) {
+        super.onHit(hitResult);
         Entity entity = this.getOwner();
-        if (hitResult.getType() != HitResult.Type.ENTITY || !((EntityHitResult) hitResult).getEntity().isPartOf(entity)) {
-            if (!this.world.isClient) {
-                List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(4.0D, 2.0D, 4.0D));
-                AreaEffectCloudEntity areaEffectCloudEntity = new AreaEffectCloudEntity(this.world, this.getX(), this.getY(), this.getZ());
+        if (hitResult.getType() != HitResult.Type.ENTITY || !((EntityHitResult) hitResult).getEntity().is(entity)) {
+            if (!this.level.isClientSide) {
+                List<LivingEntity> list = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0D, 2.0D, 4.0D));
+                AreaEffectCloud areaEffectCloudEntity = new AreaEffectCloud(this.level, this.getX(), this.getY(), this.getZ());
                 if (entity instanceof LivingEntity) {
                     areaEffectCloudEntity.setOwner((LivingEntity) entity);
                 }
-                areaEffectCloudEntity.setParticleType(ParticleInit.HEALING_AURA_PARTICLE);
+                areaEffectCloudEntity.setParticle(ParticleInit.HEALING_AURA_PARTICLE);
                 areaEffectCloudEntity.setRadius((float) this.addition);
                 areaEffectCloudEntity.setDuration(this.addition * 100);
-                areaEffectCloudEntity.setRadiusGrowth(-(12.0F - areaEffectCloudEntity.getRadius()) / 500.0F);
-                areaEffectCloudEntity.addEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 0));
+                areaEffectCloudEntity.setRadiusPerTick(-(12.0F - areaEffectCloudEntity.getRadius()) / 500.0F);
+                areaEffectCloudEntity.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0));
                 if (!list.isEmpty()) {
                     Iterator<LivingEntity> var5 = list.iterator();
                     while (var5.hasNext()) {
                         LivingEntity livingEntity = (LivingEntity) var5.next();
-                        double d = this.squaredDistanceTo(livingEntity);
+                        double d = this.distanceToSqr(livingEntity);
                         if (d < 16.0D) {
-                            areaEffectCloudEntity.updatePosition(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
+                            areaEffectCloudEntity.absMoveTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
                             break;
                         }
                     }
                 }
-                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT, SoundCategory.NEUTRAL, 0.9F, 1.0F);
-                this.world.spawnEntity(areaEffectCloudEntity);
+                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT, SoundSource.NEUTRAL, 0.9F, 1.0F);
+                this.level.addFreshEntity(areaEffectCloudEntity);
                 this.discard();
             }
 
@@ -88,16 +88,16 @@ public class Healing_Ball_Entity extends ThrownEntity {
     @Override
     public void tick() {
         super.tick();
-        this.checkBlockCollision();
-        Vec3d vec3d = this.getVelocity();
+        this.checkInsideBlocks();
+        Vec3 vec3d = this.getDeltaMovement();
         double d = this.getX() + vec3d.x;
         double e = this.getY() + vec3d.y;
         double f = this.getZ() + vec3d.z;
         this.updateRotation();
         float j;
-        if (this.isTouchingWater()) {
+        if (this.isInWater()) {
             for (int i = 0; i < 4; ++i) {
-                this.world.addParticle(ParticleTypes.BUBBLE, d - vec3d.x * 0.25D, e - vec3d.y * 0.25D, f - vec3d.z * 0.25D, vec3d.x, vec3d.y, vec3d.z);
+                this.level.addParticle(ParticleTypes.BUBBLE, d - vec3d.x * 0.25D, e - vec3d.y * 0.25D, f - vec3d.z * 0.25D, vec3d.x, vec3d.y, vec3d.z);
             }
 
             j = 0.8F;
@@ -105,22 +105,26 @@ public class Healing_Ball_Entity extends ThrownEntity {
             j = 0.99F;
         }
 
-        this.setVelocity(vec3d.multiply((double) j));
-        if (!this.hasNoGravity()) {
-            Vec3d vec3d2 = this.getVelocity();
+
+        if (!this.isNoGravity()) {
+            Vec3 vec3d2 = this.getDeltaMovement();
             // Drag
-            this.setVelocity(vec3d2.x, vec3d2.y - (0.002D - ((double) this.addition / 3000D)), vec3d2.z);
+            this.setDeltaMovement(vec3d2.x, vec3d2.y - (0.002D - ((double) this.addition / 3000D)), vec3d2.z);
         }
 
-        this.updatePosition(d, e, f);
+        this.absMoveTo(d, e, f);
     }
 
     @Override
-    public boolean damage(DamageSource source, float amount) {
+    public boolean hurt(DamageSource source, float amount) {
         return false;
     }
 
     @Override
-    protected void initDataTracker() {
+    protected void defineSynchedData() {
+    }
+
+    public void setDeltaMovement(Player playerEntity, float xRot, float yRot, float v, float v1, float v2) {
+
     }
 }

@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.medievalweapons.MedievalMain;
 import net.medievalweapons.compat.CompatEntities;
 import net.medievalweapons.entity.Francisca_Entity;
 import net.medievalweapons.entity.Healing_Ball_Entity;
@@ -15,10 +16,19 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class EntityInit {
     // Map
-    public static final Map<Identifier, EntityType<?>> ENTITY_TYPES = new LinkedHashMap<>();
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MedievalMain.MOD_ID);
     // Francisca
     public static final EntityType<Francisca_Entity> WOODEN_FRANCISCA = register("wooden_francisca", create_Francisca(ItemInit.WOODEN_FRANCISCA_ITEM));
     public static final EntityType<Francisca_Entity> STONE_FRANCISCA = register("stone_francisca", create_Francisca(ItemInit.STONE_FRANCISCA_ITEM));
@@ -35,27 +45,22 @@ public class EntityInit {
     public static final EntityType<Javelin_Entity> NETHERITE_JAVELIN = register("netherite_javelin", create_Javelin(ItemInit.NETHERITE_JAVELIN_ITEM));
     // Healing Ball
     public static final EntityType<Healing_Ball_Entity> HEALING_BALL_ENTITY = register("healing_ball",
-            FabricEntityTypeBuilder.<Healing_Ball_Entity>create(SpawnGroup.MISC, Healing_Ball_Entity::new).dimensions(EntityDimensions.fixed(0.3F, 0.3F)).build());
+            EntityType.<Healing_Ball_Entity>create(MobCategory.MISC, Healing_Ball_Entity::new).dimensions(EntityDimensions.fixed(0.3F, 0.3F)).build());
 
-    public static void init() {
-        CompatEntities.loadEntities();
-        for (Identifier id : ENTITY_TYPES.keySet()) {
-            Registry.register(Registry.ENTITY_TYPE, id, ENTITY_TYPES.get(id));
-        }
+
+
+
+
+    public static EntityType<AbstractArrow> create_Francisca(Francisca_Item item) {
+        return EntityType.<AbstractArrow>create(MobCategory.MISC, () -> new Francisca_Entity(item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
     }
 
-    public static <T extends EntityType<?>> T register(String name, T type) {
-        Identifier id = new Identifier("medievalweapons", name);
-        ENTITY_TYPES.put(id, type);
-        return type;
+    public static EntityType<AbstractArrow> create_Javelin(Javelin_Item item) {
+        return EntityType.<AbstractArrow>create(MobCategory.MISC, (entity, world) -> new Javelin_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
+    }
+    public static void register(IEventBus eventBus) {
+        ENTITY_TYPES.register(eventBus);
     }
 
-    public static EntityType<Francisca_Entity> create_Francisca(Francisca_Item item) {
-        return FabricEntityTypeBuilder.<Francisca_Entity>create(SpawnGroup.MISC, (entity, world) -> new Francisca_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
-    }
-
-    public static EntityType<Javelin_Entity> create_Javelin(Javelin_Item item) {
-        return FabricEntityTypeBuilder.<Javelin_Entity>create(SpawnGroup.MISC, (entity, world) -> new Javelin_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
-    }
 
 }

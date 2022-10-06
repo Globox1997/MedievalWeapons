@@ -1,23 +1,23 @@
 package net.medievalweapons.effect;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
 
-public class BleedEffect extends StatusEffect {
+public class BleedEffect extends MobEffect {
 
-    public BleedEffect(StatusEffectCategory statusEffectCategory, int color) {
+    public BleedEffect(MobEffectCategory statusEffectCategory, int color) {
         super(statusEffectCategory, color);
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(BleedingDamageSource.BLEEDING, 1.0f);
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        entity.hurt(BleedingDamageSource.BLEEDING, 1.0f);
     }
 
     @Override
-    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+    public boolean isDurationEffectTick(int duration, int amplifier) {
         int i = 40 >> amplifier;
         if (i > 0) {
             return duration % i == 0;
@@ -26,7 +26,7 @@ public class BleedEffect extends StatusEffect {
     }
 
     private static class BleedingDamageSource extends DamageSource {
-        public static final DamageSource BLEEDING = new BleedingDamageSource("bleed").setBypassesArmor();
+        public static final DamageSource BLEEDING = new BleedingDamageSource("bleed").bypassArmor();
 
         public BleedingDamageSource(String name) {
             super(name);

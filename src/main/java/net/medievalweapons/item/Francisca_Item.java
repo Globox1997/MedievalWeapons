@@ -17,6 +17,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 
 public class Francisca_Item extends SwordItem {
 
@@ -28,7 +30,7 @@ public class Francisca_Item extends SwordItem {
         this.typeSupplier = typeSupplier;
     }
 
-    public EntityType<Francisca_Entity> getType() {
+    public EntityType<? extends AbstractArrow> getType() {
         if (cachedType == null) {
             cachedType = typeSupplier.get();
         }

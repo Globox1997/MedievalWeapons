@@ -2,78 +2,72 @@ package net.medievalweapons.item;
 
 import com.mojang.authlib.GameProfile;
 
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PlantBlock;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.CreeperEntity;
-import net.minecraft.entity.mob.SkeletonEntity;
-import net.minecraft.entity.mob.WitherSkeletonEntity;
-import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.Items;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtHelper;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.WitherSkeleton;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class Sickle_Item extends SwordItem {
 
-    public Sickle_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+    public Sickle_Item(Tiers toolMaterial, int attackDamage, float attackSpeed, Properties settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
     @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (target.isDead() && attacker.world.random.nextFloat() <= 0.01F) {
-            if (target instanceof ZombieEntity)
-                target.dropStack(new ItemStack(Items.ZOMBIE_HEAD));
-            if (target instanceof SkeletonEntity)
-                target.dropStack(new ItemStack(Items.SKELETON_SKULL));
-            if (target instanceof CreeperEntity)
-                target.dropStack(new ItemStack(Items.CREEPER_HEAD));
-            if (target instanceof WitherSkeletonEntity)
-                target.dropStack(new ItemStack(Items.WITHER_SKELETON_SKULL));
-            if (target instanceof PlayerEntity) {
-                GameProfile gameProfile = ((PlayerEntity) target).getGameProfile();
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (target.isDeadOrDying() && attacker.level.random.nextFloat() <= 0.01F) {
+            if (target instanceof Zombie)
+                target.spawnAtLocation(new ItemStack(Items.ZOMBIE_HEAD));
+            if (target instanceof Skeleton)
+                target.spawnAtLocation(new ItemStack(Items.SKELETON_SKULL));
+            if (target instanceof Creeper)
+                target.spawnAtLocation(new ItemStack(Items.CREEPER_HEAD));
+            if (target instanceof WitherSkeleton)
+                target.spawnAtLocation(new ItemStack(Items.WITHER_SKELETON_SKULL));
+            if (target instanceof Player) {
+                GameProfile gameProfile = ((Player) target).getGameProfile();
                 ItemStack playerHead = new ItemStack(Items.PLAYER_HEAD);
-                playerHead.getOrCreateNbt().put("SkullOwner", NbtHelper.writeGameProfile(new NbtCompound(), gameProfile));
-                target.dropStack(playerHead);
+                playerHead.getOrCreateTag().put("SkullOwner", NbtUtils.writeGameProfile(new CompoundTag(), gameProfile));
+                target.spawnAtLocation(playerHead);
             }
         }
-        return super.postHit(stack, target, attacker);
+        return super.hurtEnemy(stack, target, attacker);
     }
 
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        World world = context.getWorld();
-        BlockPos blockPos = context.getBlockPos();
+    public InteractionResult useOn(UseOnContext context) {
+        Level world = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
         BlockState blockState = world.getBlockState(blockPos);
-        if (blockState.getBlock() instanceof PlantBlock) {
-            PlayerEntity playerEntity = context.getPlayer();
-            ItemStack itemStack = context.getStack();
-            if (playerEntity instanceof ServerPlayerEntity)
-                Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) playerEntity, blockPos, itemStack);
-            if (!world.isClient) {
+        if (blockState.getBlock() instanceof BushBlock) {
+            Player playerEntity = context.getPlayer();
+            ItemStack itemStack = context.getItemInHand();
+            if (playerEntity instanceof ServerPlayer)
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) playerEntity, blockPos, itemStack);
+            if (!world.isClientSide) {
                 int breakedBlocks = 0;
-                for (int i = -1; i < 2; i++) {
-                    BlockPos otherBlockPos = blockPos.offset(playerEntity.getHorizontalFacing().rotateYClockwise().getAxis(), i);
-                    if (world.getBlockState(otherBlockPos).getBlock() instanceof PlantBlock) {
-                        world.breakBlock(otherBlockPos, true);
-                        breakedBlocks++;
-                    }
-                }
-                if (playerEntity != null)
-                    itemStack.damage(breakedBlocks, playerEntity, player -> player.sendToolBreakStatus(context.getHand()));
+
+                return InteractionResult.sidedSuccess(world.isClientSide);
             }
-            return ActionResult.success(world.isClient);
+            return super.useOn(context);
         }
-        return super.useOnBlock(context);
+        return null;
     }
 }

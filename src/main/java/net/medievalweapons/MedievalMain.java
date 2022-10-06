@@ -1,26 +1,54 @@
 package net.medievalweapons;
 
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+
+import com.mojang.logging.LogUtils;
 import net.medievalweapons.init.*;
 import net.medievalweapons.network.PlayerPacket;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.slf4j.Logger;
 
-public class MedievalMain implements ModInitializer {
+@Mod(MedievalMain.MOD_ID)
+public class MedievalMain {
+
+    public static final String MOD_ID = "medievalweapons";
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     // All credits go to Plasma Studios: https://youtu.be/Uc7YMW3AKpg?t=1152
     // Thanks for the awesome series
     // Check it out here: https://youtu.be/yCNUP2NAt-A
 
-    public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("medievalweapons", "group"), () -> new ItemStack(ItemInit.DIAMOND_FRANCISCA_ITEM));
+    public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack((ItemLike) ItemInit.DIAMOND_FRANCISCA_ITEM);
+        }
 
-    public static final Identifier ID(String path) {
-        return new Identifier("medievalweapons", path);
+    };
+    public MedievalMain()
+    {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
+
+        ItemInit.register(modEventBus);
+        EntityInit.register(modEventBus);
+        BlockInit.register(modEventBus);
+
+
+
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
     }
-
-    @Override
     public void onInitialize() {
         CompatInit.init();
         ConfigInit.init();
@@ -31,6 +59,19 @@ public class MedievalMain implements ModInitializer {
         PlayerPacket.init();
         SoundInit.init();
         TagInit.init();
+    }
+    private void commonSetup(final FMLCommonSetupEvent event)
+    {
+
+    }
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+
+        }
     }
 
 }
