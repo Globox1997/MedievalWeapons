@@ -2,6 +2,8 @@ package net.medievalweapons.init;
 
 import java.util.Iterator;
 
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 import net.devtech.arrp.api.RRPCallback;
@@ -15,35 +17,33 @@ public class ModelProviderInit {
     public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create("medievalweapons:weapons");
 
     public static void init() {
-        ModelPredicateProviderRegistry.register(ItemInit.LONG_BOW_ITEM, new Identifier("pull"), (stack, world, entity, seed) -> {
+        ItemProperties.register(ItemInit.LONG_BOW_ITEM, new ResourceLocation("pull"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0F;
             } else {
                 return entity.getActiveItem() != stack ? 0.0F : (float) (stack.getMaxUseTime() - entity.getItemUseTimeLeft()) / 50.0F;
             }
         });
-        ModelPredicateProviderRegistry.register(ItemInit.LONG_BOW_ITEM, new Identifier("pulling"), (stack, world, entity, seed) -> {
+        ItemProperties.register(ItemInit.LONG_BOW_ITEM, new ResourceLocation("pulling"), (stack, world, entity, seed) -> {
             return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
         });
-        ModelPredicateProviderRegistry.register(ItemInit.RECURVE_BOW_ITEM, new Identifier("pull"), (stack, world, entity, seed) -> {
+        ItemProperties.register(ItemInit.RECURVE_BOW_ITEM, new ResourceLocation("pull"), (stack, world, entity, seed) -> {
             if (entity == null) {
                 return 0.0F;
             } else {
                 return entity.getActiveItem() != stack ? 0.0F : (float) (stack.getMaxUseTime() - entity.getItemUseTimeLeft()) / 16.0F;
             }
         });
-        ModelPredicateProviderRegistry.register(ItemInit.RECURVE_BOW_ITEM, new Identifier("pulling"), (stack, world, entity, seed) -> {
+        ItemProperties.register(ItemInit.RECURVE_BOW_ITEM, new ResourceLocation("pulling"), (stack, world, entity, seed) -> {
             return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
         });
-        ModelPredicateProviderRegistry.register(new Identifier("medievalweapons", "offhand"), (stack, world, entity, seed) -> {
+        ItemProperties.register(new ResourceLocation("medievalweapons", "offhand"), (stack, world, entity, seed) -> {
             return entity != null && !entity.getOffHandStack().isEmpty() ? 1.0F : 0.0F;
         });
-        ModelPredicateProviderRegistry.register(new Identifier("throwing"), (stack, world, entity, seed) -> {
+        ItemProperties.register(new ResourceLocation("throwing"), (stack, world, entity, seed) -> {
             return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f;
         });
-        ModelPredicateProviderRegistry.register(new Identifier("medievalweapons", "gui"), (stack, world, entity, seed) -> {
-            return seed == 0 ? 1.0f : 0.0f;
-        });
+        ItemProperties.register(new ResourceLocation("medievalweapons", "gui"), (stack, world, entity, seed) -> seed == 0 ? 1.0f : 0.0f);
 
         // Generate models
         Iterator<String> items = ItemInit.ITEM_STRINGS.iterator();

@@ -8,10 +8,11 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraftforge.common.ForgeMod;
 
 public class CompatInit {
 
-    public static final boolean isBetterCombatLoaded = FabricLoader.getInstance().isModLoaded("bettercombat");
+    public static final boolean isBetterCombatLoaded = ForgeMod.getInstance().isM("bettercombat");
 
     public static void init() {
     }

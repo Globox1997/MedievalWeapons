@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin.client;
-
+/*
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -31,3 +31,4 @@ public class ClientLivingEntityMixin {
         }
     }
 }
+*/

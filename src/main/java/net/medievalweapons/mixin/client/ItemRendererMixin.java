@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin.client;
-
+/*
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 import net.medievalweapons.item.Big_Axe_Item;
@@ -59,3 +59,5 @@ public class ItemRendererMixin {
     }
 
 }
+
+ */

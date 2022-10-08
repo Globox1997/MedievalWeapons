@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin.client;
-
+/*
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import org.spongepowered.asm.mixin.Final;
@@ -70,3 +70,5 @@ public abstract class InGameHudMixin extends DrawableHelper {
     }
 
 }
+
+ */

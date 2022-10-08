@@ -1,5 +1,5 @@
 package net.medievalweapons.compat;
-
+/*
 import org.betterx.betterend.item.material.EndToolMaterial;
 import org.betterx.betternether.items.materials.BNToolMaterial;
 
@@ -16,7 +16,6 @@ import nourl.mythicmetals.tools.MythicToolMaterials;
 import potionstudios.byg.common.item.BYGTier;
 
 public class CompatItems {
-    private static final FabricLoader fabricLoader = FabricLoader.getInstance();
     public static Boolean isDragonLootLoaded = fabricLoader.isModLoaded("dragonloot");
     public static Boolean isBetterEndLoaded = fabricLoader.isModLoaded("betterend");
     public static Boolean isBetterNetherLoaded = fabricLoader.isModLoaded("betternether");
@@ -337,3 +336,5 @@ public class CompatItems {
         }
     }
 }
+
+ */

@@ -1,5 +1,5 @@
 package net.medievalweapons.compat;
-
+/*
 import com.google.gson.JsonObject;
 
 import net.dragonloot.DragonLootMain;
@@ -491,3 +491,5 @@ public class CompatRecipes {
     }
 
 }
+
+ */
