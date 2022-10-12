@@ -17,13 +17,15 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 public class Francisca_Item extends SwordItem {
 
-    private final Supplier<EntityType<Francisca_Entity>> typeSupplier;
-    private EntityType<Francisca_Entity> cachedType = null;
+    private final RegistryObject<EntityType<AbstractArrow>> typeSupplier;
+    private @NotNull EntityType<AbstractArrow> cachedType = null;
 
-    public Francisca_Item(Tiers toolMaterial, float attackDamage, float attackSpeed, Supplier<EntityType<Francisca_Entity>> typeSupplier, Properties settings) {
+    public Francisca_Item(Tiers toolMaterial, float attackDamage, float attackSpeed, RegistryObject<EntityType<AbstractArrow>> typeSupplier, Properties settings) {
         super(toolMaterial, (int) attackDamage, attackSpeed, settings);
         this.typeSupplier = typeSupplier;
     }

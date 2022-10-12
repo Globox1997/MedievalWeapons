@@ -17,8 +17,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-import net.medievalweapons.init.CompatInit;
-
 public class Thalleous_Sword_Item extends SwordItem {
 
     private final Tiers material;

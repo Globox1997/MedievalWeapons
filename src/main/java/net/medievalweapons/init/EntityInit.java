@@ -46,13 +46,14 @@ public class EntityInit {
 
 
 
-
     public static EntityType<AbstractArrow> create_Francisca(RegistryObject<Francisca_Item> item) {
         return EntityType.<AbstractArrow>create(MobCategory.MISC, () -> new Francisca_Entity(item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
     }
 
     public static EntityType<AbstractArrow> create_Javelin(RegistryObject<Javelin_Item> item) {
-        return EntityType.<AbstractArrow>create(MobCategory.MISC, (entity, world) -> new Javelin_Entity(entity, world, item)).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
+        return EntityType.<AbstractArrow>create(MobCategory.MISC, (entity, world) -> {
+            return new Javelin_Entity(entity, world, item);
+        }).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).build();
     }
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

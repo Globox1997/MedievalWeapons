@@ -1,5 +1,5 @@
 package net.medievalweapons.compat;
-
+/*
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.medievalweapons.entity.renderer.*;
 
@@ -49,3 +49,5 @@ public class CompatRender {
 
     }
 }
+
+ */

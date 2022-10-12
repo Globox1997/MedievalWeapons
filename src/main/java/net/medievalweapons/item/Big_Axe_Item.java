@@ -10,8 +10,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-import net.medievalweapons.init.CompatInit;
-
 public class Big_Axe_Item extends SwordItem {
 
     public Big_Axe_Item(Tiers toolMaterial, int attackDamage, float attackSpeed, Properties settings) {

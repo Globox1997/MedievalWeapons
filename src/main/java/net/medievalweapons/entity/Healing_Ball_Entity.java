@@ -7,6 +7,8 @@ import java.util.List;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
+import net.medievalweapons.item.Francisca_Item;
+import net.medievalweapons.item.Healing_Staff_Item;
 import net.medievalweapons.network.EntitySpawnPacket;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -20,6 +22,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -27,6 +31,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class Healing_Ball_Entity extends ThrowableProjectile {
     private int addition = 0;
+    private ItemStack healing_ball;
 
     public Healing_Ball_Entity(EntityType<? extends Healing_Ball_Entity> entityType, Level world) {
         super(entityType, world);
@@ -36,14 +41,13 @@ public class Healing_Ball_Entity extends ThrowableProjectile {
         super(entityType, d, e, f, world);
     }
 
-    public Healing_Ball_Entity(LivingEntity livingEntity, Level world, int addition) {
-        super(EntityInit.HEALING_BALL_ENTITY, livingEntity, world);
+    public Healing_Ball_Entity(LivingEntity livingEntity, Level world, int addition, Healing_Staff_Item item) {
+        super(item.getType(), livingEntity, world);
         this.addition = addition;
+        this.healing_ball = new ItemStack((ItemLike) item);
     }
 
-    public Healing_Ball_Entity(Level world, double x, double y, double z, double directionX, double directionY, double directionZ) {
-        super(EntityInit.HEALING_BALL_ENTITY, x, y, z, world);
-    }
+
 
     @Override
     public Packet<?> getAddEntityPacket() {

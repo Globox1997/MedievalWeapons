@@ -33,6 +33,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 public class Javelin_Entity extends AbstractArrow implements ItemSupplier {
@@ -49,21 +50,17 @@ public class Javelin_Entity extends AbstractArrow implements ItemSupplier {
     }
 
     public Javelin_Entity(Level world, LivingEntity owner, Javelin_Item item, ItemStack stack) {
-        super(world,ow);
+        super(item.getType(), owner, world);
         this.javelin = new ItemStack(item);
         this.javelin = stack.copy();
         this.entityData.set(ENCHANTMENT_GLINT, stack.hasFoil());
         this.entityData.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(stack));
     }
 
-    public Javelin_Entity(Level world, double x, double y, double z, Javelin_Item item) {
-        super();
-        this.javelin = new ItemStack(item);
-    }
-
-    public Javelin_Entity(Object entity, Object world, Javelin_Item item) {
+    public Javelin_Entity(Object entity, Object world, RegistryObject<Javelin_Item> item) {
         super(entity, world, item);
     }
+
 
     @Override
     protected void defineSynchedData() {
@@ -156,7 +153,7 @@ public class Javelin_Entity extends AbstractArrow implements ItemSupplier {
                     this.yOld = this.getY();
                 }
                 double d = 0.05 * (double) i;
-                this.setDeltaMovement(this.getDeltaMovement().multiply(0.95,1.0,1.0).add(vec3d.normalize().multiply(d)));
+                this.setDeltaMovement(this.getDeltaMovement().multiply(0.95,1.0,1.0).add(vec3d.normalize().multiply(1D,1,1)));
                 if (this.returnTimer == 0) {
                     this.playSound(SoundEvents.TRIDENT_RETURN, 10.0f, 1.0f);
                 }
@@ -244,4 +241,7 @@ public class Javelin_Entity extends AbstractArrow implements ItemSupplier {
         return new IndirectEntityDamageSource("javelin", entity, owner).setProjectile();
     }
 
+    public void setDeltaMovement(Player playerEntity, float xRot, float yRot, float v, float v1, float v2) {
+
+    }
 }

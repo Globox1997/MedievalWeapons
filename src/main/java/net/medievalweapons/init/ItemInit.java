@@ -4,20 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import net.medievalweapons.MedievalMain;
-import net.medievalweapons.compat.CompatItems;
-import net.medievalweapons.compat.CompatRecipes;
 import net.medievalweapons.item.*;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.checkerframework.checker.signature.qual.Identifier;
 
-import javax.crypto.Mac;
 
 public class ItemInit {
 
@@ -97,17 +91,17 @@ public static final RegistryObject<Small_Axe_Item> DIAMOND_SMALL_AXE_ITEM = ITEM
     public static final RegistryObject<Lance_Item> NETHERITE_LANCE_ITEM = ITEMS.register("netherite_lance", ()->new Lance_Item(Tiers.NETHERITE, 3, -3.2F, new Item.Properties().tab(MedievalMain.GROUP).fireResistant()));
     // Healing Staff
     public static final RegistryObject<Healing_Staff_Item> WOODEN_HEALING_STAFF_ITEM = ITEMS.register("wooden_healing_staff",()->
-            new Healing_Staff_Item(Tiers.WOOD, 1, -3.3F, 1, new Item.Properties().tab(MedievalMain.GROUP)));
+            new Healing_Staff_Item(Tiers.WOOD, 1, -3.3F, 1, new Item.Properties().tab(MedievalMain.GROUP), typeSupplier));
     public static final RegistryObject<Healing_Staff_Item> STONE_HEALING_STAFF_ITEM = ITEMS.register("stone_healing_staff",()->
-            new Healing_Staff_Item(Tiers.STONE, 1, -3.3F, 2, new Item.Properties().tab(MedievalMain.GROUP)));
+            new Healing_Staff_Item(Tiers.STONE, 1, -3.3F, 2, new Item.Properties().tab(MedievalMain.GROUP), typeSupplier));
     public static final RegistryObject<Healing_Staff_Item> IRON_HEALING_STAFF_ITEM = ITEMS.register("iron_healing_staff",()->
-            new Healing_Staff_Item(Tiers.IRON, 1, -3.3F, 3, new Item.Properties().tab(MedievalMain.GROUP)));
+            new Healing_Staff_Item(Tiers.IRON, 1, -3.3F, 3, new Item.Properties().tab(MedievalMain.GROUP), typeSupplier));
     public static final RegistryObject<Healing_Staff_Item> GOLDEN_HEALING_STAFF_ITEM = ITEMS.register("golden_healing_staff",()->
-            new Healing_Staff_Item(Tiers.GOLD, 1, -3.3F, 3, new Item.Properties().tab(MedievalMain.GROUP)));
+            new Healing_Staff_Item(Tiers.GOLD, 1, -3.3F, 3, new Item.Properties().tab(MedievalMain.GROUP), typeSupplier));
     public static final RegistryObject<Healing_Staff_Item> DIAMOND_HEALING_STAFF_ITEM = ITEMS.register("diamond_healing_staff",()->
-            new Healing_Staff_Item(Tiers.DIAMOND, 1, -3.3F, 4, new Item.Properties().tab(MedievalMain.GROUP)));
+            new Healing_Staff_Item(Tiers.DIAMOND, 1, -3.3F, 4, new Item.Properties().tab(MedievalMain.GROUP), typeSupplier));
     public static final RegistryObject<Healing_Staff_Item> NETHERITE_HEALING_STAFF_ITEM = ITEMS.register("netherite_healing_staff",()->
-            new Healing_Staff_Item(Tiers.NETHERITE, 1, -3.3F, 5, new Item.Properties().tab(MedievalMain.GROUP).fireResistant()));
+            new Healing_Staff_Item(Tiers.NETHERITE, 1, -3.3F, 5, new Item.Properties().tab(MedievalMain.GROUP).fireResistant(), typeSupplier));
     // Mace
     public static final RegistryObject<Mace_Item> WOODEN_MACE_ITEM = ITEMS.register("wooden_mace", ()->new Mace_Item(Tiers.WOOD, 4, -2.8F, 0, new Item.Properties().tab(MedievalMain.GROUP)));
     public static final RegistryObject<Mace_Item> STONE_MACE_ITEM = ITEMS.register("stone_mace", ()->new Mace_Item(Tiers.STONE, 4, -2.8F, 0, new Item.Properties().tab(MedievalMain.GROUP)));
@@ -152,10 +146,6 @@ public static final RegistryObject<Small_Axe_Item> DIAMOND_SMALL_AXE_ITEM = ITEM
     }
 
 
-    public static void init() {
-        CompatItems.loadItems();
-        CompatRecipes.createRecipes();
-        CompatRecipes.loadRecipes();
-    }
+
 
 }

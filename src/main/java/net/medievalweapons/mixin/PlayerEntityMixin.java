@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import java.util.List;
 
 import com.mojang.authlib.GameProfile;
@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.access.PlayerAccess;
-import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Small_Axe_Item;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -231,3 +230,5 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
     }
 
 }
+
+ */

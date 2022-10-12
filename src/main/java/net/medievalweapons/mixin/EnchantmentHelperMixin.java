@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,3 +74,5 @@ public class EnchantmentHelperMixin {
     }
 
 }
+
+ */

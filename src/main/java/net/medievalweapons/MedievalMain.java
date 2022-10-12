@@ -3,10 +3,8 @@ package net.medievalweapons;
 
 import com.mojang.logging.LogUtils;
 import net.medievalweapons.init.*;
-import net.medievalweapons.network.PlayerPacket;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,7 +27,7 @@ public class MedievalMain {
     public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack((ItemLike) ItemInit.DIAMOND_FRANCISCA_ITEM);
+            return new ItemStack( ItemInit.DIAMOND_FRANCISCA_ITEM.get());
         }
 
     };
@@ -42,24 +40,17 @@ public class MedievalMain {
 
         ItemInit.register(modEventBus);
         EntityInit.register(modEventBus);
-        BlockInit.register(modEventBus);
+        EffectInit.register(modEventBus);
+        ParticleInit.register(modEventBus);
+        SoundInit.register(modEventBus);
+        TagInit.register(modEventBus);
 
 
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
-    public void onInitialize() {
-        CompatInit.init();
-        ConfigInit.init();
-        ItemInit.init();
-        EffectInit.init();
-        EntityInit.init();
-        ParticleInit.init();
-        PlayerPacket.init();
-        SoundInit.init();
-        TagInit.init();
-    }
+
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 

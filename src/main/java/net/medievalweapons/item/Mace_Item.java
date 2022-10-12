@@ -3,7 +3,6 @@ package net.medievalweapons.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
-import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EffectInit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;

@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import org.spongepowered.asm.mixin.injection.At;
 
-import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.ParticleInit;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.LivingEntity;
@@ -35,3 +34,5 @@ public abstract class AreaEffectCloudEntityMixin {
     }
 
 }
+
+ */

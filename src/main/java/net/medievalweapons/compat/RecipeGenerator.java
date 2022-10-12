@@ -2,12 +2,12 @@ package net.medievalweapons.compat;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.minecraft.resources.ResourceLocation;
 
-import net.minecraft.util.Identifier;
 
 public class RecipeGenerator {
 
-    public static JsonObject generateJson(Identifier headItem, Identifier handleItem, String headType, String handleType, Identifier output, String itemName) {
+    public static JsonObject generateJson(ResourceLocation headItem, ResourceLocation handleItem, String headType, String handleType, ResourceLocation output, String itemName) {
         JsonObject json = new JsonObject();
 
         json.addProperty("type", "minecraft:crafting_shaped");
@@ -99,7 +99,7 @@ public class RecipeGenerator {
         return json;
     }
 
-    public static JsonObject generateSmithingJson(Identifier base, Identifier addition, String baseType, String additionType, Identifier output) {
+    public static JsonObject generateSmithingJson(ResourceLocation base, ResourceLocation addition, String baseType, String additionType, ResourceLocation output) {
         JsonObject json = new JsonObject();
         json.addProperty("type", "minecraft:smithing");
 

@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -7,8 +7,6 @@ import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.At;
 
-import net.medievalweapons.init.CompatInit;
-import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Lance_Item;
@@ -63,3 +61,5 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
 }
+
+ */

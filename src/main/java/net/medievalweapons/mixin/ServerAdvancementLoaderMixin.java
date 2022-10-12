@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import java.util.Map;
 
 import com.google.gson.JsonElement;
@@ -49,3 +49,5 @@ public class ServerAdvancementLoaderMixin {
         }
     }
 }
+
+ */

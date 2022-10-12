@@ -1,10 +1,7 @@
 package net.medievalweapons.init;
 
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+
 import net.medievalweapons.MedievalMain;
-import net.medievalweapons.compat.CompatRender;
 import net.medievalweapons.entity.renderer.Francisca_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Healing_Ball_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Javelin_Entity_Renderer;
@@ -31,6 +28,5 @@ public class ClientModEvents {
         event.registerEntityRenderer(EntityInit.NETHERITE_JAVELIN.get(),Javelin_Entity_Renderer::new);
 
         event.registerEntityRenderer(EntityInit.HEALING_BALL_ENTITY.get(),Healing_Ball_Entity_Renderer::new);
-        CompatRender.loadRenderer();
     }
 }

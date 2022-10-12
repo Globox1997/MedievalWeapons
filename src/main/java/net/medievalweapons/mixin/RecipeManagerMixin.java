@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import com.google.gson.JsonElement;
 
 import net.medievalweapons.compat.CompatRecipes;
@@ -25,3 +25,5 @@ public class RecipeManagerMixin {
     }
 
 }
+
+ */

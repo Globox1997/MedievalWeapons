@@ -24,8 +24,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
-import net.medievalweapons.init.CompatInit;
-
 public class Long_Sword_Item extends SwordItem {
     private final Tiers material;
 

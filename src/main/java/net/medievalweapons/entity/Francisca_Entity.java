@@ -27,6 +27,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -42,9 +43,9 @@ public class Francisca_Entity extends AbstractArrow implements ItemSupplier {
         this.francisca = new ItemStack((ItemLike) item);
     }
 
-    public Francisca_Entity(Level world, LivingEntity owner, Francisca_Item item, ItemStack stack) {
-        super(item.getType(), owner, world);
-        this.francisca = new ItemStack((ItemLike) item);
+    public Francisca_Entity(Level world, LivingEntity owner, RegistryObject<Francisca_Item> item, ItemStack stack) {
+        super(item.get().getType(), owner, world);
+        this.francisca = new ItemStack(item.get());
         this.francisca = stack.copy();
         this.entityData.set(ENCHANTMENT_GLINT, stack.hasFoil());
     }
@@ -54,6 +55,9 @@ public class Francisca_Entity extends AbstractArrow implements ItemSupplier {
         this.francisca = new ItemStack((ItemLike) item);
     }
 
+    public Francisca_Entity(RegistryObject<Francisca_Item> item,Level world) {
+        super(item.get().getType(), world);
+    }
 
 
     @Override
@@ -182,4 +186,7 @@ public class Francisca_Entity extends AbstractArrow implements ItemSupplier {
         return new IndirectEntityDamageSource("francisca", entity, owner).setProjectile();
     }
 
+    public void setDeltaMovement(Player playerEntity, float xRot, float yRot, float v, float v1, float v2) {
+
+    }
 }

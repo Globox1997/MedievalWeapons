@@ -1,5 +1,5 @@
 package net.medievalweapons.mixin;
-
+/*
 import net.medievalweapons.item.Javelin_Item;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -19,3 +19,5 @@ public class EnchantmentMixin {
         }
     }
 }
+
+ */
