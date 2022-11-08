@@ -32,7 +32,8 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
 
     @Inject(method = "setAngles", at = @At(value = "TAIL"))
     private void setAnglesMixin(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo info) {
-        if (!CompatInit.isBetterCombatLoaded && livingEntity.getOffHandStack().isEmpty() && !livingEntity.isSwimming() && !livingEntity.hasVehicle()) {
+        if (!CompatInit.isBetterCombatLoaded && livingEntity.getOffHandStack().isEmpty() && !livingEntity.isSwimming() && !livingEntity.hasVehicle()
+                && livingEntity.getMainHandStack().getItem() != null) {
             if (livingEntity.getMainHandStack().isIn(TagInit.DOUBLE_HANDED_ITEMS) || livingEntity.getMainHandStack().getItem() instanceof Long_Sword_Item) {
                 this.rightArm.pitch = -0.8727F + (MathHelper.cos(f * 0.6662F) * 2.0F * g * 0.5F / 15);
                 this.rightArm.yaw = -0.5672F;
