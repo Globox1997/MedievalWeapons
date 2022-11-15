@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.12-SNAPSHOT'
+	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -39,7 +39,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// ARRP
-	modImplementation("net.devtech:arrp:0.6.4")
+	modImplementation("net.devtech:arrp:${project.arrp_version}")
 
 	// DragonLoot
 	modCompileOnly "curse.maven:dragonloot-424480:3596055"
