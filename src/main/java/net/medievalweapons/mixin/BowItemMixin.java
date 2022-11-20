@@ -1,6 +1,15 @@
 package net.medievalweapons.mixin;
-/*
+
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.ArrowItem;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.At.Shift;
@@ -9,52 +18,28 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.ItemInit;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.ArrowItem;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.RangedWeaponItem;
-import net.minecraft.world.World;
 
 @Mixin(BowItem.class)
-public abstract class BowItemMixin extends RangedWeaponItem {
+public abstract class BowItemMixin extends ProjectileWeaponItem {
 
-    public BowItemMixin(Settings settings) {
+    @Shadow public abstract int getUseDuration(ItemStack p_40680_);
+
+    public BowItemMixin(Properties settings) {
         super(settings);
     }
 
-    @Inject(method = "onStoppedUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/PersistentProjectileEntity;setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V", shift = Shift.AFTER), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void onStoppedUsingMixin(ItemStack stack, World world, LivingEntity user, int remainingUseTicks, CallbackInfo info, PlayerEntity playerEntity, boolean bl, ItemStack itemStack, int i,
-            float f, boolean bl2, ArrowItem arrowItem, PersistentProjectileEntity persistentProjectileEntity) {
-        if (((BowItem) (Object) this) == ItemInit.LONG_BOW_ITEM)
-            persistentProjectileEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, f * 4.5F, 1.0F);
-        else if (((BowItem) (Object) this) == ItemInit.RECURVE_BOW_ITEM)
-            persistentProjectileEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, f * 2.0F, 1.0F);
+    @Inject(method = "releaseUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;shootFromRotation(Lnet/minecraft/world/entity/Entity;FFFFF)V", shift = Shift.AFTER), locals = LocalCapture.CAPTURE_FAILSOFT)
+    private void onStoppedUsingMixin(ItemStack p_40667_, Level p_40668_, LivingEntity p_40669_, int p_40670_, CallbackInfo ci, Player player, boolean flag, ItemStack itemstack, int i, float f, boolean flag1, ArrowItem arrowitem, AbstractArrow abstractarrow, Player playerEntity, boolean bl, ItemStack itemStack, int ii, float fo, boolean bl2, ArrowItem arrowItem, AbstractArrow persistentProjectileEntity) {
+        ItemInit.LONG_BOW_ITEM.get();
+        ItemInit.RECURVE_BOW_ITEM.get();
 
     }
 
-    @ModifyVariable(method = "onStoppedUsing", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/BowItem;getPullProgress(I)F"), ordinal = 0)
-    private float onStoppedUsingPullProgressMixin(float original, ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (((BowItem) (Object) this) == ItemInit.LONG_BOW_ITEM) {
-            float f = (float) (this.getMaxUseTime(stack) - remainingUseTicks) / 60.0F;
-            f = (f * f + f * 2.0F) / 3.0F;
-            if (f > 1.0F) {
-                f = 1.0F;
-            }
-            return f;
-        } else if (((BowItem) (Object) this) == ItemInit.RECURVE_BOW_ITEM) {
-            float f = (float) (this.getMaxUseTime(stack) - remainingUseTicks) / 12.0F;
-            f = (f * f + f * 2.0F / 3.0F);
-            if (f > 1.0F) {
-                f = 1.0F;
-            }
-            return f;
-        }
-        return original;
+    @ModifyVariable(method = "releaseUsing", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/item/BowItem;getPowerForTime(I)F"), ordinal = 0)
+    private BowItem onStoppedUsingPullProgressMixin(BowItem value) {
+        ItemInit.LONG_BOW_ITEM.get();
+        ItemInit.RECURVE_BOW_ITEM.get();
+        return value;
     }
 
 }
-
- */

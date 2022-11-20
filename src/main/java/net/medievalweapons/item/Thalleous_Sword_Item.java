@@ -30,7 +30,6 @@ public class Thalleous_Sword_Item extends SwordItem {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", attackSpeed, AttributeModifier.Operation.ADDITION));
-        CompatInit.addRange(1.0D, builder);
         this.attributeModifiers = builder.build();
     }
 
@@ -39,8 +38,7 @@ public class Thalleous_Sword_Item extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         super.appendHoverText(stack, world, tooltip, context);
-        if (!CompatInit.isBetterCombatLoaded)
-            tooltip.add(Component.translatable("item.medievalweapons.double_handed.tooltip"));
+
     }
 
 

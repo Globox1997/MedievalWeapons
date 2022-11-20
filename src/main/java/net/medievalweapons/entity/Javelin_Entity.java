@@ -44,22 +44,25 @@ public class Javelin_Entity extends AbstractArrow implements ItemSupplier {
     public int returnTimer;
     private boolean dealtDamage;
 
-    public Javelin_Entity(EntityType<? extends Javelin_Entity> entityType, Level world, Javelin_Item item) {
+    public Javelin_Entity(EntityType<? extends Javelin_Entity> entityType, Level world, RegistryObject<Javelin_Item> item) {
         super(entityType, world);
-        this.javelin = new ItemStack(item);
+        this.javelin = new ItemStack(item.get());
     }
 
     public Javelin_Entity(Level world, LivingEntity owner, Javelin_Item item, ItemStack stack) {
-        super(item.getType(), owner, world);
+        super( item.getType(), owner, world);
         this.javelin = new ItemStack(item);
         this.javelin = stack.copy();
         this.entityData.set(ENCHANTMENT_GLINT, stack.hasFoil());
         this.entityData.set(LOYALTY, (byte) EnchantmentHelper.getLoyalty(stack));
     }
 
-    public Javelin_Entity(Object entity, Object world, RegistryObject<Javelin_Item> item) {
+    public Javelin_Entity(EntityType<? extends AbstractArrow> entity, LivingEntity world,
+                          Level item) {
         super(entity, world, item);
     }
+
+
 
 
     @Override

@@ -65,8 +65,6 @@ public class Long_Sword_Item extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         super.appendHoverText(stack, world, tooltip, context);
-        if (!CompatInit.isBetterCombatLoaded)
-            tooltip.add(Component.translatable("item.medievalweapons.double_handed.tooltip"));
     }
 
     public Multimap<? extends Object, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot, ItemStack itemStack) {

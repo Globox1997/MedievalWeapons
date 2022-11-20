@@ -1,11 +1,11 @@
 package net.medievalweapons.item;
-
 import net.medievalweapons.entity.Javelin_Entity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -20,19 +20,19 @@ import org.jetbrains.annotations.NotNull;
 
 public class Javelin_Item extends SwordItem {
 
-    private final RegistryObject<EntityType<AbstractArrow>> typeSupplier;
-    private @NotNull EntityType<AbstractArrow> cachedType = null;
+    private final RegistryObject<EntityType<Entity>> typeSupplier;
+    private @NotNull EntityType<Entity> cachedType = null;
 
-    public Javelin_Item(Tiers toolMaterial, float attackDamage, float attackSpeed, RegistryObject<EntityType<AbstractArrow>> typeSupplier, Properties settings) {
+    public Javelin_Item(Tiers toolMaterial, float attackDamage, float attackSpeed, RegistryObject<EntityType<Entity>> typeSupplier, Properties settings) {
         super(toolMaterial, (int) attackDamage, attackSpeed, settings);
         this.typeSupplier = typeSupplier;
     }
 
-    public @NotNull EntityType<AbstractArrow> getType() {
+    public EntityType<? extends AbstractArrow> getType() {
         if (cachedType == null) {
             cachedType = typeSupplier.get();
         }
-        return cachedType;
+        return (EntityType<? extends AbstractArrow>) cachedType;
     }
 
     @Override
@@ -81,3 +81,4 @@ public class Javelin_Item extends SwordItem {
     }
 
 }
+
