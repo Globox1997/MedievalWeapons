@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.access.PlayerAccess;
+import net.medievalweapons.init.TagInit;
+import net.medievalweapons.item.Big_Axe_Item;
+import net.medievalweapons.item.Long_Sword_Item;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.SweepingEnchantment;
@@ -184,6 +187,13 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 }
             }
         }
+    }
+
+    @Override
+    public boolean disablesShield() {
+        ItemStack itemStack = this.getMainHandStack();
+        return super.disablesShield() || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
+                || itemStack.getItem() instanceof Big_Axe_Item;
     }
 
     @Shadow
