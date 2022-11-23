@@ -8,14 +8,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.access.PlayerAccess;
-import net.medievalweapons.init.ConfigInit;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Small_Axe_Item;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.SweepingEnchantment;
@@ -29,11 +25,8 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -54,23 +47,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
 
     public PlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
         super(EntityType.PLAYER, world);
-    }
-
-    @Inject(method = "takeShieldHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;takeShieldHit(Lnet/minecraft/entity/LivingEntity;)V", shift = Shift.AFTER))
-    public void takeShieldHitMixin(LivingEntity attacker, CallbackInfo info) {
-        Item item = attacker.getMainHandStack().getItem();
-        if (attacker instanceof PlayerEntity && !(item instanceof AxeItem) && item instanceof ToolItem) {
-            if (ConfigInit.CONFIG.extra_weapon_shield_blocking_cooldown != 0 && (item instanceof Small_Axe_Item || item instanceof Big_Axe_Item)) {
-                PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-                playerEntity.getItemCooldownManager().set(playerEntity.getActiveItem().getItem(), ConfigInit.CONFIG.extra_weapon_shield_blocking_cooldown);
-                playerEntity.clearActiveItem();
-            } else if (ConfigInit.CONFIG.shield_blocking_cooldown != 0) {
-                PlayerEntity playerEntity = (PlayerEntity) (Object) this;
-                playerEntity.getItemCooldownManager().set(playerEntity.getActiveItem().getItem(), ConfigInit.CONFIG.shield_blocking_cooldown);
-                playerEntity.clearActiveItem();
-            }
-        }
-
     }
 
     @Inject(method = "Lnet/minecraft/entity/player/PlayerEntity;tick()V", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;lastAttackedTicks:I", ordinal = 0))

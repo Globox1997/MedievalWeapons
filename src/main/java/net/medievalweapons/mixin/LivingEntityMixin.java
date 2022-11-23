@@ -37,28 +37,27 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    // Items can not block projectiles
     @Inject(method = "blockedByShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/PersistentProjectileEntity;getPierceLevel()B"), cancellable = true)
     private void blockedByShieldMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                || itemStack.getItem() instanceof Big_Axe_Item) {
+                || itemStack.getItem() instanceof Big_Axe_Item)
             info.setReturnValue(false);
-        }
     }
 
     @Inject(method = "blockedByShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;dotProduct(Lnet/minecraft/util/math/Vec3d;)D", shift = Shift.AFTER), cancellable = true)
     private void blockedByShieldDamageWeaponMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
-        ItemStack itemStack = livingEntity.getMainHandStack();
+        ItemStack itemStack = livingEntity.getActiveItem();
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
                 || itemStack.getItem() instanceof Big_Axe_Item) {
-            if (livingEntity instanceof PlayerEntity) {
+            if (livingEntity instanceof PlayerEntity)
                 ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), ConfigInit.CONFIG.weapon_blocking_cooldown);
-            }
-            if (!world.isClient) {
+            livingEntity.clearActiveItem();
+            if (!world.isClient)
                 livingEntity.getMainHandStack().damage(1, livingEntity, (p) -> p.sendToolBreakStatus(p.getActiveHand()));
-            }
         }
     }
 

@@ -288,8 +288,6 @@
 
   "text.autoconfig.medievalweapons.title": "Medieval Weapons Config",
   "text.autoconfig.medievalweapons.option.weapon_blocking_cooldown": "Weapon Blocking Cooldown",
-  "text.autoconfig.medievalweapons.option.shield_blocking_cooldown": "Shield Blocking Cooldown",
-  "text.autoconfig.medievalweapons.option.extra_weapon_shield_blocking_cooldown": "Extra Weapon Shield Blocking Cooldown",
   "text.autoconfig.medievalweapons.option.old_healing_staff_behavior": "Old Healing Staff Behavior",
   "text.autoconfig.medievalweapons.option.healing_staff_owner_healing": "Healing Staff Owner Healing",
 
