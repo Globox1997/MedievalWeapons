@@ -29,7 +29,6 @@ dependencies {
 	modImplementation include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-
 	// Config
 	modImplementation ("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
     	exclude(group: "net.fabricmc.fabric-api")
