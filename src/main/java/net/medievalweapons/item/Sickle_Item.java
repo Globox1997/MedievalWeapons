@@ -65,7 +65,7 @@ public class Sickle_Item extends SwordItem {
                 for (int i = -1; i < 2; i++) {
                     BlockPos otherBlockPos = blockPos.offset(playerEntity.getHorizontalFacing().rotateYClockwise().getAxis(), i);
                     if (world.getBlockState(otherBlockPos).getBlock() instanceof PlantBlock) {
-                        world.breakBlock(otherBlockPos, true);
+                        world.breakBlock(otherBlockPos, true, playerEntity);
                         breakedBlocks++;
                     }
                 }
