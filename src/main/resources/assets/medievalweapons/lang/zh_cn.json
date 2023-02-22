@@ -154,6 +154,21 @@
   "item.medievalweapons.long_bow": "长弓",
   "item.medievalweapons.recurve_bow": "反曲弓",
 
+  "item.medievalweapons.diamond_ninjato": "钻石忍者刀",
+  "item.medievalweapons.golden_ninjato": "金忍者刀",
+  "item.medievalweapons.iron_ninjato": "铁忍者刀",
+  "item.medievalweapons.netherite_ninjato": "下界合金忍者刀",
+  "item.medievalweapons.stone_ninjato": "石忍者刀",
+  "item.medievalweapons.wooden_ninjato": "木忍者刀",
+  "item.medievalweapons.dragon_ninjato": "巨龙忍者刀",
+  "item.medievalweapons.terminite_ninjato": "终界忍者刀",
+  "item.medievalweapons.aeternium_ninjato": "太古合金忍者刀",
+  "item.medievalweapons.thallasium_ninjato": "铊忍者刀",
+  "item.medievalweapons.nether_ruby_ninjato": "下界红宝石忍者刀",
+  "item.medievalweapons.cincinnasite_ninjato": "辛辛纳金忍者刀",
+  "item.medievalweapons.cincinnasite_diamond_ninjato": "辛辛那金钻石忍者刀",
+  "item.medievalweapons.pendorite_ninjato": "潘多拉金忍者刀",
+
   "item.medievalweapons.thalleous_sword": "泰利乌斯之剑",
   "entity.medievalweapons.thalleous_sword": "泰利乌斯之剑",
 
@@ -165,5 +180,6 @@
   "text.autoconfig.medievalweapons.option.shield_blocking_cooldown": "盾牌格挡冷却",
 
   "death.attack.javelin": "%1$s 被 %2$s 刺了个透心凉",
-  "death.attack.francisca": "%1$s 吃了 %2$s 一飞斧"
+  "death.attack.francisca": "%1$s 吃了 %2$s 一飞斧",
+  "effect.medievalweapons.stun": "晕眩"
 }
