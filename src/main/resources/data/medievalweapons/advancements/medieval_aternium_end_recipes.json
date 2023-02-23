@@ -17,7 +17,7 @@
         ]
     },
     "criteria": {
-        "medieval__aternium_end_recipes": {
+        "medieval_aternium_end_recipes": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [

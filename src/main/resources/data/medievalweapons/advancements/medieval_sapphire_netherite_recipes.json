@@ -1,0 +1,33 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "medievalweapons:sapphire_netherite_small_axe",
+            "medievalweapons:sapphire_netherite_long_sword",
+            "medievalweapons:sapphire_netherite_dagger",
+            "medievalweapons:sapphire_netherite_javelin",
+            "medievalweapons:sapphire_netherite_lance",
+            "medievalweapons:sapphire_netherite_long_sword",
+            "medievalweapons:sapphire_netherite_small_axe",
+            "medievalweapons:sapphire_netherite_healing_staff",
+            "medievalweapons:sapphire_netherite_mace",
+            "medievalweapons:sapphire_netherite_ninjato",
+            "medievalweapons:sapphire_netherite_sickle",
+            "medievalweapons:sapphire_netherite_rapier"
+        ]
+    },
+    "criteria": {
+        "medieval_sapphire_netherite_recipes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "mythicupgrades:sapphire"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

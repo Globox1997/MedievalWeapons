@@ -476,6 +476,57 @@ public class CompatRecipes {
             SMITHING_RECIPES.put("rose_gold_sickle",
                     new SmithingRecipeMaterial(MedievalMain.ID("golden_sickle"), new Identifier("minecraft:copper_ingot"), "item", "item", MedievalMain.ID("rose_gold_sickle")));
         }
+        if (CompatItems.isMythicUpgradesLoaded) {
+            SMITHING_RECIPES.put("ruby_netherite_small_axe",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_small_axe"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_small_axe")));
+            SMITHING_RECIPES.put("ruby_netherite_long_sword",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_long_sword"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_long_sword")));
+            SMITHING_RECIPES.put("ruby_netherite_dagger",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_dagger"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_dagger")));
+            SMITHING_RECIPES.put("ruby_netherite_big_axe",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_big_axe"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_big_axe")));
+            SMITHING_RECIPES.put("ruby_netherite_lance",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_lance"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_lance")));
+            SMITHING_RECIPES.put("ruby_netherite_healing_staff",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_healing_staff"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_healing_staff")));
+            SMITHING_RECIPES.put("ruby_netherite_mace",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_mace"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_mace")));
+            SMITHING_RECIPES.put("ruby_netherite_francisca",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_francisca"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_francisca")));
+            SMITHING_RECIPES.put("ruby_netherite_javelin",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_javelin"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_javelin")));
+            SMITHING_RECIPES.put("ruby_netherite_ninjato",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_ninjato"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_ninjato")));
+            SMITHING_RECIPES.put("ruby_netherite_sickle",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_sickle"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_sickle")));
+            SMITHING_RECIPES.put("ruby_netherite_rapier",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_rapier"), new Identifier("mythicupgrades:ruby"), "item", "item", MedievalMain.ID("ruby_netherite_rapier")));
+    
+            SMITHING_RECIPES.put("sapphire_netherite_small_axe",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_small_axe"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_small_axe")));
+            SMITHING_RECIPES.put("sapphire_netherite_long_sword",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_long_sword"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_long_sword")));
+            SMITHING_RECIPES.put("sapphire_netherite_dagger",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_dagger"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_dagger")));
+            SMITHING_RECIPES.put("sapphire_netherite_big_axe",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_big_axe"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_big_axe")));
+            SMITHING_RECIPES.put("sapphire_netherite_lance",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_lance"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_lance")));
+            SMITHING_RECIPES.put("sapphire_netherite_healing_staff",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_healing_staff"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_healing_staff")));
+            SMITHING_RECIPES.put("sapphire_netherite_mace",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_mace"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_mace")));
+            SMITHING_RECIPES.put("sapphire_netherite_francisca",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_francisca"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_francisca")));
+            SMITHING_RECIPES.put("sapphire_netherite_javelin",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_javelin"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_javelin")));
+            SMITHING_RECIPES.put("sapphire_netherite_ninjato",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_ninjato"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_ninjato")));
+            SMITHING_RECIPES.put("sapphire_netherite_rapier",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_rapier"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_rapier")));
+            SMITHING_RECIPES.put("sapphire_netherite_sickle",
+                    new SmithingRecipeMaterial(MedievalMain.ID("netherite_sickle"), new Identifier("mythicupgrades:sapphire"), "item", "item", MedievalMain.ID("sapphire_netherite_sickle")));
+        }   
 
     }
 

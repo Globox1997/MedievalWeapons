@@ -7,9 +7,12 @@ import org.jetbrains.annotations.Nullable;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.models.JModel;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.util.Identifier;
 
+@Environment(EnvType.CLIENT)
 public class ModelProviderInit {
 
     public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create("medievalweapons:weapons");

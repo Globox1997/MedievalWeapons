@@ -12,6 +12,7 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
 import net.minecraft.item.Item;
+import net.trique.mythicupgrades.item.ModToolMaterials;
 import nourl.mythicmetals.tools.MythicToolMaterials;
 import potionstudios.byg.common.item.BYGTier;
 
@@ -24,6 +25,7 @@ public class CompatItems {
     public static Boolean isAetherLoaded = fabricLoader.isModLoaded("the_aether");
     public static Boolean isBYGLoaded = fabricLoader.isModLoaded("byg");
     public static Boolean isAdditionalAdditionsLoaded = fabricLoader.isModLoaded("additionaladditions");
+    public static Boolean isMythicUpgradesLoaded = fabricLoader.isModLoaded("mythicupgrades");
 
     // DragonLoot
     public static Francisca_Item DRAGON_FRANCISCA_ITEM;
@@ -64,6 +66,12 @@ public class CompatItems {
     public static Javelin_Item GRAVITITE_JAVELIN_ITEM;
     public static Francisca_Item ZANITE_FRANCISCA_ITEM;
     public static Javelin_Item ZANITE_JAVELIN_ITEM;
+
+    // Mythic Upgrades
+    public static Francisca_Item RUBY_NETHERITE_FRANCISCA_ITEM;
+    public static Javelin_Item RUBY_NETHERITE_JAVELIN_ITEM;
+    public static Francisca_Item SAPPHIRE_NETHERITE_FRANCISCA_ITEM;
+    public static Javelin_Item SAPPHIRE_NETHERITE_JAVELIN_ITEM;
 
     public static void loadItems() {
         if (isBetterEndLoaded) {
@@ -217,7 +225,8 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_dagger"), new Dagger_Item(MythicToolMaterials.ADAMANTITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_big_axe"), new Big_Axe_Item(MythicToolMaterials.ADAMANTITE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_lance"), new Lance_Item(MythicToolMaterials.ADAMANTITE, 3, -3.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_healing_staff"), new Healing_Staff_Item(MythicToolMaterials.ADAMANTITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_healing_staff"),
+                    new Healing_Staff_Item(MythicToolMaterials.ADAMANTITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_mace"), new Mace_Item(MythicToolMaterials.ADAMANTITE, 4, -3.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ADAMANTITE_FRANCISCA_ITEM = ItemInit.register("adamantite_francisca",
                     new Francisca_Item(MythicToolMaterials.ADAMANTITE, 2.0F, -2.6F, () -> CompatEntities.ADAMANTITE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -334,6 +343,54 @@ public class CompatItems {
 
             ItemInit.MATERIAL_STRINGS.add("gilded_netherite");
             ItemInit.MATERIAL_STRINGS.add("rose_gold");
+        }
+        if (isMythicUpgradesLoaded) {
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_small_axe"), new Small_Axe_Item(ModToolMaterials.RUBY_NETHERITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_long_sword"),
+                    new Long_Sword_Item(ModToolMaterials.RUBY_NETHERITE, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_dagger"), new Dagger_Item(ModToolMaterials.RUBY_NETHERITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_big_axe"), new Big_Axe_Item(ModToolMaterials.RUBY_NETHERITE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_lance"), new Lance_Item(ModToolMaterials.RUBY_NETHERITE, 3, -3.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_healing_staff"),
+                    new Healing_Staff_Item(ModToolMaterials.RUBY_NETHERITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_mace"), new Mace_Item(ModToolMaterials.RUBY_NETHERITE, 4, -2.8F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            RUBY_NETHERITE_FRANCISCA_ITEM = ItemInit.register("ruby_netherite_francisca",
+                    new Francisca_Item(ModToolMaterials.RUBY_NETHERITE, 1.0F, -2.6F, () -> CompatEntities.RUBY_NETHERITE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            RUBY_NETHERITE_JAVELIN_ITEM = ItemInit.register("ruby_netherite_javelin",
+                    new Javelin_Item(ModToolMaterials.RUBY_NETHERITE, 2.2F, -2.7F, () -> CompatEntities.RUBY_NETHERITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_francisca"), RUBY_NETHERITE_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_javelin"), RUBY_NETHERITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_ninjato"), new Ninjato_Item(ModToolMaterials.RUBY_NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_sickle"), new Sickle_Item(ModToolMaterials.RUBY_NETHERITE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_rapier"), new Rapier_Item(ModToolMaterials.RUBY_NETHERITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_small_axe"),
+                    new Small_Axe_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_long_sword"),
+                    new Long_Sword_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_dagger"),
+                    new Dagger_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_big_axe"),
+                    new Big_Axe_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 6, -3.4F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_lance"), new Lance_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 3, -3.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_healing_staff"),
+                    new Healing_Staff_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 1, -3.3F, 4, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_mace"), new Mace_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 4, -2.8F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            SAPPHIRE_NETHERITE_FRANCISCA_ITEM = ItemInit.register("sapphire_netherite_francisca", new Francisca_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 1.0F, -2.6F,
+                    () -> CompatEntities.SAPPHIRE_NETHERITE_FRANCISCA, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            SAPPHIRE_NETHERITE_JAVELIN_ITEM = ItemInit.register("sapphire_netherite_javelin",
+                    new Javelin_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 2.2F, -2.7F, () -> CompatEntities.SAPPHIRE_NETHERITE_JAVELIN, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_francisca"), SAPPHIRE_NETHERITE_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_javelin"), SAPPHIRE_NETHERITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_ninjato"),
+                    new Ninjato_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_sickle"),
+                    new Sickle_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_rapier"),
+                    new Rapier_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+
+            ItemInit.MATERIAL_STRINGS.add("ruby_netherite");
+            ItemInit.MATERIAL_STRINGS.add("sapphire_netherite");
         }
     }
 }

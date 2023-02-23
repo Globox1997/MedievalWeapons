@@ -46,6 +46,12 @@ public class CompatEntities {
     public static EntityType<Javelin_Entity> ZANITE_JAVELIN;
     public static EntityType<Francisca_Entity> ZANITE_FRANCISCA;
 
+    // Mythic Upgrades
+    public static EntityType<Javelin_Entity> RUBY_NETHERITE_JAVELIN;
+    public static EntityType<Francisca_Entity> RUBY_NETHERITE_FRANCISCA;
+    public static EntityType<Javelin_Entity> SAPPHIRE_NETHERITE_JAVELIN;
+    public static EntityType<Francisca_Entity> SAPPHIRE_NETHERITE_FRANCISCA;
+
     public static void loadEntities() {
         if (CompatItems.isBetterEndLoaded) {
             TERMINITE_FRANCISCA = EntityInit.register("terminite_francisca", EntityInit.create_Francisca(CompatItems.TERMINITE_FRANCISCA_ITEM));
@@ -119,6 +125,17 @@ public class CompatEntities {
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("rose_gold_javelin"), ROSE_GOLD_JAVELIN);
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("gilded_netherite_francisca"), GILDED_NETHERITE_FRANCISCA);
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("gilded_netherite_javelin"), GILDED_NETHERITE_JAVELIN);
+        }
+        if (CompatItems.isMythicUpgradesLoaded) {
+            RUBY_NETHERITE_JAVELIN = EntityInit.register("ruby_netherite_javelin", EntityInit.create_Javelin(CompatItems.RUBY_NETHERITE_JAVELIN_ITEM));
+            RUBY_NETHERITE_FRANCISCA = EntityInit.register("ruby_netherite_francisca", EntityInit.create_Francisca(CompatItems.RUBY_NETHERITE_FRANCISCA_ITEM));
+            SAPPHIRE_NETHERITE_JAVELIN = EntityInit.register("sapphire_netherite_javelin", EntityInit.create_Javelin(CompatItems.SAPPHIRE_NETHERITE_JAVELIN_ITEM));
+            SAPPHIRE_NETHERITE_FRANCISCA = EntityInit.register("sapphire_netherite_francisca", EntityInit.create_Francisca(CompatItems.SAPPHIRE_NETHERITE_FRANCISCA_ITEM));
+
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("ruby_netherite_francisca"), RUBY_NETHERITE_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("ruby_netherite_javelin"), RUBY_NETHERITE_JAVELIN);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("sapphire_netherite_francisca"), SAPPHIRE_NETHERITE_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("sapphire_netherite_javelin"), SAPPHIRE_NETHERITE_JAVELIN);
         }
     }
 }

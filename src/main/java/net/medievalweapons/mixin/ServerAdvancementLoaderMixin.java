@@ -26,9 +26,9 @@ public class ServerAdvancementLoaderMixin {
             map.remove(new Identifier("medievalweapons", "medieval_cincinnasite_diamond_nether_recipes"));
         }
         if (!CompatItems.isBetterNetherLoaded) {
-            map.remove(new Identifier("medievalweapons", "medieval__aternium_end_recipes"));
-            map.remove(new Identifier("medievalweapons", "medieval__terminite_end_recipes"));
-            map.remove(new Identifier("medievalweapons", "medieval__thallasium_end_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_aternium_end_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_terminite_end_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_thallasium_end_recipes"));
         }
         if (!CompatItems.isDragonLootLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_dragon_recipes"));
@@ -46,6 +46,10 @@ public class ServerAdvancementLoaderMixin {
         if (!CompatItems.isAetherLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_gravitite_recipes"));
             map.remove(new Identifier("medievalweapons", "medieval_zanite_recipes"));
+        }
+        if (!CompatItems.isMythicUpgradesLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_ruby_netherite_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_sapphire_netherite_recipes"));
         }
     }
 }

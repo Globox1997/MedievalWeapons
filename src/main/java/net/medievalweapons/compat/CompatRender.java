@@ -1,8 +1,11 @@
 package net.medievalweapons.compat;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.medievalweapons.entity.renderer.*;
 
+@Environment(EnvType.CLIENT)
 public class CompatRender {
 
     public static void loadRenderer() {
@@ -46,6 +49,11 @@ public class CompatRender {
             EntityRendererRegistry.register(CompatEntities.GILDED_NETHERITE_FRANCISCA, Francisca_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.GILDED_NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
         }
-
+        if (CompatItems.isMythicUpgradesLoaded) {
+            EntityRendererRegistry.register(CompatEntities.RUBY_NETHERITE_FRANCISCA, Francisca_Entity_Renderer::new);
+            EntityRendererRegistry.register(CompatEntities.RUBY_NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
+            EntityRendererRegistry.register(CompatEntities.SAPPHIRE_NETHERITE_FRANCISCA, Francisca_Entity_Renderer::new);
+            EntityRendererRegistry.register(CompatEntities.SAPPHIRE_NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
+        }
     }
 }

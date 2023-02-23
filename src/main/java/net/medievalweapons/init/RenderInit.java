@@ -1,5 +1,7 @@
 package net.medievalweapons.init;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -10,6 +12,7 @@ import net.medievalweapons.entity.renderer.Javelin_Entity_Renderer;
 import net.medievalweapons.init.ParticleInit.HealingAuraParticle;
 import net.medievalweapons.network.EntitySpawnPacket;
 
+@Environment(EnvType.CLIENT)
 public class RenderInit {
 
     public static void init() {
