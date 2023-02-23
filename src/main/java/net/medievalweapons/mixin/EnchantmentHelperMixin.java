@@ -39,24 +39,26 @@ public class EnchantmentHelperMixin {
             info.setReturnValue(SweepingEnchantment.getMultiplier(i > 1 ? i - 1 : 0));
     }
 
-    @Inject(method = "getPossibleEntries", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getPossibleEntries", at = @At("TAIL"), cancellable = true)
     private static void getPossibleEntriesMixin(int i, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> info) {
         if (stack.getItem() instanceof Javelin_Item) {
             List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
-            List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
-            currentEnchantments.forEach(enchantment -> {
-                if (!(enchantment.enchantment.type == EnchantmentTarget.TRIDENT) || enchantment.enchantment == Enchantments.IMPALING) {
-                    enchantments.add(enchantment);
+            if (currentEnchantments != null) {
+                List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
+                currentEnchantments.forEach(enchantment -> {
+                    if (!(enchantment.enchantment.type == EnchantmentTarget.TRIDENT) || enchantment.enchantment == Enchantments.IMPALING) {
+                        enchantments.add(enchantment);
+                    }
+                });
+                Enchantment piercing = Enchantments.PIERCING;
+                for (int level = piercing.getMaxLevel(); level > piercing.getMinLevel() - 1; --level) {
+                    if (i >= piercing.getMinPower(level) && i <= piercing.getMaxPower(level)) {
+                        enchantments.add(new EnchantmentLevelEntry(piercing, level));
+                        break;
+                    }
                 }
-            });
-            Enchantment piercing = Enchantments.PIERCING;
-            for (int level = piercing.getMaxLevel(); level > piercing.getMinLevel() - 1; --level) {
-                if (i >= piercing.getMinPower(level) && i <= piercing.getMaxPower(level)) {
-                    enchantments.add(new EnchantmentLevelEntry(piercing, level));
-                    break;
-                }
+                info.setReturnValue(enchantments);
             }
-            info.setReturnValue(enchantments);
         }
     }
 
