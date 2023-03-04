@@ -116,13 +116,13 @@ public class ItemInit {
     public static final Ninjato_Item NETHERITE_NINJATO_ITEM = register("netherite_ninjato",
             new Ninjato_Item(ToolMaterials.NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Sickle
-    public static final Sickle_Item WOODEN_SICKLE_ITEM = register("wooden_sickle", new Sickle_Item(ToolMaterials.WOOD, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Sickle_Item STONE_SICKLE_ITEM = register("stone_sickle", new Sickle_Item(ToolMaterials.STONE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Sickle_Item IRON_SICKLE_ITEM = register("iron_sickle", new Sickle_Item(ToolMaterials.IRON, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Sickle_Item GOLDEN_SICKLE_ITEM = register("golden_sickle", new Sickle_Item(ToolMaterials.GOLD, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Sickle_Item DIAMOND_SICKLE_ITEM = register("diamond_sickle", new Sickle_Item(ToolMaterials.DIAMOND, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item WOODEN_SICKLE_ITEM = register("wooden_sickle", new Sickle_Item(ToolMaterials.WOOD, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item STONE_SICKLE_ITEM = register("stone_sickle", new Sickle_Item(ToolMaterials.STONE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item IRON_SICKLE_ITEM = register("iron_sickle", new Sickle_Item(ToolMaterials.IRON, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item GOLDEN_SICKLE_ITEM = register("golden_sickle", new Sickle_Item(ToolMaterials.GOLD, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Sickle_Item DIAMOND_SICKLE_ITEM = register("diamond_sickle", new Sickle_Item(ToolMaterials.DIAMOND, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Sickle_Item NETHERITE_SICKLE_ITEM = register("netherite_sickle",
-            new Sickle_Item(ToolMaterials.NETHERITE, 2, -2.3F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            new Sickle_Item(ToolMaterials.NETHERITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Rapier
     public static final Rapier_Item WOODEN_RAPIER_ITEM = register("wooden_rapier", new Rapier_Item(ToolMaterials.WOOD, 3, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Rapier_Item STONE_RAPIER_ITEM = register("stone_rapier", new Rapier_Item(ToolMaterials.STONE, 3, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
