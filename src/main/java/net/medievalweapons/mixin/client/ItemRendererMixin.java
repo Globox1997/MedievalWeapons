@@ -2,6 +2,7 @@ package net.medievalweapons.mixin.client;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
+import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Healing_Staff_Item;
 import net.medievalweapons.item.Javelin_Item;
@@ -37,8 +38,8 @@ public class ItemRendererMixin {
     @Inject(method = "Lnet/minecraft/client/render/item/ItemRenderer;renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/world/World;III)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/item/ItemRenderer;renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V"))
     private void renderItemMixin(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
             World world, int light, int overlay, int seed, CallbackInfo info) {
-        if (entity != null && (renderMode == ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND || renderMode == ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND) && entity.isBlocking()
-                && (stack.getItem() instanceof Long_Sword_Item || stack.getItem() instanceof Big_Axe_Item || stack.getItem() instanceof Thalleous_Sword_Item)) {
+        if (entity != null && !CompatInit.isBetterCombatLoaded && (renderMode == ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND || renderMode == ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND)
+                && entity.isBlocking() && (stack.getItem() instanceof Long_Sword_Item || stack.getItem() instanceof Big_Axe_Item || stack.getItem() instanceof Thalleous_Sword_Item)) {
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(leftHanded ? -20F : 20F));
         }
     }
