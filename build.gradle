@@ -58,6 +58,8 @@ dependencies {
 	modCompileOnly "curse.maven:additional-additions-508556:3911998"
 	// Mythic Upgrades
 	modCompileOnly "curse.maven:mythic-upgrades-fabric-663567:4388965"
+	// LevelZ
+	modCompileOnly "curse.maven:levelz-517130:4137159'"
 
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
 	//  	exclude(group: "net.fabricmc.fabric-api")

@@ -2,11 +2,16 @@ package net.medievalweapons.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.levelz.access.PlayerStatsManagerAccess;
+import net.levelz.init.ConfigInit;
+import net.levelz.stats.Skill;
+import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.item.Javelin_Item;
 import net.medievalweapons.network.EntitySpawnPacket;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FlyingItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -15,7 +20,6 @@ import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
@@ -94,14 +98,21 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
         }
         this.piercedEntities.add(hitEntity.getUuid());
         float damage = ((Javelin_Item) this.javelin.getItem()).getAttackDamage() * 2.35F;
-        if (hitEntity instanceof AnimalEntity) {
+        if (hitEntity instanceof LivingEntity && ((LivingEntity) hitEntity).getGroup() == EntityGroup.AQUATIC) {
             int impalingLevel = EnchantmentHelper.getLevel(Enchantments.IMPALING, this.javelin);
             if (impalingLevel > 0) {
                 damage += impalingLevel * 1.5F;
             }
         }
         this.dealtDamage = true;
+
         Entity owner = this.getOwner();
+        if (CompatItems.isLevelZLoaded && owner instanceof PlayerEntity) {
+            int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
+            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > world.random.nextFloat() ? damage
+                    : (double) archeryLevel * ConfigInit.CONFIG.archeryBowExtraDamage;
+        }
+
         DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
         SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
 
@@ -114,6 +125,11 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
                 if (owner instanceof LivingEntity) {
                     EnchantmentHelper.onUserDamaged(hitLivingEntity, owner);
                     EnchantmentHelper.onTargetDamaged((LivingEntity) owner, hitLivingEntity);
+                }
+
+                int fireAspectLevel = EnchantmentHelper.getLevel(Enchantments.FIRE_ASPECT, this.javelin);
+                if (fireAspectLevel > 0) {
+                    hitLivingEntity.setOnFireFor(fireAspectLevel * 4);
                 }
                 this.playSound(soundEvent, 1.0F, 1.0F);
                 this.onHit(hitLivingEntity);
