@@ -34,29 +34,29 @@ public class EnchantmentHelperMixin {
 
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item)
             info.setReturnValue(SweepingEnchantment.getMultiplier(i + 1));
-
-        if (i > 0 && itemStack.getItem() instanceof Lance_Item)
-            info.setReturnValue(SweepingEnchantment.getMultiplier(i > 1 ? i - 1 : 0));
     }
 
     @Inject(method = "getPossibleEntries", at = @At("TAIL"), cancellable = true)
     private static void getPossibleEntriesMixin(int i, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> info) {
-        if (stack.getItem() instanceof Javelin_Item) {
-            List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
-            if (currentEnchantments != null) {
+        List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
+        if (currentEnchantments != null) {
+            if (stack.getItem() instanceof Javelin_Item) {
                 List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if (!(enchantment.enchantment.type == EnchantmentTarget.TRIDENT) || enchantment.enchantment == Enchantments.IMPALING) {
+                    if ((enchantment.enchantment.type == EnchantmentTarget.WEAPON && enchantment.enchantment != Enchantments.SWEEPING) || enchantment.enchantment == Enchantments.IMPALING
+                            || enchantment.enchantment == Enchantments.PIERCING || enchantment.enchantment == Enchantments.LOYALTY) {
                         enchantments.add(enchantment);
                     }
                 });
-                Enchantment piercing = Enchantments.PIERCING;
-                for (int level = piercing.getMaxLevel(); level > piercing.getMinLevel() - 1; --level) {
-                    if (i >= piercing.getMinPower(level) && i <= piercing.getMaxPower(level)) {
-                        enchantments.add(new EnchantmentLevelEntry(piercing, level));
-                        break;
+
+                info.setReturnValue(enchantments);
+            } else if (stack.getItem() instanceof Lance_Item) {
+                List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
+                currentEnchantments.forEach(enchantment -> {
+                    if (enchantment.enchantment.type == EnchantmentTarget.WEAPON && enchantment.enchantment != Enchantments.SWEEPING) {
+                        enchantments.add(enchantment);
                     }
-                }
+                });
                 info.setReturnValue(enchantments);
             }
         }
