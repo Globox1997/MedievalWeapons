@@ -30,7 +30,6 @@ public class CompatItems {
     public static Boolean isBYGLoaded = fabricLoader.isModLoaded("byg");
     public static Boolean isAdditionalAdditionsLoaded = fabricLoader.isModLoaded("additionaladditions");
     public static Boolean isMythicUpgradesLoaded = fabricLoader.isModLoaded("mythicupgrades");
-    public static Boolean isLevelZLoaded = fabricLoader.isModLoaded("levelz");
 
     // DragonLoot
     public static Francisca_Item DRAGON_FRANCISCA_ITEM;

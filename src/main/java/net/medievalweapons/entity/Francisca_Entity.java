@@ -5,7 +5,7 @@ import net.fabricmc.api.Environment;
 import net.levelz.access.PlayerStatsManagerAccess;
 import net.levelz.init.ConfigInit;
 import net.levelz.stats.Skill;
-import net.medievalweapons.compat.CompatItems;
+import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.item.Francisca_Item;
 import net.medievalweapons.network.EntitySpawnPacket;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -84,7 +84,7 @@ public class Francisca_Entity extends PersistentProjectileEntity implements Flyi
         }
 
         Entity owner = this.getOwner();
-        if (CompatItems.isLevelZLoaded && owner instanceof PlayerEntity) {
+        if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity) {
             int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
             damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > world.random.nextFloat() ? damage
                     : (double) archeryLevel * ConfigInit.CONFIG.archeryBowExtraDamage;

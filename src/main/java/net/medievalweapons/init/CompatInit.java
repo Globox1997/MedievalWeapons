@@ -10,6 +10,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 public class CompatInit {
 
     public static final boolean isBetterCombatLoaded = FabricLoader.getInstance().isModLoaded("bettercombat");
+    public static final Boolean isLevelZLoaded = FabricLoader.getInstance().isModLoaded("levelz");
 
     public static void init() {
     }
