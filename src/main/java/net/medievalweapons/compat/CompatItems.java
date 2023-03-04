@@ -1,7 +1,10 @@
 package net.medievalweapons.compat;
 
+import java.util.HashMap;
+
 import org.betterx.betterend.item.material.EndToolMaterial;
 import org.betterx.betternether.items.materials.BNToolMaterial;
+import org.betterx.betternether.registry.NetherEnchantments;
 
 import dqu.additionaladditions.material.GildedNetheriteToolMaterial;
 import dqu.additionaladditions.material.RoseGoldToolMaterial;
@@ -11,6 +14,7 @@ import net.id.aether.items.tools.AetherToolMaterials;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.medievalweapons.item.*;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.trique.mythicupgrades.item.ModToolMaterials;
 import nourl.mythicmetals.tools.MythicToolMaterials;
@@ -38,6 +42,7 @@ public class CompatItems {
     public static Javelin_Item CINCINNASITE_JAVELIN_ITEM;
     public static Francisca_Item CINCINNASITE_DIAMOND_FRANCISCA_ITEM;
     public static Javelin_Item CINCINNASITE_DIAMOND_JAVELIN_ITEM;
+    public static HashMap<Enchantment, Integer> DEFAULT_RUBY_ENCHANTS = new HashMap<>();
 
     // Better End
     public static Francisca_Item TERMINITE_FRANCISCA_ITEM;
@@ -131,6 +136,8 @@ public class CompatItems {
             ItemInit.MATERIAL_STRINGS.add("thallasium");
         }
         if (isBetterNetherLoaded) {
+            DEFAULT_RUBY_ENCHANTS.put(NetherEnchantments.RUBY_FIRE, 1);
+
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_small_axe"), new Small_Axe_Item(BNToolMaterial.NETHER_RUBY, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_long_sword"), new Long_Sword_Item(BNToolMaterial.NETHER_RUBY, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_dagger"), new Dagger_Item(BNToolMaterial.NETHER_RUBY, 2, -2.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));

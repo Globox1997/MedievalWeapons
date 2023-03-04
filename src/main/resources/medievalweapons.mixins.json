@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "net.medievalweapons.mixin",
   "compatibilityLevel": "JAVA_17",
+  "plugin": "net.medievalweapons.mixin.MedievalWeaponsMixinPlugin",
   "mixins": [
     "PlayerEntityMixin",
     "EnchantmentHelperMixin",
@@ -12,7 +13,19 @@
     "RecipeManagerMixin",
     "ServerAdvancementLoaderMixin",
     "TagGroupLoaderMixin",
-    "BowItemMixin"
+    "BowItemMixin",
+    "compat.Big_Axe_ItemMixin",
+    "compat.Dagger_ItemMixin",
+    "compat.Francisca_ItemMixin",
+    "compat.Healing_Staff_ItemMixin",
+    "compat.Javelin_ItemMixin",
+    "compat.Lance_ItemMixin",
+    "compat.Long_Sword_ItemMixin",
+    "compat.Mace_ItemMixin",
+    "compat.Ninjato_ItemMixin",
+    "compat.Rapier_ItemMixin",
+    "compat.Sickle_ItemMixin",
+    "compat.Small_Axe_ItemMixin"
   ],
   "client": [
     "client.BipedEntityModelMixin",
