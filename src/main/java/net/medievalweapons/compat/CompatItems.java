@@ -95,7 +95,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("terminite_javelin"), TERMINITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("terminite_ninjato"), new Ninjato_Item(EndToolMaterial.TERMINITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("terminite_sickle"), new Sickle_Item(EndToolMaterial.TERMINITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
-            ItemInit.ITEMS.put(MedievalMain.ID("terminite_rapier"), new Rapier_Item(EndToolMaterial.TERMINITE, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+            ItemInit.ITEMS.put(MedievalMain.ID("terminite_rapier"), new Rapier_Item(EndToolMaterial.TERMINITE, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
 
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_small_axe"), new Small_Axe_Item(EndToolMaterial.AETERNIUM, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_long_sword"), new Long_Sword_Item(EndToolMaterial.AETERNIUM, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -112,7 +112,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_javelin"), AETERNIUM_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_ninjato"), new Ninjato_Item(EndToolMaterial.AETERNIUM, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("aeternium_sickle"), new Sickle_Item(EndToolMaterial.AETERNIUM, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
-            ItemInit.ITEMS.put(MedievalMain.ID("aeternium_rapier"), new Rapier_Item(EndToolMaterial.AETERNIUM, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+            ItemInit.ITEMS.put(MedievalMain.ID("aeternium_rapier"), new Rapier_Item(EndToolMaterial.AETERNIUM, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
 
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_small_axe"), new Small_Axe_Item(EndToolMaterial.THALLASIUM, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_long_sword"), new Long_Sword_Item(EndToolMaterial.THALLASIUM, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP)));
@@ -129,7 +129,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_javelin"), THALLASIUM_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_ninjato"), new Ninjato_Item(EndToolMaterial.THALLASIUM, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP)));
             ItemInit.ITEMS.put(MedievalMain.ID("thallasium_sickle"), new Sickle_Item(EndToolMaterial.THALLASIUM, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP)));
-            ItemInit.ITEMS.put(MedievalMain.ID("thallasium_rapier"), new Rapier_Item(EndToolMaterial.THALLASIUM, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+            ItemInit.ITEMS.put(MedievalMain.ID("thallasium_rapier"), new Rapier_Item(EndToolMaterial.THALLASIUM, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
 
             ItemInit.MATERIAL_STRINGS.add("terminite");
             ItemInit.MATERIAL_STRINGS.add("aeternium");
@@ -154,7 +154,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_javelin"), NETHER_RUBY_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_ninjato"), new Ninjato_Item(BNToolMaterial.NETHER_RUBY, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_sickle"), new Sickle_Item(BNToolMaterial.NETHER_RUBY, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_rapier"), new Rapier_Item(BNToolMaterial.NETHER_RUBY, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("nether_ruby_rapier"), new Rapier_Item(BNToolMaterial.NETHER_RUBY, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_small_axe"), new Small_Axe_Item(BNToolMaterial.CINCINNASITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_long_sword"), new Long_Sword_Item(BNToolMaterial.CINCINNASITE, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -172,7 +172,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_javelin"), CINCINNASITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_ninjato"), new Ninjato_Item(BNToolMaterial.CINCINNASITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_sickle"), new Sickle_Item(BNToolMaterial.CINCINNASITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_rapier"), new Rapier_Item(BNToolMaterial.CINCINNASITE, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_rapier"), new Rapier_Item(BNToolMaterial.CINCINNASITE, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_small_axe"),
                     new Small_Axe_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -199,7 +199,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_sickle"),
                     new Sickle_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("cincinnasite_diamond_rapier"),
-                    new Rapier_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                    new Rapier_Item(BNToolMaterial.CINCINNASITE_DIAMOND, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("nether_ruby");
             ItemInit.MATERIAL_STRINGS.add("cincinnasite");
@@ -222,7 +222,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("dragon_javelin"), DRAGON_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("dragon_ninjato"), new Ninjato_Item(DragonToolMaterial.getInstance(), 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("dragon_sickle"), new Sickle_Item(DragonToolMaterial.getInstance(), 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("dragon_rapier"), new Rapier_Item(DragonToolMaterial.getInstance(), 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("dragon_rapier"), new Rapier_Item(DragonToolMaterial.getInstance(), 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("dragon");
         }
@@ -243,7 +243,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_ninjato"), new Ninjato_Item(MythicToolMaterials.ADAMANTITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("adamantite_sickle"), new Sickle_Item(MythicToolMaterials.ADAMANTITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_rapier"), new Rapier_Item(MythicToolMaterials.ADAMANTITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("adamantite_rapier"), new Rapier_Item(MythicToolMaterials.ADAMANTITE, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("adamantite");
         }
@@ -264,7 +264,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("gravitite_javelin"), GRAVITITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("gravitite_ninjato"), new Ninjato_Item(AetherToolMaterials.GRAVITITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("gravitite_sickle"), new Sickle_Item(AetherToolMaterials.GRAVITITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("gravitite_rapier"), new Rapier_Item(AetherToolMaterials.GRAVITITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("gravitite_rapier"), new Rapier_Item(AetherToolMaterials.GRAVITITE, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("zanite_small_axe"), new Small_Axe_Item(AetherToolMaterials.ZANITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("zanite_long_sword"), new Long_Sword_Item(AetherToolMaterials.ZANITE, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -281,7 +281,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("zanite_javelin"), ZANITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("zanite_ninjato"), new Ninjato_Item(AetherToolMaterials.ZANITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("zanite_sickle"), new Sickle_Item(AetherToolMaterials.ZANITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("zanite_rapier"), new Rapier_Item(AetherToolMaterials.ZANITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("zanite_rapier"), new Rapier_Item(AetherToolMaterials.ZANITE, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("gravitite");
             ItemInit.MATERIAL_STRINGS.add("zanite");
@@ -302,7 +302,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("pendorite_javelin"), PENDORITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("pendorite_ninjato"), new Ninjato_Item(BYGTier.PENDORITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("pendorite_sickle"), new Sickle_Item(BYGTier.PENDORITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_rapier"), new Rapier_Item(BYGTier.PENDORITE, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("pendorite_rapier"), new Rapier_Item(BYGTier.PENDORITE, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("pendorite");
         }
@@ -328,7 +328,7 @@ public class CompatItems {
                     new Ninjato_Item(GildedNetheriteToolMaterial.MATERIAL, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("gilded_netherite_sickle"), new Sickle_Item(GildedNetheriteToolMaterial.MATERIAL, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("gilded_netherite_rapier"),
-                    new Rapier_Item(GildedNetheriteToolMaterial.MATERIAL, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                    new Rapier_Item(GildedNetheriteToolMaterial.MATERIAL, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_small_axe"), new Small_Axe_Item(RoseGoldToolMaterial.MATERIAL, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_long_sword"), new Long_Sword_Item(RoseGoldToolMaterial.MATERIAL, 6, -3.0F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -346,7 +346,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_javelin"), ROSE_GOLD_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_ninjato"), new Ninjato_Item(RoseGoldToolMaterial.MATERIAL, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_sickle"), new Sickle_Item(RoseGoldToolMaterial.MATERIAL, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_rapier"), new Rapier_Item(RoseGoldToolMaterial.MATERIAL, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("rose_gold_rapier"), new Rapier_Item(RoseGoldToolMaterial.MATERIAL, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("gilded_netherite");
             ItemInit.MATERIAL_STRINGS.add("rose_gold");
@@ -369,7 +369,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_javelin"), RUBY_NETHERITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_ninjato"), new Ninjato_Item(ModToolMaterials.RUBY_NETHERITE, 2, -2.1F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_sickle"), new Sickle_Item(ModToolMaterials.RUBY_NETHERITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_rapier"), new Rapier_Item(ModToolMaterials.RUBY_NETHERITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("ruby_netherite_rapier"), new Rapier_Item(ModToolMaterials.RUBY_NETHERITE, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_small_axe"),
                     new Small_Axe_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 5, -2.9F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
@@ -394,7 +394,7 @@ public class CompatItems {
             ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_sickle"),
                     new Sickle_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("sapphire_netherite_rapier"),
-                    new Rapier_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+                    new Rapier_Item(ModToolMaterials.SAPPHIRE_NETHERITE, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("ruby_netherite");
             ItemInit.MATERIAL_STRINGS.add("sapphire_netherite");

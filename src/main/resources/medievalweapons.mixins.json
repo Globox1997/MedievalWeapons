@@ -14,6 +14,7 @@
     "ServerAdvancementLoaderMixin",
     "TagGroupLoaderMixin",
     "BowItemMixin",
+    "MobEntityMixin",
     "compat.Big_Axe_ItemMixin",
     "compat.Dagger_ItemMixin",
     "compat.Francisca_ItemMixin",

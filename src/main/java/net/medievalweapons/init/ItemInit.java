@@ -124,13 +124,13 @@ public class ItemInit {
     public static final Sickle_Item NETHERITE_SICKLE_ITEM = register("netherite_sickle",
             new Sickle_Item(ToolMaterials.NETHERITE, 2, -2.2F, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Rapier
-    public static final Rapier_Item WOODEN_RAPIER_ITEM = register("wooden_rapier", new Rapier_Item(ToolMaterials.WOOD, 3, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Rapier_Item STONE_RAPIER_ITEM = register("stone_rapier", new Rapier_Item(ToolMaterials.STONE, 3, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Rapier_Item IRON_RAPIER_ITEM = register("iron_rapier", new Rapier_Item(ToolMaterials.IRON, 3, -2.0F, 1, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Rapier_Item GOLDEN_RAPIER_ITEM = register("golden_rapier", new Rapier_Item(ToolMaterials.GOLD, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
-    public static final Rapier_Item DIAMOND_RAPIER_ITEM = register("diamond_rapier", new Rapier_Item(ToolMaterials.DIAMOND, 3, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item WOODEN_RAPIER_ITEM = register("wooden_rapier", new Rapier_Item(ToolMaterials.WOOD, 2, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item STONE_RAPIER_ITEM = register("stone_rapier", new Rapier_Item(ToolMaterials.STONE, 2, -2.0F, 0, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item IRON_RAPIER_ITEM = register("iron_rapier", new Rapier_Item(ToolMaterials.IRON, 2, -2.0F, 1, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item GOLDEN_RAPIER_ITEM = register("golden_rapier", new Rapier_Item(ToolMaterials.GOLD, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
+    public static final Rapier_Item DIAMOND_RAPIER_ITEM = register("diamond_rapier", new Rapier_Item(ToolMaterials.DIAMOND, 2, -2.0F, 2, new Item.Settings().group(MedievalMain.GROUP)));
     public static final Rapier_Item NETHERITE_RAPIER_ITEM = register("netherite_rapier",
-            new Rapier_Item(ToolMaterials.NETHERITE, 3, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
+            new Rapier_Item(ToolMaterials.NETHERITE, 2, -2.0F, 3, new Item.Settings().group(MedievalMain.GROUP).fireproof()));
     // Long Bow
     public static final Long_Bow_Item LONG_BOW_ITEM = register("long_bow", new Long_Bow_Item(new Item.Settings().maxDamage(443).group(MedievalMain.GROUP)));
     // Recurve Bow
