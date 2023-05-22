@@ -17,6 +17,7 @@ repositories {
 	maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
 	maven { url "https://cursemaven.com" }
 	maven { url = uri("https://ueaj.dev/maven") }
+	maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
@@ -38,8 +39,9 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// ARRP
-	modApi ("net.devtech:arrp:${project.arrp_version}")
-
+	modApi ("maven.modrinth:arrp:${project.arrp_version}"){
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// DragonLoot
 	modCompileOnly "curse.maven:dragonloot-424480:3596055"
 	//Better End/Nether
@@ -67,6 +69,12 @@ dependencies {
 	// modCompileOnly modRuntime('curse.maven:enchantgiver-434579:3347061') {
 	//  	exclude(group: "net.fabricmc.fabric-api")
 	// }
+}
+
+configurations.all {
+   resolutionStrategy {
+     force("net.fabricmc:fabric-loader:$loader_version")
+   }
 }
 
 processResources {
