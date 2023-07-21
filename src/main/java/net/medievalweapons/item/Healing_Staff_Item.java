@@ -71,13 +71,13 @@ public class Healing_Staff_Item extends SwordItem {
                     if (!ConfigInit.CONFIG.old_healing_staff_behavior) {
                         HitResult hitResult = playerEntity.raycast(8.0D + addition, 0.0F, false);
                         if (hitResult.getType().equals(HitResult.Type.BLOCK)) {
-                            playerEntity.world.addParticle(ParticleInit.HEALING_AURA_PARTICLE, hitResult.getPos().x - 0.2D + world.random.nextDouble() * 0.4D,
+                            playerEntity.getWorld().addParticle(ParticleInit.HEALING_AURA_PARTICLE, hitResult.getPos().x - 0.2D + world.random.nextDouble() * 0.4D,
                                     hitResult.getPos().y - 0.1D + world.random.nextDouble() * 0.2D, hitResult.getPos().z - 0.2D + world.random.nextDouble() * 0.4D, 0.0D, 0.0D, 0.0D);
                         }
                     }
                     for (int u = 0; u < 3; u++) {
-                        playerEntity.world.addParticle(ParticleInit.HEALING_AURA_PARTICLE, playerEntity.getParticleX(0.5D), playerEntity.getRandomBodyY(), playerEntity.getParticleZ(0.5D), 0.0D, 0.0D,
-                                0.0D);
+                        playerEntity.getWorld().addParticle(ParticleInit.HEALING_AURA_PARTICLE, playerEntity.getParticleX(0.5D), playerEntity.getRandomBodyY(), playerEntity.getParticleZ(0.5D), 0.0D,
+                                0.0D, 0.0D);
                     }
                 } else if (i % 80 == 0 && i < 241) {
                     stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));

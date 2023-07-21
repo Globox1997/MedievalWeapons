@@ -23,10 +23,10 @@ public class ClientLivingEntityMixin {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
-            livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.world.random.nextFloat() * 0.2F);
+            livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
             info.cancel();
         } else if (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item) {
-            livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F, 0.9F + livingEntity.world.random.nextFloat() * 0.2F);
+            livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
             info.cancel();
         }
     }

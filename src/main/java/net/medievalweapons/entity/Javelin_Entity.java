@@ -6,8 +6,8 @@ import net.levelz.access.PlayerStatsManagerAccess;
 import net.levelz.init.ConfigInit;
 import net.levelz.stats.Skill;
 import net.medievalweapons.init.CompatInit;
+import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.Javelin_Item;
-import net.medievalweapons.network.EntitySpawnPacket;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -16,7 +16,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FlyingItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -26,7 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
-import net.minecraft.network.Packet;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -75,11 +73,6 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.createPacket(this);
-    }
-
-    @Override
     protected ItemStack asItemStack() {
         return this.javelin.copy();
     }
@@ -109,7 +102,7 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
         Entity owner = this.getOwner();
         if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity) {
             int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
-            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > world.random.nextFloat() ? damage
+            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > this.getWorld().getRandom().nextFloat() ? damage
                     : (double) archeryLevel * ConfigInit.CONFIG.archeryBowExtraDamage;
         }
 
@@ -159,7 +152,7 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
         byte i = this.dataTracker.get(LOYALTY);
         if (i > 0 && (this.dealtDamage || this.isNoClip()) && entity != null) {
             if (!this.isOwnerAlive()) {
-                if (!this.world.isClient && this.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED) {
+                if (!this.getWorld().isClient() && this.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED) {
                     this.dropStack(this.asItemStack(), 0.1f);
                 }
                 this.discard();
@@ -167,7 +160,7 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
                 this.setNoClip(true);
                 Vec3d vec3d = entity.getEyePos().subtract(this.getPos());
                 this.setPos(this.getX(), this.getY() + vec3d.y * 0.015 * (double) i, this.getZ());
-                if (this.world.isClient) {
+                if (this.getWorld().isClient()) {
                     this.lastRenderY = this.getY();
                 }
                 double d = 0.05 * (double) i;
@@ -256,8 +249,8 @@ public class Javelin_Entity extends PersistentProjectileEntity implements Flying
         ENCHANTMENT_GLINT = DataTracker.registerData(Javelin_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    private static DamageSource createDamageSource(Entity entity, Entity owner) {
-        return new ProjectileDamageSource("javelin", entity, owner).setProjectile();
+    private DamageSource createDamageSource(Entity source, Entity attacker) {
+        return attacker.getDamageSources().create(EntityInit.JAVELIN, source, attacker);
     }
 
 }

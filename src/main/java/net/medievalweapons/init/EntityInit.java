@@ -13,8 +13,12 @@ import net.medievalweapons.item.Javelin_Item;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.damage.DamageType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class EntityInit {
     // Map
@@ -36,11 +40,15 @@ public class EntityInit {
     // Healing Ball
     public static final EntityType<Healing_Ball_Entity> HEALING_BALL_ENTITY = register("healing_ball",
             FabricEntityTypeBuilder.<Healing_Ball_Entity>create(SpawnGroup.MISC, Healing_Ball_Entity::new).dimensions(EntityDimensions.fixed(0.3F, 0.3F)).build());
+    // Damage Types
+    public static final RegistryKey<DamageType> JAVELIN = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("medievalweapons", "javelin"));
+    public static final RegistryKey<DamageType> FRANCISCA = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("medievalweapons", "francisca"));
+    public static final RegistryKey<DamageType> BLEEDING = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("medievalweapons", "bleed"));
 
     public static void init() {
         CompatEntities.loadEntities();
         for (Identifier id : ENTITY_TYPES.keySet()) {
-            Registry.register(Registry.ENTITY_TYPE, id, ENTITY_TYPES.get(id));
+            Registry.register(Registries.ENTITY_TYPE, id, ENTITY_TYPES.get(id));
         }
     }
 

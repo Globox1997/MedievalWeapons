@@ -99,9 +99,9 @@ public class RecipeGenerator {
         return json;
     }
 
-    public static JsonObject generateSmithingJson(Identifier base, Identifier addition, String baseType, String additionType, Identifier output) {
+    public static JsonObject generateSmithingJson(Identifier base, Identifier addition, String baseType, String additionType, Identifier output, Identifier template) {
         JsonObject json = new JsonObject();
-        json.addProperty("type", "minecraft:smithing");
+        json.addProperty("type", "minecraft:smithing_transform");
 
         JsonObject obj = new JsonObject();
         obj.addProperty(baseType, base.toString());
@@ -114,6 +114,10 @@ public class RecipeGenerator {
         obj = new JsonObject();
         obj.addProperty("item", output.toString());
         json.add("result", obj);
+
+        obj = new JsonObject();
+        obj.addProperty("item", output.toString());
+        json.add("template", obj);
 
         return json;
     }

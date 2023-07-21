@@ -1,5 +1,8 @@
 package net.medievalweapons.entity.renderer;
 
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.medievalweapons.entity.Healing_Ball_Entity;
@@ -10,11 +13,9 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Matrix3f;
-import net.minecraft.util.math.Matrix4f;
+import net.minecraft.util.math.RotationAxis;
 
 @Environment(EnvType.CLIENT)
 public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_Entity> {
@@ -35,7 +36,7 @@ public class Healing_Ball_Entity_Renderer extends EntityRenderer<Healing_Ball_En
         matrixStack.push();
         matrixStack.scale(0.4F, 0.4F, 0.4F);
         matrixStack.multiply(this.dispatcher.getRotation());
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
         MatrixStack.Entry entry = matrixStack.peek();
         Matrix4f matrix4f = entry.getPositionMatrix();
         Matrix3f matrix3f = entry.getNormalMatrix();

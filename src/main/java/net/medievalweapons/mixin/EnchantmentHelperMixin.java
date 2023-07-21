@@ -32,8 +32,9 @@ public class EnchantmentHelperMixin {
     private static void getSweepingMultiplierMixin(LivingEntity entity, CallbackInfoReturnable<Float> info, int i) {
         ItemStack itemStack = entity.getMainHandStack();
 
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item)
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
             info.setReturnValue(SweepingEnchantment.getMultiplier(i + 1));
+        }
     }
 
     @Inject(method = "getPossibleEntries", at = @At("TAIL"), cancellable = true)
@@ -43,7 +44,7 @@ public class EnchantmentHelperMixin {
             if (stack.getItem() instanceof Javelin_Item) {
                 List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if ((enchantment.enchantment.type == EnchantmentTarget.WEAPON && enchantment.enchantment != Enchantments.SWEEPING) || enchantment.enchantment == Enchantments.IMPALING
+                    if ((enchantment.enchantment.target == EnchantmentTarget.WEAPON && enchantment.enchantment != Enchantments.SWEEPING) || enchantment.enchantment == Enchantments.IMPALING
                             || enchantment.enchantment == Enchantments.PIERCING || enchantment.enchantment == Enchantments.LOYALTY) {
                         enchantments.add(enchantment);
                     }
@@ -53,7 +54,7 @@ public class EnchantmentHelperMixin {
             } else if (stack.getItem() instanceof Lance_Item) {
                 List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if (enchantment.enchantment.type == EnchantmentTarget.WEAPON && enchantment.enchantment != Enchantments.SWEEPING) {
+                    if (enchantment.enchantment.target == EnchantmentTarget.WEAPON && enchantment.enchantment != Enchantments.SWEEPING) {
                         enchantments.add(enchantment);
                     }
                 });

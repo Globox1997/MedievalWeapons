@@ -311,7 +311,7 @@
   "item.medievalweapons.thalleous_sword": "Thalleous Sword",
   "entity.medievalweapons.thalleous_sword": "Thalleous Sword",
 
-  "itemGroup.medievalweapons.group": "Medieval Weapons",
+  "item.medievalweapons.item_group": "Medieval Weapons",
   "item.medievalweapons.double_handed.tooltip": "§cDouble Handed",
 
   "text.autoconfig.medievalweapons.title": "Medieval Weapons Config",
@@ -324,5 +324,7 @@
   "death.attack.bleed": "%1$s bled out",
 
   "effect.medievalweapons.stun": "Stun",
-  "effect.medievalweapons.bleed": "Bleed"
+  "effect.medievalweapons.bleed": "Bleed",
+
+  "attribute.name.generic.attack_range": "Attack Range"
 }

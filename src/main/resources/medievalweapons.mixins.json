@@ -26,7 +26,8 @@
     "compat.Ninjato_ItemMixin",
     "compat.Rapier_ItemMixin",
     "compat.Sickle_ItemMixin",
-    "compat.Small_Axe_ItemMixin"
+    "compat.Small_Axe_ItemMixin",
+    "compat.ServerPlayNetworkHandlerMixin"
   ],
   "client": [
     "client.BipedEntityModelMixin",
@@ -34,7 +35,9 @@
     "client.ClientLivingEntityMixin",
     "client.ItemRendererMixin",
     "client.MinecraftClientMixin",
-    "client.InGameHudMixin"
+    "client.InGameHudMixin",
+    "client.GameRendererMixin",
+    "client.DrawContextMixin"
   ],
   "injectors": {
     "defaultRequire": 1

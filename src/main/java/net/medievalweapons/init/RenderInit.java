@@ -2,7 +2,6 @@ package net.medievalweapons.init;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.medievalweapons.compat.CompatRender;
@@ -10,14 +9,11 @@ import net.medievalweapons.entity.renderer.Francisca_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Healing_Ball_Entity_Renderer;
 import net.medievalweapons.entity.renderer.Javelin_Entity_Renderer;
 import net.medievalweapons.init.ParticleInit.HealingAuraParticle;
-import net.medievalweapons.network.EntitySpawnPacket;
 
 @Environment(EnvType.CLIENT)
 public class RenderInit {
 
     public static void init() {
-        // Packet
-        ClientPlayNetworking.registerGlobalReceiver(EntitySpawnPacket.ID, EntitySpawnPacket::onPacket);
         // Francisca
         EntityRendererRegistry.register(EntityInit.WOODEN_FRANCISCA, Francisca_Entity_Renderer::new);
         EntityRendererRegistry.register(EntityInit.STONE_FRANCISCA, Francisca_Entity_Renderer::new);

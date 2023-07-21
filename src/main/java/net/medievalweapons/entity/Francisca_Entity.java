@@ -6,8 +6,8 @@ import net.levelz.access.PlayerStatsManagerAccess;
 import net.levelz.init.ConfigInit;
 import net.levelz.stats.Skill;
 import net.medievalweapons.init.CompatInit;
+import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.Francisca_Item;
-import net.medievalweapons.network.EntitySpawnPacket;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -15,7 +15,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FlyingItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -23,7 +22,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
@@ -58,11 +56,6 @@ public class Francisca_Entity extends PersistentProjectileEntity implements Flyi
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.createPacket(this);
-    }
-
-    @Override
     protected ItemStack asItemStack() {
         return this.francisca.copy();
     }
@@ -86,7 +79,7 @@ public class Francisca_Entity extends PersistentProjectileEntity implements Flyi
         Entity owner = this.getOwner();
         if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity) {
             int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
-            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > world.random.nextFloat() ? damage
+            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > this.getWorld().getRandom().nextFloat() ? damage
                     : (double) archeryLevel * ConfigInit.CONFIG.archeryBowExtraDamage;
         }
 
@@ -162,8 +155,8 @@ public class Francisca_Entity extends PersistentProjectileEntity implements Flyi
         ENCHANTMENT_GLINT = DataTracker.registerData(Francisca_Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    private static DamageSource createDamageSource(Entity entity, Entity owner) {
-        return new ProjectileDamageSource("francisca", entity, owner).setProjectile();
+    private DamageSource createDamageSource(Entity source, Entity attacker) {
+        return attacker.getDamageSources().create(EntityInit.FRANCISCA, source, attacker);
     }
 
 }

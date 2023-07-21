@@ -16,6 +16,7 @@ import net.medievalweapons.item.Long_Sword_Item;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -43,8 +44,9 @@ public abstract class LivingEntityMixin extends Entity {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                || itemStack.getItem() instanceof Big_Axe_Item)
+                || itemStack.getItem() instanceof Big_Axe_Item) {
             info.setReturnValue(false);
+        }
     }
 
     @Inject(method = "blockedByShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;dotProduct(Lnet/minecraft/util/math/Vec3d;)D", shift = Shift.AFTER), cancellable = true)
@@ -53,11 +55,20 @@ public abstract class LivingEntityMixin extends Entity {
         ItemStack itemStack = livingEntity.getActiveItem();
         if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
                 || itemStack.getItem() instanceof Big_Axe_Item) {
-            if (livingEntity instanceof PlayerEntity)
+            if (livingEntity instanceof PlayerEntity) {
                 ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), ConfigInit.CONFIG.weapon_blocking_cooldown);
+            }
             livingEntity.clearActiveItem();
-            if (!world.isClient)
+            if (!this.getWorld().isClient()) {
                 livingEntity.getMainHandStack().damage(1, livingEntity, (p) -> p.sendToolBreakStatus(p.getActiveHand()));
+            }
+        }
+    }
+
+    @Inject(method = "createLivingAttributes", at = @At("RETURN"), require = 1, allow = 1, cancellable = true)
+    private static void addAttributes(final CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
+        if (!CompatInit.isReachEntityAttributesLoaded) {
+            info.getReturnValue().add(CompatInit.ATTACK_RANGE);
         }
     }
 

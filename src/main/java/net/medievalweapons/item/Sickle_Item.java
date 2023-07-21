@@ -31,7 +31,7 @@ public class Sickle_Item extends SwordItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (target.isDead() && attacker.world.random.nextFloat() <= 0.01F) {
+        if (target.isDead() && attacker.getWorld().getRandom().nextFloat() <= 0.01F) {
             if (target instanceof ZombieEntity)
                 target.dropStack(new ItemStack(Items.ZOMBIE_HEAD));
             if (target instanceof SkeletonEntity)

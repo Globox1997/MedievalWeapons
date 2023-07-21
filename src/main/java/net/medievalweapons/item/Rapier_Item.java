@@ -18,7 +18,7 @@ public class Rapier_Item extends SwordItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!target.isDead() && attacker.world.random.nextFloat() <= 0.01F + ((float) addition / 10F)) {
+        if (!target.isDead() && attacker.getWorld().getRandom().nextFloat() <= 0.01F + ((float) addition / 10F)) {
             int amplifier = 0;
             if (target.hasStatusEffect(EffectInit.BLEED_EFFECT))
                 amplifier = target.getStatusEffect(EffectInit.BLEED_EFFECT).getAmplifier() + 1;

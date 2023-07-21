@@ -1,5 +1,7 @@
 package net.medievalweapons.effect;
 
+import net.medievalweapons.init.EntityInit;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
@@ -13,7 +15,7 @@ public class BleedEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(BleedingDamageSource.BLEEDING, 1.0f);
+        entity.damage(createDamageSource(entity), 1.0f);
     }
 
     @Override
@@ -25,11 +27,7 @@ public class BleedEffect extends StatusEffect {
         return true;
     }
 
-    private static class BleedingDamageSource extends DamageSource {
-        public static final DamageSource BLEEDING = new BleedingDamageSource("bleed").setBypassesArmor();
-
-        public BleedingDamageSource(String name) {
-            super(name);
-        }
+    private DamageSource createDamageSource(Entity source) {
+        return source.getDamageSources().create(EntityInit.BLEEDING);
     }
 }

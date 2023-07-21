@@ -8,10 +8,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 
 import net.medievalweapons.access.PlayerAccess;
+import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.Big_Axe_Item;
 import net.medievalweapons.item.Long_Sword_Item;
@@ -24,7 +27,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,6 +52,11 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
 
     public PlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile profile) {
         super(EntityType.PLAYER, world);
+    }
+
+    @ModifyConstant(method = "attack(Lnet/minecraft/entity/Entity;)V", constant = @Constant(doubleValue = 9.0), require = 0)
+    private double getActualAttackRange(final double attackRange) {
+        return CompatInit.getSquaredAttackRange(this, attackRange);
     }
 
     @Inject(method = "Lnet/minecraft/entity/player/PlayerEntity;tick()V", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;lastAttackedTicks:I", ordinal = 0))
@@ -79,11 +86,11 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
             int i = 0;
             i += EnchantmentHelper.getLevel(Enchantments.KNOCKBACK, itemStack);
             if (this.isSprinting() && bl) {
-                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_KNOCKBACK, this.getSoundCategory(), 1.0f, 1.0f);
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_KNOCKBACK, this.getSoundCategory(), 1.0f, 1.0f);
                 ++i;
                 bl2 = true;
             }
-            boolean bl3 = bl && this.fallDistance > 0.0f && !this.onGround && !this.isClimbing() && !this.isTouchingWater() && !this.hasStatusEffect(StatusEffects.BLINDNESS) && !this.hasVehicle()
+            boolean bl3 = bl && this.fallDistance > 0.0f && !this.isOnGround() && !this.isClimbing() && !this.isTouchingWater() && !this.hasStatusEffect(StatusEffects.BLINDNESS) && !this.hasVehicle()
                     && target instanceof LivingEntity;
             bl3 = bl3 && !this.isSprinting();
             if (bl3) {
@@ -92,7 +99,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
             f += g;
             boolean bl42 = false;
             double d = this.horizontalSpeed - this.prevHorizontalSpeed;
-            if (bl && !bl3 && !bl2 && this.onGround && d < (double) this.getMovementSpeed() && itemStack.getItem() instanceof SwordItem) {
+            if (bl && !bl3 && !bl2 && this.isOnGround() && d < (double) this.getMovementSpeed() && itemStack.getItem() instanceof SwordItem) {
                 bl42 = true;
             }
             float j = 0.0f;
@@ -107,7 +114,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 }
             }
             Vec3d vec3d = target.getVelocity();
-            boolean bl6 = target.damage(DamageSource.player((PlayerEntity) (Object) this), f);
+            boolean bl6 = target.damage(target.getDamageSources().playerAttack((PlayerEntity) (Object) this), f);
             if (bl6) {
                 if (i > 0) {
                     if (target instanceof LivingEntity) {
@@ -121,15 +128,15 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 }
                 if (bl42) {
                     float l = 1.0f + SweepingEnchantment.getMultiplier(EnchantmentHelper.getLevel(Enchantments.SWEEPING, itemStack)) * f;
-                    List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(1.0, 0.25, 1.0));
+                    List<LivingEntity> list = this.getWorld().getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(1.0, 0.25, 1.0));
                     for (LivingEntity livingEntity : list) {
                         if (livingEntity == this || livingEntity == target || this.isTeammate(livingEntity) || livingEntity instanceof ArmorStandEntity && ((ArmorStandEntity) livingEntity).isMarker()
                                 || !(this.squaredDistanceTo(livingEntity) < 9.0))
                             continue;
                         livingEntity.takeKnockback(0.4f, MathHelper.sin(this.getYaw() * ((float) Math.PI / 180)), -MathHelper.cos(this.getYaw() * ((float) Math.PI / 180)));
-                        livingEntity.damage(DamageSource.player((PlayerEntity) (Object) this), l);
+                        livingEntity.damage(livingEntity.getDamageSources().playerAttack((PlayerEntity) (Object) this), l);
                     }
-                    this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, this.getSoundCategory(), 1.0f, 1.0f);
+                    this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, this.getSoundCategory(), 1.0f, 1.0f);
                     ((PlayerEntity) (Object) this).spawnSweepAttackParticles();
                 }
                 if (target instanceof ServerPlayerEntity && target.velocityModified) {
@@ -138,14 +145,14 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                     target.setVelocity(vec3d);
                 }
                 if (bl3) {
-                    this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_CRIT, this.getSoundCategory(), 1.0f, 1.0f);
+                    this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_CRIT, this.getSoundCategory(), 1.0f, 1.0f);
                     ((PlayerEntity) (Object) this).addCritParticles(target);
                 }
                 if (!bl3 && !bl42) {
                     if (bl) {
-                        this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, this.getSoundCategory(), 1.0f, 1.0f);
+                        this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, this.getSoundCategory(), 1.0f, 1.0f);
                     } else {
-                        this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, this.getSoundCategory(), 1.0f, 1.0f);
+                        this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, this.getSoundCategory(), 1.0f, 1.0f);
                     }
                 }
                 if (g > 0.0f) {
@@ -161,7 +168,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 if (target instanceof EnderDragonPart) {
                     entity = ((EnderDragonPart) target).owner;
                 }
-                if (!this.world.isClient && !itemStack2.isEmpty() && entity instanceof LivingEntity) {
+                if (!this.getWorld().isClient() && !itemStack2.isEmpty() && entity instanceof LivingEntity) {
                     itemStack2.postHit((LivingEntity) entity, (PlayerEntity) (Object) this);
                     if (itemStack2.isEmpty()) {
                         this.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
@@ -173,15 +180,15 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                     if (k > 0) {
                         target.setOnFireFor(k * 4);
                     }
-                    if (this.world instanceof ServerWorld && m > 2.0f) {
+                    if (this.getWorld() instanceof ServerWorld && m > 2.0f) {
                         int n = (int) ((double) m * 0.5);
-                        ((ServerWorld) this.world).spawnParticles(ParticleTypes.DAMAGE_INDICATOR, target.getX(), target.getBodyY(0.5), target.getZ(), n, 0.1, 0.0, 0.1, 0.2);
+                        ((ServerWorld) this.getWorld()).spawnParticles(ParticleTypes.DAMAGE_INDICATOR, target.getX(), target.getBodyY(0.5), target.getZ(), n, 0.1, 0.0, 0.1, 0.2);
                     }
                     target.timeUntilRegen = 0;
                 }
                 ((PlayerEntity) (Object) this).addExhaustion(0.1f);
             } else {
-                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, this.getSoundCategory(), 1.0f, 1.0f);
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE, this.getSoundCategory(), 1.0f, 1.0f);
                 if (bl5) {
                     target.extinguish();
                 }

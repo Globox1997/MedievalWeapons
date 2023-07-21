@@ -86,9 +86,9 @@ public class MinecraftClientMixin {
                         case BLOCK: {
                             BlockHitResult blockHitResult = (BlockHitResult) this.crosshairTarget;
                             BlockPos blockPos = blockHitResult.getBlockPos();
-                            if (!this.player.world.getBlockState(blockPos).isAir()) {
+                            if (!this.player.getWorld().getBlockState(blockPos).isAir()) {
                                 this.interactionManager.attackBlock(blockPos, blockHitResult.getSide());
-                                if (!this.player.world.getBlockState(blockPos).isAir())
+                                if (!this.player.getWorld().getBlockState(blockPos).isAir())
                                     break;
                                 break;
                             }

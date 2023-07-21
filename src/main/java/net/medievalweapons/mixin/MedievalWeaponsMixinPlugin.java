@@ -26,8 +26,13 @@ public class MedievalWeaponsMixinPlugin implements IMixinConfigPlugin {
                 || mixinClassName.contains("Healing_Staff_ItemMixin") || mixinClassName.contains("Javelin_ItemMixin") || mixinClassName.contains("Lance_ItemMixin")
                 || mixinClassName.contains("Long_Sword_ItemMixin") || mixinClassName.contains("Mace_ItemMixin") || mixinClassName.contains("Ninjato_ItemMixin")
                 || mixinClassName.contains("Rapier_ItemMixin") || mixinClassName.contains("Sickle_ItemMixin") || mixinClassName.contains("Small_Axe_ItemMixin"))
-                && !FabricLoader.getInstance().isModLoaded("betternether"))
+                && !FabricLoader.getInstance().isModLoaded("betternether")) {
             return false;
+        }
+
+        if ((mixinClassName.contains("ServerPlayNetworkHandlerMixin") || mixinClassName.contains("GameRendererMixin")) && !FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
+            return false;
+        }
 
         return true;
     }

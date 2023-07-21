@@ -5,8 +5,8 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.medievalweapons.access.PlayerAccess;
 import net.minecraft.entity.Entity;
-import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.util.Identifier;
 
 public class PlayerPacket {
@@ -24,8 +24,8 @@ public class PlayerPacket {
             int entityId = buffer.readInt();
             server.execute(() -> {
                 player.updateLastActionTime();
-                if (player.world.getEntityById(entityId) != null)
-                    ((PlayerAccess) player).doOffhandAttack(player.world.getEntityById(entityId));
+                if (player.getWorld().getEntityById(entityId) != null)
+                    ((PlayerAccess) player).doOffhandAttack(player.getWorld().getEntityById(entityId));
             });
 
         });

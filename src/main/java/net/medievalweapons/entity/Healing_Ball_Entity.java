@@ -7,7 +7,6 @@ import net.fabricmc.api.Environment;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
-import net.medievalweapons.network.EntitySpawnPacket;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -16,7 +15,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.thrown.ThrownEntity;
-import net.minecraft.network.Packet;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.EntityHitResult;
@@ -46,18 +44,13 @@ public class Healing_Ball_Entity extends ThrownEntity {
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.createPacket(this);
-    }
-
-    @Override
     public void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         Entity entity = this.getOwner();
         if (hitResult.getType() != HitResult.Type.ENTITY || !((EntityHitResult) hitResult).getEntity().isPartOf(entity)) {
-            if (!this.world.isClient) {
-                List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(4.0D, 2.0D, 4.0D));
-                AreaEffectCloudEntity areaEffectCloudEntity = new AreaEffectCloudEntity(this.world, this.getX(), this.getY(), this.getZ());
+            if (!this.getWorld().isClient()) {
+                List<LivingEntity> list = this.getWorld().getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(4.0D, 2.0D, 4.0D));
+                AreaEffectCloudEntity areaEffectCloudEntity = new AreaEffectCloudEntity(this.getWorld(), this.getX(), this.getY(), this.getZ());
                 if (entity instanceof LivingEntity) {
                     areaEffectCloudEntity.setOwner((LivingEntity) entity);
                 }
@@ -77,8 +70,8 @@ public class Healing_Ball_Entity extends ThrownEntity {
                         }
                     }
                 }
-                this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT, SoundCategory.NEUTRAL, 0.9F, 1.0F);
-                this.world.spawnEntity(areaEffectCloudEntity);
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundInit.MAGIC_HEAL_AURA_EVENT, SoundCategory.NEUTRAL, 0.9F, 1.0F);
+                this.getWorld().spawnEntity(areaEffectCloudEntity);
                 this.discard();
             }
 
@@ -97,7 +90,7 @@ public class Healing_Ball_Entity extends ThrownEntity {
         float j;
         if (this.isTouchingWater()) {
             for (int i = 0; i < 4; ++i) {
-                this.world.addParticle(ParticleTypes.BUBBLE, d - vec3d.x * 0.25D, e - vec3d.y * 0.25D, f - vec3d.z * 0.25D, vec3d.x, vec3d.y, vec3d.z);
+                this.getWorld().addParticle(ParticleTypes.BUBBLE, d - vec3d.x * 0.25D, e - vec3d.y * 0.25D, f - vec3d.z * 0.25D, vec3d.x, vec3d.y, vec3d.z);
             }
 
             j = 0.8F;

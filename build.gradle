@@ -1,10 +1,7 @@
 plugins {
-	id 'fabric-loom' version '1.1-SNAPSHOT'
+	id 'fabric-loom' version '1.2-SNAPSHOT'
 	id 'maven-publish'
 }
-
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
@@ -27,7 +24,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Reach Entity Attributes 
-	modApi include ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"), {
+	modCompileOnly ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Config
@@ -38,50 +35,57 @@ dependencies {
 	modCompileOnly modRuntimeOnly ("com.terraformersmc:modmenu:${project.mod_menu_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	// ARRP
-	modApi ("maven.modrinth:arrp:${project.arrp_version}"){
+	// BRRP
+	modCompileOnly modRuntimeOnly ("maven.modrinth:brrp:${project.brrp_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	// DragonLoot
-	modCompileOnly "curse.maven:dragonloot-424480:3596055"
+	// ARRP
+	modCompileOnly ("maven.modrinth:arrp:0.6.5.0") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+    // DragonLoot
+	modCompileOnly ('maven.modrinth:dragonloot:1.1.2') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	//Better End/Nether
-	modCompileOnly "curse.maven:betterend-413596:3825599"
-	modCompileOnly "curse.maven:betternether-311377:3823604"
-	// modCompileOnly ("com.github.paulevsGitch:BetterEnd:1.0.3"),{
-	// 	exclude(group: "net.fabricmc.fabric-api")
-	// }
+	modCompileOnly ('maven.modrinth:betterend:2.1.6') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	modCompileOnly ('maven.modrinth:betternether:7.1.4') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// Mythic Metals
-	modCompileOnly "curse.maven:mythicmetals-410127:4015956"
+	modCompileOnly ('maven.modrinth:mythicmetals:0.18.1+1.20-hotfix') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// Paradise Lost
-	modCompileOnly "curse.maven:paradise-lost-418680:3777049"
+	modCompileOnly ('maven.modrinth:paradise-lost:2.1.0') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// BYG
-	modCompileOnly "curse.maven:oh-the-biomes-youll-go-fabric-391378:3830133"
+	modCompileOnly ('maven.modrinth:biomesyougo:1.19.2-2.0.1.2-fabric') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// Additional Additions
-	modCompileOnly "curse.maven:additional-additions-508556:3911998"
+	modCompileOnly ('maven.modrinth:addadd:5.3.0') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// Mythic Upgrades
 	modCompileOnly "curse.maven:mythic-upgrades-fabric-663567:4388965"
 	// LevelZ
-	modCompileOnly "curse.maven:levelz-517130:4137159'"
-
+	modCompileOnly ('maven.modrinth:levelz:1.4.9+1.20') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
 	//  	exclude(group: "net.fabricmc.fabric-api")
 	// }
-	// modCompileOnly modRuntime('curse.maven:enchantgiver-434579:3347061') {
-	//  	exclude(group: "net.fabricmc.fabric-api")
-	// }
-}
-
-configurations.all {
-   resolutionStrategy {
-     force("net.fabricmc:fabric-loader:$loader_version")
-   }
 }
 
 processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version, "fabric_version": project.fabric_version, "loader_version": project.loader_version, "minecraft_version": project.minecraft_version, "cloth_config_version": project.cloth_config_version, "arrp_version": project.arrp_version
+		expand "version": project.version, "fabric_version": project.fabric_version, "loader_version": project.loader_version, "minecraft_version": project.minecraft_version, "cloth_config_version": project.cloth_config_version, "brrp_version": project.brrp_version
 	}
 }
 
@@ -91,6 +95,9 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
 	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
