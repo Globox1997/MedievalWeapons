@@ -438,54 +438,54 @@ public class CompatRecipes {
                     MedievalMain.ID("pendorite_rapier"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
         }
         if (CompatItems.isAdditionalAdditionsLoaded) {
-            SMITHING_RECIPES.put("gilded_netherite_small_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_small_axe"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_small_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_small_axe"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_small_axe"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_long_sword", new SmithingRecipeMaterial(MedievalMain.ID("netherite_long_sword"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_long_sword", new SmithingRecipeMaterial(MedievalMain.ID("netherite_long_sword"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_long_sword"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_dagger", new SmithingRecipeMaterial(MedievalMain.ID("netherite_dagger"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_dagger", new SmithingRecipeMaterial(MedievalMain.ID("netherite_dagger"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_dagger"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_big_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_big_axe"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_big_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_big_axe"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_big_axe"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_lance", new SmithingRecipeMaterial(MedievalMain.ID("netherite_lance"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_lance", new SmithingRecipeMaterial(MedievalMain.ID("netherite_lance"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_lance"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_healing_staff", new SmithingRecipeMaterial(MedievalMain.ID("netherite_healing_staff"), new Identifier("minecraft:gold_ingot"), "item", "item",
-                    MedievalMain.ID("gilded_netherite_healing_staff"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_mace", new SmithingRecipeMaterial(MedievalMain.ID("netherite_mace"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_healing_staff", new SmithingRecipeMaterial(MedievalMain.ID("netherite_healing_staff"), new Identifier("additionaladditions:gold_ring"), "item",
+                    "item", MedievalMain.ID("gilded_netherite_healing_staff"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("gilded_netherite_mace", new SmithingRecipeMaterial(MedievalMain.ID("netherite_mace"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_mace"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_francisca", new SmithingRecipeMaterial(MedievalMain.ID("netherite_francisca"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_francisca", new SmithingRecipeMaterial(MedievalMain.ID("netherite_francisca"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_francisca"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_javelin", new SmithingRecipeMaterial(MedievalMain.ID("netherite_javelin"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_javelin", new SmithingRecipeMaterial(MedievalMain.ID("netherite_javelin"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_javelin"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_ninjato", new SmithingRecipeMaterial(MedievalMain.ID("netherite_ninjato"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_ninjato", new SmithingRecipeMaterial(MedievalMain.ID("netherite_ninjato"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_ninjato"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_sickle", new SmithingRecipeMaterial(MedievalMain.ID("netherite_sickle"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_sickle", new SmithingRecipeMaterial(MedievalMain.ID("netherite_sickle"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_sickle"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("gilded_netherite_rapier", new SmithingRecipeMaterial(MedievalMain.ID("netherite_rapier"), new Identifier("minecraft:gold_ingot"), "item", "item",
+            SMITHING_RECIPES.put("gilded_netherite_rapier", new SmithingRecipeMaterial(MedievalMain.ID("netherite_rapier"), new Identifier("additionaladditions:gold_ring"), "item", "item",
                     MedievalMain.ID("gilded_netherite_rapier"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
 
-            SMITHING_RECIPES.put("rose_gold_small_axe", new SmithingRecipeMaterial(MedievalMain.ID("golden_small_axe"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_small_axe", new SmithingRecipeMaterial(MedievalMain.ID("iron_small_axe"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_small_axe"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_long_sword", new SmithingRecipeMaterial(MedievalMain.ID("golden_long_sword"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_long_sword", new SmithingRecipeMaterial(MedievalMain.ID("iron_long_sword"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_long_sword"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_dagger", new SmithingRecipeMaterial(MedievalMain.ID("golden_dagger"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_dagger", new SmithingRecipeMaterial(MedievalMain.ID("iron_dagger"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_dagger"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_big_axe", new SmithingRecipeMaterial(MedievalMain.ID("golden_big_axe"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_big_axe", new SmithingRecipeMaterial(MedievalMain.ID("iron_big_axe"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_big_axe"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_lance", new SmithingRecipeMaterial(MedievalMain.ID("golden_lance"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_lance", new SmithingRecipeMaterial(MedievalMain.ID("iron_lance"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_lance"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_healing_staff", new SmithingRecipeMaterial(MedievalMain.ID("golden_healing_staff"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_healing_staff", new SmithingRecipeMaterial(MedievalMain.ID("iron_healing_staff"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_healing_staff"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_mace", new SmithingRecipeMaterial(MedievalMain.ID("golden_mace"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_mace", new SmithingRecipeMaterial(MedievalMain.ID("iron_mace"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_mace"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_francisca", new SmithingRecipeMaterial(MedievalMain.ID("golden_francisca"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_francisca", new SmithingRecipeMaterial(MedievalMain.ID("iron_francisca"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_francisca"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_javelin", new SmithingRecipeMaterial(MedievalMain.ID("golden_javelin"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_javelin", new SmithingRecipeMaterial(MedievalMain.ID("iron_javelin"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_javelin"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_ninjato", new SmithingRecipeMaterial(MedievalMain.ID("golden_ninjato"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_ninjato", new SmithingRecipeMaterial(MedievalMain.ID("iron_ninjato"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_ninjato"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_rapier", new SmithingRecipeMaterial(MedievalMain.ID("golden_rapier"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_rapier", new SmithingRecipeMaterial(MedievalMain.ID("iron_rapier"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_rapier"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
-            SMITHING_RECIPES.put("rose_gold_sickle", new SmithingRecipeMaterial(MedievalMain.ID("golden_sickle"), new Identifier("minecraft:copper_ingot"), "item", "item",
+            SMITHING_RECIPES.put("rose_gold_sickle", new SmithingRecipeMaterial(MedievalMain.ID("iron_sickle"), new Identifier("additionaladditions:rose_gold_alloy"), "item", "item",
                     MedievalMain.ID("rose_gold_sickle"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
         }
         if (CompatItems.isMythicUpgradesLoaded) {
