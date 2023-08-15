@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'fabric-loom' version '1.3-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -14,7 +14,7 @@ repositories {
 	maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
 	maven { url "https://cursemaven.com" }
 	maven { url = uri("https://ueaj.dev/maven") }
-	maven { url = "https://api.modrinth.com/maven" }
+	maven { url "https://api.modrinth.com/maven" }
 }
 
 dependencies {
