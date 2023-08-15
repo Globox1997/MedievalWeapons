@@ -116,7 +116,7 @@ public class RecipeGenerator {
         json.add("result", obj);
 
         obj = new JsonObject();
-        obj.addProperty("item", output.toString());
+        obj.addProperty("item", template.toString());
         json.add("template", obj);
 
         return json;
