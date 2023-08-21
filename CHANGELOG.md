@@ -1,6 +1,6 @@
 ### Added:
 - 
 ### Fixed:
-- Fixed netherite recipes
+- Fixed better nether compat
 ### Changed:
 - 

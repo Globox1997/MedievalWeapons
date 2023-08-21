@@ -15,7 +15,7 @@ public class Francisca_ItemMixin implements InitialStackStateProvider {
 
     @Override
     public void initializeState(ItemStack stack) {
-        if (((SwordItem) stack.getItem()).getMaterial() == BNToolMaterial.NETHER_RUBY) {
+        if (stack.getItem() instanceof SwordItem && ((SwordItem) stack.getItem()).getMaterial() == BNToolMaterial.NETHER_RUBY) {
             EnchantmentHelper.set(CompatItems.DEFAULT_RUBY_ENCHANTS, stack);
         }
     }
