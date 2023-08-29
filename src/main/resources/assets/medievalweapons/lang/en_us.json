@@ -20,6 +20,8 @@
   "item.medievalweapons.zanite_small_axe": "Zanite Battle Axe",
   "item.medievalweapons.ruby_netherite_small_axe": "Ruby Netherite Battle Axe",
   "item.medievalweapons.sapphire_netherite_small_axe": "Sapphire Netherite Battle Axe",
+  "item.medievalweapons.warden_small_axe": "Warden Battle Axe",
+  "item.medievalweapons.olvite_small_axe": "Olvite Battle Axe",
 
   "item.medievalweapons.diamond_long_sword": "Diamond Longsword",
   "item.medievalweapons.golden_long_sword": "Golden Longsword",
@@ -42,6 +44,8 @@
   "item.medievalweapons.zanite_long_sword": "Zanite Longsword",
   "item.medievalweapons.ruby_netherite_long_sword": "Ruby Netherite Longsword",
   "item.medievalweapons.sapphire_netherite_long_sword": "Sapphire Netherite Longsword",
+  "item.medievalweapons.warden_long_sword": "Warden Longsword",
+  "item.medievalweapons.olvite_long_sword": "Olvite Longsword",
 
   "item.medievalweapons.diamond_dagger": "Diamond Dagger",
   "item.medievalweapons.golden_dagger": "Golden Dagger",
@@ -64,6 +68,8 @@
   "item.medievalweapons.zanite_dagger": "Zanite Dagger",
   "item.medievalweapons.ruby_netherite_dagger": "Gilded Netherite Dagger",
   "item.medievalweapons.sapphire_netherite_dagger": "Gilded Netherite Dagger",
+  "item.medievalweapons.warden_dagger": "Warden Dagger",
+  "item.medievalweapons.olvite_dagger": "Olvite Dagger",
 
   "item.medievalweapons.diamond_francisca": "Diamond Francisca",
   "item.medievalweapons.golden_francisca": "Golden Francisca",
@@ -86,6 +92,9 @@
   "item.medievalweapons.zanite_francisca": "Zanite Francisca",
   "item.medievalweapons.ruby_netherite_francisca": "Ruby Netherite Francisca",
   "item.medievalweapons.sapphire_netherite_francisca": "Sapphire Netherite Francisca",
+  "item.medievalweapons.warden_francisca": "Warden Francisca",
+  "item.medievalweapons.olvite_francisca": "Olvite Francisca",
+
   "entity.medievalweapons.diamond_francisca": "Diamond Francisca",
   "entity.medievalweapons.golden_francisca": "Golden Francisca",
   "entity.medievalweapons.iron_francisca": "Iron Francisca",
@@ -107,6 +116,8 @@
   "entity.medievalweapons.zanite_francisca": "Zanite Francisca",
   "entity.medievalweapons.ruby_netherite_francisca": "Ruby Netherite Francisca",
   "entity.medievalweapons.sapphire_netherite_francisca": "Sapphire Netherite Francisca",
+  "entity.medievalweapons.warden_francisca": "Warden Francisca",
+  "entity.medievalweapons.olvite_francisca": "Olvite Francisca",
 
   "item.medievalweapons.diamond_javelin": "Diamond Javelin",
   "item.medievalweapons.golden_javelin": "Golden Javelin",
@@ -129,6 +140,9 @@
   "item.medievalweapons.zanite_javelin": "Zanite Javelin",
   "item.medievalweapons.ruby_netherite_javelin": "Ruby Netherite Javelin",
   "item.medievalweapons.sapphire_netherite_javelin": "Sapphire Netherite Javelin",
+  "item.medievalweapons.warden_javelin": "Warden Javelin",
+  "item.medievalweapons.olvite_javelin": "Olvite Javelin",
+
   "entity.medievalweapons.diamond_javelin": "Diamond Javelin",
   "entity.medievalweapons.golden_javelin": "Golden Javelin",
   "entity.medievalweapons.iron_javelin": "Iron Javelin",
@@ -150,6 +164,8 @@
   "entity.medievalweapons.zanite_javelin": "Zanite Javelin",
   "entity.medievalweapons.ruby_netherite_javelin": "Ruby Netherite Javelin",
   "entity.medievalweapons.sapphire_netherite_javelin": "Sapphire Netherite Javelin",
+  "entity.medievalweapons.warden_javelin": "Warden Javelin",
+  "entity.medievalweapons.olvite_javelin": "Olvite Javelin",
 
   "item.medievalweapons.diamond_big_axe": "Diamond War Axe",
   "item.medievalweapons.golden_big_axe": "Golden War Axe",
@@ -172,6 +188,8 @@
   "item.medievalweapons.zanite_big_axe": "Zanite War Axe",
   "item.medievalweapons.ruby_netherite_big_axe": "Ruby Netherite War Axe",
   "item.medievalweapons.sapphire_netherite_big_axe": "Sapphire Netherite War Axe",
+  "item.medievalweapons.warden_big_axe": "Warden War Axe",
+  "item.medievalweapons.olvite_big_axe": "Olvite War Axe",
 
   "item.medievalweapons.diamond_lance": "Diamond Lance",
   "item.medievalweapons.golden_lance": "Golden Lance",
@@ -194,6 +212,8 @@
   "item.medievalweapons.zanite_lance": "Zanite Lance",
   "item.medievalweapons.ruby_netherite_lance": "Ruby Netherite Lance",
   "item.medievalweapons.sapphire_netherite_lance": "Sapphire Netherite Lance",
+  "item.medievalweapons.warden_lance": "Warden Lance",
+  "item.medievalweapons.olvite_lance": "Olvite Lance",
 
   "item.medievalweapons.diamond_healing_staff": "Diamond Staff of Healing",
   "item.medievalweapons.golden_healing_staff": "Golden Staff of Healing",
@@ -216,6 +236,8 @@
   "item.medievalweapons.zanite_healing_staff": "Zanite Staff of Healing",
   "item.medievalweapons.ruby_netherite_healing_staff": "Ruby Netherite Staff of Healing",
   "item.medievalweapons.sapphire_netherite_healing_staff": "Sapphire Netherite Staff of Healing",
+  "item.medievalweapons.warden_healing_staff": "Warden Staff of Healing",
+  "item.medievalweapons.olvite_healing_staff": "Olvite Staff of Healing",
 
   "item.medievalweapons.diamond_mace": "Diamond Mace",
   "item.medievalweapons.golden_mace": "Golden Mace",
@@ -238,6 +260,8 @@
   "item.medievalweapons.zanite_mace": "Zanite Mace",
   "item.medievalweapons.ruby_netherite_mace": "Ruby Netherite Mace",
   "item.medievalweapons.sapphire_netherite_mace": "Sapphire Netherite Mace",
+  "item.medievalweapons.warden_mace": "Warden Mace",
+  "item.medievalweapons.olvite_mace": "Olvite Mace",
 
   "item.medievalweapons.diamond_ninjato": "Diamond Ninjato",
   "item.medievalweapons.golden_ninjato": "Golden Ninjato",
@@ -260,6 +284,8 @@
   "item.medievalweapons.zanite_ninjato": "Zanite Ninjato",
   "item.medievalweapons.ruby_netherite_ninjato": "Ruby Netherite Ninjato",
   "item.medievalweapons.sapphire_netherite_ninjato": "Sapphire Netherite Ninjato",
+  "item.medievalweapons.warden_ninjato": "Warden Ninjato",
+  "item.medievalweapons.olvite_ninjato": "Olvite Ninjato",
 
   "item.medievalweapons.diamond_sickle": "Diamond Sickle",
   "item.medievalweapons.golden_sickle": "Golden Sickle",
@@ -282,6 +308,8 @@
   "item.medievalweapons.zanite_sickle": "Zanite Sickle",
   "item.medievalweapons.ruby_netherite_sickle": "Ruby Netherite Sickle",
   "item.medievalweapons.sapphire_netherite_sickle": "Sapphire Netherite Sickle",
+  "item.medievalweapons.warden_sickle": "Warden Sickle",
+  "item.medievalweapons.olvite_sickle": "Olvite Sickle",
 
   "item.medievalweapons.diamond_rapier": "Diamond Rapier",
   "item.medievalweapons.golden_rapier": "Golden Rapier",
@@ -304,6 +332,8 @@
   "item.medievalweapons.zanite_rapier": "Zanite Rapier",
   "item.medievalweapons.ruby_netherite_rapier": "Ruby Netherite Rapier",
   "item.medievalweapons.sapphire_netherite_rapier": "Sapphire Netherite Rapier",
+  "item.medievalweapons.warden_rapier": "Warden Rapier",
+  "item.medievalweapons.olvite_rapier": "Olvite Rapier",
 
   "item.medievalweapons.long_bow": "Long Bow",
   "item.medievalweapons.recurve_bow": "Recurve Bow",

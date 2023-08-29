@@ -33,11 +33,9 @@ public class CompatRender {
             EntityRendererRegistry.register(CompatEntities.ADAMANTITE_FRANCISCA, Francisca_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.ADAMANTITE_JAVELIN, Javelin_Entity_Renderer::new);
         }
-        if (CompatItems.isAetherLoaded) {
-            EntityRendererRegistry.register(CompatEntities.GRAVITITE_FRANCISCA, Francisca_Entity_Renderer::new);
-            EntityRendererRegistry.register(CompatEntities.GRAVITITE_JAVELIN, Javelin_Entity_Renderer::new);
-            EntityRendererRegistry.register(CompatEntities.ZANITE_FRANCISCA, Francisca_Entity_Renderer::new);
-            EntityRendererRegistry.register(CompatEntities.ZANITE_JAVELIN, Javelin_Entity_Renderer::new);
+        if (CompatItems.isParadiseLostLoaded) {
+            EntityRendererRegistry.register(CompatEntities.OLVITE_FRANCISCA, Francisca_Entity_Renderer::new);
+            EntityRendererRegistry.register(CompatEntities.OLVITE_JAVELIN, Javelin_Entity_Renderer::new);
         }
         if (CompatItems.isBYGLoaded) {
             EntityRendererRegistry.register(CompatEntities.PENDORITE_FRANCISCA, Francisca_Entity_Renderer::new);
@@ -54,6 +52,10 @@ public class CompatRender {
             EntityRendererRegistry.register(CompatEntities.RUBY_NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.SAPPHIRE_NETHERITE_FRANCISCA, Francisca_Entity_Renderer::new);
             EntityRendererRegistry.register(CompatEntities.SAPPHIRE_NETHERITE_JAVELIN, Javelin_Entity_Renderer::new);
+        }
+        if (CompatItems.isDeeperDarkerLoaded) {
+            EntityRendererRegistry.register(CompatEntities.WARDEN_FRANCISCA, Francisca_Entity_Renderer::new);
+            EntityRendererRegistry.register(CompatEntities.WARDEN_JAVELIN, Javelin_Entity_Renderer::new);
         }
     }
 }

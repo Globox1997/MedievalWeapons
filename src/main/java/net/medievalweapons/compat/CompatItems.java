@@ -2,6 +2,8 @@ package net.medievalweapons.compat;
 
 import java.util.HashMap;
 
+import com.kyanite.deeperdarker.util.DDTiers;
+
 import org.betterx.betterend.item.material.EndToolMaterial;
 import org.betterx.betternether.items.materials.BNToolMaterial;
 import org.betterx.betternether.registry.NetherEnchantments;
@@ -10,6 +12,7 @@ import dqu.additionaladditions.material.GildedNetheriteToolMaterial;
 import dqu.additionaladditions.material.RoseGoldToolMaterial;
 import net.dragonloot.item.DragonToolMaterial;
 import net.fabricmc.loader.api.FabricLoader;
+import net.id.paradiselost.items.tools.ParadiseLostToolMaterials;
 //import net.id.aether.items.tools.AetherToolMaterials;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
@@ -26,10 +29,11 @@ public class CompatItems {
     public static Boolean isBetterEndLoaded = fabricLoader.isModLoaded("betterend");
     public static Boolean isBetterNetherLoaded = fabricLoader.isModLoaded("betternether");
     public static Boolean isMythicMetalsLoaded = fabricLoader.isModLoaded("mythicmetals");
-    public static Boolean isAetherLoaded = fabricLoader.isModLoaded("the_aether");
+    public static Boolean isParadiseLostLoaded = fabricLoader.isModLoaded("paradise_lost");
     public static Boolean isBYGLoaded = fabricLoader.isModLoaded("byg");
     public static Boolean isAdditionalAdditionsLoaded = fabricLoader.isModLoaded("additionaladditions");
     public static Boolean isMythicUpgradesLoaded = fabricLoader.isModLoaded("mythicupgrades");
+    public static Boolean isDeeperDarkerLoaded = fabricLoader.isModLoaded("deeperdarker");
 
     // DragonLoot
     public static Francisca_Item DRAGON_FRANCISCA_ITEM;
@@ -66,17 +70,19 @@ public class CompatItems {
     public static Francisca_Item GILDED_NETHERITE_FRANCISCA_ITEM;
     public static Javelin_Item GILDED_NETHERITE_JAVELIN_ITEM;
 
-    // Aether
-    public static Francisca_Item GRAVITITE_FRANCISCA_ITEM;
-    public static Javelin_Item GRAVITITE_JAVELIN_ITEM;
-    public static Francisca_Item ZANITE_FRANCISCA_ITEM;
-    public static Javelin_Item ZANITE_JAVELIN_ITEM;
+    // Paradise Lost
+    public static Francisca_Item OLVITE_FRANCISCA_ITEM;
+    public static Javelin_Item OLVITE_JAVELIN_ITEM;
 
     // Mythic Upgrades
     public static Francisca_Item RUBY_NETHERITE_FRANCISCA_ITEM;
     public static Javelin_Item RUBY_NETHERITE_JAVELIN_ITEM;
     public static Francisca_Item SAPPHIRE_NETHERITE_FRANCISCA_ITEM;
     public static Javelin_Item SAPPHIRE_NETHERITE_JAVELIN_ITEM;
+
+    // Deeper and Darker
+    public static Francisca_Item WARDEN_FRANCISCA_ITEM;
+    public static Javelin_Item WARDEN_JAVELIN_ITEM;
 
     public static void loadItems() {
         if (isBetterEndLoaded) {
@@ -230,43 +236,26 @@ public class CompatItems {
 
             ItemInit.MATERIAL_STRINGS.add("adamantite");
         }
-        // if (isAetherLoaded) {
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_small_axe"), new Small_Axe_Item(ParadiseLostToolMaterials.GRAVITITE, 5, -2.9F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_long_sword"), new Long_Sword_Item(AetherToolMaterials.GRAVITITE, 6, -3.0F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_dagger"), new Dagger_Item(AetherToolMaterials.GRAVITITE, 2, -2.0F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_big_axe"), new Big_Axe_Item(AetherToolMaterials.GRAVITITE, 6, -3.4F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_lance"), new Lance_Item(AetherToolMaterials.GRAVITITE, 3, -3.2F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_healing_staff"), new Healing_Staff_Item(AetherToolMaterials.GRAVITITE, 1, -3.3F, 4, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_mace"), new Mace_Item(AetherToolMaterials.GRAVITITE, 4, -2.8F, 3, new Item.Settings().fireproof()));
-        //     GRAVITITE_FRANCISCA_ITEM = ItemInit.register("gravitite_francisca",
-        //             new Francisca_Item(AetherToolMaterials.GRAVITITE, 1.0F, -2.6F, () -> CompatEntities.GRAVITITE_FRANCISCA, new Item.Settings().fireproof()));
-        //     GRAVITITE_JAVELIN_ITEM = ItemInit.register("gravitite_javelin",
-        //             new Javelin_Item(AetherToolMaterials.GRAVITITE, 2.2F, -2.7F, () -> CompatEntities.GRAVITITE_JAVELIN, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_francisca"), GRAVITITE_FRANCISCA_ITEM);
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_javelin"), GRAVITITE_JAVELIN_ITEM);
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_ninjato"), new Ninjato_Item(AetherToolMaterials.GRAVITITE, 2, -2.1F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_sickle"), new Sickle_Item(AetherToolMaterials.GRAVITITE, 2, -2.2F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("gravitite_rapier"), new Rapier_Item(AetherToolMaterials.GRAVITITE, 2, -2.0F, 3, new Item.Settings().fireproof()));
+        if (isParadiseLostLoaded) {
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_small_axe"), new Small_Axe_Item(ParadiseLostToolMaterials.OLVITE, 5, -2.9F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_long_sword"), new Long_Sword_Item(ParadiseLostToolMaterials.OLVITE, 6, -3.0F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_dagger"), new Dagger_Item(ParadiseLostToolMaterials.OLVITE, 2, -2.0F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_big_axe"), new Big_Axe_Item(ParadiseLostToolMaterials.OLVITE, 6, -3.4F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_lance"), new Lance_Item(ParadiseLostToolMaterials.OLVITE, 3, -3.2F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_healing_staff"), new Healing_Staff_Item(ParadiseLostToolMaterials.OLVITE, 1, -3.3F, 4, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_mace"), new Mace_Item(ParadiseLostToolMaterials.OLVITE, 4, -2.8F, 3, new Item.Settings().fireproof()));
+            OLVITE_FRANCISCA_ITEM = ItemInit.register("olvite_francisca",
+                    new Francisca_Item(ParadiseLostToolMaterials.OLVITE, 1.0F, -2.6F, () -> CompatEntities.OLVITE_FRANCISCA, new Item.Settings().fireproof()));
+            OLVITE_JAVELIN_ITEM = ItemInit.register("olvite_javelin",
+                    new Javelin_Item(ParadiseLostToolMaterials.OLVITE, 2.2F, -2.7F, () -> CompatEntities.OLVITE_JAVELIN, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_francisca"), OLVITE_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_javelin"), OLVITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_ninjato"), new Ninjato_Item(ParadiseLostToolMaterials.OLVITE, 2, -2.1F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_sickle"), new Sickle_Item(ParadiseLostToolMaterials.OLVITE, 2, -2.2F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("olvite_rapier"), new Rapier_Item(ParadiseLostToolMaterials.OLVITE, 2, -2.0F, 3, new Item.Settings().fireproof()));
 
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_small_axe"), new Small_Axe_Item(AetherToolMaterials.ZANITE, 5, -2.9F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_long_sword"), new Long_Sword_Item(AetherToolMaterials.ZANITE, 6, -3.0F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_dagger"), new Dagger_Item(AetherToolMaterials.ZANITE, 2, -2.0F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_big_axe"), new Big_Axe_Item(AetherToolMaterials.ZANITE, 6, -3.4F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_lance"), new Lance_Item(AetherToolMaterials.ZANITE, 3, -3.2F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_healing_staff"), new Healing_Staff_Item(AetherToolMaterials.ZANITE, 1, -3.3F, 4, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_mace"), new Mace_Item(AetherToolMaterials.ZANITE, 4, -2.8F, 3, new Item.Settings().fireproof()));
-        //     ZANITE_FRANCISCA_ITEM = ItemInit.register("zanite_francisca",
-        //             new Francisca_Item(AetherToolMaterials.ZANITE, 1.0F, -2.6F, () -> CompatEntities.ZANITE_FRANCISCA, new Item.Settings().fireproof()));
-        //     ZANITE_JAVELIN_ITEM = ItemInit.register("zanite_javelin", new Javelin_Item(AetherToolMaterials.ZANITE, 2.2F, -2.7F, () -> CompatEntities.ZANITE_JAVELIN, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_francisca"), ZANITE_FRANCISCA_ITEM);
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_javelin"), ZANITE_JAVELIN_ITEM);
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_ninjato"), new Ninjato_Item(AetherToolMaterials.ZANITE, 2, -2.1F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_sickle"), new Sickle_Item(AetherToolMaterials.ZANITE, 2, -2.2F, new Item.Settings().fireproof()));
-        //     ItemInit.ITEMS.put(MedievalMain.ID("zanite_rapier"), new Rapier_Item(AetherToolMaterials.ZANITE, 2, -2.0F, 3, new Item.Settings().fireproof()));
-
-        //     ItemInit.MATERIAL_STRINGS.add("gravitite");
-        //     ItemInit.MATERIAL_STRINGS.add("zanite");
-        // }
+            ItemInit.MATERIAL_STRINGS.add("olvite");
+        }
         if (isBYGLoaded) {
             ItemInit.ITEMS.put(MedievalMain.ID("pendorite_small_axe"), new Small_Axe_Item(BYGTier.PENDORITE, 5, -2.9F, new Item.Settings().fireproof()));
             ItemInit.ITEMS.put(MedievalMain.ID("pendorite_long_sword"), new Long_Sword_Item(BYGTier.PENDORITE, 6, -3.0F, new Item.Settings().fireproof()));
@@ -361,6 +350,24 @@ public class CompatItems {
 
             ItemInit.MATERIAL_STRINGS.add("ruby_netherite");
             ItemInit.MATERIAL_STRINGS.add("sapphire_netherite");
+        }
+        if (isDeeperDarkerLoaded) {
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_small_axe"), new Small_Axe_Item(DDTiers.WARDEN, 5, -2.9F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_long_sword"), new Long_Sword_Item(DDTiers.WARDEN, 5, -3.0F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_dagger"), new Dagger_Item(DDTiers.WARDEN, 2, -2.0F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_big_axe"), new Big_Axe_Item(DDTiers.WARDEN, 6, -3.4F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_lance"), new Lance_Item(DDTiers.WARDEN, 3, -3.2F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_healing_staff"), new Healing_Staff_Item(DDTiers.WARDEN, 1, -3.3F, 4, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_mace"), new Mace_Item(DDTiers.WARDEN, 4, -3.0F, 2, new Item.Settings().fireproof()));
+            WARDEN_FRANCISCA_ITEM = ItemInit.register("warden_francisca", new Francisca_Item(DDTiers.WARDEN, 2.0F, -2.6F, () -> CompatEntities.WARDEN_FRANCISCA, new Item.Settings().fireproof()));
+            WARDEN_JAVELIN_ITEM = ItemInit.register("warden_javelin", new Javelin_Item(DDTiers.WARDEN, 2.2F, -2.7F, () -> CompatEntities.WARDEN_JAVELIN, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_francisca"), WARDEN_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_javelin"), WARDEN_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_ninjato"), new Ninjato_Item(DDTiers.WARDEN, 2, -2.1F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_sickle"), new Sickle_Item(DDTiers.WARDEN, 2, -2.2F, new Item.Settings().fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.ID("warden_rapier"), new Rapier_Item(DDTiers.WARDEN, 2, -2.0F, 3, new Item.Settings().fireproof()));
+
+            ItemInit.MATERIAL_STRINGS.add("warden");
         }
     }
 }

@@ -43,13 +43,20 @@ public class ServerAdvancementLoaderMixin {
             map.remove(new Identifier("medievalweapons", "medieval_gilded_netherite_recipes"));
             map.remove(new Identifier("medievalweapons", "medieval_rose_gold_recipes"));
         }
-        if (!CompatItems.isAetherLoaded) {
-            map.remove(new Identifier("medievalweapons", "medieval_gravitite_recipes"));
-            map.remove(new Identifier("medievalweapons", "medieval_zanite_recipes"));
+        if (!CompatItems.isParadiseLostLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_olvite_recipes"));
+            // map.remove(new Identifier("medievalweapons", "medieval_zanite_recipes"));
         }
         if (!CompatItems.isMythicUpgradesLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_ruby_netherite_recipes"));
             map.remove(new Identifier("medievalweapons", "medieval_sapphire_netherite_recipes"));
+        }
+        if (!CompatItems.isMythicUpgradesLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_ruby_netherite_recipes"));
+            map.remove(new Identifier("medievalweapons", "medieval_sapphire_netherite_recipes"));
+        }
+        if (!CompatItems.isDeeperDarkerLoaded) {
+            map.remove(new Identifier("medievalweapons", "medieval_warden_recipes"));
         }
     }
 }

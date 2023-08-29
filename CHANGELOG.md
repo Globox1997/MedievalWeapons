@@ -1,6 +1,6 @@
 ### Added:
-- 
+- Added deeperdarker compat (textures by feder)
 ### Fixed:
-- Fixed better nether compat
+- 
 ### Changed:
 - 

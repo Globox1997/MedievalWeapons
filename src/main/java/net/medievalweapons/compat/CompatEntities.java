@@ -40,17 +40,19 @@ public class CompatEntities {
     public static EntityType<Javelin_Entity> GILDED_NETHERITE_JAVELIN;
     public static EntityType<Francisca_Entity> GILDED_NETHERITE_FRANCISCA;
 
-    // Aether
-    public static EntityType<Javelin_Entity> GRAVITITE_JAVELIN;
-    public static EntityType<Francisca_Entity> GRAVITITE_FRANCISCA;
-    public static EntityType<Javelin_Entity> ZANITE_JAVELIN;
-    public static EntityType<Francisca_Entity> ZANITE_FRANCISCA;
+    // Paradise Lost
+    public static EntityType<Javelin_Entity> OLVITE_JAVELIN;
+    public static EntityType<Francisca_Entity> OLVITE_FRANCISCA;
 
     // Mythic Upgrades
     public static EntityType<Javelin_Entity> RUBY_NETHERITE_JAVELIN;
     public static EntityType<Francisca_Entity> RUBY_NETHERITE_FRANCISCA;
     public static EntityType<Javelin_Entity> SAPPHIRE_NETHERITE_JAVELIN;
     public static EntityType<Francisca_Entity> SAPPHIRE_NETHERITE_FRANCISCA;
+
+    // Deeper and Darker
+    public static EntityType<Javelin_Entity> WARDEN_JAVELIN;
+    public static EntityType<Francisca_Entity> WARDEN_FRANCISCA;
 
     public static void loadEntities() {
         if (CompatItems.isBetterEndLoaded) {
@@ -97,16 +99,12 @@ public class CompatEntities {
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("adamantite_francisca"), ADAMANTITE_FRANCISCA);
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("adamantite_javelin"), ADAMANTITE_JAVELIN);
         }
-        if (CompatItems.isAetherLoaded) {
-            GRAVITITE_JAVELIN = EntityInit.register("gravitite_javelin", EntityInit.create_Javelin(CompatItems.GRAVITITE_JAVELIN_ITEM));
-            GRAVITITE_FRANCISCA = EntityInit.register("gravitite_francisca", EntityInit.create_Francisca(CompatItems.GRAVITITE_FRANCISCA_ITEM));
-            ZANITE_JAVELIN = EntityInit.register("zanite_javelin", EntityInit.create_Javelin(CompatItems.ZANITE_JAVELIN_ITEM));
-            ZANITE_FRANCISCA = EntityInit.register("zanite_francisca", EntityInit.create_Francisca(CompatItems.ZANITE_FRANCISCA_ITEM));
+        if (CompatItems.isParadiseLostLoaded) {
+            OLVITE_JAVELIN = EntityInit.register("olvite_javelin", EntityInit.create_Javelin(CompatItems.OLVITE_JAVELIN_ITEM));
+            OLVITE_FRANCISCA = EntityInit.register("olvite_francisca", EntityInit.create_Francisca(CompatItems.OLVITE_FRANCISCA_ITEM));
 
-            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("gravitite_francisca"), GRAVITITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("gravitite_javelin"), GRAVITITE_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("zanite_francisca"), ZANITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("zanite_javelin"), ZANITE_JAVELIN);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("olvite_francisca"), OLVITE_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("olvite_javelin"), OLVITE_JAVELIN);
         }
         if (CompatItems.isBYGLoaded) {
             PENDORITE_JAVELIN = EntityInit.register("pendorite_javelin", EntityInit.create_Javelin(CompatItems.PENDORITE_JAVELIN_ITEM));
@@ -136,6 +134,13 @@ public class CompatEntities {
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("ruby_netherite_javelin"), RUBY_NETHERITE_JAVELIN);
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("sapphire_netherite_francisca"), SAPPHIRE_NETHERITE_FRANCISCA);
             EntityInit.ENTITY_TYPES.put(MedievalMain.ID("sapphire_netherite_javelin"), SAPPHIRE_NETHERITE_JAVELIN);
+        }
+        if (CompatItems.isDeeperDarkerLoaded) {
+            WARDEN_JAVELIN = EntityInit.register("warden_javelin", EntityInit.create_Javelin(CompatItems.WARDEN_JAVELIN_ITEM));
+            WARDEN_FRANCISCA = EntityInit.register("warden_francisca", EntityInit.create_Francisca(CompatItems.WARDEN_FRANCISCA_ITEM));
+
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("warden_francisca"), WARDEN_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.ID("warden_javelin"), WARDEN_JAVELIN);
         }
     }
 }

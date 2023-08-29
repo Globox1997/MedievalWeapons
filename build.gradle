@@ -76,6 +76,10 @@ dependencies {
 	modCompileOnly ('maven.modrinth:levelz:1.4.9+1.20') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	// Deeper and Darker
+	modCompileOnly ('maven.modrinth:deeperdarker:fabric-1.20-1.2.0') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
 	//  	exclude(group: "net.fabricmc.fabric-api")
 	// }

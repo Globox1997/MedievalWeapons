@@ -360,56 +360,31 @@ public class CompatRecipes {
             SHAPED_RECIPES.put("adamantite_rapier",
                     new ShapedRecipeMaterial(new Identifier("mythicmetals", "adamantite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("adamantite_rapier"), "rapier"));
         }
-        if (CompatItems.isAetherLoaded) {
-            SHAPED_RECIPES.put("gravitite_small_axe", new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item",
-                    MedievalMain.ID("gravitite_small_axe"), "small_axe"));
-            SHAPED_RECIPES.put("gravitite_long_sword", new ShapedRecipeMaterial(new Identifier("betterend", "gravitite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item",
-                    MedievalMain.ID("gravitite_long_sword"), "long_sword"));
-            SHAPED_RECIPES.put("gravitite_dagger",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_dagger"), "dagger"));
-            SHAPED_RECIPES.put("gravitite_big_axe",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_big_axe"), "big_axe"));
-            SHAPED_RECIPES.put("gravitite_lance",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_lance"), "lance"));
-            SHAPED_RECIPES.put("gravitite_healing_staff", new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item",
-                    MedievalMain.ID("gravitite_healing_staff"), "healing_staff"));
-            SHAPED_RECIPES.put("gravitite_mace",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_mace"), "mace"));
-            SHAPED_RECIPES.put("gravitite_francisca", new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item",
-                    MedievalMain.ID("gravitite_francisca"), "francisca"));
-            SHAPED_RECIPES.put("gravitite_javelin",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_javelin"), "javelin"));
-            SHAPED_RECIPES.put("gravitite_ninjato",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_ninjato"), "ninjato"));
-            SHAPED_RECIPES.put("gravitite_sickle",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_sickle"), "sickle"));
-            SHAPED_RECIPES.put("gravitite_rapier",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "gravitite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("gravitite_rapier"), "rapier"));
-
-            SHAPED_RECIPES.put("zanite_small_axe",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_small_axe"), "small_axe"));
-            SHAPED_RECIPES.put("zanite_long_sword",
-                    new ShapedRecipeMaterial(new Identifier("betterend", "zanite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_long_sword"), "long_sword"));
-            SHAPED_RECIPES.put("zanite_dagger",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_dagger"), "dagger"));
-            SHAPED_RECIPES.put("zanite_big_axe",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_big_axe"), "big_axe"));
-            SHAPED_RECIPES.put("zanite_lance",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_lance"), "lance"));
-            SHAPED_RECIPES.put("zanite_healing_staff", new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item",
-                    MedievalMain.ID("zanite_healing_staff"), "healing_staff"));
-            SHAPED_RECIPES.put("zanite_mace",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_mace"), "mace"));
-            SHAPED_RECIPES.put("zanite_francisca",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_francisca"), "francisca"));
-            SHAPED_RECIPES.put("zanite_javelin",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_javelin"), "javelin"));
-            SHAPED_RECIPES.put("zanite_ninjato",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_ninjato"), "ninjato"));
-            SHAPED_RECIPES.put("zanite_sickle",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_sickle"), "sickle"));
-            SHAPED_RECIPES.put("zanite_rapier",
-                    new ShapedRecipeMaterial(new Identifier("the_aether", "zanite_gemstone"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("zanite_rapier"), "rapier"));
+        if (CompatItems.isParadiseLostLoaded) {
+            SHAPED_RECIPES.put("olvite_small_axe",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_small_axe"), "small_axe"));
+            SHAPED_RECIPES.put("olvite_long_sword",
+                    new ShapedRecipeMaterial(new Identifier("betterend", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_long_sword"), "long_sword"));
+            SHAPED_RECIPES.put("olvite_dagger",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_dagger"), "dagger"));
+            SHAPED_RECIPES.put("olvite_big_axe",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_big_axe"), "big_axe"));
+            SHAPED_RECIPES.put("olvite_lance",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_lance"), "lance"));
+            SHAPED_RECIPES.put("olvite_healing_staff",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_healing_staff"), "healing_staff"));
+            SHAPED_RECIPES.put("olvite_mace",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_mace"), "mace"));
+            SHAPED_RECIPES.put("olvite_francisca",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_francisca"), "francisca"));
+            SHAPED_RECIPES.put("olvite_javelin",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_javelin"), "javelin"));
+            SHAPED_RECIPES.put("olvite_ninjato",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_ninjato"), "ninjato"));
+            SHAPED_RECIPES.put("olvite_sickle",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_sickle"), "sickle"));
+            SHAPED_RECIPES.put("olvite_rapier",
+                    new ShapedRecipeMaterial(new Identifier("paradise_lost", "olvite"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.ID("olvite_rapier"), "rapier"));
         }
         if (CompatItems.isBYGLoaded) {
             SMITHING_RECIPES.put("pendorite_small_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_small_axe"), new Identifier(BYG.MOD_ID, "pendorite_ingot"), "item", "item",
@@ -538,6 +513,32 @@ public class CompatRecipes {
                     MedievalMain.ID("sapphire_netherite_rapier"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
             SMITHING_RECIPES.put("sapphire_netherite_sickle", new SmithingRecipeMaterial(MedievalMain.ID("netherite_sickle"), new Identifier("mythicupgrades:sapphire"), "item", "item",
                     MedievalMain.ID("sapphire_netherite_sickle"), new Identifier("minecraft:netherite_upgrade_smithing_template")));
+        }
+        if (CompatItems.isDeeperDarkerLoaded) {
+            SMITHING_RECIPES.put("warden_small_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_small_axe"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_small_axe"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_long_sword", new SmithingRecipeMaterial(MedievalMain.ID("netherite_long_sword"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_long_sword"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_dagger", new SmithingRecipeMaterial(MedievalMain.ID("netherite_dagger"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_dagger"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_big_axe", new SmithingRecipeMaterial(MedievalMain.ID("netherite_big_axe"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_big_axe"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_lance", new SmithingRecipeMaterial(MedievalMain.ID("netherite_lance"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_lance"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_healing_staff", new SmithingRecipeMaterial(MedievalMain.ID("netherite_healing_staff"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item",
+                    "item", MedievalMain.ID("warden_healing_staff"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_mace", new SmithingRecipeMaterial(MedievalMain.ID("netherite_mace"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_mace"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_francisca", new SmithingRecipeMaterial(MedievalMain.ID("netherite_francisca"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_francisca"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_javelin", new SmithingRecipeMaterial(MedievalMain.ID("netherite_javelin"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_javelin"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_ninjato", new SmithingRecipeMaterial(MedievalMain.ID("netherite_ninjato"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_ninjato"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_sickle", new SmithingRecipeMaterial(MedievalMain.ID("netherite_sickle"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_sickle"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
+            SMITHING_RECIPES.put("warden_rapier", new SmithingRecipeMaterial(MedievalMain.ID("netherite_rapier"), new Identifier("deeperdarker", "reinforced_echo_shard"), "item", "item",
+                    MedievalMain.ID("warden_rapier"), new Identifier("deeperdarker", "warden_upgrade_smithing_template")));
         }
 
     }
