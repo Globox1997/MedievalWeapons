@@ -48,14 +48,17 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	//Better End/Nether
-	modCompileOnly ('maven.modrinth:betterend:2.1.6') {
+	modCompileOnly ('maven.modrinth:bclib:3.0.13') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	modCompileOnly ('maven.modrinth:betternether:7.1.4') {
+	modCompileOnly ('maven.modrinth:betterend:4.0.10') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	modCompileOnly ('maven.modrinth:betternether:9.0.9') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Mythic Metals
-	modCompileOnly ('maven.modrinth:mythicmetals:0.18.1+1.20-hotfix') {
+	modCompileOnly ('maven.modrinth:mythicmetals:0.18.2+1.20') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Paradise Lost
@@ -71,7 +74,9 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Mythic Upgrades
-	modCompileOnly "curse.maven:mythic-upgrades-fabric-663567:4388965"
+	modCompileOnly ('maven.modrinth:mythic-upgrades:2.3.2+mc1.20.1') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	// LevelZ
 	modCompileOnly ('maven.modrinth:levelz:1.4.9+1.20') {
 		exclude(group: "net.fabricmc.fabric-api")
