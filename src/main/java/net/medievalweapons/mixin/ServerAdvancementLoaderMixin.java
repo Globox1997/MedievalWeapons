@@ -45,7 +45,6 @@ public class ServerAdvancementLoaderMixin {
         }
         if (!CompatItems.isParadiseLostLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_olvite_recipes"));
-            // map.remove(new Identifier("medievalweapons", "medieval_zanite_recipes"));
         }
         if (!CompatItems.isMythicUpgradesLoaded) {
             map.remove(new Identifier("medievalweapons", "medieval_ruby_netherite_recipes"));
