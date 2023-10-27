@@ -37,7 +37,8 @@
     "client.MinecraftClientMixin",
     "client.InGameHudMixin",
     "client.GameRendererMixin",
-    "client.DrawContextMixin"
+    "client.DrawContextMixin",
+    "client.PersistentProjectileEntityAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

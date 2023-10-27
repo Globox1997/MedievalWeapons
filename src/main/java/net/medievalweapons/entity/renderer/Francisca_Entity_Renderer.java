@@ -29,17 +29,25 @@ public class Francisca_Entity_Renderer extends EntityRenderer<Francisca_Entity> 
     @Override
     public void render(Francisca_Entity francisca_Entity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrixStack.push();
+        float age = getAge(francisca_Entity, g);
 
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(g, francisca_Entity.prevYaw, francisca_Entity.getYaw()) - 90.0F));
-        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, francisca_Entity.prevPitch, francisca_Entity.getPitch()) + 90.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, francisca_Entity.prevPitch, francisca_Entity.getPitch()) + 90.0F * age));
         matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0F));
 
         matrixStack.translate(0.0D, -0.2D, 0.0D);
 
-        this.itemRenderer.renderItem(francisca_Entity.getStack(), ModelTransformationMode.GUI, i, OverlayTexture.DEFAULT_UV, matrixStack, vertexConsumerProvider, francisca_Entity.getWorld(),
+        this.itemRenderer.renderItem(francisca_Entity.getStack(), ModelTransformationMode.GROUND, i, OverlayTexture.DEFAULT_UV, matrixStack, vertexConsumerProvider, francisca_Entity.getWorld(),
                 francisca_Entity.getId());
         matrixStack.pop();
         super.render(francisca_Entity, f, g, matrixStack, vertexConsumerProvider, i);
+    }
+
+    private float getAge(Francisca_Entity francisca_Entity, float g) {
+        if (!francisca_Entity.inGround()) {
+            return francisca_Entity.age;
+        }
+        return 1.0f;
     }
 
     @Override

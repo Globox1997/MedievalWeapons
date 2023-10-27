@@ -8,6 +8,7 @@ import net.levelz.stats.Skill;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.Francisca_Item;
+import net.medievalweapons.mixin.client.PersistentProjectileEntityAccessor;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -149,6 +150,10 @@ public class Francisca_Entity extends PersistentProjectileEntity implements Flyi
     @Override
     public ItemStack getStack() {
         return francisca;
+    }
+
+    public boolean inGround() {
+        return ((PersistentProjectileEntityAccessor) this).getInGround();
     }
 
     static {
