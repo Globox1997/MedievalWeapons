@@ -3,9 +3,9 @@ package net.medievalweapons.mixin.client;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 import net.medievalweapons.init.CompatInit;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Long_Sword_Item;
-import net.medievalweapons.item.Thalleous_Sword_Item;
+import net.medievalweapons.item.BigAxeItem;
+import net.medievalweapons.item.LongSwordItem;
+import net.medievalweapons.item.ThalleousSwordItem;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
@@ -29,7 +29,7 @@ public class ItemRendererMixin {
     private void renderItemMixin(@Nullable LivingEntity entity, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
             @Nullable World world, int light, int overlay, int seed, CallbackInfo info) {
         if (entity != null && !CompatInit.isBetterCombatLoaded && (renderMode == ModelTransformationMode.FIRST_PERSON_LEFT_HAND || renderMode == ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)
-                && entity.isBlocking() && (stack.getItem() instanceof Long_Sword_Item || stack.getItem() instanceof Big_Axe_Item || stack.getItem() instanceof Thalleous_Sword_Item)) {
+                && entity.isBlocking() && (stack.getItem() instanceof LongSwordItem || stack.getItem() instanceof BigAxeItem || stack.getItem() instanceof ThalleousSwordItem)) {
             matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(leftHanded ? -20F : 20F));
         }
     }

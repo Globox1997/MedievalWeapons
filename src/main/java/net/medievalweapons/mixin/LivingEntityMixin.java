@@ -10,13 +10,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.TagInit;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Lance_Item;
-import net.medievalweapons.item.Long_Sword_Item;
+import net.medievalweapons.item.BigAxeItem;
+import net.medievalweapons.item.LanceItem;
+import net.medievalweapons.item.LongSwordItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -32,8 +31,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void getHandSwingDuration(CallbackInfoReturnable<Integer> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (!CompatInit.isBetterCombatLoaded && itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                || itemStack.getItem() instanceof Big_Axe_Item || itemStack.getItem() instanceof Lance_Item) {
+        if (!CompatInit.isBetterCombatLoaded && itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                || itemStack.getItem() instanceof BigAxeItem || itemStack.getItem() instanceof LanceItem) {
             info.setReturnValue(10);
         }
     }
@@ -43,8 +42,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void blockedByShieldMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                || itemStack.getItem() instanceof Big_Axe_Item) {
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                || itemStack.getItem() instanceof BigAxeItem) {
             info.setReturnValue(false);
         }
     }
@@ -53,22 +52,15 @@ public abstract class LivingEntityMixin extends Entity {
     private void blockedByShieldDamageWeaponMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getActiveItem();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                || itemStack.getItem() instanceof Big_Axe_Item) {
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                || itemStack.getItem() instanceof BigAxeItem) {
             if (livingEntity instanceof PlayerEntity) {
                 ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), ConfigInit.CONFIG.weapon_blocking_cooldown);
             }
             livingEntity.clearActiveItem();
             if (!this.getWorld().isClient()) {
-                livingEntity.getMainHandStack().damage(1, livingEntity, (p) -> p.sendToolBreakStatus(p.getActiveHand()));
+                livingEntity.getMainHandStack().damage(1, livingEntity, LivingEntity.getSlotForHand(livingEntity.getActiveHand()));
             }
-        }
-    }
-
-    @Inject(method = "createLivingAttributes", at = @At("RETURN"), require = 1, allow = 1, cancellable = true)
-    private static void addAttributes(final CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
-        if (!CompatInit.isReachEntityAttributesLoaded) {
-            info.getReturnValue().add(CompatInit.ATTACK_RANGE);
         }
     }
 

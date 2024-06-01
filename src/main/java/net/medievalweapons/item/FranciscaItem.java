@@ -23,8 +23,8 @@ public class FranciscaItem extends SwordItem {
     private final Supplier<EntityType<FranciscaEntity>> typeSupplier;
     private EntityType<FranciscaEntity> cachedType = null;
 
-    public FranciscaItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Supplier<EntityType<FranciscaEntity>> typeSupplier, Settings settings) {
-        super(toolMaterial, (int) attackDamage, attackSpeed, settings);
+    public FranciscaItem(ToolMaterial toolMaterial, Supplier<EntityType<FranciscaEntity>> typeSupplier, Settings settings) {
+        super(toolMaterial, settings);
         this.typeSupplier = typeSupplier;
     }
 
@@ -41,7 +41,7 @@ public class FranciscaItem extends SwordItem {
             int i = this.getMaxUseTime(stack) - remainingUseTicks;
             if (i >= 10) {
                 if (!world.isClient()) {
-                    stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
+                    stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
                     FranciscaEntity francisca_Entity = new FranciscaEntity(world, playerEntity, this, stack);
                     francisca_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F, 1.0F);
                     if (playerEntity.isCreative()) {

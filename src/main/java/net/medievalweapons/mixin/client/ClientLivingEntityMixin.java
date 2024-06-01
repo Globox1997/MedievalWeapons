@@ -10,8 +10,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.medievalweapons.init.SoundInit;
 import net.medievalweapons.init.TagInit;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Long_Sword_Item;
+import net.medievalweapons.item.BigAxeItem;
+import net.medievalweapons.item.LongSwordItem;
 import net.minecraft.entity.LivingEntity;
 
 @Environment(EnvType.CLIENT)
@@ -22,10 +22,10 @@ public class ClientLivingEntityMixin {
     private void handleStatusMixin(byte status, CallbackInfo info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Big_Axe_Item) {
+        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof BigAxeItem) {
             livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
             info.cancel();
-        } else if (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item) {
+        } else if (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem) {
             livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
             info.cancel();
         }

@@ -1,10 +1,11 @@
 package net.medievalweapons.item;
 
-import com.mojang.authlib.GameProfile;
-
+import net.medievalweapons.init.ConfigInit;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PlantBlock;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.SkeletonEntity;
@@ -16,22 +17,20 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtHelper;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class Sickle_Item extends SwordItem {
+public class SickleItem extends SwordItem {
 
-    public Sickle_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public SickleItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (target.isDead() && attacker.getWorld().getRandom().nextFloat() <= 0.01F) {
+        if (target.isDead() && attacker.getWorld().getRandom().nextFloat() <= ConfigInit.CONFIG.sickle_head_drop_chance) {
             if (target instanceof ZombieEntity) {
                 target.dropStack(new ItemStack(Items.ZOMBIE_HEAD));
             } else if (target instanceof SkeletonEntity) {
@@ -40,10 +39,9 @@ public class Sickle_Item extends SwordItem {
                 target.dropStack(new ItemStack(Items.CREEPER_HEAD));
             } else if (target instanceof WitherSkeletonEntity) {
                 target.dropStack(new ItemStack(Items.WITHER_SKELETON_SKULL));
-            } else if (target instanceof PlayerEntity) {
-                GameProfile gameProfile = ((PlayerEntity) target).getGameProfile();
+            } else if (target instanceof PlayerEntity playerEntity) {
                 ItemStack playerHead = new ItemStack(Items.PLAYER_HEAD);
-                playerHead.getOrCreateNbt().put("SkullOwner", NbtHelper.writeGameProfile(new NbtCompound(), gameProfile));
+                playerHead.set(DataComponentTypes.PROFILE, new ProfileComponent(playerEntity.getGameProfile()));
                 target.dropStack(playerHead);
             }
         }
@@ -71,7 +69,7 @@ public class Sickle_Item extends SwordItem {
                     }
                 }
                 if (playerEntity != null) {
-                    itemStack.damage(breakedBlocks, playerEntity, player -> player.sendToolBreakStatus(context.getHand()));
+                    itemStack.damage(breakedBlocks, playerEntity, LivingEntity.getSlotForHand(context.getHand()));
                 }
             }
             return ActionResult.success(world.isClient);

@@ -22,10 +22,10 @@ public class MedievalWeaponsMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if ((mixinClassName.contains("Big_Axe_ItemMixin") || mixinClassName.contains("Dagger_ItemMixin") || mixinClassName.contains("Francisca_ItemMixin")
-                || mixinClassName.contains("Healing_Staff_ItemMixin") || mixinClassName.contains("Javelin_ItemMixin") || mixinClassName.contains("Lance_ItemMixin")
-                || mixinClassName.contains("Long_Sword_ItemMixin") || mixinClassName.contains("Mace_ItemMixin") || mixinClassName.contains("Ninjato_ItemMixin")
-                || mixinClassName.contains("Rapier_ItemMixin") || mixinClassName.contains("Sickle_ItemMixin") || mixinClassName.contains("Small_Axe_ItemMixin"))
+        if ((mixinClassName.contains("BigAxeItemMixin") || mixinClassName.contains("DaggerItemMixin") || mixinClassName.contains("FranciscaItemMixin")
+                || mixinClassName.contains("HealingStaffItemMixin") || mixinClassName.contains("JavelinItemMixin") || mixinClassName.contains("LanceItemMixin")
+                || mixinClassName.contains("LongSwordItemMixin") || mixinClassName.contains("MaceItemMixin") || mixinClassName.contains("NinjatoItemMixin")
+                || mixinClassName.contains("RapierItemMixin") || mixinClassName.contains("SickleItemMixin") || mixinClassName.contains("SmallAxeItemMixin"))
                 && !FabricLoader.getInstance().isModLoaded("betternether")) {
             return false;
         }

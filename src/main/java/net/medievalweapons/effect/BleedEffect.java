@@ -14,8 +14,9 @@ public class BleedEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         entity.damage(createDamageSource(entity), 1.0f);
+        return true;
     }
 
     @Override

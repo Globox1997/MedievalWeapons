@@ -348,6 +348,7 @@
   "text.autoconfig.medievalweapons.option.weapon_blocking_cooldown": "Weapon Blocking Cooldown",
   "text.autoconfig.medievalweapons.option.old_healing_staff_behavior": "Old Healing Staff Behavior",
   "text.autoconfig.medievalweapons.option.healing_staff_owner_healing": "Healing Staff Owner Healing",
+  "text.autoconfig.medievalweapons.option.sickle_head_drop_chance": "Sickle Head Drop Chance",
 
   "death.attack.javelin": "%1$s got impaled by %2$s",
   "death.attack.francisca": "%1$s was killed by %2$s with a francisca",

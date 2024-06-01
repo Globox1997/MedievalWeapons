@@ -12,10 +12,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import net.fabricmc.api.Environment;
 import net.medievalweapons.access.PlayerAccess;
 import net.medievalweapons.init.CompatInit;
+import net.medievalweapons.item.NinjatoItem;
 import net.fabricmc.api.EnvType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 
@@ -26,47 +29,75 @@ public abstract class InGameHudMixin {
     @Shadow
     @Final
     @Mutable
-    private final MinecraftClient client;
+    private MinecraftClient client;
     @Shadow
-    private int scaledWidth;
-    @Shadow
-    private int scaledHeight;
-    @Shadow
-    @Mutable
     @Final
-    private static Identifier ICONS;
-
-    public InGameHudMixin(MinecraftClient client) {
-        this.client = client;
-    }
+    @Mutable
+    private static Identifier CROSSHAIR_ATTACK_INDICATOR_FULL_TEXTURE;
+    @Shadow
+    @Final
+    @Mutable
+    private static Identifier CROSSHAIR_ATTACK_INDICATOR_BACKGROUND_TEXTURE;
+    @Shadow
+    @Final
+    @Mutable
+    private static Identifier CROSSHAIR_ATTACK_INDICATOR_PROGRESS_TEXTURE;
+    @Shadow
+    @Final
+    @Mutable
+    private static Identifier HOTBAR_ATTACK_INDICATOR_BACKGROUND_TEXTURE;
+    @Shadow
+    @Final
+    @Mutable
+    private static Identifier HOTBAR_ATTACK_INDICATOR_PROGRESS_TEXTURE;
 
     @Inject(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getAttackCooldownProgress(F)F", shift = Shift.AFTER))
-    private void renderCrosshairMixin(DrawContext context, CallbackInfo info) {
+    private void renderCrosshairMixin(DrawContext context, float tickDelta, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded) {
-            float o = ((PlayerAccess) this.client.player).getAttackCooldownProgressOffhand(1.0F);
-            if (o < 1.0F) {
-                int u = (int) (o * 17.0F);
-                context.drawTexture(ICONS, this.scaledWidth / 2 - 8, this.scaledHeight / 2 - 7 + 16 + 8, 36, 94, 16, 4);
-                context.drawTexture(ICONS, this.scaledWidth / 2 - 8, this.scaledHeight / 2 - 7 + 16 + 8, 52, 94, u, 4);
+            if (showOffhandAttackCooldown(this.client.player)) {
+                int p = context.getScaledWindowHeight() / 2 - 7 + 16 + 8;
+                int t = context.getScaledWindowWidth() / 2 - 8;
+                float o = ((PlayerAccess) this.client.player).getAttackCooldownProgressOffhand(1.0F);
+                boolean bl = false;
+                if (this.client.targetedEntity != null && this.client.targetedEntity instanceof LivingEntity && o >= 1.0f) {
+                    bl = this.client.player.getAttackCooldownProgressPerTick() > 5.0f;
+                    bl &= this.client.targetedEntity.isAlive();
+                }
+                if (bl) {
+                    context.drawGuiTexture(CROSSHAIR_ATTACK_INDICATOR_FULL_TEXTURE, t, p, 16, 16);
+                } else if (o < 1.0f) {
+                    int l = (int) (o * 17.0f);
+                    context.drawGuiTexture(CROSSHAIR_ATTACK_INDICATOR_BACKGROUND_TEXTURE, t, p, 16, 4);
+                    context.drawGuiTexture(CROSSHAIR_ATTACK_INDICATOR_PROGRESS_TEXTURE, 16, 4, 0, 0, t, p, l, 4);
+                }
             }
         }
     }
 
     @Inject(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getAttackCooldownProgress(F)F", shift = Shift.AFTER))
-    private void renderHotbar(float tickDelta, DrawContext context, CallbackInfo info) {
+    private void renderHotbarMixin(DrawContext context, float tickDelta, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded) {
-            float o = ((PlayerAccess) this.client.player).getAttackCooldownProgressOffhand(1.0F);
-            if (o < 1.0F) {
-                Arm arm = this.client.player.getMainArm().getOpposite();
-                int r = (this.scaledWidth / 2) + 91 + 6;
-                if (arm == Arm.RIGHT) {
-                    r = (this.scaledWidth / 2) - 91 - 22;
+            if (showOffhandAttackCooldown(this.client.player)) {
+                float o = ((PlayerAccess) this.client.player).getAttackCooldownProgressOffhand(1.0F);
+                if (o < 1.0F) {
+                    Arm arm = this.client.player.getMainArm().getOpposite();
+                    int r = (context.getScaledWindowWidth() / 2) + 91 + 6;
+                    if (arm == Arm.RIGHT) {
+                        r = (context.getScaledWindowWidth() / 2) - 91 - 22;
+                    }
+                    int s = (int) (o * 19.0F);
+                    context.drawGuiTexture(HOTBAR_ATTACK_INDICATOR_BACKGROUND_TEXTURE, r + 18, context.getScaledWindowHeight() - 20, 94, 18, 18);
+                    context.drawGuiTexture(HOTBAR_ATTACK_INDICATOR_PROGRESS_TEXTURE, r + 18, context.getScaledWindowHeight() - 20 + 18 - s, 112 - s, 18, s);
                 }
-                int s = (int) (o * 19.0F);
-                context.drawTexture(ICONS, r + 18, this.scaledHeight - 20, 0, 94, 18, 18);
-                context.drawTexture(ICONS, r + 18, this.scaledHeight - 20 + 18 - s, 18, 112 - s, 18, s);
             }
         }
+    }
+
+    private boolean showOffhandAttackCooldown(PlayerEntity player) {
+        if (player.getMainHandStack().getItem() instanceof NinjatoItem && player.getOffHandStack().getItem() instanceof NinjatoItem) {
+            return true;
+        }
+        return false;
     }
 
 }

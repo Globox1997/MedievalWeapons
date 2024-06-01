@@ -1,6 +1,6 @@
 package net.medievalweapons.item;
 
-import net.medievalweapons.entity.Healing_Ball_Entity;
+import net.medievalweapons.entity.HealingBallEntity;
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
@@ -20,10 +20,10 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
 public class HealingStaffItem extends SwordItem {
-    private int addition;
+    private final int addition;
 
-    public HealingStaffItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, int addition, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public HealingStaffItem(ToolMaterial toolMaterial, int addition, Settings settings) {
+        super(toolMaterial, settings);
         this.addition = addition;
     }
 
@@ -33,10 +33,10 @@ public class HealingStaffItem extends SwordItem {
             int i = this.getMaxUseTime(stack) - remainingUseTicks;
             if (i >= 30) {
                 if (!world.isClient()) {
-                    stack.damage(3, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
+                    stack.damage(3, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
                     world.playSound(null, playerEntity.getBlockPos(), SoundInit.MAGIC_SHOT_EVENT, SoundCategory.PLAYERS, 0.9F, 1.0F);
                     if (ConfigInit.CONFIG.old_healing_staff_behavior) {
-                        Healing_Ball_Entity healing_Ball_Entity = new Healing_Ball_Entity(user, world, this.addition);
+                        HealingBallEntity healing_Ball_Entity = new HealingBallEntity(user, world, this.addition);
                         healing_Ball_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 0.5F, 1.0F);
                         healing_Ball_Entity.setPos(playerEntity.getX(), playerEntity.getY() + 1.6D, playerEntity.getZ());
                         world.spawnEntity(healing_Ball_Entity);
@@ -79,7 +79,7 @@ public class HealingStaffItem extends SwordItem {
                                 0.0D, 0.0D);
                     }
                 } else if (i % 80 == 0 && i < 241) {
-                    stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
+                    stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
                     playerEntity.addStatusEffect((new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 0)));
                 }
             }

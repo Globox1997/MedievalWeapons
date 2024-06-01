@@ -2,13 +2,7 @@ package net.medievalweapons.item;
 
 import java.util.UUID;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-
-import net.medievalweapons.init.CompatInit;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -18,32 +12,12 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.world.World;
 
-public class Lance_Item extends SwordItem {
-    private final ToolMaterial material;
-    private final float attackDamage;
-    public final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+public class LanceItem extends SwordItem {
     private static final UUID ATTACK_BONUS_MODIFIER_ID = UUID.fromString("fbd4e4e4-62f7-4108-9be3-eb6781231298");
     private static final EntityAttributeModifier ATTACK_BONUS_MODIFIER;
 
-    public Lance_Item(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings);
-        this.material = material;
-        this.attackDamage = attackDamage + material.getAttackDamage();
-        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
-        builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
-        CompatInit.addRange(1.5D, builder);
-        this.attributeModifiers = builder.build();
-    }
-
-    @Override
-    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot equipmentSlot) {
-        return equipmentSlot == EquipmentSlot.MAINHAND ? attributeModifiers : super.getAttributeModifiers(equipmentSlot);
-    }
-
-    @Override
-    public ToolMaterial getMaterial() {
-        return this.material;
+    public LanceItem(ToolMaterial material, Settings settings) {
+        super(material, settings);
     }
 
     @Override
@@ -59,7 +33,7 @@ public class Lance_Item extends SwordItem {
     }
 
     static {
-        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 2.0D, EntityAttributeModifier.Operation.ADDITION);
+        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 2.0D, EntityAttributeModifier.Operation.ADD_VALUE);
     }
 
 }

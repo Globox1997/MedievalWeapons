@@ -2,10 +2,8 @@ package net.medievalweapons.item;
 
 import java.util.List;
 
-import org.jetbrains.annotations.Nullable;
-
 import net.medievalweapons.init.CompatInit;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -18,13 +16,13 @@ import net.minecraft.world.World;
 
 public class BigAxeItem extends SwordItem {
 
-    public BigAxeItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public BigAxeItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        super.appendTooltip(stack, world, tooltip, context);
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, type);
         if (!CompatInit.isBetterCombatLoaded) {
             tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
         }

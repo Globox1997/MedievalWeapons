@@ -2,7 +2,7 @@ package net.medievalweapons.item;
 
 import java.util.function.Supplier;
 
-import net.medievalweapons.entity.Javelin_Entity;
+import net.medievalweapons.entity.JavelinEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,15 +20,15 @@ import net.minecraft.world.World;
 
 public class JavelinItem extends SwordItem {
 
-    private final Supplier<EntityType<Javelin_Entity>> typeSupplier;
-    private EntityType<Javelin_Entity> cachedType = null;
+    private final Supplier<EntityType<JavelinEntity>> typeSupplier;
+    private EntityType<JavelinEntity> cachedType = null;
 
-    public JavelinItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Supplier<EntityType<Javelin_Entity>> typeSupplier, Settings settings) {
-        super(toolMaterial, (int) attackDamage, attackSpeed, settings);
+    public JavelinItem(ToolMaterial toolMaterial, Supplier<EntityType<JavelinEntity>> typeSupplier, Settings settings) {
+        super(toolMaterial, settings);
         this.typeSupplier = typeSupplier;
     }
 
-    public EntityType<Javelin_Entity> getType() {
+    public EntityType<JavelinEntity> getType() {
         if (cachedType == null) {
             cachedType = typeSupplier.get();
         }
@@ -41,8 +41,8 @@ public class JavelinItem extends SwordItem {
             int i = this.getMaxUseTime(stack) - remainingUseTicks;
             if (i >= 10) {
                 if (!world.isClient()) {
-                    stack.damage(1, playerEntity, entity -> entity.sendToolBreakStatus(user.getActiveHand()));
-                    Javelin_Entity Javelin_Entity = new Javelin_Entity(world, playerEntity, this, stack);
+                    stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
+                    JavelinEntity Javelin_Entity = new JavelinEntity(world, playerEntity, this, stack);
                     Javelin_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
                     if (playerEntity.isCreative()) {
                         Javelin_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;

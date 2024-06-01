@@ -2,7 +2,7 @@ package net.medievalweapons.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 
-import net.medievalweapons.item.Rapier_Item;
+import net.medievalweapons.item.RapierItem;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
@@ -17,7 +17,7 @@ public abstract class MobEntityMixin extends LivingEntity {
 
     @Override
     public void takeKnockback(double strength, double x, double z) {
-        if (this.getAttacker() == null || this.getAttacker().getMainHandStack().isEmpty() || !(this.getAttacker().getMainHandStack().getItem() instanceof Rapier_Item)) {
+        if (this.getAttacker() == null || this.getAttacker().getMainHandStack().isEmpty() || !(this.getAttacker().getMainHandStack().getItem() instanceof RapierItem)) {
             super.takeKnockback(strength, x, z);
         }
     }

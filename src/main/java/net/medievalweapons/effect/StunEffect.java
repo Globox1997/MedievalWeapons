@@ -12,8 +12,9 @@ public class StunEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         livingEntity.slowMovement(livingEntity.getBlockStateAtPos(), new Vec3d(0.05F, 0.1F, 0.05F));
+        return true;
     }
 
     @Override

@@ -19,6 +19,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.data.DataTracker.Builder;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
@@ -38,23 +39,20 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     }
 
     public FranciscaEntity(World world, LivingEntity owner, FranciscaItem item, ItemStack stack) {
-        // super(item.getType(), owner, world);
-        super();
+        super(item.getType(), owner, world, stack);
         this.francisca = new ItemStack(item);
-        this.francisca = stack.copy();
         this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
     }
 
-    @Environment(EnvType.CLIENT)
     public FranciscaEntity(World world, double x, double y, double z, FranciscaItem item) {
-        super(item.getType(), x, y, z, world);
+        super(item.getType(), z, z, z, world, new ItemStack(item));
         this.francisca = new ItemStack(item);
     }
 
     @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(ENCHANTMENT_GLINT, false);
+    protected void initDataTracker(Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(ENCHANTMENT_GLINT, false);
     }
 
     @Override
@@ -70,8 +68,7 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity hitEntity = entityHitResult.getEntity();
-
-        float damage = ((FranciscaItem) this.francisca.getItem()).getAttackDamage() * 2.3F;
+        float damage = ((FranciscaItem) this.francisca.getItem()).getMaterial().getAttackDamage() * 2.3F;
 
         int sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, this.francisca);
         if (sharpnessLevel > 0) {
@@ -123,7 +120,7 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         if (nbt.contains("francisca", 10)) {
-            this.francisca = ItemStack.fromNbt(nbt.getCompound("francisca"));
+            this.francisca = ItemStack.fromNbt(this.getRegistryManager(), nbt.getCompound("francisca")).orElse(this.getDefaultItemStack());
             this.dataTracker.set(ENCHANTMENT_GLINT, this.francisca.hasGlint());
         }
 
@@ -132,7 +129,7 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.put("francisca", this.francisca.writeNbt(new NbtCompound()));
+        nbt.put("francisca", this.francisca.encode(this.getRegistryManager()));
     }
 
     @Override
@@ -163,6 +160,11 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
 
     private DamageSource createDamageSource(Entity source, Entity attacker) {
         return attacker.getDamageSources().create(EntityInit.FRANCISCA, source, attacker);
+    }
+
+    @Override
+    protected ItemStack getDefaultItemStack() {
+        return this.francisca;
     }
 
 }

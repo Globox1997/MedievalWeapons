@@ -7,12 +7,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 
-public class Rapier_Item extends SwordItem {
+public class RapierItem extends SwordItem {
 
-    private int addition;
+    private final int addition;
 
-    public Rapier_Item(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, int addition, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public RapierItem(ToolMaterial toolMaterial, int addition, Settings settings) {
+        super(toolMaterial, settings);
         this.addition = addition;
     }
 

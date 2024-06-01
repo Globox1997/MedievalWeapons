@@ -2,7 +2,7 @@ package net.medievalweapons;
 
 import net.fabricmc.api.ModInitializer;
 import net.medievalweapons.init.*;
-import net.medievalweapons.network.PlayerPacket;
+import net.medievalweapons.network.MedievalServerPacket;
 import net.minecraft.util.Identifier;
 
 public class MedievalMain implements ModInitializer {
@@ -23,7 +23,7 @@ public class MedievalMain implements ModInitializer {
         EffectInit.init();
         EntityInit.init();
         ParticleInit.init();
-        PlayerPacket.init();
+        MedievalServerPacket.init();
         SoundInit.init();
         TagInit.init();
     }

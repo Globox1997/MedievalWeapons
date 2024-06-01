@@ -17,15 +17,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.api.EnvType;
 import net.medievalweapons.access.PlayerAccess;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EffectInit;
 import net.medievalweapons.init.TagInit;
-import net.medievalweapons.item.Big_Axe_Item;
-import net.medievalweapons.item.Long_Sword_Item;
-import net.medievalweapons.item.Ninjato_Item;
-import net.medievalweapons.network.PlayerPacket;
+import net.medievalweapons.item.BigAxeItem;
+import net.medievalweapons.item.LongSwordItem;
+import net.medievalweapons.item.NinjatoItem;
+import net.medievalweapons.network.packet.AttackPacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
@@ -63,19 +64,19 @@ public class MinecraftClientMixin {
 
             if (!CompatInit.isBetterCombatLoaded) {
                 ItemStack itemStack = player.getMainHandStack();
-                if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                        || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
+                if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                        || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
                     info.setReturnValue(false);
 
-                if (this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof Ninjato_Item
-                        && player.getOffHandStack().getItem() instanceof Ninjato_Item) {
+                if (this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof NinjatoItem
+                        && player.getOffHandStack().getItem() instanceof NinjatoItem) {
 
                     if (this.attackedOffhand) {
                         this.attackedOffhand = false;
 
                         switch (this.crosshairTarget.getType()) {
                         case ENTITY: {
-                            MinecraftClient.getInstance().getNetworkHandler().sendPacket(PlayerPacket.attackPacket(((EntityHitResult) this.crosshairTarget).getEntity()));
+                            ClientPlayNetworking.send(new AttackPacket(((EntityHitResult) this.crosshairTarget).getEntity().getId()));
                             if (!this.player.isSpectator()) {
                                 ((PlayerAccess) this.player).doOffhandAttack(((EntityHitResult) this.crosshairTarget).getEntity());
                                 ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
@@ -113,8 +114,8 @@ public class MinecraftClientMixin {
     private void doItemUseMixin(CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded && player != null) {
             ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                    || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
+            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                    || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
                 info.cancel();
         }
     }
@@ -123,8 +124,8 @@ public class MinecraftClientMixin {
     private void handleBlockBreakingMixin(boolean bl, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded && player != null) {
             ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof Long_Sword_Item
-                    || itemStack.getItem() instanceof Big_Axe_Item) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
+            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                    || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
                 info.cancel();
         }
     }

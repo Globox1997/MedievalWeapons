@@ -1,18 +1,15 @@
 package net.medievalweapons.mixin;
 
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.ItemInit;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.ArrowItem;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.RangedWeaponItem;
@@ -25,14 +22,13 @@ public abstract class BowItemMixin extends RangedWeaponItem {
         super(settings);
     }
 
-    @Inject(method = "onStoppedUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/PersistentProjectileEntity;setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V", shift = Shift.AFTER), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void onStoppedUsingMixin(ItemStack stack, World world, LivingEntity user, int remainingUseTicks, CallbackInfo info, PlayerEntity playerEntity, boolean bl, ItemStack itemStack, int i,
-            float f, boolean bl2, ArrowItem arrowItem, PersistentProjectileEntity persistentProjectileEntity) {
-        if (((BowItem) (Object) this) == ItemInit.LONG_BOW_ITEM)
-            persistentProjectileEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, f * 4.5F, 1.0F);
-        else if (((BowItem) (Object) this) == ItemInit.RECURVE_BOW_ITEM)
-            persistentProjectileEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, f * 2.0F, 1.0F);
-
+    @Inject(method = "shoot", at = @At("TAIL"))
+    private void onStoppedUsingMixin(LivingEntity shooter, ProjectileEntity projectile, int index, float speed, float divergence, float yaw, @Nullable LivingEntity target, CallbackInfo info) {
+        if (((BowItem) (Object) this) == ItemInit.LONG_BOW_ITEM) {
+            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * 4.5F, divergence);
+        } else if (((BowItem) (Object) this) == ItemInit.RECURVE_BOW_ITEM) {
+            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * 2.0F, divergence);
+        }
     }
 
     @ModifyVariable(method = "onStoppedUsing", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/BowItem;getPullProgress(I)F"), ordinal = 0)

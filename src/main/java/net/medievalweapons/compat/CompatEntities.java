@@ -7,52 +7,52 @@ import net.minecraft.entity.EntityType;
 
 public class CompatEntities {
     // DragonLoot
-    public static EntityType<Javelin_Entity> DRAGON_JAVELIN;
-    public static EntityType<Francisca_Entity> DRAGON_FRANCISCA;
+    public static EntityType<JavelinEntity> DRAGON_JAVELIN;
+    public static EntityType<FranciscaEntity> DRAGON_FRANCISCA;
 
     // Better Nether
-    public static EntityType<Francisca_Entity> NETHER_RUBY_FRANCISCA;
-    public static EntityType<Javelin_Entity> NETHER_RUBY_JAVELIN;
-    public static EntityType<Francisca_Entity> CINCINNASITE_FRANCISCA;
-    public static EntityType<Javelin_Entity> CINCINNASITE_JAVELIN;
-    public static EntityType<Francisca_Entity> CINCINNASITE_DIAMOND_FRANCISCA;
-    public static EntityType<Javelin_Entity> CINCINNASITE_DIAMOND_JAVELIN;
+    public static EntityType<FranciscaEntity> NETHER_RUBY_FRANCISCA;
+    public static EntityType<JavelinEntity> NETHER_RUBY_JAVELIN;
+    public static EntityType<FranciscaEntity> CINCINNASITE_FRANCISCA;
+    public static EntityType<JavelinEntity> CINCINNASITE_JAVELIN;
+    public static EntityType<FranciscaEntity> CINCINNASITE_DIAMOND_FRANCISCA;
+    public static EntityType<JavelinEntity> CINCINNASITE_DIAMOND_JAVELIN;
 
     // Better End
-    public static EntityType<Francisca_Entity> TERMINITE_FRANCISCA;
-    public static EntityType<Javelin_Entity> TERMINITE_JAVELIN;
-    public static EntityType<Francisca_Entity> AETERNIUM_FRANCISCA;
-    public static EntityType<Javelin_Entity> AETERNIUM_JAVELIN;
-    public static EntityType<Francisca_Entity> THALLASIUM_FRANCISCA;
-    public static EntityType<Javelin_Entity> THALLASIUM_JAVELIN;
+    public static EntityType<FranciscaEntity> TERMINITE_FRANCISCA;
+    public static EntityType<JavelinEntity> TERMINITE_JAVELIN;
+    public static EntityType<FranciscaEntity> AETERNIUM_FRANCISCA;
+    public static EntityType<JavelinEntity> AETERNIUM_JAVELIN;
+    public static EntityType<FranciscaEntity> THALLASIUM_FRANCISCA;
+    public static EntityType<JavelinEntity> THALLASIUM_JAVELIN;
 
     // Mythic Metals
-    public static EntityType<Javelin_Entity> ADAMANTITE_JAVELIN;
-    public static EntityType<Francisca_Entity> ADAMANTITE_FRANCISCA;
+    public static EntityType<JavelinEntity> ADAMANTITE_JAVELIN;
+    public static EntityType<FranciscaEntity> ADAMANTITE_FRANCISCA;
 
     // BYG
-    public static EntityType<Javelin_Entity> PENDORITE_JAVELIN;
-    public static EntityType<Francisca_Entity> PENDORITE_FRANCISCA;
+    public static EntityType<JavelinEntity> PENDORITE_JAVELIN;
+    public static EntityType<FranciscaEntity> PENDORITE_FRANCISCA;
 
     // Additional Additions
-    public static EntityType<Javelin_Entity> ROSE_GOLD_JAVELIN;
-    public static EntityType<Francisca_Entity> ROSE_GOLD_FRANCISCA;
-    public static EntityType<Javelin_Entity> GILDED_NETHERITE_JAVELIN;
-    public static EntityType<Francisca_Entity> GILDED_NETHERITE_FRANCISCA;
+    public static EntityType<JavelinEntity> ROSE_GOLD_JAVELIN;
+    public static EntityType<FranciscaEntity> ROSE_GOLD_FRANCISCA;
+    public static EntityType<JavelinEntity> GILDED_NETHERITE_JAVELIN;
+    public static EntityType<FranciscaEntity> GILDED_NETHERITE_FRANCISCA;
 
     // Paradise Lost
-    public static EntityType<Javelin_Entity> OLVITE_JAVELIN;
-    public static EntityType<Francisca_Entity> OLVITE_FRANCISCA;
+    public static EntityType<JavelinEntity> OLVITE_JAVELIN;
+    public static EntityType<FranciscaEntity> OLVITE_FRANCISCA;
 
     // Mythic Upgrades
-    public static EntityType<Javelin_Entity> RUBY_NETHERITE_JAVELIN;
-    public static EntityType<Francisca_Entity> RUBY_NETHERITE_FRANCISCA;
-    public static EntityType<Javelin_Entity> SAPPHIRE_NETHERITE_JAVELIN;
-    public static EntityType<Francisca_Entity> SAPPHIRE_NETHERITE_FRANCISCA;
+    public static EntityType<JavelinEntity> RUBY_NETHERITE_JAVELIN;
+    public static EntityType<FranciscaEntity> RUBY_NETHERITE_FRANCISCA;
+    public static EntityType<JavelinEntity> SAPPHIRE_NETHERITE_JAVELIN;
+    public static EntityType<FranciscaEntity> SAPPHIRE_NETHERITE_FRANCISCA;
 
     // Deeper and Darker
-    public static EntityType<Javelin_Entity> WARDEN_JAVELIN;
-    public static EntityType<Francisca_Entity> WARDEN_FRANCISCA;
+    public static EntityType<JavelinEntity> WARDEN_JAVELIN;
+    public static EntityType<FranciscaEntity> WARDEN_FRANCISCA;
 
     public static void loadEntities() {
         if (CompatItems.isBetterEndLoaded) {

@@ -5,15 +5,18 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.Identifier;
 
 public class EffectInit {
 
-    public static final StatusEffect STUN_EFFECT = new StunEffect(StatusEffectCategory.HARMFUL, 12221440);
-    public static final StatusEffect BLEED_EFFECT = new BleedEffect(StatusEffectCategory.HARMFUL, 10303293);
+    public static final RegistryEntry<StatusEffect> STUN_EFFECT = register("medievalweapons:stun", new StunEffect(StatusEffectCategory.HARMFUL, 12221440));
+    public static final RegistryEntry<StatusEffect> BLEED_EFFECT = register("medievalweapons:bleed", new BleedEffect(StatusEffectCategory.HARMFUL, 10303293));
 
     public static void init() {
-        Registry.register(Registries.STATUS_EFFECT, "medievalweapons:stun", STUN_EFFECT);
-        Registry.register(Registries.STATUS_EFFECT, "medievalweapons:bleed", BLEED_EFFECT);
     }
 
+    private static RegistryEntry<StatusEffect> register(String id, StatusEffect statusEffect) {
+        return Registry.registerReference(Registries.STATUS_EFFECT, new Identifier(id), statusEffect);
+    }
 }

@@ -92,7 +92,7 @@ public class RecipeGenerator {
         json.add("key", key);
 
         obj = new JsonObject();
-        obj.addProperty("item", output.toString());
+        obj.addProperty("id", output.toString());
         obj.addProperty("count", 1);
         json.add("result", obj);
 
@@ -112,7 +112,7 @@ public class RecipeGenerator {
         json.add("addition", obj);
 
         obj = new JsonObject();
-        obj.addProperty("item", output.toString());
+        obj.addProperty("id", output.toString());
         json.add("result", obj);
 
         obj = new JsonObject();

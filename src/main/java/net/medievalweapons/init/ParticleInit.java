@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.FabricSpriteProvider;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -18,7 +18,7 @@ import net.minecraft.client.particle.SpriteBillboardParticle;
 
 public class ParticleInit {
 
-    public static final DefaultParticleType HEALING_AURA_PARTICLE = FabricParticleTypes.simple();
+    public static final SimpleParticleType HEALING_AURA_PARTICLE = FabricParticleTypes.simple();
 
     public static void init() {
         Registry.register(Registries.PARTICLE_TYPE, new Identifier("medievalweapons", "healing_aura_particle"), HEALING_AURA_PARTICLE);
@@ -91,7 +91,7 @@ public class ParticleInit {
         }
 
         @Environment(EnvType.CLIENT)
-        public static class Factory implements ParticleFactory<DefaultParticleType> {
+        public static class Factory implements ParticleFactory<SimpleParticleType> {
             private final FabricSpriteProvider sprites;
 
             public Factory(FabricSpriteProvider sprites) {
@@ -99,7 +99,7 @@ public class ParticleInit {
             }
 
             @Override
-            public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double vX, double vY, double vZ) {
+            public Particle createParticle(SimpleParticleType type, ClientWorld world, double x, double y, double z, double vX, double vY, double vZ) {
                 return new HealingAuraParticle(world, x, y, z, vX, vY, vZ, sprites);
             }
         }
