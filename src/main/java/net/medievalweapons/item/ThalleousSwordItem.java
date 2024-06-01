@@ -23,27 +23,29 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class Long_Sword_Item extends SwordItem {
+public class ThalleousSwordItem extends SwordItem {
+
     private final ToolMaterial material;
     private final float attackDamage;
     public final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public Long_Sword_Item(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-        super(material, attackDamage, attackSpeed, settings);
-        this.material = material;
+    public ThalleousSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+        super(toolMaterial, attackDamage, attackSpeed, settings);
+        this.material = toolMaterial;
         this.attackDamage = attackDamage + material.getAttackDamage();
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
-        CompatInit.addRange(0.8D, builder);
+        CompatInit.addRange(1.0D, builder);
         this.attributeModifiers = builder.build();
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
-        if (!CompatInit.isBetterCombatLoaded)
+        if (!CompatInit.isBetterCombatLoaded) {
             tooltip.add(Text.translatable("item.medievalweapons.double_handed.tooltip"));
+        }
     }
 
     @Override

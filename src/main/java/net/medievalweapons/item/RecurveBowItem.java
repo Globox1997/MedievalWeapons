@@ -2,15 +2,15 @@ package net.medievalweapons.item;
 
 import net.minecraft.item.BowItem;
 
-public class Long_Bow_Item extends BowItem {
+public class RecurveBowItem extends BowItem {
 
-    public Long_Bow_Item(Settings settings) {
+    public RecurveBowItem(Settings settings) {
         super(settings);
     }
 
     @Override
     public int getRange() {
-        return 20;
+        return 12;
     }
 
 }

@@ -20,8 +20,9 @@ public class Rapier_Item extends SwordItem {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!target.isDead() && attacker.getWorld().getRandom().nextFloat() <= 0.01F + ((float) addition / 10F)) {
             int amplifier = 0;
-            if (target.hasStatusEffect(EffectInit.BLEED_EFFECT))
+            if (target.hasStatusEffect(EffectInit.BLEED_EFFECT)) {
                 amplifier = target.getStatusEffect(EffectInit.BLEED_EFFECT).getAmplifier() + 1;
+            }
             target.addStatusEffect(new StatusEffectInstance(EffectInit.BLEED_EFFECT, 60 + addition * 20, amplifier > 2 ? 2 : amplifier, false, false, true));
         }
         return super.postHit(stack, target, attacker);

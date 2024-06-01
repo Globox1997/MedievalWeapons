@@ -32,15 +32,15 @@ public class Sickle_Item extends SwordItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (target.isDead() && attacker.getWorld().getRandom().nextFloat() <= 0.01F) {
-            if (target instanceof ZombieEntity)
+            if (target instanceof ZombieEntity) {
                 target.dropStack(new ItemStack(Items.ZOMBIE_HEAD));
-            if (target instanceof SkeletonEntity)
+            } else if (target instanceof SkeletonEntity) {
                 target.dropStack(new ItemStack(Items.SKELETON_SKULL));
-            if (target instanceof CreeperEntity)
+            } else if (target instanceof CreeperEntity) {
                 target.dropStack(new ItemStack(Items.CREEPER_HEAD));
-            if (target instanceof WitherSkeletonEntity)
+            } else if (target instanceof WitherSkeletonEntity) {
                 target.dropStack(new ItemStack(Items.WITHER_SKELETON_SKULL));
-            if (target instanceof PlayerEntity) {
+            } else if (target instanceof PlayerEntity) {
                 GameProfile gameProfile = ((PlayerEntity) target).getGameProfile();
                 ItemStack playerHead = new ItemStack(Items.PLAYER_HEAD);
                 playerHead.getOrCreateNbt().put("SkullOwner", NbtHelper.writeGameProfile(new NbtCompound(), gameProfile));
@@ -58,9 +58,10 @@ public class Sickle_Item extends SwordItem {
         if (blockState.getBlock() instanceof PlantBlock) {
             PlayerEntity playerEntity = context.getPlayer();
             ItemStack itemStack = context.getStack();
-            if (playerEntity instanceof ServerPlayerEntity)
+            if (playerEntity instanceof ServerPlayerEntity) {
                 Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) playerEntity, blockPos, itemStack);
-            if (!world.isClient) {
+            }
+            if (!world.isClient()) {
                 int breakedBlocks = 0;
                 for (int i = -1; i < 2; i++) {
                     BlockPos otherBlockPos = blockPos.offset(playerEntity.getHorizontalFacing().rotateYClockwise().getAxis(), i);
@@ -69,8 +70,9 @@ public class Sickle_Item extends SwordItem {
                         breakedBlocks++;
                     }
                 }
-                if (playerEntity != null)
+                if (playerEntity != null) {
                     itemStack.damage(breakedBlocks, playerEntity, player -> player.sendToolBreakStatus(context.getHand()));
+                }
             }
             return ActionResult.success(world.isClient);
         }
