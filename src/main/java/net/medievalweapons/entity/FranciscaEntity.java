@@ -10,7 +10,6 @@ import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.FranciscaItem;
 import net.medievalweapons.mixin.client.PersistentProjectileEntityAccessor;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FlyingItemEntity;
@@ -24,7 +23,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
@@ -38,15 +37,16 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
         this.francisca = new ItemStack(item);
     }
 
-    public FranciscaEntity(World world, LivingEntity owner, FranciscaItem item, ItemStack stack) {
-        super(item.getType(), owner, world, stack);
-        this.francisca = new ItemStack(item);
+    public FranciscaEntity(World world, LivingEntity owner, ItemStack stack) {
+        super(((FranciscaItem) stack.getItem()).getType(), owner, world, stack, null);
+        this.francisca = stack;
         this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
     }
 
-    public FranciscaEntity(World world, double x, double y, double z, FranciscaItem item) {
-        super(item.getType(), z, z, z, world, new ItemStack(item));
-        this.francisca = new ItemStack(item);
+    public FranciscaEntity(World world, double x, double y, double z, ItemStack stack) {
+        super(((FranciscaItem) stack.getItem()).getType(), z, z, z, world, stack, stack);
+        this.francisca = stack;
+        this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
     }
 
     @Override
@@ -69,13 +69,11 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity hitEntity = entityHitResult.getEntity();
         float damage = ((FranciscaItem) this.francisca.getItem()).getMaterial().getAttackDamage() * 2.3F;
-
-        int sharpnessLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, this.francisca);
-        if (sharpnessLevel > 0) {
-            damage += sharpnessLevel * 0.6F;
+        Entity owner = this.getOwner();
+        if (this.getWorld() instanceof ServerWorld serverWorld) {
+            damage = EnchantmentHelper.getDamage(serverWorld, this.getWeaponStack(), hitEntity, createDamageSource(this, owner == null ? this : owner), damage);
         }
 
-        Entity owner = this.getOwner();
         if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity) {
             int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
             damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > this.getWorld().getRandom().nextFloat() ? damage
@@ -83,29 +81,20 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
         }
 
         DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
-        SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
         if (hitEntity.damage(damageSource, damage)) {
             if (hitEntity.getType() == EntityType.ENDERMAN) {
                 return;
             }
-
-            if (hitEntity instanceof LivingEntity) {
-                LivingEntity hitLivingEntity = (LivingEntity) hitEntity;
-                if (owner instanceof LivingEntity) {
-                    EnchantmentHelper.onUserDamaged(hitLivingEntity, owner);
-                    EnchantmentHelper.onTargetDamaged((LivingEntity) owner, hitLivingEntity);
-                }
-
-                int fireAspectLevel = EnchantmentHelper.getLevel(Enchantments.FIRE_ASPECT, this.francisca);
-                if (fireAspectLevel > 0) {
-                    hitLivingEntity.setOnFireFor(fireAspectLevel * 4);
-                }
-                this.playSound(soundEvent, 1.0F, 1.0F);
-                this.onHit(hitLivingEntity);
+            if (this.getWorld() instanceof ServerWorld serverWorld) {
+                EnchantmentHelper.onTargetDamaged(serverWorld, hitEntity, damageSource, this.getWeaponStack());
+            }
+            if (hitEntity instanceof LivingEntity livingEntity) {
+                this.knockback(livingEntity, damageSource);
+                this.onHit(livingEntity);
             }
         }
-
         this.setVelocity(this.getVelocity().multiply(0.75));
+        this.playSound(SoundEvents.ITEM_TRIDENT_HIT, 1.0f, 1.0f);
     }
 
     @Override

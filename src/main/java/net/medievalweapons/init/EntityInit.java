@@ -5,7 +5,6 @@ import java.util.Map;
 
 import net.medievalweapons.compat.CompatEntities;
 import net.medievalweapons.entity.FranciscaEntity;
-import net.medievalweapons.entity.HealingBallEntity;
 import net.medievalweapons.entity.JavelinEntity;
 import net.medievalweapons.item.FranciscaItem;
 import net.medievalweapons.item.JavelinItem;
@@ -35,13 +34,10 @@ public class EntityInit {
     public static final EntityType<JavelinEntity> GOLDEN_JAVELIN = register("golden_javelin", create_Javelin(ItemInit.GOLDEN_JAVELIN_ITEM));
     public static final EntityType<JavelinEntity> DIAMOND_JAVELIN = register("diamond_javelin", create_Javelin(ItemInit.DIAMOND_JAVELIN_ITEM));
     public static final EntityType<JavelinEntity> NETHERITE_JAVELIN = register("netherite_javelin", create_Javelin(ItemInit.NETHERITE_JAVELIN_ITEM));
-    // Healing Ball
-    public static final EntityType<HealingBallEntity> HEALING_BALL_ENTITY = register("healing_ball",
-            EntityType.Builder.<HealingBallEntity>create(HealingBallEntity::new, SpawnGroup.MISC).dimensions(0.3F, 0.3F).build());
     // Damage Types
-    public static final RegistryKey<DamageType> JAVELIN = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("medievalweapons", "javelin"));
-    public static final RegistryKey<DamageType> FRANCISCA = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("medievalweapons", "francisca"));
-    public static final RegistryKey<DamageType> BLEEDING = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("medievalweapons", "bleed"));
+    public static final RegistryKey<DamageType> JAVELIN = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of("medievalweapons", "javelin"));
+    public static final RegistryKey<DamageType> FRANCISCA = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of("medievalweapons", "francisca"));
+    public static final RegistryKey<DamageType> BLEEDING = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Identifier.of("medievalweapons", "bleed"));
 
     public static void init() {
         CompatEntities.loadEntities();
@@ -51,7 +47,7 @@ public class EntityInit {
     }
 
     public static <T extends EntityType<?>> T register(String name, T type) {
-        Identifier id = new Identifier("medievalweapons", name);
+        Identifier id = Identifier.of("medievalweapons", name);
         ENTITY_TYPES.put(id, type);
         return type;
     }

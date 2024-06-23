@@ -4,10 +4,14 @@ import java.util.function.Supplier;
 
 import net.medievalweapons.entity.FranciscaEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ProjectileItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
@@ -16,14 +20,16 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 
-public class FranciscaItem extends SwordItem {
+public class FranciscaItem extends SwordItem implements ProjectileItem {
 
     private final Supplier<EntityType<FranciscaEntity>> typeSupplier;
     private EntityType<FranciscaEntity> cachedType = null;
 
-    public FranciscaItem(ToolMaterial toolMaterial, Supplier<EntityType<FranciscaEntity>> typeSupplier, Settings settings) {
+    public FranciscaItem(ToolMaterial toolMaterial, Supplier<EntityType<FranciscaEntity>> typeSupplier, Item.Settings settings) {
         super(toolMaterial, settings);
         this.typeSupplier = typeSupplier;
     }
@@ -38,17 +44,17 @@ public class FranciscaItem extends SwordItem {
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (user instanceof PlayerEntity playerEntity) {
-            int i = this.getMaxUseTime(stack) - remainingUseTicks;
+            int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
             if (i >= 10) {
                 if (!world.isClient()) {
                     stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
-                    FranciscaEntity francisca_Entity = new FranciscaEntity(world, playerEntity, this, stack);
-                    francisca_Entity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F, 1.0F);
+                    FranciscaEntity franciscaEntity = new FranciscaEntity(world, playerEntity, stack);
+                    franciscaEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F, 1.0F);
                     if (playerEntity.isCreative()) {
-                        francisca_Entity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
+                        franciscaEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
                     }
-                    world.spawnEntity(francisca_Entity);
-                    world.playSoundFromEntity(null, francisca_Entity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    world.spawnEntity(franciscaEntity);
+                    world.playSoundFromEntity(null, franciscaEntity, SoundEvents.ITEM_TRIDENT_THROW.value(), SoundCategory.PLAYERS, 1.0F, 1.0F);
                     if (!playerEntity.isCreative()) {
                         playerEntity.getInventory().removeOne(stack);
                     }
@@ -76,7 +82,25 @@ public class FranciscaItem extends SwordItem {
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
+    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
         return 72000;
     }
+
+    @Override
+    public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction) {
+        FranciscaEntity franciscaEntity = new FranciscaEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack.copyWithCount(1));
+        franciscaEntity.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+        return franciscaEntity;
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        return true;
+    }
+
+    @Override
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
+    }
+
 }

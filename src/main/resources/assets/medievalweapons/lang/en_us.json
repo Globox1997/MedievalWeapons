@@ -357,5 +357,8 @@
   "effect.medievalweapons.stun": "Stun",
   "effect.medievalweapons.bleed": "Bleed",
 
-  "attribute.name.generic.attack_range": "Attack Range"
+  "attribute.name.generic.attack_range": "Attack Range",
+
+  "tag.item.medievalweapons.double_handed_items": "Double Handed Items",
+  "tag.item.medievalweapons.across_double_handed_items": "Across Double Handed Items"
 }

@@ -1,7 +1,6 @@
 package net.medievalweapons.item;
 
-import java.util.UUID;
-
+import net.medievalweapons.MedievalMain;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -11,10 +10,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class DaggerItem extends SwordItem {
-    public static final UUID ATTACK_BONUS_MODIFIER_ID = UUID.fromString("fbd4e4e4-62f7-4108-9be3-eb6781231298");
+
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("sneaking_attack_bonus");
     private static final EntityAttributeModifier ATTACK_BONUS_MODIFIER;
 
     public DaggerItem(ToolMaterial material, Settings settings) {
@@ -35,7 +36,7 @@ public class DaggerItem extends SwordItem {
     }
 
     static {
-        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, "Sneaking attack bonus", 2.0D, EntityAttributeModifier.Operation.ADD_VALUE);
+        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, 2.0D, EntityAttributeModifier.Operation.ADD_VALUE);
     }
 
 }

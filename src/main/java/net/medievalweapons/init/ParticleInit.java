@@ -21,7 +21,7 @@ public class ParticleInit {
     public static final SimpleParticleType HEALING_AURA_PARTICLE = FabricParticleTypes.simple();
 
     public static void init() {
-        Registry.register(Registries.PARTICLE_TYPE, new Identifier("medievalweapons", "healing_aura_particle"), HEALING_AURA_PARTICLE);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of("medievalweapons", "healing_aura_particle"), HEALING_AURA_PARTICLE);
     }
 
     @Environment(EnvType.CLIENT)

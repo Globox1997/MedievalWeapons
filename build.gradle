@@ -11,7 +11,6 @@ repositories {
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url "https://jitpack.io" }
 	maven { url "https://maven.terraformersmc.com/" }
-	maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
 	maven { url "https://cursemaven.com" }
 	maven { url = uri("https://ueaj.dev/maven") }
 	maven { url "https://api.modrinth.com/maven" }
@@ -23,10 +22,6 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Reach Entity Attributes 
-	modCompileOnly ("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_attributes_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
 	// Config
 	modImplementation ("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
     	exclude(group: "net.fabricmc.fabric-api")

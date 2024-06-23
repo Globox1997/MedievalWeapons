@@ -17,6 +17,7 @@ import net.fabricmc.api.EnvType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Arm;
@@ -52,7 +53,7 @@ public abstract class InGameHudMixin {
     private static Identifier HOTBAR_ATTACK_INDICATOR_PROGRESS_TEXTURE;
 
     @Inject(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getAttackCooldownProgress(F)F", shift = Shift.AFTER))
-    private void renderCrosshairMixin(DrawContext context, float tickDelta, CallbackInfo info) {
+    private void renderCrosshairMixin(DrawContext context, RenderTickCounter tickCounter, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded) {
             if (showOffhandAttackCooldown(this.client.player)) {
                 int p = context.getScaledWindowHeight() / 2 - 7 + 16 + 8;
@@ -75,7 +76,7 @@ public abstract class InGameHudMixin {
     }
 
     @Inject(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getAttackCooldownProgress(F)F", shift = Shift.AFTER))
-    private void renderHotbarMixin(DrawContext context, float tickDelta, CallbackInfo info) {
+    private void renderHotbarMixin(DrawContext context, RenderTickCounter tickCounter, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded) {
             if (showOffhandAttackCooldown(this.client.player)) {
                 float o = ((PlayerAccess) this.client.player).getAttackCooldownProgressOffhand(1.0F);

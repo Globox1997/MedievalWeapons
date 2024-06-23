@@ -22,7 +22,7 @@ public class ClientLivingEntityMixin {
     private void handleStatusMixin(byte status, CallbackInfo info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof BigAxeItem) {
+        if (itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof BigAxeItem) {
             livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
             info.cancel();
         } else if (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem) {

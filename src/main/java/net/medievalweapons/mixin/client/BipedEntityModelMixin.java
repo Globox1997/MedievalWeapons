@@ -58,7 +58,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
                     this.leftArm.pitch = -1.17F;
                     this.rightArm.roll = 0.7F;
                 }
-            } else if (livingEntity.getMainHandStack().isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || livingEntity.getMainHandStack().getItem() instanceof BigAxeItem) {
+            } else if (livingEntity.getMainHandStack().isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || livingEntity.getMainHandStack().getItem() instanceof BigAxeItem) {
                 this.rightArm.pitch = -0.5236F + (MathHelper.cos(f * 0.6662F) * 2.0F * g * 0.5F / 15);
                 this.rightArm.yaw = 0.0F;
                 this.rightArm.roll = 0.0F;

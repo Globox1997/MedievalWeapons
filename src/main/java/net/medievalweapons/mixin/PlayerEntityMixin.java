@@ -22,6 +22,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -64,7 +65,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
         target.timeUntilRegen = 0;
 
         float f = (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        float g = EnchantmentHelper.getAttackDamage(this.getOffHandStack(), target.getType());
+        DamageSource damageSource = this.getDamageSources().playerAttack((PlayerEntity) (Object) this);
+        float g = this.getDamageAgainst(target, f, damageSource) - f;
         float h = this.getAttackCooldownProgressOffhand(0.5f);
         g *= h;
         this.resetLastAttackedOffhandTicks();
@@ -72,11 +74,10 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
             ItemStack itemStack = this.getStackInHand(Hand.OFF_HAND);
             boolean bl = h > 0.9f;
             boolean bl2 = false;
-            int i = 0;
-            i += EnchantmentHelper.getLevel(Enchantments.KNOCKBACK, itemStack);
+            float i = this.getKnockbackAgainst(target, damageSource) + (bl2 ? 1.0f : 0.0f);
             if (this.isSprinting() && bl) {
                 this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_KNOCKBACK, this.getSoundCategory(), 1.0f, 1.0f);
-                ++i;
+                i += 1.0f;
                 bl2 = true;
             }
             boolean bl3 = bl && this.fallDistance > 0.0f && !this.isOnGround() && !this.isClimbing() && !this.isTouchingWater() && !this.hasStatusEffect(StatusEffects.BLINDNESS) && !this.hasVehicle()
@@ -93,7 +94,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
             }
             float j = 0.0f;
             boolean bl5 = false;
-            int k = EnchantmentHelper.getLevel(Enchantments.FIRE_ASPECT, itemStack);
+            int k = itemStack.getEnchantments().getEnchantments().stream().anyMatch(entry -> entry.matchesId(Enchantments.FIRE_ASPECT.getRegistry())) ? 1 : 0;
 
             if (target instanceof LivingEntity livingEntity) {
                 j = livingEntity.getHealth();
@@ -116,7 +117,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                     this.setSprinting(false);
                 }
                 if (bl42) {
-                    float l = 1.0f + EnchantmentHelper.getSweepingMultiplier(this) * f;
+                    float l = 1.0f + (float) this.getAttributeValue(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO) * f;
                     List<LivingEntity> list = this.getWorld().getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(1.0, 0.25, 1.0));
                     for (LivingEntity livingEntity : list) {
                         if (livingEntity == this || livingEntity == target || this.isTeammate(livingEntity) || livingEntity instanceof ArmorStandEntity && ((ArmorStandEntity) livingEntity).isMarker()
@@ -149,9 +150,11 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 }
                 this.onAttacking(target);
                 if (target instanceof LivingEntity livingEntity) {
-                    EnchantmentHelper.onUserDamaged(livingEntity, this);
+                    itemStack.postDamageEntity(livingEntity, (PlayerEntity) (Object) this);
                 }
-                EnchantmentHelper.onTargetDamaged(this, target);
+                if (target.getWorld() instanceof ServerWorld serverWorld) {
+                    EnchantmentHelper.onTargetDamaged(serverWorld, target, damageSource);
+                }
                 ItemStack itemStack2 = this.getOffHandStack();
                 Entity entity = target;
                 if (target instanceof EnderDragonPart enderDragonPart) {
@@ -188,7 +191,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
     @Override
     public boolean disablesShield() {
         ItemStack itemStack = this.getMainHandStack();
-        return super.disablesShield() || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+        return super.disablesShield() || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                 || itemStack.getItem() instanceof BigAxeItem;
     }
 
@@ -210,6 +213,11 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
     @Override
     public void resetLastAttackedOffhandTicks() {
         this.lastAttackedOffhandTicks = 0;
+    }
+
+    @Shadow
+    protected float getDamageAgainst(Entity target, float baseDamage, DamageSource damageSource) {
+        return baseDamage;
     }
 
 }

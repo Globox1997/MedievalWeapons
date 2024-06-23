@@ -20,7 +20,7 @@ public class TagGroupLoaderMixin<T> {
     @Inject(method = "buildGroup", at = @At("HEAD"))
     private void buildGroupMixin(Map<Identifier, List<TrackedEntry>> map, CallbackInfoReturnable<Map<Identifier, Collection<T>>> info) {
         if (!CompatItems.isDragonLootLoaded) {
-            map.remove(new Identifier("dragonloot", "explosion_resistant"));
+            map.remove(Identifier.of("dragonloot", "explosion_resistant"));
         }
     }
 }

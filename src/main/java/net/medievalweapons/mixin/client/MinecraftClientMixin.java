@@ -64,7 +64,7 @@ public class MinecraftClientMixin {
 
             if (!CompatInit.isBetterCombatLoaded) {
                 ItemStack itemStack = player.getMainHandStack();
-                if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                         || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
                     info.setReturnValue(false);
 
@@ -114,7 +114,7 @@ public class MinecraftClientMixin {
     private void doItemUseMixin(CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded && player != null) {
             ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                     || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
                 info.cancel();
         }
@@ -124,7 +124,7 @@ public class MinecraftClientMixin {
     private void handleBlockBreakingMixin(boolean bl, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded && player != null) {
             ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACCROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                     || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle()))
                 info.cancel();
         }

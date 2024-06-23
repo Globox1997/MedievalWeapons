@@ -1,22 +1,24 @@
 package net.medievalweapons.item;
 
 import java.util.List;
-import java.util.UUID;
 
+import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.CompatInit;
-import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class LongSwordItem extends SwordItem {
-    public static final UUID ATTACK_BONUS_MODIFIER_ID = UUID.fromString("fbd4e4e4-62f7-4108-9be3-eb6781231298");
+
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("double_handed_attack_bonus");
 
     public LongSwordItem(ToolMaterial material, Settings settings) {
         super(material, settings);

@@ -12,6 +12,5 @@ public class MedievalConfig implements ConfigData {
     public int weapon_blocking_cooldown = 60;
     @Comment("0.03 = 3% chance")
     public float sickle_head_drop_chance = 0.03f;
-    public boolean old_healing_staff_behavior = false;
     public boolean healing_staff_owner_healing = false;
 }

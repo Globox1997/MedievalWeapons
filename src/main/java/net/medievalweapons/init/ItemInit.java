@@ -28,7 +28,7 @@ import net.minecraft.util.Identifier;
 public class ItemInit {
 
     // Item Group
-    public static final RegistryKey<ItemGroup> MEDIEVALWEAPONS_ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("medievalweapons", "item_group"));
+    public static final RegistryKey<ItemGroup> MEDIEVALWEAPONS_ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.of("medievalweapons", "item_group"));
 
     // Lists
     public static final ArrayList<String> MATERIAL_STRINGS = new ArrayList<String>(Arrays.asList("wooden", "stone", "iron", "golden", "diamond", "netherite"));
@@ -38,74 +38,85 @@ public class ItemInit {
     public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     // Small Axe
     public static final SmallAxeItem WOODEN_SMALL_AXE_ITEM = register("wooden_small_axe",
-            new SmallAxeItem(ToolMaterials.WOOD, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 5, -2.9f))));
+            new SmallAxeItem(ToolMaterials.WOOD,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final SmallAxeItem STONE_SMALL_AXE_ITEM = register("stone_small_axe",
-            new SmallAxeItem(ToolMaterials.STONE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.9f))));
+            new SmallAxeItem(ToolMaterials.STONE,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final SmallAxeItem IRON_SMALL_AXE_ITEM = register("iron_small_axe",
-            new SmallAxeItem(ToolMaterials.IRON, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 5, -2.9f))));
+            new SmallAxeItem(ToolMaterials.IRON,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final SmallAxeItem GOLDEN_SMALL_AXE_ITEM = register("golden_small_axe",
-            new SmallAxeItem(ToolMaterials.GOLD, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 5, -2.9f))));
+            new SmallAxeItem(ToolMaterials.GOLD,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final SmallAxeItem DIAMOND_SMALL_AXE_ITEM = register("diamond_small_axe",
-            new SmallAxeItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 5, -2.9f))));
+            new SmallAxeItem(ToolMaterials.DIAMOND,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final SmallAxeItem NETHERITE_SMALL_AXE_ITEM = register("netherite_small_axe",
-            new SmallAxeItem(ToolMaterials.NETHERITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 5, -2.9f)).fireproof()));
+            new SmallAxeItem(ToolMaterials.NETHERITE,
+                    new Item.Settings()
+                            .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                    new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            .fireproof()));
 
     // Long Sword
     public static final LongSwordItem WOOD_LONG_SWORD_ITEM = register("wooden_long_sword",
             new LongSwordItem(ToolMaterials.WOOD,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 0.8f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LongSwordItem STONE_LONG_SWORD_ITEM = register("stone_long_sword",
             new LongSwordItem(ToolMaterials.STONE,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 0.8f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LongSwordItem IRON_LONG_SWORD_ITEM = register("iron_long_sword",
             new LongSwordItem(ToolMaterials.IRON,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 0.8f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LongSwordItem GOLDEN_LONG_SWORD_ITEM = register("golden_long_sword",
             new LongSwordItem(ToolMaterials.GOLD,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 0.8f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LongSwordItem DIAMOND_LONG_SWORD_ITEM = register("diamond_long_sword",
             new LongSwordItem(ToolMaterials.DIAMOND,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 0.8f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LongSwordItem NETHERITE_LONG_SWORD_ITEM = register("netherite_long_sword",
             new LongSwordItem(ToolMaterials.NETHERITE,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                    new Item.Settings()
+                            .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                             .fireproof()));
     // Dagger
     public static final DaggerItem WOOD_DAGGER_ITEM = register("wooden_dagger",
             new DaggerItem(ToolMaterials.WOOD,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(DaggerItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final DaggerItem STONE_DAGGER_ITEM = register("stone_dagger",
             new DaggerItem(ToolMaterials.STONE,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(DaggerItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final DaggerItem IRON_DAGGER_ITEM = register("iron_dagger",
             new DaggerItem(ToolMaterials.IRON,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(DaggerItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final DaggerItem GOLDEN_DAGGER_ITEM = register("golden_dagger",
             new DaggerItem(ToolMaterials.GOLD,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(DaggerItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final DaggerItem DIAMOND_DAGGER_ITEM = register("diamond_dagger",
             new DaggerItem(ToolMaterials.DIAMOND,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(DaggerItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final DaggerItem NETHERITE_DAGGER_ITEM = register("netherite_dagger",
             new DaggerItem(ToolMaterials.NETHERITE,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(DaggerItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                    new Item.Settings()
+                            .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                             .fireproof()));
     // Francisca
     public static final FranciscaItem WOODEN_FRANCISCA_ITEM = register("wooden_francisca",
@@ -122,17 +133,31 @@ public class ItemInit {
             new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1, -2.6f)).fireproof()));
     // Big Axe
     public static final BigAxeItem WOODEN_BIG_AXE_ITEM = register("wooden_big_axe",
-            new BigAxeItem(ToolMaterials.WOOD, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 6, -3.4f))));
+            new BigAxeItem(ToolMaterials.WOOD,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final BigAxeItem STONE_BIG_AXE_ITEM = register("stone_big_axe",
-            new BigAxeItem(ToolMaterials.STONE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 6, -3.4f))));
+            new BigAxeItem(ToolMaterials.STONE,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final BigAxeItem IRON_BIG_AXE_ITEM = register("iron_big_axe",
-            new BigAxeItem(ToolMaterials.IRON, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.4f))));
+            new BigAxeItem(ToolMaterials.IRON,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final BigAxeItem GOLDEN_BIG_AXE_ITEM = register("golden_big_axe",
-            new BigAxeItem(ToolMaterials.GOLD, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 6, -3.4f))));
+            new BigAxeItem(ToolMaterials.GOLD,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final BigAxeItem DIAMOND_BIG_AXE_ITEM = register("diamond_big_axe",
-            new BigAxeItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 6, -3.4f))));
+            new BigAxeItem(ToolMaterials.DIAMOND,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final BigAxeItem NETHERITE_BIG_AXE_ITEM = register("netherite_big_axe",
-            new BigAxeItem(ToolMaterials.NETHERITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 6, -3.4f)).fireproof()));
+            new BigAxeItem(ToolMaterials.NETHERITE,
+                    new Item.Settings()
+                            .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                    new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            .fireproof()));
     // Javelin
     public static final JavelinItem WOODEN_JAVELIN_ITEM = register("wooden_javelin",
             new JavelinItem(ToolMaterials.WOOD, () -> EntityInit.WOODEN_JAVELIN, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 2, -2.7f))));
@@ -150,28 +175,27 @@ public class ItemInit {
     public static final LanceItem WOODEN_LANCE_ITEM = register("wooden_lance",
             new LanceItem(ToolMaterials.WOOD,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LanceItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LanceItem STONE_LANCE_ITEM = register("stone_lance",
             new LanceItem(ToolMaterials.STONE,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LanceItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LanceItem IRON_LANCE_ITEM = register("iron_lance",
             new LanceItem(ToolMaterials.IRON,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LanceItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LanceItem GOLDEN_LANCE_ITEM = register("golden_lance",
             new LanceItem(ToolMaterials.GOLD,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LanceItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LanceItem DIAMOND_LANCE_ITEM = register("diamond_lance",
             new LanceItem(ToolMaterials.DIAMOND,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LanceItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final LanceItem NETHERITE_LANCE_ITEM = register("netherite_lance",
             new LanceItem(ToolMaterials.NETHERITE,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LanceItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
-                            .fireproof()));
+                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()));
     // Healing Staff
     public static final HealingStaffItem WOODEN_HEALING_STAFF_ITEM = register("wooden_healing_staff",
             new HealingStaffItem(ToolMaterials.WOOD, 1, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 1, -3.3f))));
@@ -189,32 +213,28 @@ public class ItemInit {
     public static final MaceItem WOODEN_MACE_ITEM = register("wooden_mace",
             new MaceItem(ToolMaterials.WOOD, 0,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -0.5f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final MaceItem STONE_MACE_ITEM = register("stone_mace",
             new MaceItem(ToolMaterials.STONE, 0,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -0.5f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final MaceItem IRON_MACE_ITEM = register("iron_mace",
             new MaceItem(ToolMaterials.IRON, 1,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -0.5f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final MaceItem GOLDEN_MACE_ITEM = register("golden_mace",
             new MaceItem(ToolMaterials.GOLD, 2,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -0.5f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final MaceItem DIAMOND_MACE_ITEM = register("diamond_mace",
             new MaceItem(ToolMaterials.DIAMOND, 2,
                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -0.5f, EntityAttributeModifier.Operation.ADD_VALUE),
-                            AttributeModifierSlot.MAINHAND))));
+                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
     public static final MaceItem NETHERITE_MACE_ITEM = register("netherite_mace",
             new MaceItem(ToolMaterials.NETHERITE, 3,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                    new Item.Settings()
+                            .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                             .fireproof()));
     // Ninjato
     public static final NinjatoItem WOODEN_NINJATO_ITEM = register("wooden_ninjato",
@@ -262,13 +282,14 @@ public class ItemInit {
     public static final RecurveBowItem RECURVE_BOW_ITEM = register("recurve_bow", new RecurveBowItem(new Item.Settings().maxDamage(361)));
     // Thalleous Sword
     public static final ThalleousSwordItem THALLEOUS_SWORD = register("thalleous_sword",
-            new ThalleousSwordItem(ToolMaterials.DIAMOND,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 10, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
-                            new EntityAttributeModifier(LongSwordItem.ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 1.0f, EntityAttributeModifier.Operation.ADD_VALUE),
+            new ThalleousSwordItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 10, -3.0f)
+                    .with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 1.0f, EntityAttributeModifier.Operation.ADD_VALUE),
+                            AttributeModifierSlot.MAINHAND)
+                    .with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO, new EntityAttributeModifier(ThalleousSwordItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE),
                             AttributeModifierSlot.MAINHAND))));
 
     public static <I extends Item> I register(String name, I item) {
-        ITEMS.put(new Identifier("medievalweapons", name), item);
+        ITEMS.put(Identifier.of("medievalweapons", name), item);
         return item;
     }
 
