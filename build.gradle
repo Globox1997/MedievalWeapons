@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -53,7 +53,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Mythic Metals
-	modCompileOnly ('maven.modrinth:mythicmetals:0.18.2+1.20') {
+	modCompileOnly ('maven.modrinth:mythicmetals:0.20.1+1.21') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Paradise Lost
@@ -77,7 +77,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Deeper and Darker
-	modCompileOnly ('maven.modrinth:deeperdarker:fabric-1.20-1.2.0') {
+	modCompileOnly ('maven.modrinth:deeperdarker:1.3.2-fabric+1.21') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
