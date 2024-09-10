@@ -46,7 +46,7 @@ jobs:
           dependencies: |
             fabric-api | depends | *
             cloth-config | depends | *
-            arrp | depends | *
+            brrp | depends | *
 
           changelog-file: CHANGELOG.md
 
