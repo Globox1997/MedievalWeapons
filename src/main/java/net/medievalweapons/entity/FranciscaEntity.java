@@ -129,6 +129,11 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     }
 
     @Override
+    public ItemStack getWeaponStack() {
+        return this.francisca.copy();
+    }
+
+    @Override
     @Environment(EnvType.CLIENT)
     public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
         return true;

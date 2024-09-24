@@ -217,11 +217,15 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
 
     @Override
     public void age() {
-        int i = (Byte) this.dataTracker.get(LOYALTY);
+        int i = this.dataTracker.get(LOYALTY);
         if (this.pickupType != PersistentProjectileEntity.PickupPermission.ALLOWED || i <= 0) {
             super.age();
         }
+    }
 
+    @Override
+    public ItemStack getWeaponStack() {
+        return this.javelin.copy();
     }
 
     @Override
