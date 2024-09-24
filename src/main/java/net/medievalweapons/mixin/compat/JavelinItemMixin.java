@@ -2,7 +2,6 @@ package net.medievalweapons.mixin.compat;
 
 import java.util.Map;
 
-import org.betterx.betternether.interfaces.InitialStackStateProvider;
 import org.betterx.betternether.items.materials.BNToolMaterial;
 import org.betterx.betternether.registry.NetherEnchantments;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +14,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 
 @Mixin(JavelinItem.class)
-public abstract class JavelinItemMixin extends SwordItem implements InitialStackStateProvider {
+public abstract class JavelinItemMixin extends SwordItem {
 
     public JavelinItemMixin(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
