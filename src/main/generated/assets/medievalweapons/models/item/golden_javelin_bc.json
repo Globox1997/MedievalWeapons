@@ -1,0 +1,6 @@
+{
+  "parent": "medievalweapons:item/javelin_bc",
+  "textures": {
+    "layer0": "medievalweapons:item/golden_javelin"
+  }
+}

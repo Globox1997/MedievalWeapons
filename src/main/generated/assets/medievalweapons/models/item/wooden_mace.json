@@ -1,0 +1,14 @@
+{
+  "parent": "medievalweapons:item/mace",
+  "overrides": [
+    {
+      "model": "medievalweapons:item/wooden_mace_gui",
+      "predicate": {
+        "medievalweapons:gui": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "medievalweapons:item/wooden_mace"
+  }
+}

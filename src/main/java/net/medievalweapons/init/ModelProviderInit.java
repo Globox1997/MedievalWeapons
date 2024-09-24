@@ -112,7 +112,7 @@ public class ModelProviderInit {
                 }
             }
             pers.solid.brrp.v1.fabric.api.RRPCallback.BEFORE_VANILLA.register(a -> a.add(BRRP_RESOURCE_PACK));
-        } else {
+        } else if(!ItemInit.ITEMS.isEmpty()){
             throw new AssertionError("MedievalWeapons requires ARRP or BRRP as a mod dependencys!");
         }
     }

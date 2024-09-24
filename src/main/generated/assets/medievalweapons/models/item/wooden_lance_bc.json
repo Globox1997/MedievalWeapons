@@ -1,0 +1,6 @@
+{
+  "parent": "medievalweapons:item/lance_bc",
+  "textures": {
+    "layer0": "medievalweapons:item/wooden_lance"
+  }
+}

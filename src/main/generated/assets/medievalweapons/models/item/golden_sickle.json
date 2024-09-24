@@ -1,0 +1,14 @@
+{
+  "parent": "medievalweapons:item/sickle",
+  "overrides": [
+    {
+      "model": "medievalweapons:item/golden_sickle_gui",
+      "predicate": {
+        "medievalweapons:gui": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "medievalweapons:item/golden_sickle"
+  }
+}

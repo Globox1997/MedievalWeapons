@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "medievalweapons:item/extra/golden_javelin"
+  }
+}

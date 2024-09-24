@@ -3,4 +3,5 @@
 ### Fixed:
 - 
 ### Changed:
-- Updated to mc 1.21.1
+- Removed dependency on ARRP/BRRP
+- Applies when non compat mods are loaded

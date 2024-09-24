@@ -1,0 +1,6 @@
+{
+  "parent": "medievalweapons:item/big_axe_bc",
+  "textures": {
+    "layer0": "medievalweapons:item/golden_big_axe"
+  }
+}

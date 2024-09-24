@@ -1,0 +1,14 @@
+{
+  "parent": "medievalweapons:item/healing_staff",
+  "overrides": [
+    {
+      "model": "medievalweapons:item/netherite_healing_staff_gui",
+      "predicate": {
+        "medievalweapons:gui": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "medievalweapons:item/netherite_healing_staff"
+  }
+}

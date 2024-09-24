@@ -1,0 +1,6 @@
+{
+  "parent": "medievalweapons:item/javelin_throwing",
+  "textures": {
+    "layer0": "medievalweapons:item/stone_javelin"
+  }
+}

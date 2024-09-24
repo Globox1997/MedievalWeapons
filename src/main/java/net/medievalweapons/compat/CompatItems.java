@@ -2,12 +2,13 @@ package net.medievalweapons.compat;
 
 import com.kyanite.deeperdarker.util.DDTiers;
 
+import net.dragonloot.item.DragonToolMaterials;
+import net.minecraft.item.ToolMaterials;
 import org.betterx.betterend.item.material.EndToolMaterial;
 import org.betterx.betternether.items.materials.BNToolMaterial;
 
 import dqu.additionaladditions.material.GildedNetheriteToolMaterial;
 import dqu.additionaladditions.material.RoseGoldToolMaterial;
-import net.dragonloot.item.DragonToolMaterial;
 import net.fabricmc.loader.api.FabricLoader;
 import net.id.paradiselost.items.tools.ParadiseLostToolMaterials;
 import net.medievalweapons.MedievalMain;
@@ -35,52 +36,52 @@ public class CompatItems {
     public static Boolean isDeeperDarkerLoaded = fabricLoader.isModLoaded("deeperdarker");
 
     // DragonLoot
-    public static FranciscaItem DRAGON_FRANCISCA_ITEM;
-    public static JavelinItem DRAGON_JAVELIN_ITEM;
+    public static Item DRAGON_FRANCISCA_ITEM;
+    public static Item DRAGON_JAVELIN_ITEM;
 
     // Better Nether
-    public static FranciscaItem NETHER_RUBY_FRANCISCA_ITEM;
-    public static JavelinItem NETHER_RUBY_JAVELIN_ITEM;
-    public static FranciscaItem CINCINNASITE_FRANCISCA_ITEM;
-    public static JavelinItem CINCINNASITE_JAVELIN_ITEM;
-    public static FranciscaItem CINCINNASITE_DIAMOND_FRANCISCA_ITEM;
-    public static JavelinItem CINCINNASITE_DIAMOND_JAVELIN_ITEM;
+    public static Item NETHER_RUBY_FRANCISCA_ITEM;
+    public static Item NETHER_RUBY_JAVELIN_ITEM;
+    public static Item CINCINNASITE_FRANCISCA_ITEM;
+    public static Item CINCINNASITE_JAVELIN_ITEM;
+    public static Item CINCINNASITE_DIAMOND_FRANCISCA_ITEM;
+    public static Item CINCINNASITE_DIAMOND_JAVELIN_ITEM;
 
     // Better End
-    public static FranciscaItem TERMINITE_FRANCISCA_ITEM;
-    public static JavelinItem TERMINITE_JAVELIN_ITEM;
-    public static FranciscaItem AETERNIUM_FRANCISCA_ITEM;
-    public static JavelinItem AETERNIUM_JAVELIN_ITEM;
-    public static FranciscaItem THALLASIUM_FRANCISCA_ITEM;
-    public static JavelinItem THALLASIUM_JAVELIN_ITEM;
+    public static Item TERMINITE_FRANCISCA_ITEM;
+    public static Item TERMINITE_JAVELIN_ITEM;
+    public static Item AETERNIUM_FRANCISCA_ITEM;
+    public static Item AETERNIUM_JAVELIN_ITEM;
+    public static Item THALLASIUM_FRANCISCA_ITEM;
+    public static Item THALLASIUM_JAVELIN_ITEM;
 
     // Mythic Metals
-    public static FranciscaItem ADAMANTITE_FRANCISCA_ITEM;
-    public static JavelinItem ADAMANTITE_JAVELIN_ITEM;
+    public static Item ADAMANTITE_FRANCISCA_ITEM;
+    public static Item ADAMANTITE_JAVELIN_ITEM;
 
     // BYG
-    public static FranciscaItem PENDORITE_FRANCISCA_ITEM;
-    public static JavelinItem PENDORITE_JAVELIN_ITEM;
+    public static Item PENDORITE_FRANCISCA_ITEM;
+    public static Item PENDORITE_JAVELIN_ITEM;
 
     // Additional Additions
-    public static FranciscaItem ROSE_GOLD_FRANCISCA_ITEM;
-    public static JavelinItem ROSE_GOLD_JAVELIN_ITEM;
-    public static FranciscaItem GILDED_NETHERITE_FRANCISCA_ITEM;
-    public static JavelinItem GILDED_NETHERITE_JAVELIN_ITEM;
+    public static Item ROSE_GOLD_FRANCISCA_ITEM;
+    public static Item ROSE_GOLD_JAVELIN_ITEM;
+    public static Item GILDED_NETHERITE_FRANCISCA_ITEM;
+    public static Item GILDED_NETHERITE_JAVELIN_ITEM;
 
     // Paradise Lost
-    public static FranciscaItem OLVITE_FRANCISCA_ITEM;
-    public static JavelinItem OLVITE_JAVELIN_ITEM;
+    public static Item OLVITE_FRANCISCA_ITEM;
+    public static Item OLVITE_JAVELIN_ITEM;
 
     // Mythic Upgrades
-    public static FranciscaItem RUBY_NETHERITE_FRANCISCA_ITEM;
-    public static JavelinItem RUBY_NETHERITE_JAVELIN_ITEM;
-    public static FranciscaItem SAPPHIRE_NETHERITE_FRANCISCA_ITEM;
-    public static JavelinItem SAPPHIRE_NETHERITE_JAVELIN_ITEM;
+    public static Item RUBY_NETHERITE_FRANCISCA_ITEM;
+    public static Item RUBY_NETHERITE_JAVELIN_ITEM;
+    public static Item SAPPHIRE_NETHERITE_FRANCISCA_ITEM;
+    public static Item SAPPHIRE_NETHERITE_JAVELIN_ITEM;
 
     // Deeper and Darker
-    public static FranciscaItem WARDEN_FRANCISCA_ITEM;
-    public static JavelinItem WARDEN_JAVELIN_ITEM;
+    public static Item WARDEN_FRANCISCA_ITEM;
+    public static Item WARDEN_JAVELIN_ITEM;
 
     public static void loadItems() {
         if (isBetterEndLoaded) {
@@ -110,9 +111,9 @@ public class CompatItems {
                     new MaceItem(EndToolMaterial.TERMINITE, 2,
                             new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.TERMINITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                     new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
-            TERMINITE_FRANCISCA_ITEM = ItemInit.register("terminite_francisca", new FranciscaItem(EndToolMaterial.TERMINITE, () -> CompatEntities.TERMINITE_FRANCISCA, new Item.Settings()));
-            TERMINITE_JAVELIN_ITEM = ItemInit.register("terminite_javelin", new JavelinItem(EndToolMaterial.TERMINITE, () -> CompatEntities.TERMINITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.TERMINITE, 1, -2.6f))));
+            TERMINITE_FRANCISCA_ITEM = new FranciscaItem(EndToolMaterial.TERMINITE, () -> CompatEntities.TERMINITE_FRANCISCA, new Item.Settings());
+            TERMINITE_JAVELIN_ITEM =  new JavelinItem(EndToolMaterial.TERMINITE, () -> CompatEntities.TERMINITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.TERMINITE, 1, -2.6f)));
             ItemInit.ITEMS.put(MedievalMain.id("terminite_francisca"), TERMINITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("terminite_javelin"), TERMINITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("terminite_ninjato"),
@@ -148,9 +149,9 @@ public class CompatItems {
                     new MaceItem(EndToolMaterial.AETERNIUM, 2,
                             new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.AETERNIUM, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                     new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
-            AETERNIUM_FRANCISCA_ITEM = ItemInit.register("aeternium_francisca", new FranciscaItem(EndToolMaterial.AETERNIUM, () -> CompatEntities.AETERNIUM_FRANCISCA, new Item.Settings()));
-            AETERNIUM_JAVELIN_ITEM = ItemInit.register("aeternium_javelin", new JavelinItem(EndToolMaterial.AETERNIUM, () -> CompatEntities.AETERNIUM_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.AETERNIUM, 1, -2.6f))));
+            AETERNIUM_FRANCISCA_ITEM =  new FranciscaItem(EndToolMaterial.AETERNIUM, () -> CompatEntities.AETERNIUM_FRANCISCA, new Item.Settings());
+            AETERNIUM_JAVELIN_ITEM = new JavelinItem(EndToolMaterial.AETERNIUM, () -> CompatEntities.AETERNIUM_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.AETERNIUM, 1, -2.6f)));
             ItemInit.ITEMS.put(MedievalMain.id("aeternium_francisca"), AETERNIUM_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("aeternium_javelin"), AETERNIUM_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("aeternium_ninjato"),
@@ -185,9 +186,9 @@ public class CompatItems {
                     new MaceItem(EndToolMaterial.THALLASIUM, 1,
                             new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.THALLASIUM, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                     new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))));
-            THALLASIUM_FRANCISCA_ITEM = ItemInit.register("thallasium_francisca", new FranciscaItem(EndToolMaterial.THALLASIUM, () -> CompatEntities.THALLASIUM_FRANCISCA, new Item.Settings()));
-            THALLASIUM_JAVELIN_ITEM = ItemInit.register("thallasium_javelin", new JavelinItem(EndToolMaterial.THALLASIUM, () -> CompatEntities.THALLASIUM_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.THALLASIUM, 1, -2.6f))));
+            THALLASIUM_FRANCISCA_ITEM =  new FranciscaItem(EndToolMaterial.THALLASIUM, () -> CompatEntities.THALLASIUM_FRANCISCA, new Item.Settings());
+            THALLASIUM_JAVELIN_ITEM = new JavelinItem(EndToolMaterial.THALLASIUM, () -> CompatEntities.THALLASIUM_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EndToolMaterial.THALLASIUM, 1, -2.6f)));
             ItemInit.ITEMS.put(MedievalMain.id("thallasium_francisca"), THALLASIUM_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("thallasium_javelin"), THALLASIUM_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("thallasium_ninjato"),
@@ -240,10 +241,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.NETHER_RUBY, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            NETHER_RUBY_FRANCISCA_ITEM = ItemInit.register("nether_ruby_francisca", new FranciscaItem(BNToolMaterial.NETHER_RUBY, () -> CompatEntities.NETHER_RUBY_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.NETHER_RUBY, 1, -2.6f))));
-            NETHER_RUBY_JAVELIN_ITEM = ItemInit.register("nether_ruby_javelin", new JavelinItem(BNToolMaterial.NETHER_RUBY, () -> CompatEntities.NETHER_RUBY_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.NETHER_RUBY, 1, -2.6f)).fireproof()));
+            NETHER_RUBY_FRANCISCA_ITEM = new FranciscaItem(BNToolMaterial.NETHER_RUBY, () -> CompatEntities.NETHER_RUBY_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.NETHER_RUBY, 1, -2.6f)));
+            NETHER_RUBY_JAVELIN_ITEM = new JavelinItem(BNToolMaterial.NETHER_RUBY, () -> CompatEntities.NETHER_RUBY_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.NETHER_RUBY, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("nether_ruby_francisca"), NETHER_RUBY_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("nether_ruby_javelin"), NETHER_RUBY_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("nether_ruby_ninjato"),
@@ -291,10 +292,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            CINCINNASITE_FRANCISCA_ITEM = ItemInit.register("cincinnasite_francisca", new FranciscaItem(BNToolMaterial.CINCINNASITE, () -> CompatEntities.CINCINNASITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE, 1, -2.6f))));
-            CINCINNASITE_JAVELIN_ITEM = ItemInit.register("cincinnasite_javelin", new JavelinItem(BNToolMaterial.CINCINNASITE, () -> CompatEntities.CINCINNASITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE, 1, -2.6f)).fireproof()));
+            CINCINNASITE_FRANCISCA_ITEM = new FranciscaItem(BNToolMaterial.CINCINNASITE, () -> CompatEntities.CINCINNASITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE, 1, -2.6f)));
+            CINCINNASITE_JAVELIN_ITEM =  new JavelinItem(BNToolMaterial.CINCINNASITE, () -> CompatEntities.CINCINNASITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("cincinnasite_francisca"), CINCINNASITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("cincinnasite_javelin"), CINCINNASITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("cincinnasite_ninjato"),
@@ -342,11 +343,11 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE_DIAMOND, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            CINCINNASITE_DIAMOND_FRANCISCA_ITEM = ItemInit.register("cincinnasite_diamond_francisca", new FranciscaItem(BNToolMaterial.CINCINNASITE_DIAMOND,
-                    () -> CompatEntities.CINCINNASITE_DIAMOND_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE_DIAMOND, 1, -2.6f))));
-            CINCINNASITE_DIAMOND_JAVELIN_ITEM = ItemInit.register("cincinnasite_diamond_javelin",
+            CINCINNASITE_DIAMOND_FRANCISCA_ITEM =  new FranciscaItem(BNToolMaterial.CINCINNASITE_DIAMOND,
+                    () -> CompatEntities.CINCINNASITE_DIAMOND_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE_DIAMOND, 1, -2.6f)));
+            CINCINNASITE_DIAMOND_JAVELIN_ITEM =
                     new JavelinItem(BNToolMaterial.CINCINNASITE_DIAMOND, () -> CompatEntities.CINCINNASITE_DIAMOND_JAVELIN,
-                            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE_DIAMOND, 1, -2.6f)).fireproof()));
+                            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BNToolMaterial.CINCINNASITE_DIAMOND, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("cincinnasite_diamond_francisca"), CINCINNASITE_DIAMOND_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("cincinnasite_diamond_javelin"), CINCINNASITE_DIAMOND_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("cincinnasite_diamond_ninjato"), new NinjatoItem(BNToolMaterial.CINCINNASITE_DIAMOND,
@@ -362,55 +363,55 @@ public class CompatItems {
         }
         if (isDragonLootLoaded) {
             ItemInit.ITEMS.put(MedievalMain.id("dragon_small_axe"),
-                    new SmallAxeItem(DragonToolMaterial.getInstance(),
+                    new SmallAxeItem(DragonToolMaterials.DRAGON,
                             new Item.Settings()
-                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
                                             new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
             ItemInit.ITEMS.put(MedievalMain.id("dragon_long_sword"),
-                    new LongSwordItem(DragonToolMaterial.getInstance(),
+                    new LongSwordItem(DragonToolMaterials.DRAGON,
                             new Item.Settings()
-                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
             ItemInit.ITEMS.put(MedievalMain.id("dragon_dagger"),
-                    new DaggerItem(DragonToolMaterial.getInstance(),
+                    new DaggerItem(DragonToolMaterials.DRAGON,
                             new Item.Settings()
-                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
             ItemInit.ITEMS.put(MedievalMain.id("dragon_big_axe"),
-                    new BigAxeItem(DragonToolMaterial.getInstance(),
+                    new BigAxeItem(DragonToolMaterials.DRAGON,
                             new Item.Settings()
-                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
                                             new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
             ItemInit.ITEMS.put(MedievalMain.id("dragon_lance"),
-                    new LanceItem(DragonToolMaterial.getInstance(),
+                    new LanceItem(DragonToolMaterials.DRAGON,
                             new Item.Settings()
-                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.id("dragon_healing_staff"), new HealingStaffItem(DragonToolMaterial.getInstance(), 5,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 1, -3.3f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.id("dragon_healing_staff"), new HealingStaffItem(DragonToolMaterials.DRAGON, 5,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 1, -3.3f)).fireproof()));
             ItemInit.ITEMS.put(MedievalMain.id("dragon_mace"),
-                    new MaceItem(DragonToolMaterial.getInstance(), 3,
+                    new MaceItem(DragonToolMaterials.DRAGON, 3,
                             new Item.Settings()
-                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                    .attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            DRAGON_FRANCISCA_ITEM = ItemInit.register("dragon_francisca", new FranciscaItem(DragonToolMaterial.getInstance(), () -> CompatEntities.DRAGON_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 1, -2.6f))));
-            DRAGON_JAVELIN_ITEM = ItemInit.register("dragon_javelin", new JavelinItem(DragonToolMaterial.getInstance(), () -> CompatEntities.DRAGON_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 1, -2.6f)).fireproof()));
+            DRAGON_FRANCISCA_ITEM =  new FranciscaItem(DragonToolMaterials.DRAGON, () -> CompatEntities.DRAGON_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 1, -2.6f)));
+            DRAGON_JAVELIN_ITEM =  new JavelinItem(DragonToolMaterials.DRAGON, () -> CompatEntities.DRAGON_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("dragon_francisca"), DRAGON_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("dragon_javelin"), DRAGON_JAVELIN_ITEM);
-            ItemInit.ITEMS.put(MedievalMain.id("dragon_ninjato"), new NinjatoItem(DragonToolMaterial.getInstance(),
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 2, -2.1f)).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.id("dragon_sickle"), new SickleItem(DragonToolMaterial.getInstance(),
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 2, -2.2f)).fireproof()));
-            ItemInit.ITEMS.put(MedievalMain.id("dragon_rapier"), new RapierItem(DragonToolMaterial.getInstance(), 3,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterial.getInstance(), 2, -2.0f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.id("dragon_ninjato"), new NinjatoItem(DragonToolMaterials.DRAGON,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 2, -2.1f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.id("dragon_sickle"), new SickleItem(DragonToolMaterials.DRAGON,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 2, -2.2f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.id("dragon_rapier"), new RapierItem(DragonToolMaterials.DRAGON, 3,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DragonToolMaterials.DRAGON, 2, -2.0f)).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("dragon");
         }
@@ -453,10 +454,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ADAMANTITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            ADAMANTITE_FRANCISCA_ITEM = ItemInit.register("adamantite_francisca", new FranciscaItem(MythicToolMaterials.ADAMANTITE, () -> CompatEntities.ADAMANTITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ADAMANTITE, 1, -2.6f))));
-            ADAMANTITE_JAVELIN_ITEM = ItemInit.register("adamantite_javelin", new JavelinItem(MythicToolMaterials.ADAMANTITE, () -> CompatEntities.ADAMANTITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ADAMANTITE, 1, -2.6f)).fireproof()));
+            ADAMANTITE_FRANCISCA_ITEM =  new FranciscaItem(MythicToolMaterials.ADAMANTITE, () -> CompatEntities.ADAMANTITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ADAMANTITE, 1, -2.6f)));
+            ADAMANTITE_JAVELIN_ITEM =  new JavelinItem(MythicToolMaterials.ADAMANTITE, () -> CompatEntities.ADAMANTITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ADAMANTITE, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("adamantite_francisca"), ADAMANTITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("adamantite_javelin"), ADAMANTITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("adamantite_ninjato"),
@@ -507,10 +508,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(ParadiseLostToolMaterials.OLVITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            OLVITE_FRANCISCA_ITEM = ItemInit.register("olvite_francisca", new FranciscaItem(ParadiseLostToolMaterials.OLVITE, () -> CompatEntities.OLVITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ParadiseLostToolMaterials.OLVITE, 1, -2.6f))));
-            OLVITE_JAVELIN_ITEM = ItemInit.register("olvite_javelin", new JavelinItem(ParadiseLostToolMaterials.OLVITE, () -> CompatEntities.OLVITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ParadiseLostToolMaterials.OLVITE, 1, -2.6f)).fireproof()));
+            OLVITE_FRANCISCA_ITEM =  new FranciscaItem(ParadiseLostToolMaterials.OLVITE, () -> CompatEntities.OLVITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ParadiseLostToolMaterials.OLVITE, 1, -2.6f)));
+            OLVITE_JAVELIN_ITEM =  new JavelinItem(ParadiseLostToolMaterials.OLVITE, () -> CompatEntities.OLVITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ParadiseLostToolMaterials.OLVITE, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("olvite_francisca"), OLVITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("olvite_javelin"), OLVITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("olvite_ninjato"), new NinjatoItem(ParadiseLostToolMaterials.OLVITE,
@@ -561,10 +562,10 @@ public class CompatItems {
                                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BYGTier.PENDORITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                             .fireproof()));
-            PENDORITE_FRANCISCA_ITEM = ItemInit.register("pendorite_francisca", new FranciscaItem(BYGTier.PENDORITE, () -> CompatEntities.PENDORITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BYGTier.PENDORITE, 1, -2.6f))));
-            PENDORITE_JAVELIN_ITEM = ItemInit.register("pendorite_javelin", new JavelinItem(BYGTier.PENDORITE, () -> CompatEntities.PENDORITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BYGTier.PENDORITE, 1, -2.6f)).fireproof()));
+            PENDORITE_FRANCISCA_ITEM = new FranciscaItem(BYGTier.PENDORITE, () -> CompatEntities.PENDORITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BYGTier.PENDORITE, 1, -2.6f)));
+            PENDORITE_JAVELIN_ITEM =  new JavelinItem(BYGTier.PENDORITE, () -> CompatEntities.PENDORITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(BYGTier.PENDORITE, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("pendorite_francisca"), PENDORITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("pendorite_javelin"), PENDORITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("pendorite_ninjato"),
@@ -615,10 +616,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(GildedNetheriteToolMaterial.MATERIAL, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            GILDED_NETHERITE_FRANCISCA_ITEM = ItemInit.register("gilded_netherite_francisca", new FranciscaItem(GildedNetheriteToolMaterial.MATERIAL, () -> CompatEntities.GILDED_NETHERITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(GildedNetheriteToolMaterial.MATERIAL, 1, -2.6f))));
-            GILDED_NETHERITE_JAVELIN_ITEM = ItemInit.register("gilded_netherite_javelin", new JavelinItem(GildedNetheriteToolMaterial.MATERIAL, () -> CompatEntities.GILDED_NETHERITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(GildedNetheriteToolMaterial.MATERIAL, 1, -2.6f)).fireproof()));
+            GILDED_NETHERITE_FRANCISCA_ITEM = new FranciscaItem(GildedNetheriteToolMaterial.MATERIAL, () -> CompatEntities.GILDED_NETHERITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(GildedNetheriteToolMaterial.MATERIAL, 1, -2.6f)));
+            GILDED_NETHERITE_JAVELIN_ITEM =  new JavelinItem(GildedNetheriteToolMaterial.MATERIAL, () -> CompatEntities.GILDED_NETHERITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(GildedNetheriteToolMaterial.MATERIAL, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("gilded_netherite_francisca"), GILDED_NETHERITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("gilded_netherite_javelin"), GILDED_NETHERITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("gilded_netherite_ninjato"), new NinjatoItem(GildedNetheriteToolMaterial.MATERIAL,
@@ -666,10 +667,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(RoseGoldToolMaterial.MATERIAL, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            ROSE_GOLD_FRANCISCA_ITEM = ItemInit.register("rose_gold_francisca", new FranciscaItem(RoseGoldToolMaterial.MATERIAL, () -> CompatEntities.ROSE_GOLD_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(RoseGoldToolMaterial.MATERIAL, 1, -2.6f))));
-            ROSE_GOLD_JAVELIN_ITEM = ItemInit.register("rose_gold_javelin", new JavelinItem(RoseGoldToolMaterial.MATERIAL, () -> CompatEntities.ROSE_GOLD_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(RoseGoldToolMaterial.MATERIAL, 1, -2.6f)).fireproof()));
+            ROSE_GOLD_FRANCISCA_ITEM = new FranciscaItem(RoseGoldToolMaterial.MATERIAL, () -> CompatEntities.ROSE_GOLD_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(RoseGoldToolMaterial.MATERIAL, 1, -2.6f)));
+            ROSE_GOLD_JAVELIN_ITEM = new JavelinItem(RoseGoldToolMaterial.MATERIAL, () -> CompatEntities.ROSE_GOLD_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(RoseGoldToolMaterial.MATERIAL, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("rose_gold_francisca"), ROSE_GOLD_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("rose_gold_javelin"), ROSE_GOLD_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("rose_gold_ninjato"),
@@ -721,10 +722,10 @@ public class CompatItems {
                                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.RUBY, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                             .fireproof()));
-            RUBY_NETHERITE_FRANCISCA_ITEM = ItemInit.register("ruby_netherite_francisca", new FranciscaItem(MUToolMaterials.RUBY, () -> CompatEntities.RUBY_NETHERITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.RUBY, 1, -2.6f))));
-            RUBY_NETHERITE_JAVELIN_ITEM = ItemInit.register("ruby_netherite_javelin", new JavelinItem(MUToolMaterials.RUBY, () -> CompatEntities.RUBY_NETHERITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.RUBY, 1, -2.6f)).fireproof()));
+            RUBY_NETHERITE_FRANCISCA_ITEM = new FranciscaItem(MUToolMaterials.RUBY, () -> CompatEntities.RUBY_NETHERITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.RUBY, 1, -2.6f)));
+            RUBY_NETHERITE_JAVELIN_ITEM = new JavelinItem(MUToolMaterials.RUBY, () -> CompatEntities.RUBY_NETHERITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.RUBY, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("ruby_netherite_francisca"), RUBY_NETHERITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("ruby_netherite_javelin"), RUBY_NETHERITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("ruby_netherite_ninjato"),
@@ -772,10 +773,10 @@ public class CompatItems {
                                     .attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.SAPPHIRE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                     .fireproof()));
-            SAPPHIRE_NETHERITE_FRANCISCA_ITEM = ItemInit.register("sapphire_netherite_francisca", new FranciscaItem(MUToolMaterials.SAPPHIRE, () -> CompatEntities.SAPPHIRE_NETHERITE_FRANCISCA,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.SAPPHIRE, 1, -2.6f))));
-            SAPPHIRE_NETHERITE_JAVELIN_ITEM = ItemInit.register("sapphire_netherite_javelin", new JavelinItem(MUToolMaterials.SAPPHIRE, () -> CompatEntities.SAPPHIRE_NETHERITE_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.SAPPHIRE, 1, -2.6f)).fireproof()));
+            SAPPHIRE_NETHERITE_FRANCISCA_ITEM = new FranciscaItem(MUToolMaterials.SAPPHIRE, () -> CompatEntities.SAPPHIRE_NETHERITE_FRANCISCA,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.SAPPHIRE, 1, -2.6f)));
+            SAPPHIRE_NETHERITE_JAVELIN_ITEM =  new JavelinItem(MUToolMaterials.SAPPHIRE, () -> CompatEntities.SAPPHIRE_NETHERITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(MUToolMaterials.SAPPHIRE, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("sapphire_netherite_francisca"), SAPPHIRE_NETHERITE_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("sapphire_netherite_javelin"), SAPPHIRE_NETHERITE_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("sapphire_netherite_ninjato"),
@@ -827,10 +828,10 @@ public class CompatItems {
                                     new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DDTiers.WARDEN, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                                             new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
                                             .fireproof()));
-            WARDEN_FRANCISCA_ITEM = ItemInit.register("warden_francisca",
-                    new FranciscaItem(DDTiers.WARDEN, () -> CompatEntities.WARDEN_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DDTiers.WARDEN, 1, -2.6f))));
-            WARDEN_JAVELIN_ITEM = ItemInit.register("warden_javelin", new JavelinItem(DDTiers.WARDEN, () -> CompatEntities.WARDEN_JAVELIN,
-                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DDTiers.WARDEN, 1, -2.6f)).fireproof()));
+            WARDEN_FRANCISCA_ITEM =
+                    new FranciscaItem(DDTiers.WARDEN, () -> CompatEntities.WARDEN_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DDTiers.WARDEN, 1, -2.6f)));
+            WARDEN_JAVELIN_ITEM =  new JavelinItem(DDTiers.WARDEN, () -> CompatEntities.WARDEN_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DDTiers.WARDEN, 1, -2.6f)).fireproof());
             ItemInit.ITEMS.put(MedievalMain.id("warden_francisca"), WARDEN_FRANCISCA_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("warden_javelin"), WARDEN_JAVELIN_ITEM);
             ItemInit.ITEMS.put(MedievalMain.id("warden_ninjato"),

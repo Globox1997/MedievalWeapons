@@ -11,7 +11,7 @@ public class MedievalMain implements ModInitializer {
     // Thanks for the awesome series
     // Check it out here: https://youtu.be/yCNUP2NAt-A
 
-    public static final Identifier id(String path) {
+    public static Identifier id(String path) {
         return Identifier.of("medievalweapons", path);
     }
 

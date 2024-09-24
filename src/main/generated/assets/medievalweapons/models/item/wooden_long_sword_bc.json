@@ -1,0 +1,6 @@
+{
+  "parent": "medievalweapons:item/long_sword_bc",
+  "textures": {
+    "layer0": "medievalweapons:item/wooden_long_sword"
+  }
+}

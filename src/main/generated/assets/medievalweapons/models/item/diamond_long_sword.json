@@ -1,0 +1,26 @@
+{
+  "parent": "medievalweapons:item/long_sword",
+  "overrides": [
+    {
+      "model": "medievalweapons:item/diamond_long_sword_bc",
+      "predicate": {
+        "bettercombat:loaded": 1.0
+      }
+    },
+    {
+      "model": "medievalweapons:item/diamond_long_sword_bc",
+      "predicate": {
+        "medievalweapons:offhand": 1.0
+      }
+    },
+    {
+      "model": "medievalweapons:item/diamond_long_sword_gui",
+      "predicate": {
+        "medievalweapons:gui": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "medievalweapons:item/diamond_long_sword"
+  }
+}

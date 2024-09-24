@@ -1,0 +1,26 @@
+{
+  "parent": "medievalweapons:item/javelin",
+  "overrides": [
+    {
+      "model": "medievalweapons:item/stone_javelin_bc",
+      "predicate": {
+        "bettercombat:loaded": 1.0
+      }
+    },
+    {
+      "model": "medievalweapons:item/stone_javelin_throwing",
+      "predicate": {
+        "throwing": 1.0
+      }
+    },
+    {
+      "model": "medievalweapons:item/stone_javelin_gui",
+      "predicate": {
+        "medievalweapons:gui": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "medievalweapons:item/stone_javelin"
+  }
+}

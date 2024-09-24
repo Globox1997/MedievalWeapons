@@ -24,6 +24,9 @@
     ],
     "modmenu": [
       "net.medievalweapons.config.ModMenuIntegration"
+    ],
+    "fabric-datagen": [
+      "net.medievalweapons.MedievalDataGenerator"
     ]
   },
   "mixins": [

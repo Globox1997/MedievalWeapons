@@ -7,6 +7,10 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
+fabricApi {
+	configureDataGeneration()
+}
+
 repositories {
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url "https://jitpack.io" }
@@ -31,7 +35,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// BRRP
-	modCompileOnly modRuntimeOnly ("maven.modrinth:brrp:${project.brrp_version}") {
+	modCompileOnly ("maven.modrinth:brrp:${project.brrp_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// ARRP
@@ -39,7 +43,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
     // DragonLoot
-	modCompileOnly ('maven.modrinth:dragonloot:1.1.2') {
+	modCompileOnly ('maven.modrinth:dragonloot:1.1.7+1.21.1') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	//Better End/Nether
