@@ -1,9 +1,6 @@
 package net.medievalweapons.init;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -35,6 +32,7 @@ public class ItemInit {
     public static final ArrayList<String> MATERIAL_STRINGS = new ArrayList<String>(Arrays.asList("wooden", "stone", "iron", "golden", "diamond", "netherite"));
     public static final ArrayList<String> ITEM_STRINGS = new ArrayList<String>(
             Arrays.asList("small_axe", "long_sword", "dagger", "francisca", "big_axe", "javelin", "lance", "healing_staff", "mace", "ninjato", "sickle", "rapier"));
+    public static final Set<Item> CUSTOM_MODEL_ITEMS = new HashSet<>();
     // Map
     public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     // Small Axe
@@ -290,6 +288,7 @@ public class ItemInit {
                             AttributeModifierSlot.MAINHAND))));
 
     public static Item register(String id, Item item) {
+        addCustomModelItem(item);
         return register(MedievalMain.id(id), item);
     }
 
@@ -308,7 +307,16 @@ public class ItemInit {
 
         for (Identifier id : ITEMS.keySet()) {
             Registry.register(Registries.ITEM, id, ITEMS.get(id));
+            addCustomModelItem(ITEMS.get(id));
             ItemGroupEvents.modifyEntriesEvent(MEDIEVALWEAPONS_ITEM_GROUP).register(entries -> entries.add(ITEMS.get(id)));
+        }
+    }
+
+    private static void addCustomModelItem(Item item) {
+        if (item instanceof LongSwordItem || item instanceof SmallAxeItem || item instanceof BigAxeItem || item instanceof LanceItem
+                || item instanceof HealingStaffItem || item instanceof JavelinItem || item instanceof MaceItem || item instanceof SickleItem
+                || item instanceof RapierItem || item instanceof ThalleousSwordItem) {
+            CUSTOM_MODEL_ITEMS.add(item);
         }
     }
 
