@@ -38,7 +38,7 @@ public class MinecraftClientMixin {
     @Nullable
     public ClientPlayerEntity player;
     @Shadow
-    protected int attackCooldown;
+    public int attackCooldown;
     @Shadow
     @Nullable
     public HitResult crosshairTarget;
