@@ -1,8 +1,6 @@
 ### Added:
 - 
 ### Fixed:
-- Fixed blocking animation
-- Fixed entity crash
+- Fixed additional additions recipes
 ### Changed:
-- Removed dependency on ARRP/BRRP
-- Applies when non compat mods are loaded
+- 
