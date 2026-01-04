@@ -1,6 +1,6 @@
 ### Added:
 - 
 ### Fixed:
-- Fixed additional additions recipes
-### Changed:
 - 
+### Changed:
+- Tweaked long + recurve bow arrow speed
