@@ -118,7 +118,9 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.put("francisca", this.francisca.encode(this.getRegistryManager()));
+        if (!this.francisca.isEmpty()) {
+            nbt.put("francisca", this.francisca.encode(this.getRegistryManager()));
+        }
     }
 
     @Override

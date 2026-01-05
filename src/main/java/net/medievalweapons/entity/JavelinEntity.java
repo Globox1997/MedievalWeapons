@@ -203,16 +203,18 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.put("javelin", this.javelin.encode(this.getRegistryManager()));
+        if (!this.javelin.isEmpty()) {
+            nbt.put("javelin", this.javelin.encode(this.getRegistryManager()));
 
-        NbtList tags = new NbtList();
-        for (UUID uuid : this.piercedEntities) {
-            NbtCompound c = new NbtCompound();
-            c.putUuid("UUID", uuid);
-            tags.add(c);
+            NbtList tags = new NbtList();
+            for (UUID uuid : this.piercedEntities) {
+                NbtCompound c = new NbtCompound();
+                c.putUuid("UUID", uuid);
+                tags.add(c);
+            }
+            nbt.putBoolean("DealtDamage", this.dealtDamage);
+            nbt.put("javelin_hit", tags);
         }
-        nbt.putBoolean("DealtDamage", this.dealtDamage);
-        nbt.put("javelin_hit", tags);
     }
 
     @Override
