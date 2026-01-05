@@ -2,9 +2,7 @@ package net.medievalweapons.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.levelz.access.PlayerStatsManagerAccess;
-import net.levelz.init.ConfigInit;
-import net.levelz.stats.Skill;
+import net.levelz.util.BonusHelper;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.FranciscaItem;
@@ -74,10 +72,8 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
             damage = EnchantmentHelper.getDamage(serverWorld, this.getWeaponStack(), hitEntity, createDamageSource(this, owner == null ? this : owner), damage);
         }
 
-        if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity) {
-            int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
-            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > this.getWorld().getRandom().nextFloat() ? damage
-                    : (double) archeryLevel * ConfigInit.CONFIG.archeryBowExtraDamage;
+        if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity playerEntity) {
+            BonusHelper.bowBonus(playerEntity,this);
         }
 
         DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);

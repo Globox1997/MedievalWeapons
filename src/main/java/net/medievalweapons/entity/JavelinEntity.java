@@ -2,9 +2,7 @@ package net.medievalweapons.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.levelz.access.PlayerStatsManagerAccess;
-import net.levelz.init.ConfigInit;
-import net.levelz.stats.Skill;
+import net.levelz.util.BonusHelper;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.JavelinItem;
@@ -31,12 +29,11 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import org.jetbrains.annotations.Nullable;
 
 public class JavelinEntity extends PersistentProjectileEntity implements FlyingItemEntity {
     private static final TrackedData<Byte> LOYALTY;
@@ -93,10 +90,8 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
         this.dealtDamage = true;
 
         Entity owner = this.getOwner();
-        if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity) {
-            int archeryLevel = ((PlayerStatsManagerAccess) owner).getPlayerStatsManager().getSkillLevel(Skill.ARCHERY);
-            damage += archeryLevel >= ConfigInit.CONFIG.maxLevel && ConfigInit.CONFIG.archeryDoubleDamageChance > this.getWorld().getRandom().nextFloat() ? damage
-                    : (double) archeryLevel * ConfigInit.CONFIG.archeryBowExtraDamage;
+        if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity playerEntity) {
+            BonusHelper.bowBonus(playerEntity,this);
         }
 
         DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);

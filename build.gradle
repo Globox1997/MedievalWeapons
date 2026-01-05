@@ -1,11 +1,14 @@
 plugins {
-	id 'fabric-loom' version '1.7-SNAPSHOT'
+	id 'fabric-loom' version '1.14-SNAPSHOT'
 	id 'maven-publish'
 }
 
-archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
 
 fabricApi {
 	configureDataGeneration()
@@ -43,7 +46,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
     // DragonLoot
-	modCompileOnly ('maven.modrinth:dragonloot:1.1.7+1.21.1') {
+	modCompileOnly ('maven.modrinth:dragonloot:1.1.8+1.21.1') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	//Better End/Nether
@@ -60,11 +63,11 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Mythic Metals
-	modCompileOnly ('maven.modrinth:mythicmetals:0.20.1+1.21') {
+	modCompileOnly ('maven.modrinth:mythicmetals:0.24.4+1.21') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Paradise Lost
-	modCompileOnly ('maven.modrinth:paradise-lost:2.1.0') {
+	modCompileOnly ('maven.modrinth:paradise-lost:2.3.3-beta+1.21.0') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// BYG
@@ -76,15 +79,15 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Mythic Upgrades
-	modCompileOnly ('maven.modrinth:mythic-upgrades:2.3.2+mc1.20.1') {
+	modCompileOnly ('maven.modrinth:mythic-upgrades:4.2.0') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// LevelZ
-	modCompileOnly ('maven.modrinth:levelz:1.4.9+1.20') {
+	modCompileOnly ('maven.modrinth:levelz:2.0.6+1.21.1') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Deeper and Darker
-	modCompileOnly ('maven.modrinth:deeperdarker:1.3.2-fabric+1.21') {
+	modCompileOnly ('maven.modrinth:deeperdarker:1.3.3-plus-b-fabric+1.21') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
@@ -112,8 +115,10 @@ java {
 }
 
 jar {
+	inputs.property "archivesName", project.base.archivesName
+
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}" }
+		rename { "${it}_${inputs.properties.archivesName}"}
 	}
 }
 

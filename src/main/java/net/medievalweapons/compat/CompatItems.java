@@ -2,8 +2,9 @@ package net.medievalweapons.compat;
 
 import com.kyanite.deeperdarker.util.DDTiers;
 
+import com.mythicmetals.item.tools.MythicToolMaterials;
 import net.dragonloot.item.DragonToolMaterials;
-import net.minecraft.item.ToolMaterials;
+import net.trique.mythicupgrades.item.materials.MUToolMaterials;
 import org.betterx.betterend.item.material.EndToolMaterial;
 import org.betterx.betternether.items.materials.BNToolMaterial;
 
@@ -19,8 +20,6 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
-import net.trique.mythicupgrades.item.MUToolMaterials;
-import nourl.mythicmetals.item.tools.MythicToolMaterials;
 import potionstudios.byg.common.item.BYGTier;
 
 public class CompatItems {
