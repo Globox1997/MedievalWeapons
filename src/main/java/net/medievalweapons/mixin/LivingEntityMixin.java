@@ -1,6 +1,9 @@
 package net.medievalweapons.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At.Shift;
@@ -48,8 +51,8 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @Inject(method = "blockedByShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;dotProduct(Lnet/minecraft/util/math/Vec3d;)D", shift = Shift.AFTER), cancellable = true)
-    private void blockedByShieldDamageWeaponMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
+    @WrapOperation(method = "damage",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/LivingEntity;damageShield(F)V"))
+    private void damageMixin(LivingEntity instance, float amount, Operation<Void> original){
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         ItemStack itemStack = livingEntity.getActiveItem();
         if (itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
@@ -61,6 +64,8 @@ public abstract class LivingEntityMixin extends Entity {
             if (!this.getWorld().isClient()) {
                 livingEntity.getMainHandStack().damage(1, livingEntity, LivingEntity.getSlotForHand(livingEntity.getActiveHand()));
             }
+        }else{
+            original.call(instance,amount);
         }
     }
 
