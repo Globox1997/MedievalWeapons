@@ -1,5 +1,6 @@
 package net.medievalweapons.item;
 
+import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ParticleInit;
 import net.medievalweapons.init.SoundInit;
 import net.minecraft.entity.AreaEffectCloudEntity;
@@ -10,19 +11,31 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
+import java.util.Map;
+
 public class HealingStaffItem extends SwordItem {
+
+    private static final Map<ToolMaterial, Integer> ADDITION = Map.of(ToolMaterials.WOOD, 1, ToolMaterials.STONE, 2, ToolMaterials.IRON, 2, ToolMaterials.GOLD, 3, ToolMaterials.DIAMOND, 4, ToolMaterials.NETHERITE, 5);
+
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("range_attack_bonus");
     private final int addition;
 
     public HealingStaffItem(ToolMaterial toolMaterial, int addition, Settings settings) {
         super(toolMaterial, settings);
-        this.addition = addition;
+        if (addition == -1) {
+            this.addition = ADDITION.get(toolMaterial);
+        } else {
+            this.addition = addition;
+        }
     }
 
     @Override
@@ -55,8 +68,7 @@ public class HealingStaffItem extends SwordItem {
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
-        if (user instanceof PlayerEntity) {
-            PlayerEntity playerEntity = (PlayerEntity) user;
+        if (user instanceof PlayerEntity playerEntity) {
             if (i >= 30) {
                 if (world.isClient()) {
                     HitResult hitResult = playerEntity.raycast(8.0D + addition, 0.0F, false);

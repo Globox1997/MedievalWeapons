@@ -2,6 +2,7 @@ package net.medievalweapons.item;
 
 import java.util.function.Supplier;
 
+import net.medievalweapons.MedievalMain;
 import net.medievalweapons.entity.JavelinEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -17,6 +18,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.math.Direction;
@@ -25,6 +27,7 @@ import net.minecraft.world.World;
 
 public class JavelinItem extends SwordItem implements ProjectileItem {
 
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("range_attack_bonus");
     private final Supplier<EntityType<JavelinEntity>> typeSupplier;
     private EntityType<JavelinEntity> cachedType = null;
 

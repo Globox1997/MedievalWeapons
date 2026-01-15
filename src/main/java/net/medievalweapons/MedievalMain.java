@@ -17,8 +17,8 @@ public class MedievalMain implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CompatInit.init();
         ConfigInit.init();
+        CompatInit.init();
         ItemInit.init();
         EffectInit.init();
         EntityInit.init();

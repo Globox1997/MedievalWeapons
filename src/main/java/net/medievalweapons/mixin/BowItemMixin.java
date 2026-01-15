@@ -1,5 +1,6 @@
 package net.medievalweapons.mixin;
 
+import net.medievalweapons.init.ConfigInit;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,9 +26,9 @@ public abstract class BowItemMixin extends RangedWeaponItem {
     @Inject(method = "shoot", at = @At("TAIL"))
     private void onStoppedUsingMixin(LivingEntity shooter, ProjectileEntity projectile, int index, float speed, float divergence, float yaw, @Nullable LivingEntity target, CallbackInfo info) {
         if (this == ItemInit.LONG_BOW_ITEM) {
-            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * 1.3F, divergence);
+            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * ConfigInit.CONFIG.long_bow_speed, divergence);
         } else if (this == ItemInit.RECURVE_BOW_ITEM) {
-            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * 0.9F, divergence);
+            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * ConfigInit.CONFIG.recurve_bow_speed, divergence);
         }
     }
 
