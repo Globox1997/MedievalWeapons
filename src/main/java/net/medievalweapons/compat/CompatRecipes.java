@@ -334,7 +334,7 @@ public class CompatRecipes {
         if (CompatItems.isMythicMetalsLoaded) {
             SHAPED_RECIPES.put("adamantite_small_axe", new ShapedRecipeMaterial(Identifier.of("mythicmetals", "adamantite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item",
                     MedievalMain.id("adamantite_small_axe"), "small_axe"));
-            SHAPED_RECIPES.put("adamantite_long_sword", new ShapedRecipeMaterial(Identifier.of("betterend", "adamantite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item",
+            SHAPED_RECIPES.put("adamantite_long_sword", new ShapedRecipeMaterial(Identifier.of("mythicmetals", "adamantite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item",
                     MedievalMain.id("adamantite_long_sword"), "long_sword"));
             SHAPED_RECIPES.put("adamantite_dagger",
                     new ShapedRecipeMaterial(Identifier.of("mythicmetals", "adamantite_ingot"), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.id("adamantite_dagger"), "dagger"));
