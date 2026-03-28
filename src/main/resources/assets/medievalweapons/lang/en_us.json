@@ -340,6 +340,7 @@
 
   "item.medievalweapons.thalleous_sword": "Thalleous Sword",
   "item.medievalweapons.deathsinger_sword": "Deathsinger Sword",
+  "item.medievalweapons.tidesinger_staff": "Tidesinger Staff",
 
   "item.medievalweapons.item_group": "Medieval Weapons",
   "item.medievalweapons.double_handed.tooltip": "§cDouble Handed",
@@ -405,6 +406,11 @@
   "text.autoconfig.medievalweapons.option.deathsinger_sword_attack_speed": "Deathsinger Sword Spd",
   "text.autoconfig.medievalweapons.option.deathsinger_sword_range": "Deathsinger Sword Range",
   "text.autoconfig.medievalweapons.option.deathsinger_sword_sweeping_ratio": "Deathsinger Sword Sweeping Ratio",
+
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_attack_damage": "Tidesinger Staff Dmg",
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_attack_speed": "Tidesinger Staff Spd",
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_range": "Tidesinger Staff Range",
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_sweeping_ratio": "Tidesinger Staff Sweeping Ratio",
 
   "death.attack.javelin": "%1$s got impaled by %2$s",
   "death.attack.francisca": "%1$s was killed by %2$s with a francisca",

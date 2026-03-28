@@ -70,4 +70,9 @@ public class MedievalConfig implements ConfigData {
     public float deathsinger_sword_attack_speed = -3.0f;
     public float deathsinger_sword_range = 1.0f;
     public float deathsinger_sword_sweeping_ratio = 1.0f;
+
+    public int tidesinger_staff_attack_damage = 10;
+    public float tidesinger_staff_attack_speed = -3.0f;
+    public float tidesinger_staff_range = 1.0f;
+    public float tidesinger_staff_sweeping_ratio = 1.0f;
 }

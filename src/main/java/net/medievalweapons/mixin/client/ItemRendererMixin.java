@@ -48,6 +48,8 @@ public class ItemRendererMixin {
             return VertexConsumers.union(vertexConsumers.getBuffer(RenderInit.CUSTOM_GLINT.get(DyeColor.BLUE)), vertexConsumers.getBuffer(layer));
         } else if (stack.isOf(ItemInit.DEATHSINGER_SWORD)) {
             return VertexConsumers.union(vertexConsumers.getBuffer(RenderInit.CUSTOM_GLINT.get(DyeColor.RED)), vertexConsumers.getBuffer(layer));
+        } else if (stack.isOf(ItemInit.TIDESINGER_STAFF)) {
+            return VertexConsumers.union(vertexConsumers.getBuffer(RenderInit.CUSTOM_GLINT.get(DyeColor.YELLOW)), vertexConsumers.getBuffer(layer));
         }
         return original.call(provider, layer, solid, glint);
     }

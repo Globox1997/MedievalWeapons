@@ -94,6 +94,14 @@ public class ItemInit {
                     .with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO, new EntityAttributeModifier(HeroSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.deathsinger_sword_sweeping_ratio, EntityAttributeModifier.Operation.ADD_VALUE),
                             AttributeModifierSlot.MAINHAND))));
 
+    // Tidesinger Sword
+    public static final Item TIDESINGER_STAFF = register("tidesinger_staff",
+            new HeroStaffItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, ConfigInit.CONFIG.tidesinger_staff_attack_damage, ConfigInit.CONFIG.tidesinger_staff_attack_speed)
+                    .with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.tidesinger_staff_range, EntityAttributeModifier.Operation.ADD_VALUE),
+                            AttributeModifierSlot.MAINHAND)
+                    .with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO, new EntityAttributeModifier(HeroSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.tidesinger_staff_sweeping_ratio, EntityAttributeModifier.Operation.ADD_VALUE),
+                            AttributeModifierSlot.MAINHAND))));
+
     // Long Bow
     public static final Item LONG_BOW_ITEM = register("long_bow", new LongBowItem(new Item.Settings().maxDamage(443)));
     // Recurve Bow
@@ -176,7 +184,7 @@ public class ItemInit {
     private static void addCustomModelItem(Item item) {
         if (item instanceof LongSwordItem || item instanceof SmallAxeItem || item instanceof BigAxeItem || item instanceof LanceItem
                 || item instanceof HealingStaffItem || item instanceof JavelinItem || item instanceof MaceItem || item instanceof SickleItem
-                || item instanceof RapierItem || item instanceof HeroSwordItem) {
+                || item instanceof RapierItem || item instanceof HeroSwordItem || item instanceof HeroStaffItem) {
             CUSTOM_MODEL_ITEMS.add(item);
         }
     }
