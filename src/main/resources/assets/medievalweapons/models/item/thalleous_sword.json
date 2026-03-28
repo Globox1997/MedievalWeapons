@@ -8,13 +8,13 @@
 			"predicate": {
 				"bettercombat:loaded": 1
 			},
-			"model": "medievalweapons:item/bc_thalleous_sword"
+			"model": "medievalweapons:item/thalleous_sword_bc"
 		},
 		{
 			"predicate": {
 				"medievalweapons:offhand": 1
 			},
-			"model": "medievalweapons:item/bc_thalleous_sword"
+			"model": "medievalweapons:item/thalleous_sword_bc"
 		},
 		{
 			"predicate": {
