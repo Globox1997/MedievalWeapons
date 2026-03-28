@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  d",
+    " d ",
+    "e  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:diamond_rapier"
+  }
+}

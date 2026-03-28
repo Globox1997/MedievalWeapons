@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "item": "minecraft:iron_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " dd",
+    "  d",
+    " e "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:iron_sickle"
+  }
+}

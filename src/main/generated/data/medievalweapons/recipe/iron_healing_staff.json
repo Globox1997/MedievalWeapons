@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "item": "minecraft:iron_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  d",
+    " e ",
+    "d  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:iron_healing_staff"
+  }
+}

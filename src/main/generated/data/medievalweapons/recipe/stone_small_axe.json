@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " dd",
+    " ed",
+    "e  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:stone_small_axe"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "d",
+    "e"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:diamond_dagger"
+  }
+}

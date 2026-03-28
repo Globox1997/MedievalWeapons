@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_diamond_dagger": {
+      "conditions": {
+        "items": [
+          {
+            "items": "medievalweapons:diamond_dagger"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "medievalweapons:netherite_dagger"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_diamond_dagger"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "medievalweapons:netherite_dagger"
+    ]
+  }
+}

@@ -1,7 +1,6 @@
 package net.medievalweapons.compat;
 
 import com.google.gson.JsonObject;
-
 import net.dragonloot.DragonLootMain;
 import net.medievalweapons.MedievalMain;
 import net.minecraft.item.Items;
@@ -13,6 +12,9 @@ import java.util.HashMap;
 
 public class CompatRecipes {
 
+    public static HashMap<String, ShapedRecipeMaterial> VANILLA_SHAPED_RECIPES = new HashMap<>();
+    public static HashMap<String, SmithingRecipeMaterial> VANILLA_SMITHING_RECIPES = new HashMap<>();
+
     public static HashMap<String, ShapedRecipeMaterial> SHAPED_RECIPES = new HashMap<>();
     public static HashMap<String, SmithingRecipeMaterial> SMITHING_RECIPES = new HashMap<>();
 
@@ -20,141 +22,141 @@ public class CompatRecipes {
 
     public static void createRecipes() {
         // Wood
-        SHAPED_RECIPES.put("wooden_big_axe", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_big_axe"), "big_axe"));
-        SHAPED_RECIPES.put("wooden_dagger", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_dagger"), "dagger"));
-        SHAPED_RECIPES.put("wooden_francisca", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_francisca"), "francisca"));
-        SHAPED_RECIPES.put("wooden_healing_staff",
+        VANILLA_SHAPED_RECIPES.put("wooden_big_axe", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_big_axe"), "big_axe"));
+        VANILLA_SHAPED_RECIPES.put("wooden_dagger", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_dagger"), "dagger"));
+        VANILLA_SHAPED_RECIPES.put("wooden_francisca", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_francisca"), "francisca"));
+        VANILLA_SHAPED_RECIPES.put("wooden_healing_staff",
                 new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_healing_staff"), "healing_staff"));
-        SHAPED_RECIPES.put("wooden_javelin", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_javelin"), "javelin"));
-        SHAPED_RECIPES.put("wooden_lance", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_lance"), "lance"));
-        SHAPED_RECIPES.put("wooden_long_sword",
+        VANILLA_SHAPED_RECIPES.put("wooden_javelin", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_javelin"), "javelin"));
+        VANILLA_SHAPED_RECIPES.put("wooden_lance", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_lance"), "lance"));
+        VANILLA_SHAPED_RECIPES.put("wooden_long_sword",
                 new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_long_sword"), "long_sword"));
-        SHAPED_RECIPES.put("wooden_mace", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_mace"), "mace"));
-        SHAPED_RECIPES.put("wooden_small_axe", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_small_axe"), "small_axe"));
-        SHAPED_RECIPES.put("wooden_ninjato", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_ninjato"), "ninjato"));
-        SHAPED_RECIPES.put("wooden_sickle", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_sickle"), "sickle"));
-        SHAPED_RECIPES.put("wooden_rapier", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_rapier"), "rapier"));
+        VANILLA_SHAPED_RECIPES.put("wooden_mace", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_mace"), "mace"));
+        VANILLA_SHAPED_RECIPES.put("wooden_small_axe", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_small_axe"), "small_axe"));
+        VANILLA_SHAPED_RECIPES.put("wooden_ninjato", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_ninjato"), "ninjato"));
+        VANILLA_SHAPED_RECIPES.put("wooden_sickle", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_sickle"), "sickle"));
+        VANILLA_SHAPED_RECIPES.put("wooden_rapier", new ShapedRecipeMaterial(Identifier.of("planks"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("wooden_rapier"), "rapier"));
         // Stone
-        SHAPED_RECIPES.put("stone_big_axe",
+        VANILLA_SHAPED_RECIPES.put("stone_big_axe",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_big_axe"), "big_axe"));
-        SHAPED_RECIPES.put("stone_dagger",
+        VANILLA_SHAPED_RECIPES.put("stone_dagger",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_dagger"), "dagger"));
-        SHAPED_RECIPES.put("stone_francisca",
+        VANILLA_SHAPED_RECIPES.put("stone_francisca",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_francisca"), "francisca"));
-        SHAPED_RECIPES.put("stone_healing_staff",
+        VANILLA_SHAPED_RECIPES.put("stone_healing_staff",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_healing_staff"), "healing_staff"));
-        SHAPED_RECIPES.put("stone_javelin",
+        VANILLA_SHAPED_RECIPES.put("stone_javelin",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_javelin"), "javelin"));
-        SHAPED_RECIPES.put("stone_lance", new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_lance"), "lance"));
-        SHAPED_RECIPES.put("stone_long_sword",
+        VANILLA_SHAPED_RECIPES.put("stone_lance", new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_lance"), "lance"));
+        VANILLA_SHAPED_RECIPES.put("stone_long_sword",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_long_sword"), "long_sword"));
-        SHAPED_RECIPES.put("stone_mace", new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_mace"), "mace"));
-        SHAPED_RECIPES.put("stone_small_axe",
+        VANILLA_SHAPED_RECIPES.put("stone_mace", new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_mace"), "mace"));
+        VANILLA_SHAPED_RECIPES.put("stone_small_axe",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_small_axe"), "small_axe"));
-        SHAPED_RECIPES.put("stone_ninjato",
+        VANILLA_SHAPED_RECIPES.put("stone_ninjato",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_ninjato"), "ninjato"));
-        SHAPED_RECIPES.put("stone_sickle",
+        VANILLA_SHAPED_RECIPES.put("stone_sickle",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_sickle"), "sickle"));
-        SHAPED_RECIPES.put("stone_rapier",
+        VANILLA_SHAPED_RECIPES.put("stone_rapier",
                 new ShapedRecipeMaterial(Identifier.of("stone_tool_materials"), Registries.ITEM.getId(Items.STICK), "tag", "item", MedievalMain.identifierOf("stone_rapier"), "rapier"));
         // Gold
-        SHAPED_RECIPES.put("golden_big_axe",
+        VANILLA_SHAPED_RECIPES.put("golden_big_axe",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_big_axe"), "big_axe"));
-        SHAPED_RECIPES.put("golden_dagger",
+        VANILLA_SHAPED_RECIPES.put("golden_dagger",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_dagger"), "dagger"));
-        SHAPED_RECIPES.put("golden_francisca",
+        VANILLA_SHAPED_RECIPES.put("golden_francisca",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_francisca"), "francisca"));
-        SHAPED_RECIPES.put("golden_healing_staff",
+        VANILLA_SHAPED_RECIPES.put("golden_healing_staff",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_healing_staff"), "healing_staff"));
-        SHAPED_RECIPES.put("golden_javelin",
+        VANILLA_SHAPED_RECIPES.put("golden_javelin",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_javelin"), "javelin"));
-        SHAPED_RECIPES.put("golden_lance",
+        VANILLA_SHAPED_RECIPES.put("golden_lance",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_lance"), "lance"));
-        SHAPED_RECIPES.put("golden_long_sword",
+        VANILLA_SHAPED_RECIPES.put("golden_long_sword",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_long_sword"), "long_sword"));
-        SHAPED_RECIPES.put("golden_mace",
+        VANILLA_SHAPED_RECIPES.put("golden_mace",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_mace"), "mace"));
-        SHAPED_RECIPES.put("golden_small_axe",
+        VANILLA_SHAPED_RECIPES.put("golden_small_axe",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_small_axe"), "small_axe"));
-        SHAPED_RECIPES.put("golden_ninjato",
+        VANILLA_SHAPED_RECIPES.put("golden_ninjato",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_ninjato"), "ninjato"));
-        SHAPED_RECIPES.put("golden_sickle",
+        VANILLA_SHAPED_RECIPES.put("golden_sickle",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_sickle"), "sickle"));
-        SHAPED_RECIPES.put("golden_rapier",
+        VANILLA_SHAPED_RECIPES.put("golden_rapier",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.GOLD_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("golden_rapier"), "rapier"));
         // Iron
-        SHAPED_RECIPES.put("iron_big_axe",
+        VANILLA_SHAPED_RECIPES.put("iron_big_axe",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_big_axe"), "big_axe"));
-        SHAPED_RECIPES.put("iron_dagger",
+        VANILLA_SHAPED_RECIPES.put("iron_dagger",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_dagger"), "dagger"));
-        SHAPED_RECIPES.put("iron_francisca",
+        VANILLA_SHAPED_RECIPES.put("iron_francisca",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_francisca"), "francisca"));
-        SHAPED_RECIPES.put("iron_healing_staff",
+        VANILLA_SHAPED_RECIPES.put("iron_healing_staff",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_healing_staff"), "healing_staff"));
-        SHAPED_RECIPES.put("iron_javelin",
+        VANILLA_SHAPED_RECIPES.put("iron_javelin",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_javelin"), "javelin"));
-        SHAPED_RECIPES.put("iron_lance",
+        VANILLA_SHAPED_RECIPES.put("iron_lance",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_lance"), "lance"));
-        SHAPED_RECIPES.put("iron_long_sword",
+        VANILLA_SHAPED_RECIPES.put("iron_long_sword",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_long_sword"), "long_sword"));
-        SHAPED_RECIPES.put("iron_mace", new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_mace"), "mace"));
-        SHAPED_RECIPES.put("iron_small_axe",
+        VANILLA_SHAPED_RECIPES.put("iron_mace", new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_mace"), "mace"));
+        VANILLA_SHAPED_RECIPES.put("iron_small_axe",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_small_axe"), "small_axe"));
-        SHAPED_RECIPES.put("iron_ninjato",
+        VANILLA_SHAPED_RECIPES.put("iron_ninjato",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_ninjato"), "ninjato"));
-        SHAPED_RECIPES.put("iron_sickle",
+        VANILLA_SHAPED_RECIPES.put("iron_sickle",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_sickle"), "sickle"));
-        SHAPED_RECIPES.put("iron_rapier",
+        VANILLA_SHAPED_RECIPES.put("iron_rapier",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.IRON_INGOT), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("iron_rapier"), "rapier"));
         // Diamond
-        SHAPED_RECIPES.put("diamond_big_axe",
+        VANILLA_SHAPED_RECIPES.put("diamond_big_axe",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_big_axe"), "big_axe"));
-        SHAPED_RECIPES.put("diamond_dagger",
+        VANILLA_SHAPED_RECIPES.put("diamond_dagger",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_dagger"), "dagger"));
-        SHAPED_RECIPES.put("diamond_francisca",
+        VANILLA_SHAPED_RECIPES.put("diamond_francisca",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_francisca"), "francisca"));
-        SHAPED_RECIPES.put("diamond_healing_staff",
+        VANILLA_SHAPED_RECIPES.put("diamond_healing_staff",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_healing_staff"), "healing_staff"));
-        SHAPED_RECIPES.put("diamond_javelin",
+        VANILLA_SHAPED_RECIPES.put("diamond_javelin",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_javelin"), "javelin"));
-        SHAPED_RECIPES.put("diamond_lance",
+        VANILLA_SHAPED_RECIPES.put("diamond_lance",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_lance"), "lance"));
-        SHAPED_RECIPES.put("diamond_long_sword",
+        VANILLA_SHAPED_RECIPES.put("diamond_long_sword",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_long_sword"), "long_sword"));
-        SHAPED_RECIPES.put("diamond_mace",
+        VANILLA_SHAPED_RECIPES.put("diamond_mace",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_mace"), "mace"));
-        SHAPED_RECIPES.put("diamond_small_axe",
+        VANILLA_SHAPED_RECIPES.put("diamond_small_axe",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_small_axe"), "small_axe"));
-        SHAPED_RECIPES.put("diamond_ninjato",
+        VANILLA_SHAPED_RECIPES.put("diamond_ninjato",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_ninjato"), "ninjato"));
-        SHAPED_RECIPES.put("diamond_sickle",
+        VANILLA_SHAPED_RECIPES.put("diamond_sickle",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_sickle"), "sickle"));
-        SHAPED_RECIPES.put("diamond_rapier",
+        VANILLA_SHAPED_RECIPES.put("diamond_rapier",
                 new ShapedRecipeMaterial(Registries.ITEM.getId(Items.DIAMOND), Registries.ITEM.getId(Items.STICK), "item", "item", MedievalMain.identifierOf("diamond_rapier"), "rapier"));
         // Netherite
-        SMITHING_RECIPES.put("netherite_big_axe", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_big_axe"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_big_axe", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_big_axe"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_big_axe"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_dagger", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_dagger"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_dagger", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_dagger"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_dagger"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_francisca", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_francisca"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_francisca", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_francisca"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_francisca"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_healing_staff", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_healing_staff"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_healing_staff", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_healing_staff"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_healing_staff"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_javelin", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_javelin"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_javelin", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_javelin"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_javelin"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_lance", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_lance"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_lance", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_lance"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_lance"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_long_sword", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_long_sword"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_long_sword", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_long_sword"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_long_sword"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_mace", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_mace"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_mace", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_mace"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_mace"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_small_axe", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_small_axe"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_small_axe", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_small_axe"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_small_axe"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_ninjato", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_ninjato"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_ninjato", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_ninjato"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_ninjato"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_sickle", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_sickle"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_sickle", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_sickle"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_sickle"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
-        SMITHING_RECIPES.put("netherite_rapier", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_rapier"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
+        VANILLA_SMITHING_RECIPES.put("netherite_rapier", new SmithingRecipeMaterial(MedievalMain.identifierOf("diamond_rapier"), Registries.ITEM.getId(Items.NETHERITE_INGOT), "item", "item",
                 MedievalMain.identifierOf("netherite_rapier"), Identifier.of("minecraft:netherite_upgrade_smithing_template")));
 
         if (CompatItems.isBetterEndLoaded) {

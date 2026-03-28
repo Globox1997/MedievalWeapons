@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "d": {
+      "tag": "minecraft:planks"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  d",
+    "dd ",
+    "ed "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:wooden_long_sword"
+  }
+}

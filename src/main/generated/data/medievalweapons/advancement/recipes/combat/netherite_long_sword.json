@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_diamond_long_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "medievalweapons:diamond_long_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "medievalweapons:netherite_long_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_diamond_long_sword"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "medievalweapons:netherite_long_sword"
+    ]
+  }
+}
