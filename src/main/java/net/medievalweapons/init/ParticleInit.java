@@ -4,24 +4,20 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.FabricSpriteProvider;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
+import net.medievalweapons.MedievalMain;
+import net.minecraft.client.particle.*;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.client.particle.SpriteProvider;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleFactory;
-import net.minecraft.client.particle.ParticleTextureSheet;
-import net.minecraft.client.particle.SpriteBillboardParticle;
 
 public class ParticleInit {
 
     public static final SimpleParticleType HEALING_AURA_PARTICLE = FabricParticleTypes.simple();
 
     public static void init() {
-        Registry.register(Registries.PARTICLE_TYPE, Identifier.of("medievalweapons", "healing_aura_particle"), HEALING_AURA_PARTICLE);
+        Registry.register(Registries.PARTICLE_TYPE, MedievalMain.identifierOf("healing_aura_particle"), HEALING_AURA_PARTICLE);
     }
 
     @Environment(EnvType.CLIENT)

@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class LongSwordItem extends SwordItem {
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("double_handed_attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("double_handed_attack_bonus");
 
     public LongSwordItem(ToolMaterial material, Settings settings) {
         super(material, settings);

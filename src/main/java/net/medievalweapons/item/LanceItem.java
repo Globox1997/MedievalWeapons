@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class LanceItem extends SwordItem {
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("riding_attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("riding_attack_bonus");
     private static final EntityAttributeModifier ATTACK_BONUS_MODIFIER;
 
     public LanceItem(ToolMaterial material, Settings settings) {

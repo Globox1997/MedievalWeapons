@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 
 public class JavelinItem extends SwordItem implements ProjectileItem {
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("range_attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("range_attack_bonus");
     private final Supplier<EntityType<JavelinEntity>> typeSupplier;
     private EntityType<JavelinEntity> cachedType = null;
 

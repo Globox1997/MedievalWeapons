@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class DaggerItem extends SwordItem {
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("sneaking_attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("sneaking_attack_bonus");
     private static final EntityAttributeModifier ATTACK_BONUS_MODIFIER;
 
     public DaggerItem(ToolMaterial material, Settings settings) {

@@ -3,19 +3,15 @@ package net.medievalweapons.data;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.devtech.arrp.json.models.JModel;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.ItemInit;
 import net.minecraft.data.client.*;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -47,7 +43,7 @@ public class ModelLoader extends FabricModelProvider {
 //                if (item.equals("ninjato") || item.equals("small_axe")) {
                 Model model = getItemModel(item, material, itemModelGenerator.writer);
                 if (model != null) {
-                    itemModelGenerator.register(Registries.ITEM.get(MedievalMain.id(material + "_" + item)), model);
+                    itemModelGenerator.register(Registries.ITEM.get(MedievalMain.identifierOf(material + "_" + item)), model);
                 }
 //                }
                 if (item.equals("big_axe") || item.equals("healing_staff") || item.equals("javelin") || item.equals("lance") || item.equals("long_sword") || item.equals("mace")
@@ -80,49 +76,49 @@ public class ModelLoader extends FabricModelProvider {
             case "francisca":
                 return new Model(HANDHELD, Optional.of("medievalweapons:item/" + material + "_" + item), TextureKey.LAYER0);
             case "small_axe":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
                 return null;
             case "long_sword":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, true, true));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
-                new Model(Optional.of(MedievalMain.id("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.id("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, true, true));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
+                new Model(Optional.of(MedievalMain.identifierOf("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer);
                 return null;
             case "dagger":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, false, false, false, true));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, false, false, false, true));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer);
                 return null;
             case "big_axe":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, true, true));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
-                new Model(Optional.of(MedievalMain.id("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.id("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, true, true));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
+                new Model(Optional.of(MedievalMain.identifierOf("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer);
                 return null;
             case "javelin":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, true, false, true));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
-                new Model(Optional.of(MedievalMain.id("item/" + item + "_throwing")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.id("item/" + material + "_" + item + "_throwing"), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer);
-                new Model(Optional.of(MedievalMain.id("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.id("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, true, false, true));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
+                new Model(Optional.of(MedievalMain.identifierOf("item/" + item + "_throwing")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_throwing"), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer);
+                new Model(Optional.of(MedievalMain.identifierOf("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer);
                 return null;
             case "lance":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, true, true));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
-                new Model(Optional.of(MedievalMain.id("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.id("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, true, true));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
+                new Model(Optional.of(MedievalMain.identifierOf("item/" + item + "_bc")), Optional.empty(), TextureKey.LAYER0).upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_bc"), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer);
                 return null;
             case "healing_staff":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
                 return null;
             case "mace":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
                 return null;
             case "sickle":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
                 return null;
             case "rapier":
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.id("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
-                Models.HANDHELD.upload(MedievalMain.id("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.id("item/extra/" + material + "_" + item)), writer);
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item), TextureMap.layer0(MedievalMain.identifierOf("item/" + material + "_" + item)), writer, (id, textures) -> createPredicateJson(id, textures, item, material, true, false, false, false));
+                Models.HANDHELD.upload(MedievalMain.identifierOf("item/" + material + "_" + item + "_gui"), TextureMap.layer0(MedievalMain.identifierOf("item/extra/" + material + "_" + item)), writer);
                 return null;
             default:
                 return null;
@@ -130,7 +126,7 @@ public class ModelLoader extends FabricModelProvider {
     }
 
     private static JsonObject createPredicateJson(Identifier id, Map<TextureKey, Identifier> textures, String item, String material, boolean gui, boolean throwing, boolean offhand, boolean bettercombat) {
-        JsonObject jsonObject = new Model(Optional.of(MedievalMain.id("item/" + item)), Optional.of("medievalweapons:item/" + material + "_" + item), TextureKey.LAYER0).createJson(id, textures);
+        JsonObject jsonObject = new Model(Optional.of(MedievalMain.identifierOf("item/" + item)), Optional.of("medievalweapons:item/" + material + "_" + item), TextureKey.LAYER0).createJson(id, textures);
 
         JsonArray jsonArray = new JsonArray();
         JsonObject jsonObject2;
@@ -155,7 +151,7 @@ public class ModelLoader extends FabricModelProvider {
         if (offhand) {
             jsonObject2 = new JsonObject();
             jsonObject3 = new JsonObject();
-            jsonObject3.addProperty(MedievalMain.id("offhand").toString(), 1.0f);
+            jsonObject3.addProperty(MedievalMain.identifierOf("offhand").toString(), 1.0f);
             jsonObject2.add("predicate", jsonObject3);
             jsonObject2.addProperty("model", "medievalweapons:item/" + material + "_" + item + "_bc");
             jsonArray.add(jsonObject2);
@@ -163,7 +159,7 @@ public class ModelLoader extends FabricModelProvider {
         if (gui) {
             jsonObject2 = new JsonObject();
             jsonObject3 = new JsonObject();
-            jsonObject3.addProperty(MedievalMain.id("gui").toString(), 1.0f);
+            jsonObject3.addProperty(MedievalMain.identifierOf("gui").toString(), 1.0f);
             jsonObject2.add("predicate", jsonObject3);
             jsonObject2.addProperty("model", id.toString() + "_gui");
             jsonArray.add(jsonObject2);

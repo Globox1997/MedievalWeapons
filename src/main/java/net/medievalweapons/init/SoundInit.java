@@ -1,5 +1,6 @@
 package net.medievalweapons.init;
 
+import net.medievalweapons.MedievalMain;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
@@ -7,10 +8,10 @@ import net.minecraft.util.Identifier;
 
 public class SoundInit {
 
-    public static final Identifier MAGIC_HEAL_AURA = Identifier.of("medievalweapons:magic_heal_aura");
-    public static final Identifier MAGIC_SHOT = Identifier.of("medievalweapons:magic_shot");
-    public static final Identifier PARRYING = Identifier.of("medievalweapons:parrying");
-    public static final Identifier SWORD_PARRYING = Identifier.of("medievalweapons:sword_parrying");
+    public static final Identifier MAGIC_HEAL_AURA = MedievalMain.identifierOf("magic_heal_aura");
+    public static final Identifier MAGIC_SHOT = MedievalMain.identifierOf("magic_shot");
+    public static final Identifier PARRYING = MedievalMain.identifierOf("parrying");
+    public static final Identifier SWORD_PARRYING = MedievalMain.identifierOf("sword_parrying");
     public static SoundEvent SWORD_PARRYING_EVENT = SoundEvent.of(SWORD_PARRYING);
     public static SoundEvent MAGIC_HEAL_AURA_EVENT = SoundEvent.of(MAGIC_HEAL_AURA);
     public static SoundEvent MAGIC_SHOT_EVENT = SoundEvent.of(MAGIC_SHOT);

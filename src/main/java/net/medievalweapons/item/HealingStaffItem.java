@@ -26,7 +26,7 @@ public class HealingStaffItem extends SwordItem {
 
     private static final Map<ToolMaterial, Integer> ADDITION = Map.of(ToolMaterials.WOOD, 1, ToolMaterials.STONE, 2, ToolMaterials.IRON, 2, ToolMaterials.GOLD, 3, ToolMaterials.DIAMOND, 4, ToolMaterials.NETHERITE, 5);
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("range_attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("range_attack_bonus");
     private final int addition;
 
     public HealingStaffItem(ToolMaterial toolMaterial, int addition, Settings settings) {

@@ -73,9 +73,9 @@ public class ItemInit {
             new WeaponType("sickle", (material, settings, id) -> new SickleItem(material, settings), ConfigInit.CONFIG.sickle_attack_damage, ConfigInit.CONFIG.sickle_attack_damage, false, null, null, null, new String[]{" ii", "iip", "i s"}),
             new WeaponType("rapier", (material, settings, id) -> new RapierItem(material, -1, settings), ConfigInit.CONFIG.rapier_attack_damage, ConfigInit.CONFIG.rapier_attack_speed, false, null, null, null, new String[]{"i", "p"}),
             new WeaponType("francisca", (material, settings, id) ->
-                    new FranciscaItem(material, () -> (EntityType<FranciscaEntity>) EntityInit.ENTITY_TYPES.get(MedievalMain.id(id)), settings), ConfigInit.CONFIG.francisca_attack_damage, ConfigInit.CONFIG.francisca_attack_speed, true, null, null, null, new String[]{"xi", "s "}),
+                    new FranciscaItem(material, () -> (EntityType<FranciscaEntity>) EntityInit.ENTITY_TYPES.get(MedievalMain.identifierOf(id)), settings), ConfigInit.CONFIG.francisca_attack_damage, ConfigInit.CONFIG.francisca_attack_speed, true, null, null, null, new String[]{"xi", "s "}),
             new WeaponType("javelin", (material, settings, id) ->
-                    new JavelinItem(material, () -> (EntityType<JavelinEntity>) EntityInit.ENTITY_TYPES.get(MedievalMain.id(id)), settings), ConfigInit.CONFIG.javelin_attack_damage, ConfigInit.CONFIG.javelin_attack_speed, true, EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(JavelinItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.javelin_range, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND, new String[]{"i", "x", "p"})
+                    new JavelinItem(material, () -> (EntityType<JavelinEntity>) EntityInit.ENTITY_TYPES.get(MedievalMain.identifierOf(id)), settings), ConfigInit.CONFIG.javelin_attack_damage, ConfigInit.CONFIG.javelin_attack_speed, true, EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(JavelinItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.javelin_range, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND, new String[]{"i", "x", "p"})
     );
 
 
@@ -127,7 +127,7 @@ public class ItemInit {
 
     public static Item register(String id, Item item) {
         addCustomModelItem(item);
-        return register(MedievalMain.id(id), item);
+        return register(MedievalMain.identifierOf(id), item);
     }
 
     private static Item register(Identifier id, Item item) {

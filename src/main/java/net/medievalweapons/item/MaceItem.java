@@ -18,7 +18,7 @@ public class MaceItem extends SwordItem {
 
     private final int addition;
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.id("attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("attack_bonus");
 
     public MaceItem(ToolMaterial toolMaterial, int addition, Settings settings) {
         super(toolMaterial, settings);

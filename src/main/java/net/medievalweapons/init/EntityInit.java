@@ -23,9 +23,9 @@ public class EntityInit {
     // Map
     public static final Map<Identifier, EntityType> ENTITY_TYPES = new LinkedHashMap<>();
     // Damage Types
-    public static final RegistryKey<DamageType> JAVELIN = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, MedievalMain.id("javelin"));
-    public static final RegistryKey<DamageType> FRANCISCA = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, MedievalMain.id("francisca"));
-    public static final RegistryKey<DamageType> BLEEDING = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, MedievalMain.id("bleed"));
+    public static final RegistryKey<DamageType> JAVELIN = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, MedievalMain.identifierOf("javelin"));
+    public static final RegistryKey<DamageType> FRANCISCA = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, MedievalMain.identifierOf("francisca"));
+    public static final RegistryKey<DamageType> BLEEDING = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, MedievalMain.identifierOf("bleed"));
 
     public static void init() {
         CompatEntities.loadEntities();
@@ -35,7 +35,7 @@ public class EntityInit {
     }
 
     public static <T extends EntityType<?>> T register(String name, T type) {
-        Identifier id = MedievalMain.id(name);
+        Identifier id = MedievalMain.identifierOf(name);
         ENTITY_TYPES.put(id, type);
         return type;
     }
