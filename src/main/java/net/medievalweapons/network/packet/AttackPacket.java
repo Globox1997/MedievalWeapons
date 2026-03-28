@@ -1,13 +1,13 @@
 package net.medievalweapons.network.packet;
 
+import net.medievalweapons.MedievalMain;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
 
 public record AttackPacket(int entityId) implements CustomPayload {
 
-    public static final CustomPayload.Id<AttackPacket> PACKET_ID = new CustomPayload.Id<>(Identifier.of("medievalweapons", "attack_packet"));
+    public static final CustomPayload.Id<AttackPacket> PACKET_ID = new CustomPayload.Id<>(MedievalMain.identifierOf("attack_packet"));
 
     public static final PacketCodec<RegistryByteBuf, AttackPacket> PACKET_CODEC = PacketCodec.of((value, buf) -> {
         buf.writeInt(value.entityId);
