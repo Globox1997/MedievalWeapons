@@ -7,8 +7,8 @@ import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.compat.CompatRecipes;
 import net.medievalweapons.entity.FranciscaEntity;
 import net.medievalweapons.entity.JavelinEntity;
-import net.medievalweapons.item.*;
 import net.medievalweapons.item.MaceItem;
+import net.medievalweapons.item.*;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.EntityType;
@@ -70,7 +70,7 @@ public class ItemInit {
             new WeaponType("healing_staff", (material, settings, id) -> new HealingStaffItem(material, -1, settings), ConfigInit.CONFIG.healing_staff_attack_damage, ConfigInit.CONFIG.healing_staff_attack_speed, false, EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(HealingStaffItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.healing_staff_range, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND, new String[]{" i", "ii", "s "}),
             new WeaponType("mace", (material, settings, id) -> new MaceItem(material, -1, settings), ConfigInit.CONFIG.mace_attack_damage, ConfigInit.CONFIG.mace_attack_speed, false, EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(MaceItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.mace_range, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND, new String[]{"b", "i", "s"}),
             new WeaponType("ninjato", (material, settings, id) -> new NinjatoItem(material, settings), ConfigInit.CONFIG.ninjato_attack_damage, ConfigInit.CONFIG.ninjato_attack_speed, false, null, null, null, new String[]{"  i", " i ", "s  "}),
-            new WeaponType("sickle", (material, settings, id) -> new SickleItem(material, settings), ConfigInit.CONFIG.sickle_attack_damage, ConfigInit.CONFIG.sickle_attack_damage, false, null, null, null, new String[]{" ii", "iip", "i s"}),
+            new WeaponType("sickle", (material, settings, id) -> new SickleItem(material, settings), ConfigInit.CONFIG.sickle_attack_damage, ConfigInit.CONFIG.sickle_attack_speed, false, null, null, null, new String[]{" ii", "iip", "i s"}),
             new WeaponType("rapier", (material, settings, id) -> new RapierItem(material, -1, settings), ConfigInit.CONFIG.rapier_attack_damage, ConfigInit.CONFIG.rapier_attack_speed, false, null, null, null, new String[]{"i", "p"}),
             new WeaponType("francisca", (material, settings, id) ->
                     new FranciscaItem(material, () -> (EntityType<FranciscaEntity>) EntityInit.ENTITY_TYPES.get(MedievalMain.identifierOf(id)), settings), ConfigInit.CONFIG.francisca_attack_damage, ConfigInit.CONFIG.francisca_attack_speed, true, null, null, null, new String[]{"xi", "s "}),
@@ -81,10 +81,17 @@ public class ItemInit {
 
     // Thalleous Sword
     public static final Item THALLEOUS_SWORD = register("thalleous_sword",
-            new ThalleousSwordItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, ConfigInit.CONFIG.thalleous_sword_attack_damage, ConfigInit.CONFIG.thalleous_sword_attack_speed)
+            new HeroSwordItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, ConfigInit.CONFIG.thalleous_sword_attack_damage, ConfigInit.CONFIG.thalleous_sword_attack_speed)
                     .with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.thalleous_sword_range, EntityAttributeModifier.Operation.ADD_VALUE),
                             AttributeModifierSlot.MAINHAND)
-                    .with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO, new EntityAttributeModifier(ThalleousSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.thalleous_sword_sweeping_ratio, EntityAttributeModifier.Operation.ADD_VALUE),
+                    .with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO, new EntityAttributeModifier(HeroSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.thalleous_sword_sweeping_ratio, EntityAttributeModifier.Operation.ADD_VALUE),
+                            AttributeModifierSlot.MAINHAND))));
+    // Deathsinger Sword
+    public static final Item DEATHSINGER_SWORD = register("deathsinger_sword",
+            new HeroSwordItem(ToolMaterials.DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, ConfigInit.CONFIG.deathsinger_sword_attack_damage, ConfigInit.CONFIG.deathsinger_sword_attack_speed)
+                    .with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.deathsinger_sword_range, EntityAttributeModifier.Operation.ADD_VALUE),
+                            AttributeModifierSlot.MAINHAND)
+                    .with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO, new EntityAttributeModifier(HeroSwordItem.ATTACK_BONUS_MODIFIER_ID, ConfigInit.CONFIG.deathsinger_sword_sweeping_ratio, EntityAttributeModifier.Operation.ADD_VALUE),
                             AttributeModifierSlot.MAINHAND))));
 
     // Long Bow
@@ -169,7 +176,7 @@ public class ItemInit {
     private static void addCustomModelItem(Item item) {
         if (item instanceof LongSwordItem || item instanceof SmallAxeItem || item instanceof BigAxeItem || item instanceof LanceItem
                 || item instanceof HealingStaffItem || item instanceof JavelinItem || item instanceof MaceItem || item instanceof SickleItem
-                || item instanceof RapierItem || item instanceof ThalleousSwordItem) {
+                || item instanceof RapierItem || item instanceof HeroSwordItem) {
             CUSTOM_MODEL_ITEMS.add(item);
         }
     }

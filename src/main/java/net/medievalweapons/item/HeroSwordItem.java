@@ -16,11 +16,11 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class ThalleousSwordItem extends SwordItem {
+public class HeroSwordItem extends SwordItem {
 
     public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("double_handed_attack_bonus");
 
-    public ThalleousSwordItem(ToolMaterial toolMaterial, Settings settings) {
+    public HeroSwordItem(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
     }
 

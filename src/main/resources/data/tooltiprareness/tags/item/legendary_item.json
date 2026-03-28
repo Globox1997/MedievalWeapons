@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "medievalweapons:thalleous_sword"
+        "medievalweapons:thalleous_sword",
+        "medievalweapons:deathsinger_sword"
     ]
 }

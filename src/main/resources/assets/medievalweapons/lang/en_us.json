@@ -339,7 +339,7 @@
   "item.medievalweapons.recurve_bow": "Recurve Bow",
 
   "item.medievalweapons.thalleous_sword": "Thalleous Sword",
-  "entity.medievalweapons.thalleous_sword": "Thalleous Sword",
+  "item.medievalweapons.deathsinger_sword": "Deathsinger Sword",
 
   "item.medievalweapons.item_group": "Medieval Weapons",
   "item.medievalweapons.double_handed.tooltip": "§cDouble Handed",
@@ -400,6 +400,11 @@
   "text.autoconfig.medievalweapons.option.thalleous_sword_attack_speed": "Thalleous Sword Spd",
   "text.autoconfig.medievalweapons.option.thalleous_sword_range": "Thalleous Sword Range",
   "text.autoconfig.medievalweapons.option.thalleous_sword_sweeping_ratio": "Thalleous Sword Sweeping Ratio",
+
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_attack_damage": "Deathsinger Sword Dmg",
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_attack_speed": "Deathsinger Sword Spd",
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_range": "Deathsinger Sword Range",
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_sweeping_ratio": "Deathsinger Sword Sweeping Ratio",
 
   "death.attack.javelin": "%1$s got impaled by %2$s",
   "death.attack.francisca": "%1$s was killed by %2$s with a francisca",

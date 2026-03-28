@@ -5,16 +5,16 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "net.medievalweapons.mixin.MedievalWeaponsMixinPlugin",
   "mixins": [
-    "PlayerEntityMixin",
+    "AreaEffectCloudEntityMixin",
+    "BowItemMixin",
     "EnchantmentHelperMixin",
     "EnchantmentMixin",
     "LivingEntityMixin",
-    "AreaEffectCloudEntityMixin",
+    "MobEntityMixin",
+    "PlayerEntityMixin",
     "RecipeManagerMixin",
     "ServerAdvancementLoaderMixin",
     "TagGroupLoaderMixin",
-    "BowItemMixin",
-    "MobEntityMixin",
     "compat.BigAxeItemMixin",
     "compat.DaggerItemMixin",
     "compat.FranciscaItemMixin",
@@ -29,13 +29,14 @@
     "compat.SmallAxeItemMixin"
   ],
   "client": [
-    "client.BipedEntityModelMixin",
     "client.AbstractClientPlayerEntityMixin",
+    "client.BipedEntityModelMixin",
+    "client.BufferBuilderStorageMixin",
     "client.ClientLivingEntityMixin",
+    "client.DrawContextMixin",
+    "client.InGameHudMixin",
     "client.ItemRendererMixin",
     "client.MinecraftClientMixin",
-    "client.InGameHudMixin",
-    "client.DrawContextMixin",
     "client.PersistentProjectileEntityAccessor"
   ],
   "injectors": {

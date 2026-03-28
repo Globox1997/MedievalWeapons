@@ -1,6 +1,7 @@
 ### Added:
-- Added weapon config options
+- Added custom glint
+- Added deathsinger sword
 ### Fixed:
 - 
 ### Changed:
-- Tweaked healing staff
+- 
