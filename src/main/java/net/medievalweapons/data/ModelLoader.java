@@ -20,8 +20,6 @@ import java.util.function.Supplier;
 public class ModelLoader extends FabricModelProvider {
 
     private static final Optional<Identifier> HANDHELD = Optional.of(Identifier.ofVanilla("item/handheld"));
-//    private static final Optional<Identifier> SMALL_AXE = Optional.of(MedievalMain.id("item/small_axe"));
-
 
     public ModelLoader(FabricDataOutput output) {
         super(output);
@@ -29,44 +27,19 @@ public class ModelLoader extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
         for (String item : ItemInit.ITEM_STRINGS) {
             for (String material : ItemInit.MATERIAL_STRINGS) {
-//                ARRP_RESOURCE_PACK.addModel(getJModel(item, ItemInit.MATERIAL_STRINGS.get(i)), Identifier.of("medievalweapons", "item/" + ItemInit.MATERIAL_STRINGS.get(i) + "_" + item));
-                // Check for gui item models
-
-//                if (item.equals("ninjato") || item.equals("small_axe")) {
                 Model model = getItemModel(item, material, itemModelGenerator.writer);
                 if (model != null) {
                     itemModelGenerator.register(Registries.ITEM.get(MedievalMain.identifierOf(material + "_" + item)), model);
                 }
-//                }
-                if (item.equals("big_axe") || item.equals("healing_staff") || item.equals("javelin") || item.equals("lance") || item.equals("long_sword") || item.equals("mace")
-                        || item.equals("rapier") || item.equals("sickle") || item.equals("small_axe")) {
-//                    ARRP_RESOURCE_PACK.addModel(getGuiJModel(item, ItemInit.MATERIAL_STRINGS.get(i)),
-//                            Identifier.of("medievalweapons", "item/" + ItemInit.MATERIAL_STRINGS.get(i) + "_" + item + "_gui"));
-
-                }
-                // Check for bc item models
-                if (item.equals("dagger") || item.equals("big_axe") || item.equals("lance") || item.equals("long_sword")) {
-//                    ARRP_RESOURCE_PACK.addModel(getOtherJModel(item, ItemInit.MATERIAL_STRINGS.get(i)),
-//                            Identifier.of("medievalweapons", "item/bc_" + ItemInit.MATERIAL_STRINGS.get(i) + "_" + item));
-                }
-                // Check ARRP_RESOURCE_PACK throwing item models
-                if (item.equals("javelin")) {
-//                    ARRP_RESOURCE_PACK.addModel(getOtherJModel(item, ItemInit.MATERIAL_STRINGS.get(i)),
-//                            Identifier.of("medievalweapons", "item/" + ItemInit.MATERIAL_STRINGS.get(i) + "_" + item + "_throwing"));
-                }
             }
         }
     }
-
-//    public static final Model SMALL_AXE = new Model(Optional.of(MedievalMain.id("item/small_axe")), Optional.empty(), TextureKey.LAYER0);
 
     @Nullable
     private static Model getItemModel(String item, String material, BiConsumer<Identifier, Supplier<JsonElement>> writer) {

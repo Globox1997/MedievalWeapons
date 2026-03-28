@@ -14,19 +14,7 @@
     "PlayerEntityMixin",
     "RecipeManagerMixin",
     "ServerAdvancementLoaderMixin",
-    "TagGroupLoaderMixin",
-    "compat.BigAxeItemMixin",
-    "compat.DaggerItemMixin",
-    "compat.FranciscaItemMixin",
-    "compat.HealingStaffItemMixin",
-    "compat.JavelinItemMixin",
-    "compat.LanceItemMixin",
-    "compat.LongSwordItemMixin",
-    "compat.MaceItemMixin",
-    "compat.NinjatoItemMixin",
-    "compat.RapierItemMixin",
-    "compat.SickleItemMixin",
-    "compat.SmallAxeItemMixin"
+    "TagGroupLoaderMixin"
   ],
   "client": [
     "client.AbstractClientPlayerEntityMixin",
