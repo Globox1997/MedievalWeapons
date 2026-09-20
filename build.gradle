@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.14-SNAPSHOT'
+	id 'fabric-loom' version '1.17-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -67,7 +67,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// Paradise Lost
-	modCompileOnly ('maven.modrinth:paradise-lost:2.3.3-beta+1.21.0') {
+	modCompileOnly ('maven.modrinth:paradise-lost:2.4.6-beta+1.21.1') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	// BYG
