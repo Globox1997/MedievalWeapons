@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "medievalweapons:cincinnasite_healing_staff"
+    },
+    "e": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "ede"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:cincinnasite_diamond_healing_staff"
+  }
+}

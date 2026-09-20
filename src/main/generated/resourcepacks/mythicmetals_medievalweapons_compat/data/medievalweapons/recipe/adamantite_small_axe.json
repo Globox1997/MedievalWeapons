@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "mythicmetals:adamantite_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " dd",
+    " ed",
+    "e  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:adamantite_small_axe"
+  }
+}

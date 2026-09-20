@@ -1,7 +1,6 @@
 ### Added:
-- Added custom glint
-- Added deathsinger sword
+- 
 ### Fixed:
 - 
 ### Changed:
-- 
+- Removed ARRP and BRRP dependency

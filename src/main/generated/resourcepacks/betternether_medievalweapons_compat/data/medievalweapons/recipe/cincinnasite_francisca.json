@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "betternether:cincinnasite_ingot"
+    },
+    "e": {
+      "item": "betternether:nether_reed_stem"
+    }
+  },
+  "pattern": [
+    "de",
+    " e"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:cincinnasite_francisca"
+  }
+}

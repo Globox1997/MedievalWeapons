@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "additionaladditions:rose_gold_alloy"
+  },
+  "base": {
+    "item": "medievalweapons:iron_javelin"
+  },
+  "result": {
+    "id": "medievalweapons:rose_gold_javelin"
+  },
+  "template": {
+    "item": "additionaladditions:rose_gold_upgrade"
+  }
+}

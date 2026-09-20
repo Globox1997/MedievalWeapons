@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "oblivion:fiery_netherite_ingot"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_mace"
+  },
+  "result": {
+    "id": "medievalweapons:fiery_netherite_mace"
+  },
+  "template": {
+    "item": "oblivion:fiery_netherite_upgrade_smithing_template"
+  }
+}

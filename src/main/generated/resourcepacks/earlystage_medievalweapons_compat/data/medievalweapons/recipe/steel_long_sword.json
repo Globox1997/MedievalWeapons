@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "earlystage:steel_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  d",
+    "dd ",
+    "ed "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:steel_long_sword"
+  }
+}

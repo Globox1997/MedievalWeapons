@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "dragonloot:dragon_scale"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_ninjato"
+  },
+  "result": {
+    "id": "medievalweapons:dragon_ninjato"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

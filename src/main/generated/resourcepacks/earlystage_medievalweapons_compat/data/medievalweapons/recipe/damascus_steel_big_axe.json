@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "earlystage:damascus_steel_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " de",
+    " ed",
+    "ed "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:damascus_steel_big_axe"
+  }
+}

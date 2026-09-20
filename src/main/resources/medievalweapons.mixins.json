@@ -12,7 +12,6 @@
     "LivingEntityMixin",
     "MobEntityMixin",
     "PlayerEntityMixin",
-    "RecipeManagerMixin",
     "ServerAdvancementLoaderMixin",
     "TagGroupLoaderMixin"
   ],

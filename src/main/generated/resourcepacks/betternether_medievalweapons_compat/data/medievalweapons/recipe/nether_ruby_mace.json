@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "betternether:nether_ruby"
+    },
+    "e": {
+      "item": "betternether:nether_reed_stem"
+    }
+  },
+  "pattern": [
+    " dd",
+    " dd",
+    "e  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:nether_ruby_mace"
+  }
+}

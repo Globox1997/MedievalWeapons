@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "dragonloot:dragon_scale"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_javelin"
+  },
+  "result": {
+    "id": "medievalweapons:dragon_javelin"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "oblivion:solarite_ingot"
+  },
+  "base": {
+    "item": "medievalweapons:scarlet_rapier"
+  },
+  "result": {
+    "id": "medievalweapons:solarite_rapier"
+  },
+  "template": {
+    "item": "oblivion:solarite_upgrade_smithing_template"
+  }
+}

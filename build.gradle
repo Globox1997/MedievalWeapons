@@ -37,14 +37,6 @@ dependencies {
 	modCompileOnly modRuntimeOnly ("com.terraformersmc:modmenu:${project.mod_menu_version}"), {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	// BRRP
-	modCompileOnly ("maven.modrinth:brrp:${project.brrp_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// ARRP
-	modCompileOnly ("maven.modrinth:arrp:L4ojkbl8") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
     // DragonLoot
 	modCompileOnly ('maven.modrinth:dragonloot:1.1.8+1.21.1') {
 		exclude(group: "net.fabricmc.fabric-api")
@@ -99,7 +91,7 @@ processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version, "fabric_version": project.fabric_version, "loader_version": project.loader_version, "minecraft_version": project.minecraft_version, "cloth_config_version": project.cloth_config_version, "brrp_version": project.brrp_version
+		expand "version": project.version, "fabric_version": project.fabric_version, "loader_version": project.loader_version, "minecraft_version": project.minecraft_version, "cloth_config_version": project.cloth_config_version
 	}
 }
 

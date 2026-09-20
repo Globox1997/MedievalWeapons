@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "betterend:thallasium_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "de",
+    " e"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:thallasium_francisca"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "medievalweapons:item/sapphire_netherite_francisca"
+  }
+}

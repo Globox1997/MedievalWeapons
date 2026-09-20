@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "betterend:thallasium_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " de",
+    " ed",
+    "ed "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:thallasium_big_axe"
+  }
+}

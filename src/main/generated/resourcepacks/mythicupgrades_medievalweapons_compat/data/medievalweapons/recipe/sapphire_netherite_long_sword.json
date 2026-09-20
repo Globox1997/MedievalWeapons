@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "mythicupgrades:sapphire"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_long_sword"
+  },
+  "result": {
+    "id": "medievalweapons:sapphire_netherite_long_sword"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "betterend:terminite_ingot"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "d",
+    "e"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:terminite_dagger"
+  }
+}

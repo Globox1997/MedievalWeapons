@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "oblivion:scarlet_ingot"
+  },
+  "base": {
+    "item": "medievalweapons:fiery_netherite_healing_staff"
+  },
+  "result": {
+    "id": "medievalweapons:scarlet_healing_staff"
+  },
+  "template": {
+    "item": "oblivion:scarlet_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "deeperdarker:reinforced_echo_shard"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_ninjato"
+  },
+  "result": {
+    "id": "medievalweapons:warden_ninjato"
+  },
+  "template": {
+    "item": "deeperdarker:warden_upgrade_smithing_template"
+  }
+}

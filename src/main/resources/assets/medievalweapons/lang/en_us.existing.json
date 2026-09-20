@@ -1,0 +1,90 @@
+{
+  "item.medievalweapons.long_bow": "Long Bow",
+  "item.medievalweapons.recurve_bow": "Recurve Bow",
+
+  "item.medievalweapons.thalleous_sword": "Thalleous Sword",
+  "item.medievalweapons.deathsinger_sword": "Deathsinger Sword",
+  "item.medievalweapons.tidesinger_staff": "Tidesinger Staff",
+
+  "item.medievalweapons.item_group": "Medieval Weapons",
+  "item.medievalweapons.double_handed.tooltip": "§cDouble Handed",
+
+  "text.autoconfig.medievalweapons.title": "Medieval Weapons Config",
+  "text.autoconfig.medievalweapons.option.weapon_blocking_cooldown": "Weapon Blocking Cooldown",
+  "text.autoconfig.medievalweapons.option.healing_staff_owner_healing": "Healing Staff Owner Healing",
+  "text.autoconfig.medievalweapons.option.sickle_head_drop_chance": "Sickle Head Drop Chance",
+
+  "text.autoconfig.medievalweapons.option.battle_axe_attack_damage": "Battle Axe Dmg",
+  "text.autoconfig.medievalweapons.option.battle_axe_attack_speed": "Battle Axe Spd",
+  "text.autoconfig.medievalweapons.option.battle_axe_knockback": "Battle Axe Knockback",
+
+  "text.autoconfig.medievalweapons.option.long_sword_attack_damage": "Longsword Dmg",
+  "text.autoconfig.medievalweapons.option.long_sword_attack_speed": "Longsword Spd",
+  "text.autoconfig.medievalweapons.option.long_sword_range": "Longsword Range",
+
+  "text.autoconfig.medievalweapons.option.dagger_attack_damage": "Dagger Dmg",
+  "text.autoconfig.medievalweapons.option.dagger_attack_speed": "Dagger Spd",
+  "text.autoconfig.medievalweapons.option.dagger_range": "Dagger Range",
+
+  "text.autoconfig.medievalweapons.option.francisca_attack_damage": "Francisca Dmg",
+  "text.autoconfig.medievalweapons.option.francisca_attack_speed": "Francisca Spd",
+
+  "text.autoconfig.medievalweapons.option.war_axe_attack_damage": "War Axe Dmg",
+  "text.autoconfig.medievalweapons.option.war_axe_attack_speed": "War Axe Spd",
+  "text.autoconfig.medievalweapons.option.war_axe_sweeping_ratio": "War Axe Sweeping Ratio",
+
+  "text.autoconfig.medievalweapons.option.javelin_attack_damage": "Javelin Dmg",
+  "text.autoconfig.medievalweapons.option.javelin_attack_speed": "Javelin Spd",
+  "text.autoconfig.medievalweapons.option.javelin_range": "Javelin Range",
+
+  "text.autoconfig.medievalweapons.option.lance_attack_damage": "Lance Dmg",
+  "text.autoconfig.medievalweapons.option.lance_attack_speed": "Lance Spd",
+  "text.autoconfig.medievalweapons.option.lance_range": "Lance Range",
+
+  "text.autoconfig.medievalweapons.option.healing_staff_attack_damage": "Healing Staff Dmg",
+  "text.autoconfig.medievalweapons.option.healing_staff_attack_speed": "Healing Staff Spd",
+  "text.autoconfig.medievalweapons.option.healing_staff_range": "Healing Staff Range",
+
+  "text.autoconfig.medievalweapons.option.mace_attack_damage": "Mace Dmg",
+  "text.autoconfig.medievalweapons.option.mace_attack_speed": "Mace Spd",
+  "text.autoconfig.medievalweapons.option.mace_range": "Mace Range",
+
+  "text.autoconfig.medievalweapons.option.ninjato_attack_damage": "Ninjato Dmg",
+  "text.autoconfig.medievalweapons.option.ninjato_attack_speed": "Ninjato Spd",
+
+  "text.autoconfig.medievalweapons.option.sickle_attack_damage": "Sickle Dmg",
+  "text.autoconfig.medievalweapons.option.sickle_attack_speed": "Sickle Spd",
+
+  "text.autoconfig.medievalweapons.option.rapier_attack_damage": "Rapier Dmg",
+  "text.autoconfig.medievalweapons.option.rapier_attack_speed": "Rapier Spd",
+
+  "text.autoconfig.medievalweapons.option.long_bow_speed": "Long Bow Spd",
+  "text.autoconfig.medievalweapons.option.recurve_bow_speed": "Recurce Bow Spd",
+
+  "text.autoconfig.medievalweapons.option.thalleous_sword_attack_damage": "Thalleous Sword Dmg",
+  "text.autoconfig.medievalweapons.option.thalleous_sword_attack_speed": "Thalleous Sword Spd",
+  "text.autoconfig.medievalweapons.option.thalleous_sword_range": "Thalleous Sword Range",
+  "text.autoconfig.medievalweapons.option.thalleous_sword_sweeping_ratio": "Thalleous Sword Sweeping Ratio",
+
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_attack_damage": "Deathsinger Sword Dmg",
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_attack_speed": "Deathsinger Sword Spd",
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_range": "Deathsinger Sword Range",
+  "text.autoconfig.medievalweapons.option.deathsinger_sword_sweeping_ratio": "Deathsinger Sword Sweeping Ratio",
+
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_attack_damage": "Tidesinger Staff Dmg",
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_attack_speed": "Tidesinger Staff Spd",
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_range": "Tidesinger Staff Range",
+  "text.autoconfig.medievalweapons.option.tidesinger_staff_sweeping_ratio": "Tidesinger Staff Sweeping Ratio",
+
+  "death.attack.javelin": "%1$s got impaled by %2$s",
+  "death.attack.francisca": "%1$s was killed by %2$s with a francisca",
+  "death.attack.bleed": "%1$s bled out",
+
+  "effect.medievalweapons.stun": "Stun",
+  "effect.medievalweapons.bleed": "Bleed",
+
+  "attribute.name.generic.attack_range": "Attack Range",
+
+  "tag.item.medievalweapons.double_handed_items": "Double Handed Items",
+  "tag.item.medievalweapons.across_double_handed_items": "Across Double Handed Items"
+}

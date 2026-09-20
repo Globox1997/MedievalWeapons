@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "additionaladditions:gold_ring"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_healing_staff"
+  },
+  "result": {
+    "id": "medievalweapons:gilded_netherite_healing_staff"
+  },
+  "template": {
+    "item": "additionaladditions:gilded_netherite_upgrade"
+  }
+}

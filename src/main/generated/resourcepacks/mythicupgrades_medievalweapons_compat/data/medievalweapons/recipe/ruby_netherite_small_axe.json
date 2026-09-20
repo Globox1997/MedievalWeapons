@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "mythicupgrades:ruby"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_small_axe"
+  },
+  "result": {
+    "id": "medievalweapons:ruby_netherite_small_axe"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

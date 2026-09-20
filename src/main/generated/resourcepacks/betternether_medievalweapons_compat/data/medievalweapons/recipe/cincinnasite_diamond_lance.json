@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "medievalweapons:cincinnasite_lance"
+    },
+    "e": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "ede"
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:cincinnasite_diamond_lance"
+  }
+}

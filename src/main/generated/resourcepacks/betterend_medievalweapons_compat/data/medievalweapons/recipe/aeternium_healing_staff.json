@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "betterend:aeternium_ingot"
+    },
+    "e": {
+      "item": "betterend:leather_wrapped_stick"
+    }
+  },
+  "pattern": [
+    "  d",
+    " e ",
+    "d  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:aeternium_healing_staff"
+  }
+}

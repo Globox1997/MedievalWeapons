@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "byg:pendorite_ingot"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_lance"
+  },
+  "result": {
+    "id": "medievalweapons:pendorite_lance"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "additionaladditions:gold_ring"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_ninjato"
+  },
+  "result": {
+    "id": "medievalweapons:gilded_netherite_ninjato"
+  },
+  "template": {
+    "item": "additionaladditions:gilded_netherite_upgrade"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "oblivion:fiery_netherite_ingot"
+  },
+  "base": {
+    "item": "medievalweapons:netherite_small_axe"
+  },
+  "result": {
+    "id": "medievalweapons:fiery_netherite_small_axe"
+  },
+  "template": {
+    "item": "oblivion:fiery_netherite_upgrade_smithing_template"
+  }
+}

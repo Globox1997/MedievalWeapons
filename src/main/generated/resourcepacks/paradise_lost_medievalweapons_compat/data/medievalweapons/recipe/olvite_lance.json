@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "paradise_lost:olvite"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  d",
+    "ee ",
+    "ee "
+  ],
+  "result": {
+    "count": 1,
+    "id": "medievalweapons:olvite_lance"
+  }
+}
