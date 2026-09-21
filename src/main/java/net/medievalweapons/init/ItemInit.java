@@ -152,8 +152,12 @@ public class ItemInit {
 
     public static String getFormattedName(ToolMaterials mat, String suffix) {
         String matName = mat.name().toLowerCase();
-        if (matName.equals("gold")) matName = "golden";
-        if (matName.equals("wood")) matName = "wooden";
+        if (matName.equals("gold")){
+            matName = "golden";
+        }
+        if (matName.equals("wood")){
+            matName = "wooden";
+        }
         return matName + "_" + suffix;
     }
 
@@ -170,13 +174,9 @@ public class ItemInit {
     private static void registerWeaponEntity(String id, Item item) {
         EntityType type = null;
         if (item instanceof FranciscaItem) {
-            type = EntityType.Builder.<FranciscaEntity>create(
-                    (entity, world) -> new FranciscaEntity(entity, world, (FranciscaItem) item),
-                    SpawnGroup.MISC).dimensions(0.5F, 0.5F).build();
+            type = EntityType.Builder.<FranciscaEntity>create((entity, world) -> new FranciscaEntity(entity, world, (FranciscaItem) item), SpawnGroup.MISC).dimensions(0.5F, 0.5F).build();
         } else if (item instanceof JavelinItem) {
-            type = EntityType.Builder.<JavelinEntity>create(
-                    (entity, world) -> new JavelinEntity(entity, world, (JavelinItem) item),
-                    SpawnGroup.MISC).dimensions(0.5F, 0.5F).build();
+            type = EntityType.Builder.<JavelinEntity>create((entity, world) -> new JavelinEntity(entity, world, (JavelinItem) item), SpawnGroup.MISC).dimensions(0.5F, 0.5F).build();
         }
         EntityInit.register(id, type);
     }
