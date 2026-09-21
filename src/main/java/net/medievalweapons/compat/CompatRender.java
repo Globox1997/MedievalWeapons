@@ -3,7 +3,8 @@ package net.medievalweapons.compat;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.medievalweapons.entity.renderer.*;
+import net.medievalweapons.entity.renderer.FranciscaEntityRenderer;
+import net.medievalweapons.entity.renderer.JavelinEntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class CompatRender {
@@ -56,6 +57,20 @@ public class CompatRender {
         if (CompatItems.isDeeperDarkerLoaded) {
             EntityRendererRegistry.register(CompatEntities.WARDEN_FRANCISCA, FranciscaEntityRenderer::new);
             EntityRendererRegistry.register(CompatEntities.WARDEN_JAVELIN, JavelinEntityRenderer::new);
+        }
+        if (CompatItems.isEarlyStageLoaded) {
+            EntityRendererRegistry.register(CompatEntities.STEEL_FRANCISCA, FranciscaEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.STEEL_JAVELIN, JavelinEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.DAMASCUS_STEEL_FRANCISCA, FranciscaEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.DAMASCUS_STEEL_JAVELIN, JavelinEntityRenderer::new);
+        }
+        if (CompatItems.isOblivionLoaded) {
+            EntityRendererRegistry.register(CompatEntities.FIERY_NETHERITE_FRANCISCA, FranciscaEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.FIERY_NETHERITE_JAVELIN, JavelinEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.SCARLET_FRANCISCA, FranciscaEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.SCARLET_JAVELIN, JavelinEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.SOLARITE_FRANCISCA, FranciscaEntityRenderer::new);
+            EntityRendererRegistry.register(CompatEntities.SOLARITE_JAVELIN, JavelinEntityRenderer::new);
         }
     }
 }

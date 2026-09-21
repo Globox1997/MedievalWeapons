@@ -56,6 +56,20 @@ public class CompatEntities {
     public static EntityType<JavelinEntity> WARDEN_JAVELIN;
     public static EntityType<FranciscaEntity> WARDEN_FRANCISCA;
 
+    // EarlyStage
+    public static EntityType<JavelinEntity> STEEL_JAVELIN;
+    public static EntityType<FranciscaEntity> STEEL_FRANCISCA;
+    public static EntityType<JavelinEntity> DAMASCUS_STEEL_JAVELIN;
+    public static EntityType<FranciscaEntity> DAMASCUS_STEEL_FRANCISCA;
+
+    // Oblivion
+    public static EntityType<JavelinEntity> FIERY_NETHERITE_JAVELIN;
+    public static EntityType<FranciscaEntity> FIERY_NETHERITE_FRANCISCA;
+    public static EntityType<JavelinEntity> SCARLET_JAVELIN;
+    public static EntityType<FranciscaEntity> SCARLET_FRANCISCA;
+    public static EntityType<JavelinEntity> SOLARITE_JAVELIN;
+    public static EntityType<FranciscaEntity> SOLARITE_FRANCISCA;
+
     public static void loadEntities() {
         if (CompatItems.isBetterEndLoaded) {
             TERMINITE_FRANCISCA = EntityInit.register("terminite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.TERMINITE_FRANCISCA_ITEM));
@@ -143,6 +157,32 @@ public class CompatEntities {
 
             EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("warden_francisca"), WARDEN_FRANCISCA);
             EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("warden_javelin"), WARDEN_JAVELIN);
+        }
+        if (CompatItems.isEarlyStageLoaded) {
+            STEEL_JAVELIN = EntityInit.register("steel_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.STEEL_JAVELIN_ITEM));
+            STEEL_FRANCISCA = EntityInit.register("steel_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.STEEL_FRANCISCA_ITEM));
+            DAMASCUS_STEEL_JAVELIN = EntityInit.register("damascus_steel_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.DAMASCUS_STEEL_JAVELIN_ITEM));
+            DAMASCUS_STEEL_FRANCISCA = EntityInit.register("damascus_steel_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.DAMASCUS_STEEL_FRANCISCA_ITEM));
+
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("steel_francisca"), STEEL_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("steel_javelin"), STEEL_JAVELIN);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("damascus_steel_francisca"), DAMASCUS_STEEL_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("damascus_steel_javelin"), DAMASCUS_STEEL_JAVELIN);
+        }
+        if (CompatItems.isOblivionLoaded) {
+            FIERY_NETHERITE_JAVELIN = EntityInit.register("fiery_netherite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.FIERY_NETHERITE_JAVELIN_ITEM));
+            FIERY_NETHERITE_FRANCISCA = EntityInit.register("fiery_netherite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.FIERY_NETHERITE_FRANCISCA_ITEM));
+            SCARLET_JAVELIN = EntityInit.register("scarlet_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.SCARLET_JAVELIN_ITEM));
+            SCARLET_FRANCISCA = EntityInit.register("scarlet_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.SCARLET_FRANCISCA_ITEM));
+            SOLARITE_JAVELIN = EntityInit.register("solarite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.SOLARITE_JAVELIN_ITEM));
+            SOLARITE_FRANCISCA = EntityInit.register("solarite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.SOLARITE_FRANCISCA_ITEM));
+
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("fiery_netherite_francisca"), FIERY_NETHERITE_JAVELIN);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("fiery_netherite_javelin"), FIERY_NETHERITE_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("scarlet_francisca"), SCARLET_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("scarlet_javelin"), SCARLET_JAVELIN);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("solarite_francisca"), SOLARITE_FRANCISCA);
+            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("solarite_javelin"), SOLARITE_JAVELIN);
         }
     }
 }

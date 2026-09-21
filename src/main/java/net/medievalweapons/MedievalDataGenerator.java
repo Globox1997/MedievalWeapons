@@ -5,7 +5,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.data.*;
+import net.medievalweapons.init.ItemInit;
 import net.minecraft.util.Identifier;
+
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MedievalDataGenerator implements DataGeneratorEntrypoint {
 
@@ -15,6 +20,8 @@ public class MedievalDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider((FabricDataOutput output) -> new ModelLoader(output));
         pack.addProvider(RecipeLoader::new);
         pack.addProvider(LangLoader::new);
+        pack.addProvider(ItemTagLoader::new);
+        pack.addProvider((FabricDataOutput output) -> new WeaponAttributesLoader(output, coreMaterials()));
 
         for (String modId : CompatItems.MATERIALS_BY_MOD.keySet()) {
             Identifier packId = MedievalMain.identifierOf(modId + "_medievalweapons_compat");
@@ -23,7 +30,14 @@ public class MedievalDataGenerator implements DataGeneratorEntrypoint {
             compatPack.addProvider((output, lookup) -> new LangLoader(output, lookup, CompatItems.MATERIALS_BY_MOD.get(modId)));
             compatPack.addProvider((FabricDataOutput output) -> new CompatRecipeLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
             compatPack.addProvider((FabricDataOutput output) -> new PackMcmetaLoader(output, modId + " medievalweapons compat"));
+            compatPack.addProvider((output, lookup) -> new ItemTagLoader(output, lookup, CompatItems.MATERIALS_BY_MOD.get(modId)));
+            compatPack.addProvider((FabricDataOutput output) -> new WeaponAttributesLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
         }
+    }
+
+    private static Collection<String> coreMaterials() {
+        Set<String> compatMaterials = CompatItems.MATERIALS_BY_MOD.values().stream().flatMap(Set::stream).collect(Collectors.toSet());
+        return ItemInit.MATERIAL_STRINGS.stream().filter(m -> !compatMaterials.contains(m)).toList();
     }
 
 }

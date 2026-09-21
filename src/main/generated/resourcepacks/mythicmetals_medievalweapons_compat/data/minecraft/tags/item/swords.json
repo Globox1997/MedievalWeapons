@@ -1,0 +1,52 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:adamantite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:adamantite_rapier",
+      "required": false
+    }
+  ]
+}

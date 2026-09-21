@@ -82,9 +82,14 @@ dependencies {
 	modCompileOnly ('maven.modrinth:deeperdarker:1.3.3-plus-b-fabric+1.21') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	// modCompileOnly modRuntime('curse.maven:alloy-forgery-438718:3420068') {
-	//  	exclude(group: "net.fabricmc.fabric-api")
-	// }
+	// EarlyStage
+	modCompileOnly ('maven.modrinth:earlystage:1.2.2+1.21.1') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	// Oblivion
+	modCompileOnly ('maven.modrinth:oblivion:1.1.2+1.21.1') {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 }
 
 processResources {

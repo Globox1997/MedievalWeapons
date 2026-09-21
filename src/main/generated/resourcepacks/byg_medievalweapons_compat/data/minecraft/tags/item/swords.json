@@ -1,0 +1,52 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:pendorite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:pendorite_rapier",
+      "required": false
+    }
+  ]
+}

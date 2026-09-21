@@ -1,0 +1,52 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:olvite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:olvite_rapier",
+      "required": false
+    }
+  ]
+}

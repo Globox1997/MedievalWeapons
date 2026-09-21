@@ -5,6 +5,7 @@ import com.mythicmetals.item.tools.MythicToolMaterials;
 import dqu.additionaladditions.material.GildedNetheriteToolMaterial;
 import dqu.additionaladditions.material.RoseGoldToolMaterial;
 import net.dragonloot.item.DragonToolMaterials;
+import net.earlystage.item.material.EarlyStageToolMaterials;
 import net.fabricmc.loader.api.FabricLoader;
 import net.id.paradiselost.items.tools.ParadiseLostToolMaterials;
 import net.medievalweapons.MedievalMain;
@@ -15,6 +16,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
+import net.oblivion.item.OblivionToolMaterials;
 import net.trique.mythicupgrades.item.materials.MUToolMaterials;
 import org.betterx.betterend.item.material.EndToolMaterial;
 import org.betterx.betternether.items.materials.BNToolMaterial;
@@ -103,6 +105,20 @@ public class CompatItems {
     // Deeper and Darker
     public static Item WARDEN_FRANCISCA_ITEM;
     public static Item WARDEN_JAVELIN_ITEM;
+
+    // EarlyStage
+    public static Item STEEL_FRANCISCA_ITEM;
+    public static Item STEEL_JAVELIN_ITEM;
+    public static Item DAMASCUS_STEEL_FRANCISCA_ITEM;
+    public static Item DAMASCUS_STEEL_JAVELIN_ITEM;
+
+    // Oblivion
+    public static Item FIERY_NETHERITE_FRANCISCA_ITEM;
+    public static Item FIERY_NETHERITE_JAVELIN_ITEM;
+    public static Item SCARLET_FRANCISCA_ITEM;
+    public static Item SCARLET_JAVELIN_ITEM;
+    public static Item SOLARITE_FRANCISCA_ITEM;
+    public static Item SOLARITE_JAVELIN_ITEM;
 
     public static void loadItems() {
         if (isBetterEndLoaded) {
@@ -863,6 +879,275 @@ public class CompatItems {
                     new RapierItem(DDTiers.WARDEN, 3, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(DDTiers.WARDEN, 2, -2.0f)).fireproof()));
 
             ItemInit.MATERIAL_STRINGS.add("warden");
+        }
+
+        if (isEarlyStageLoaded) {
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("steel_small_axe"),
+                            new SmallAxeItem(EarlyStageToolMaterials.STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("steel_long_sword"),
+                            new LongSwordItem(EarlyStageToolMaterials.STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("steel_dagger"),
+                            new DaggerItem(EarlyStageToolMaterials.STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("steel_big_axe"),
+                            new BigAxeItem(EarlyStageToolMaterials.STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("steel_lance"),
+                            new LanceItem(EarlyStageToolMaterials.STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("steel_healing_staff"),
+                    new HealingStaffItem(EarlyStageToolMaterials.STEEL, 5, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 1, -3.3f))));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("steel_mace"),
+                            new MaceItem(EarlyStageToolMaterials.STEEL, 3,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            STEEL_FRANCISCA_ITEM =
+                    new FranciscaItem(EarlyStageToolMaterials.STEEL, () -> CompatEntities.STEEL_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 1, -2.6f)));
+            STEEL_JAVELIN_ITEM = new JavelinItem(EarlyStageToolMaterials.STEEL, () -> CompatEntities.STEEL_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 1, -2.6f)));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("steel_francisca"), STEEL_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("steel_javelin"), STEEL_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("steel_ninjato"),
+                    new NinjatoItem(EarlyStageToolMaterials.STEEL, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 2, -2.1f))));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("steel_sickle"),
+                    new SickleItem(EarlyStageToolMaterials.STEEL, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 2, -2.2f))));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("steel_rapier"),
+                    new RapierItem(EarlyStageToolMaterials.STEEL, 3, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.STEEL, 2, -2.0f))));
+
+            ItemInit.MATERIAL_STRINGS.add("steel");
+
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("damascus_steel_small_axe"),
+                            new SmallAxeItem(EarlyStageToolMaterials.DAMASCUS_STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("damascus_steel_long_sword"),
+                            new LongSwordItem(EarlyStageToolMaterials.DAMASCUS_STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("damascus_steel_dagger"),
+                            new DaggerItem(EarlyStageToolMaterials.DAMASCUS_STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("damascus_steel_big_axe"),
+                            new BigAxeItem(EarlyStageToolMaterials.DAMASCUS_STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("damascus_steel_lance"),
+                            new LanceItem(EarlyStageToolMaterials.DAMASCUS_STEEL,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("damascus_steel_healing_staff"),
+                    new HealingStaffItem(EarlyStageToolMaterials.DAMASCUS_STEEL, 5, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 1, -3.3f))));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("damascus_steel_mace"),
+                            new MaceItem(EarlyStageToolMaterials.DAMASCUS_STEEL, 3,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND))
+                            ));
+            DAMASCUS_STEEL_FRANCISCA_ITEM =
+                    new FranciscaItem(EarlyStageToolMaterials.DAMASCUS_STEEL, () -> CompatEntities.DAMASCUS_STEEL_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 1, -2.6f)));
+            DAMASCUS_STEEL_JAVELIN_ITEM = new JavelinItem(EarlyStageToolMaterials.DAMASCUS_STEEL, () -> CompatEntities.DAMASCUS_STEEL_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 1, -2.6f)));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("damascus_steel_francisca"), DAMASCUS_STEEL_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("damascus_steel_javelin"), DAMASCUS_STEEL_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("damascus_steel_ninjato"),
+                    new NinjatoItem(EarlyStageToolMaterials.DAMASCUS_STEEL, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 2, -2.1f))));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("damascus_steel_sickle"),
+                    new SickleItem(EarlyStageToolMaterials.DAMASCUS_STEEL, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 2, -2.2f))));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("damascus_steel_rapier"),
+                    new RapierItem(EarlyStageToolMaterials.DAMASCUS_STEEL, 3, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(EarlyStageToolMaterials.DAMASCUS_STEEL, 2, -2.0f))));
+
+            ItemInit.MATERIAL_STRINGS.add("damascus_steel");
+        }
+
+        if (isOblivionLoaded) {
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("fiery_netherite_small_axe"),
+                            new SmallAxeItem(OblivionToolMaterials.FIERY_NETHERITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("fiery_netherite_long_sword"),
+                            new LongSwordItem(OblivionToolMaterials.FIERY_NETHERITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("fiery_netherite_dagger"),
+                            new DaggerItem(OblivionToolMaterials.FIERY_NETHERITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("fiery_netherite_big_axe"),
+                            new BigAxeItem(OblivionToolMaterials.FIERY_NETHERITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("fiery_netherite_lance"),
+                            new LanceItem(OblivionToolMaterials.FIERY_NETHERITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("fiery_netherite_healing_staff"),
+                    new HealingStaffItem(OblivionToolMaterials.FIERY_NETHERITE, 5, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 1, -3.3f)).fireproof()));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("fiery_netherite_mace"),
+                            new MaceItem(OblivionToolMaterials.FIERY_NETHERITE, 3,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            FIERY_NETHERITE_FRANCISCA_ITEM =
+                    new FranciscaItem(OblivionToolMaterials.FIERY_NETHERITE, () -> CompatEntities.FIERY_NETHERITE_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 1, -2.6f)).fireproof());
+            FIERY_NETHERITE_JAVELIN_ITEM = new JavelinItem(OblivionToolMaterials.FIERY_NETHERITE, () -> CompatEntities.FIERY_NETHERITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 1, -2.6f)).fireproof());
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("fiery_netherite_francisca"), FIERY_NETHERITE_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("fiery_netherite_javelin"), FIERY_NETHERITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("fiery_netherite_ninjato"),
+                    new NinjatoItem(OblivionToolMaterials.FIERY_NETHERITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 2, -2.1f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("fiery_netherite_sickle"),
+                    new SickleItem(OblivionToolMaterials.FIERY_NETHERITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 2, -2.2f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("fiery_netherite_rapier"),
+                    new RapierItem(OblivionToolMaterials.FIERY_NETHERITE, 3, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.FIERY_NETHERITE, 2, -2.0f)).fireproof()));
+
+            ItemInit.MATERIAL_STRINGS.add("fiery_netherite");
+
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("scarlet_small_axe"),
+                            new SmallAxeItem(OblivionToolMaterials.SCARLET,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("scarlet_long_sword"),
+                            new LongSwordItem(OblivionToolMaterials.SCARLET,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("scarlet_dagger"),
+                            new DaggerItem(OblivionToolMaterials.SCARLET,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("scarlet_big_axe"),
+                            new BigAxeItem(OblivionToolMaterials.SCARLET,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("scarlet_lance"),
+                            new LanceItem(OblivionToolMaterials.SCARLET,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("scarlet_healing_staff"),
+                    new HealingStaffItem(OblivionToolMaterials.SCARLET, 5, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 1, -3.3f)).fireproof()));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("scarlet_mace"),
+                            new MaceItem(OblivionToolMaterials.SCARLET, 3,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            SCARLET_FRANCISCA_ITEM =
+                    new FranciscaItem(OblivionToolMaterials.SCARLET, () -> CompatEntities.SCARLET_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 1, -2.6f)).fireproof());
+            SCARLET_JAVELIN_ITEM = new JavelinItem(OblivionToolMaterials.SCARLET, () -> CompatEntities.SCARLET_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 1, -2.6f)).fireproof());
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("scarlet_francisca"), SCARLET_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("scarlet_javelin"), SCARLET_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("scarlet_ninjato"),
+                    new NinjatoItem(OblivionToolMaterials.SCARLET, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 2, -2.1f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("scarlet_sickle"),
+                    new SickleItem(OblivionToolMaterials.SCARLET, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 2, -2.2f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("scarlet_rapier"),
+                    new RapierItem(OblivionToolMaterials.SCARLET, 3, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SCARLET, 2, -2.0f)).fireproof()));
+
+            ItemInit.MATERIAL_STRINGS.add("scarlet");
+
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("solarite_small_axe"),
+                            new SmallAxeItem(OblivionToolMaterials.SOLARITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 5, -2.9f).with(EntityAttributes.GENERIC_ATTACK_KNOCKBACK,
+                                            new EntityAttributeModifier(SmallAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("solarite_long_sword"),
+                            new LongSwordItem(OblivionToolMaterials.SOLARITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 6, -3.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, 0.8f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("solarite_dagger"),
+                            new DaggerItem(OblivionToolMaterials.SOLARITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 2, -2.0f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(DaggerItem.ATTACK_BONUS_MODIFIER_ID, -1.0f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("solarite_big_axe"),
+                            new BigAxeItem(OblivionToolMaterials.SOLARITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 6, -3.4f).with(EntityAttributes.PLAYER_SWEEPING_DAMAGE_RATIO,
+                                            new EntityAttributeModifier(BigAxeItem.ATTACK_BONUS_MODIFIER_ID, 1.0D, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("solarite_lance"),
+                            new LanceItem(OblivionToolMaterials.SOLARITE,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 3, -3.2f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LanceItem.ATTACK_BONUS_MODIFIER_ID, 1.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("solarite_healing_staff"),
+                    new HealingStaffItem(OblivionToolMaterials.SOLARITE, 5, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 1, -3.3f)).fireproof()));
+            ItemInit.ITEMS
+                    .put(MedievalMain.identifierOf("solarite_mace"),
+                            new MaceItem(OblivionToolMaterials.SOLARITE, 3,
+                                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 4, -2.8f).with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                                            new EntityAttributeModifier(LongSwordItem.ATTACK_BONUS_MODIFIER_ID, -0.5f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)).fireproof()
+                            ));
+            SOLARITE_FRANCISCA_ITEM =
+                    new FranciscaItem(OblivionToolMaterials.SOLARITE, () -> CompatEntities.SOLARITE_FRANCISCA, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 1, -2.6f)).fireproof());
+            SOLARITE_JAVELIN_ITEM = new JavelinItem(OblivionToolMaterials.SOLARITE, () -> CompatEntities.SOLARITE_JAVELIN,
+                    new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 1, -2.6f)).fireproof());
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("solarite_francisca"), SOLARITE_FRANCISCA_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("solarite_javelin"), SOLARITE_JAVELIN_ITEM);
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("solarite_ninjato"),
+                    new NinjatoItem(OblivionToolMaterials.SOLARITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 2, -2.1f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("solarite_sickle"),
+                    new SickleItem(OblivionToolMaterials.SOLARITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 2, -2.2f)).fireproof()));
+            ItemInit.ITEMS.put(MedievalMain.identifierOf("solarite_rapier"),
+                    new RapierItem(OblivionToolMaterials.SOLARITE, 3, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(OblivionToolMaterials.SOLARITE, 2, -2.0f)).fireproof()));
+
+            ItemInit.MATERIAL_STRINGS.add("solarite");
         }
 
     }

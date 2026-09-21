@@ -1,0 +1,52 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:warden_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:warden_rapier",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:wooden_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:wooden_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:stone_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:iron_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:golden_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:diamond_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:netherite_rapier",
+      "required": false
+    }
+  ]
+}

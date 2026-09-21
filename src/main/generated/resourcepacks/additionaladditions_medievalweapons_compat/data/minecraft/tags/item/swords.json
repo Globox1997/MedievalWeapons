@@ -1,0 +1,100 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:rose_gold_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:rose_gold_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:gilded_netherite_rapier",
+      "required": false
+    }
+  ]
+}

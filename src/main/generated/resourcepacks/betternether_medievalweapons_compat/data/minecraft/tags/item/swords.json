@@ -1,0 +1,148 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:cincinnasite_diamond_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_diamond_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:nether_ruby_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:cincinnasite_rapier",
+      "required": false
+    }
+  ]
+}
