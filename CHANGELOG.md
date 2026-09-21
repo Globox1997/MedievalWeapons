@@ -1,5 +1,6 @@
 ### Added:
-- 
+- Oblivion compat
+- EarlyStage compat
 ### Fixed:
 - 
 ### Changed:
