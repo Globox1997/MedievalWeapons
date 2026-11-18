@@ -87,8 +87,9 @@ public abstract class InGameHudMixin {
                         r = (context.getScaledWindowWidth() / 2) - 91 - 22;
                     }
                     int s = (int) (o * 19.0F);
-                    context.drawGuiTexture(HOTBAR_ATTACK_INDICATOR_BACKGROUND_TEXTURE, r + 18, context.getScaledWindowHeight() - 20, 94, 18, 18);
-                    context.drawGuiTexture(HOTBAR_ATTACK_INDICATOR_PROGRESS_TEXTURE, r + 18, context.getScaledWindowHeight() - 20 + 18 - s, 112 - s, 18, s);
+                    int y = context.getScaledWindowHeight() - 20;
+                    context.drawGuiTexture(HOTBAR_ATTACK_INDICATOR_BACKGROUND_TEXTURE, r + 18, y, 18, 18);
+                    context.drawGuiTexture(HOTBAR_ATTACK_INDICATOR_PROGRESS_TEXTURE, 18, 18, 0, 18 - s, r + 18, y + 18 - s, 18, s);
                 }
             }
         }

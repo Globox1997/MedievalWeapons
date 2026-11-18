@@ -5,7 +5,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.medievalweapons.MedievalMain;
-import net.medievalweapons.compat.CompatRender;
 import net.medievalweapons.entity.renderer.FranciscaEntityRenderer;
 import net.medievalweapons.entity.renderer.JavelinEntityRenderer;
 import net.medievalweapons.init.ParticleInit.HealingAuraParticle;
@@ -18,6 +17,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Environment(EnvType.CLIENT)
@@ -35,14 +35,12 @@ public class RenderInit {
         }
         // Particle
         ParticleFactoryRegistry.getInstance().register(ParticleInit.HEALING_AURA_PARTICLE, HealingAuraParticle.Factory::new);
-        // Compat
-        CompatRender.loadRenderer();
     }
 
     private static Map<DyeColor, RenderLayer> customGlints() {
         Map<DyeColor, RenderLayer> map = new HashMap<>();
 
-        for (DyeColor color : DyeColor.values()) {
+        for (DyeColor color : List.of(DyeColor.BLUE, DyeColor.RED, DyeColor.YELLOW)) {
             final Identifier glintId = MedievalMain.identifierOf("textures/glint/" + color.getName() + "_item_glint.png");
             map.put(color, RenderLayer.of(color.getName() + "_glint", VertexFormats.POSITION_TEXTURE,
                     VertexFormat.DrawMode.QUADS, 256, RenderLayer.MultiPhaseParameters.builder().program(RenderPhase.GLINT_PROGRAM)

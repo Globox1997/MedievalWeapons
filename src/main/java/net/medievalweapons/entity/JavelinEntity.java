@@ -49,14 +49,14 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     }
 
     public JavelinEntity(World world, LivingEntity owner, ItemStack stack) {
-        super(((JavelinItem) stack.getItem()).getType(), owner, world, stack, null);
+        super(((JavelinItem) stack.getItem()).getType(), owner, world, stack, stack);
         this.javelin = stack;
         this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
         this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
     }
 
     public JavelinEntity(World world, double x, double y, double z, ItemStack stack) {
-        super(((JavelinItem) stack.getItem()).getType(), z, z, z, world, stack, stack);
+        super(((JavelinItem) stack.getItem()).getType(), x, y, z, world, stack, stack);
         this.javelin = stack;
         this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
         this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
@@ -82,19 +82,25 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity hitEntity = entityHitResult.getEntity();
-        if (this.piercedEntities.contains(hitEntity.getUuid()) || this.piercedEntities.size() > this.getPierceLevel()) {
+        if (this.dealtDamage || !this.piercedEntities.add(hitEntity.getUuid())) {
             return;
         }
-        this.piercedEntities.add(hitEntity.getUuid());
-        float damage = ((JavelinItem) this.javelin.getItem()).getMaterial().getAttackDamage() * 2.35F;
-        this.dealtDamage = true;
+        boolean finished = this.piercedEntities.size() > this.getPierceLevel();
+        if (finished) {
+            this.dealtDamage = true;
+        }
+        float damage = Math.max(1.0F, ((JavelinItem) this.javelin.getItem()).getMaterial().getAttackDamage()) * 2.35F;
 
         Entity owner = this.getOwner();
+        DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
+        if (this.getWorld() instanceof ServerWorld serverWorld) {
+            damage = EnchantmentHelper.getDamage(serverWorld, this.getWeaponStack(), hitEntity, damageSource, damage);
+        }
+
         if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity playerEntity) {
             BonusHelper.bowBonus(playerEntity,this);
         }
 
-        DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
         if (hitEntity.damage(damageSource, damage)) {
             if (hitEntity.getType() == EntityType.ENDERMAN) {
                 return;
@@ -108,7 +114,7 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
             }
         }
 
-        if (this.piercedEntities.size() > this.getPierceLevel()) {
+        if (finished) {
             this.setVelocity(this.getVelocity().multiply(-0.01D, -0.1D, -0.01D));
         } else {
             this.setVelocity(this.getVelocity().multiply(0.75));
@@ -120,6 +126,11 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     @Nullable
     protected EntityHitResult getEntityCollision(Vec3d currentPosition, Vec3d nextPosition) {
         return this.dealtDamage ? null : super.getEntityCollision(currentPosition, nextPosition);
+    }
+
+    @Override
+    protected boolean canHit(Entity entity) {
+        return super.canHit(entity) && !this.piercedEntities.contains(entity.getUuid());
     }
 
     @Override
@@ -165,7 +176,7 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     @Override
     public void onPlayerCollision(PlayerEntity player) {
         Entity entity = this.getOwner();
-        if (entity == null || entity.getUuid() == player.getUuid()) {
+        if (entity == null || entity.getUuid().equals(player.getUuid())) {
             super.onPlayerCollision(player);
         }
     }
@@ -223,12 +234,6 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     @Override
     public ItemStack getWeaponStack() {
         return this.javelin.copy();
-    }
-
-    @Override
-    @Environment(EnvType.CLIENT)
-    public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
-        return true;
     }
 
     @Override

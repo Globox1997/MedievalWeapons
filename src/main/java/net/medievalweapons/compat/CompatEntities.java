@@ -1,6 +1,5 @@
 package net.medievalweapons.compat;
 
-import net.medievalweapons.MedievalMain;
 import net.medievalweapons.entity.*;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.FranciscaItem;
@@ -78,13 +77,6 @@ public class CompatEntities {
             AETERNIUM_JAVELIN = EntityInit.register("aeternium_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.AETERNIUM_JAVELIN_ITEM));
             THALLASIUM_FRANCISCA = EntityInit.register("thallasium_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.THALLASIUM_FRANCISCA_ITEM));
             THALLASIUM_JAVELIN = EntityInit.register("thallasium_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.THALLASIUM_JAVELIN_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("terminite_francisca"), TERMINITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("terminite_javelin"), TERMINITE_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("aeternium_francisca"), AETERNIUM_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("aeternium_javelin"), AETERNIUM_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("thallasium_francisca"), THALLASIUM_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("thallasium_javelin"), THALLASIUM_JAVELIN);
         }
         if (CompatItems.isBetterNetherLoaded) {
             NETHER_RUBY_FRANCISCA = EntityInit.register("nether_ruby_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.NETHER_RUBY_FRANCISCA_ITEM));
@@ -93,81 +85,44 @@ public class CompatEntities {
             CINCINNASITE_JAVELIN = EntityInit.register("cincinnasite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.CINCINNASITE_JAVELIN_ITEM));
             CINCINNASITE_DIAMOND_FRANCISCA = EntityInit.register("cincinnasite_diamond_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.CINCINNASITE_DIAMOND_FRANCISCA_ITEM));
             CINCINNASITE_DIAMOND_JAVELIN = EntityInit.register("cincinnasite_diamond_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.CINCINNASITE_DIAMOND_JAVELIN_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("nether_ruby_francisca"), NETHER_RUBY_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("nether_ruby_javelin"), NETHER_RUBY_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("cincinnasite_francisca"), CINCINNASITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("cincinnasite_javelin"), CINCINNASITE_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("cincinnasite_diamond_javelin"), CINCINNASITE_DIAMOND_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("cincinnasite_diamond_francisca"), CINCINNASITE_DIAMOND_FRANCISCA);
         }
         if (CompatItems.isDragonLootLoaded) {
             DRAGON_JAVELIN = EntityInit.register("dragon_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.DRAGON_JAVELIN_ITEM));
             DRAGON_FRANCISCA = EntityInit.register("dragon_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.DRAGON_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("dragon_francisca"), DRAGON_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("dragon_javelin"), DRAGON_JAVELIN);
         }
         if (CompatItems.isMythicMetalsLoaded) {
             ADAMANTITE_JAVELIN = EntityInit.register("adamantite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.ADAMANTITE_JAVELIN_ITEM));
             ADAMANTITE_FRANCISCA = EntityInit.register("adamantite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.ADAMANTITE_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("adamantite_francisca"), ADAMANTITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("adamantite_javelin"), ADAMANTITE_JAVELIN);
         }
         if (CompatItems.isParadiseLostLoaded) {
             OLVITE_JAVELIN = EntityInit.register("olvite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.OLVITE_JAVELIN_ITEM));
             OLVITE_FRANCISCA = EntityInit.register("olvite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.OLVITE_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("olvite_francisca"), OLVITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("olvite_javelin"), OLVITE_JAVELIN);
         }
         if (CompatItems.isBYGLoaded) {
             PENDORITE_JAVELIN = EntityInit.register("pendorite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.PENDORITE_JAVELIN_ITEM));
             PENDORITE_FRANCISCA = EntityInit.register("pendorite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.PENDORITE_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("pendorite_francisca"), PENDORITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("pendorite_javelin"), PENDORITE_JAVELIN);
         }
         if (CompatItems.isAdditionalAdditionsLoaded) {
             ROSE_GOLD_JAVELIN = EntityInit.register("rose_gold_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.ROSE_GOLD_JAVELIN_ITEM));
             ROSE_GOLD_FRANCISCA = EntityInit.register("rose_gold_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.ROSE_GOLD_FRANCISCA_ITEM));
             GILDED_NETHERITE_JAVELIN = EntityInit.register("gilded_netherite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.GILDED_NETHERITE_JAVELIN_ITEM));
             GILDED_NETHERITE_FRANCISCA = EntityInit.register("gilded_netherite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.GILDED_NETHERITE_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("rose_gold_francisca"), ROSE_GOLD_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("rose_gold_javelin"), ROSE_GOLD_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("gilded_netherite_francisca"), GILDED_NETHERITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("gilded_netherite_javelin"), GILDED_NETHERITE_JAVELIN);
         }
         if (CompatItems.isMythicUpgradesLoaded) {
             RUBY_NETHERITE_JAVELIN = EntityInit.register("ruby_netherite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.RUBY_NETHERITE_JAVELIN_ITEM));
             RUBY_NETHERITE_FRANCISCA = EntityInit.register("ruby_netherite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.RUBY_NETHERITE_FRANCISCA_ITEM));
             SAPPHIRE_NETHERITE_JAVELIN = EntityInit.register("sapphire_netherite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.SAPPHIRE_NETHERITE_JAVELIN_ITEM));
             SAPPHIRE_NETHERITE_FRANCISCA = EntityInit.register("sapphire_netherite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.SAPPHIRE_NETHERITE_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("ruby_netherite_francisca"), RUBY_NETHERITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("ruby_netherite_javelin"), RUBY_NETHERITE_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("sapphire_netherite_francisca"), SAPPHIRE_NETHERITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("sapphire_netherite_javelin"), SAPPHIRE_NETHERITE_JAVELIN);
         }
         if (CompatItems.isDeeperDarkerLoaded) {
             WARDEN_JAVELIN = EntityInit.register("warden_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.WARDEN_JAVELIN_ITEM));
             WARDEN_FRANCISCA = EntityInit.register("warden_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.WARDEN_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("warden_francisca"), WARDEN_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("warden_javelin"), WARDEN_JAVELIN);
         }
         if (CompatItems.isEarlyStageLoaded) {
             STEEL_JAVELIN = EntityInit.register("steel_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.STEEL_JAVELIN_ITEM));
             STEEL_FRANCISCA = EntityInit.register("steel_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.STEEL_FRANCISCA_ITEM));
             DAMASCUS_STEEL_JAVELIN = EntityInit.register("damascus_steel_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.DAMASCUS_STEEL_JAVELIN_ITEM));
             DAMASCUS_STEEL_FRANCISCA = EntityInit.register("damascus_steel_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.DAMASCUS_STEEL_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("steel_francisca"), STEEL_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("steel_javelin"), STEEL_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("damascus_steel_francisca"), DAMASCUS_STEEL_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("damascus_steel_javelin"), DAMASCUS_STEEL_JAVELIN);
         }
         if (CompatItems.isOblivionLoaded) {
             FIERY_NETHERITE_JAVELIN = EntityInit.register("fiery_netherite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.FIERY_NETHERITE_JAVELIN_ITEM));
@@ -176,13 +131,6 @@ public class CompatEntities {
             SCARLET_FRANCISCA = EntityInit.register("scarlet_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.SCARLET_FRANCISCA_ITEM));
             SOLARITE_JAVELIN = EntityInit.register("solarite_javelin", EntityInit.createJavelin((JavelinItem) CompatItems.SOLARITE_JAVELIN_ITEM));
             SOLARITE_FRANCISCA = EntityInit.register("solarite_francisca", EntityInit.createFrancisca((FranciscaItem) CompatItems.SOLARITE_FRANCISCA_ITEM));
-
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("fiery_netherite_francisca"), FIERY_NETHERITE_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("fiery_netherite_javelin"), FIERY_NETHERITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("scarlet_francisca"), SCARLET_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("scarlet_javelin"), SCARLET_JAVELIN);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("solarite_francisca"), SOLARITE_FRANCISCA);
-            EntityInit.ENTITY_TYPES.put(MedievalMain.identifierOf("solarite_javelin"), SOLARITE_JAVELIN);
         }
     }
 }

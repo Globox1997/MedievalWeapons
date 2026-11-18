@@ -9,4 +9,6 @@ public interface PlayerAccess {
     float getAttackCooldownProgressOffhand(float baseTime);
 
     void resetLastAttackedOffhandTicks();
+
+    int getLastAttackedOffhandTicks();
 }

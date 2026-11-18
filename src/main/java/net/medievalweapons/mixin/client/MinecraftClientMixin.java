@@ -71,7 +71,7 @@ public class MinecraftClientMixin {
                     info.setReturnValue(false);
                 }
 
-                if (this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof NinjatoItem
+                if (this.crosshairTarget != null && this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof NinjatoItem
                         && player.getOffHandStack().getItem() instanceof NinjatoItem) {
 
                     if (this.attackedOffhand) {

@@ -19,7 +19,9 @@ public class BufferBuilderStorageMixin {
     @Inject(method = "assignBufferBuilder", at = @At("HEAD"))
     private static void assignBufferBuilder(Object2ObjectLinkedOpenHashMap<RenderLayer, BufferAllocator> builderStorage, RenderLayer layer, CallbackInfo info) {
         for (RenderLayer customLayer : RenderInit.CUSTOM_GLINT.values()) {
-            builderStorage.put(customLayer, new BufferAllocator(256));
+            if (!builderStorage.containsKey(customLayer)) {
+                builderStorage.put(customLayer, new BufferAllocator(256));
+            }
         }
     }
 }

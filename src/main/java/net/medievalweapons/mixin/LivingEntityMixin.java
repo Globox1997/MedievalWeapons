@@ -1,27 +1,26 @@
 package net.medievalweapons.mixin;
 
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.Vec3d;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.At.Shift;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.At;
-
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.ConfigInit;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.BigAxeItem;
 import net.medievalweapons.item.LanceItem;
 import net.medievalweapons.item.LongSwordItem;
+import net.medievalweapons.item.RapierItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
@@ -49,6 +48,11 @@ public abstract class LivingEntityMixin extends Entity {
                 || itemStack.getItem() instanceof BigAxeItem) {
             info.setReturnValue(false);
         }
+    }
+
+    @WrapWithCondition(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;takeKnockback(DDD)V"))
+    private boolean damageKnockbackMixin(LivingEntity instance, double strength, double x, double z, DamageSource source) {
+        return !(source.getAttacker() instanceof LivingEntity attacker && source.getSource() == attacker && attacker.getMainHandStack().getItem() instanceof RapierItem);
     }
 
     @WrapOperation(method = "damage",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/LivingEntity;damageShield(F)V"))
