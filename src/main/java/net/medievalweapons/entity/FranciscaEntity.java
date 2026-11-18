@@ -42,7 +42,7 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     }
 
     public FranciscaEntity(World world, double x, double y, double z, ItemStack stack) {
-        super(((FranciscaItem) stack.getItem()).getType(), z, z, z, world, stack, stack);
+        super(((FranciscaItem) stack.getItem()).getType(), x, y, z, world, stack, stack);
         this.francisca = stack;
         this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
     }
@@ -66,7 +66,7 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity hitEntity = entityHitResult.getEntity();
-        float damage = ((FranciscaItem) this.francisca.getItem()).getMaterial().getAttackDamage() * 2.3F;
+        float damage = Math.max(1.0F, ((FranciscaItem) this.francisca.getItem()).getMaterial().getAttackDamage()) * 2.3F;
         Entity owner = this.getOwner();
         if (this.getWorld() instanceof ServerWorld serverWorld) {
             damage = EnchantmentHelper.getDamage(serverWorld, this.getWeaponStack(), hitEntity, createDamageSource(this, owner == null ? this : owner), damage);
@@ -96,7 +96,7 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     @Override
     public void onPlayerCollision(PlayerEntity player) {
         Entity entity = this.getOwner();
-        if (entity == null || entity.getUuid() == player.getUuid()) {
+        if (entity == null || entity.getUuid().equals(player.getUuid())) {
             super.onPlayerCollision(player);
         }
     }
@@ -120,21 +120,8 @@ public class FranciscaEntity extends PersistentProjectileEntity implements Flyin
     }
 
     @Override
-    public void age() {
-        if (this.pickupType != PersistentProjectileEntity.PickupPermission.ALLOWED) {
-            super.age();
-        }
-    }
-
-    @Override
     public ItemStack getWeaponStack() {
         return this.francisca.copy();
-    }
-
-    @Override
-    @Environment(EnvType.CLIENT)
-    public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
-        return true;
     }
 
     @Override

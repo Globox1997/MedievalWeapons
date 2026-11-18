@@ -43,7 +43,7 @@ public abstract class BowItemMixin extends RangedWeaponItem {
             return f;
         } else if (this == ItemInit.RECURVE_BOW_ITEM) {
             float f = (float) (this.getMaxUseTime(stack, user) - remainingUseTicks) / 12.0F;
-            f = (f * f + f * 2.0F / 3.0F);
+            f = (f * f + f * 2.0F) / 3.0F;
             if (f > 1.0F) {
                 f = 1.0F;
             }

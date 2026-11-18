@@ -45,7 +45,7 @@ public class FranciscaEntityRenderer extends EntityRenderer<FranciscaEntity> {
 
     private float getAge(FranciscaEntity francisca_Entity, float g) {
         if (!francisca_Entity.inGround()) {
-            return francisca_Entity.age;
+            return francisca_Entity.age + g;
         }
         return 1.0f;
     }

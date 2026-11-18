@@ -24,7 +24,7 @@ public class ModelInit {
             if (entity == null) {
                 return 0.0F;
             } else {
-                return entity.getActiveItem() != stack ? 0.0F : (float) (stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 16.0F;
+                return entity.getActiveItem() != stack ? 0.0F : (float) (stack.getMaxUseTime(entity) - entity.getItemUseTimeLeft()) / 12.0F;
             }
         });
         ModelPredicateProviderRegistry.register(ItemInit.RECURVE_BOW_ITEM, Identifier.of("pulling"), (stack, world, entity, seed) -> {
