@@ -1,16 +1,13 @@
 package net.medievalweapons.item;
 
 import net.medievalweapons.MedievalMain;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
 
 public class LanceItem extends SwordItem {
 
@@ -21,15 +18,17 @@ public class LanceItem extends SwordItem {
         super(material, settings);
     }
 
-    @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!world.isClient() && entity instanceof PlayerEntity player) {
-            if (selected && player.hasVehicle() && !player.getAttributes().hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID)) {
-                EntityAttributeInstance entityAttributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-                entityAttributeInstance.addTemporaryModifier(ATTACK_BONUS_MODIFIER);
-            } else if (player.getAttributes().hasModifierForAttribute(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATTACK_BONUS_MODIFIER_ID) && !player.hasVehicle()) {
-                player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).removeModifier(ATTACK_BONUS_MODIFIER_ID);
-            }
+    public static void updateAttackBonus(PlayerEntity player) {
+        EntityAttributeInstance entityAttributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        if (entityAttributeInstance == null) {
+            return;
+        }
+        boolean active = player.getMainHandStack().getItem() instanceof LanceItem && player.hasVehicle();
+        boolean hasModifier = entityAttributeInstance.hasModifier(ATTACK_BONUS_MODIFIER_ID);
+        if (active && !hasModifier) {
+            entityAttributeInstance.addTemporaryModifier(ATTACK_BONUS_MODIFIER);
+        } else if (!active && hasModifier) {
+            entityAttributeInstance.removeModifier(ATTACK_BONUS_MODIFIER_ID);
         }
     }
 

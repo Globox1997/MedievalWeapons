@@ -1,54 +1,6 @@
 {
   "values": [
     {
-      "id": "medievalweapons:damascus_steel_small_axe",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_long_sword",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_dagger",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_francisca",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_big_axe",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_javelin",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_lance",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_healing_staff",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_mace",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_ninjato",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_sickle",
-      "required": false
-    },
-    {
-      "id": "medievalweapons:damascus_steel_rapier",
-      "required": false
-    },
-    {
       "id": "medievalweapons:steel_small_axe",
       "required": false
     },
@@ -94,6 +46,54 @@
     },
     {
       "id": "medievalweapons:steel_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:damascus_steel_rapier",
       "required": false
     }
   ]

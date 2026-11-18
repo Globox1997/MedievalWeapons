@@ -1,7 +1,10 @@
 package net.medievalweapons.init;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.item.v1.EnchantmentEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.util.TriState;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.compat.CompatRecipes;
@@ -11,6 +14,8 @@ import net.medievalweapons.item.MaceItem;
 import net.medievalweapons.item.*;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -41,6 +46,7 @@ public class ItemInit {
     public static final Set<Item> CUSTOM_MODEL_ITEMS = new HashSet<>();
     // Map
     public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
+    private static final List<Item> GROUP_ITEMS = new ArrayList<>();
 
     public record WeaponType(
             String suffix,
@@ -110,6 +116,7 @@ public class ItemInit {
     public static void init() {
         Registry.register(Registries.ITEM_GROUP, MEDIEVALWEAPONS_ITEM_GROUP,
                 FabricItemGroup.builder().icon(() -> new ItemStack(THALLEOUS_SWORD)).displayName(Text.translatable("item.medievalweapons.item_group")).build());
+        ItemGroupEvents.modifyEntriesEvent(MEDIEVALWEAPONS_ITEM_GROUP).register(entries -> GROUP_ITEMS.forEach(entries::add));
 
         for (ToolMaterials toolMaterial : ToolMaterials.values()) {
             for (WeaponType type : TYPES) {
@@ -132,11 +139,25 @@ public class ItemInit {
         CompatRecipes.createRecipes();
         CompatRecipes.loadRecipes();
 
-        for (Identifier id : ITEMS.keySet()) {
-            Registry.register(Registries.ITEM, id, ITEMS.get(id));
-            addCustomModelItem(ITEMS.get(id));
-            ItemGroupEvents.modifyEntriesEvent(MEDIEVALWEAPONS_ITEM_GROUP).register(entries -> entries.add(ITEMS.get(id)));
+        for (Map.Entry<Identifier, Item> entry : ITEMS.entrySet()) {
+            Registry.register(Registries.ITEM, entry.getKey(), entry.getValue());
+            addCustomModelItem(entry.getValue());
+            GROUP_ITEMS.add(entry.getValue());
         }
+
+        EnchantmentEvents.ALLOW_ENCHANTING.register((enchantment, target, enchantingContext) -> {
+            if (target.getItem() instanceof JavelinItem && (enchantment.matchesKey(Enchantments.IMPALING) || enchantment.matchesKey(Enchantments.PIERCING) || enchantment.matchesKey(Enchantments.LOYALTY))) {
+                return TriState.TRUE;
+            }
+            return TriState.DEFAULT;
+        });
+
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                DaggerItem.updateAttackBonus(player);
+                LanceItem.updateAttackBonus(player);
+            }
+        });
     }
 
 
@@ -146,7 +167,7 @@ public class ItemInit {
     }
 
     private static Item register(Identifier id, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(MEDIEVALWEAPONS_ITEM_GROUP).register(entries -> entries.add(item));
+        GROUP_ITEMS.add(item);
         return Registry.register(Registries.ITEM, id, item);
     }
 
