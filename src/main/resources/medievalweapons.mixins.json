@@ -8,9 +8,7 @@
     "AreaEffectCloudEntityMixin",
     "BowItemMixin",
     "EnchantmentHelperMixin",
-    "EnchantmentMixin",
     "LivingEntityMixin",
-    "MobEntityMixin",
     "PlayerEntityMixin",
     "ServerAdvancementLoaderMixin",
     "TagGroupLoaderMixin"

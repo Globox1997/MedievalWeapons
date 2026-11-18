@@ -19,12 +19,12 @@ public class ServerAdvancementLoaderMixin {
 
     @Inject(method = "apply", at = @At("HEAD"))
     protected void applyMixin(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
-        if (!CompatItems.isBetterEndLoaded) {
+        if (!CompatItems.isBetterNetherLoaded) {
             map.remove(MedievalMain.identifierOf("medieval_ruby_nether_recipes"));
             map.remove(MedievalMain.identifierOf("medieval_cincinnasite_nether_recipes"));
             map.remove(MedievalMain.identifierOf("medieval_cincinnasite_diamond_nether_recipes"));
         }
-        if (!CompatItems.isBetterNetherLoaded) {
+        if (!CompatItems.isBetterEndLoaded) {
             map.remove(MedievalMain.identifierOf("medieval_aternium_end_recipes"));
             map.remove(MedievalMain.identifierOf("medieval_terminite_end_recipes"));
             map.remove(MedievalMain.identifierOf("medieval_thallasium_end_recipes"));
@@ -44,10 +44,6 @@ public class ServerAdvancementLoaderMixin {
         }
         if (!CompatItems.isParadiseLostLoaded) {
             map.remove(MedievalMain.identifierOf("medieval_olvite_recipes"));
-        }
-        if (!CompatItems.isMythicUpgradesLoaded) {
-            map.remove(MedievalMain.identifierOf("medieval_ruby_netherite_recipes"));
-            map.remove(MedievalMain.identifierOf("medieval_sapphire_netherite_recipes"));
         }
         if (!CompatItems.isMythicUpgradesLoaded) {
             map.remove(MedievalMain.identifierOf("medieval_ruby_netherite_recipes"));
