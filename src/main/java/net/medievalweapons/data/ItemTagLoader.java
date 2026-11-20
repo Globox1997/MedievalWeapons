@@ -6,10 +6,9 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.init.ItemInit;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.util.Identifier;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -19,24 +18,24 @@ public class ItemTagLoader extends FabricTagProvider.ItemTagProvider {
 
     private final Collection<String> materials;
 
-    public ItemTagLoader(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public ItemTagLoader(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
         Set<String> compatMaterials = CompatItems.MATERIALS_BY_MOD.values().stream().flatMap(Set::stream).collect(Collectors.toSet());
         this.materials = ItemInit.MATERIAL_STRINGS.stream().filter(m -> !compatMaterials.contains(m)).toList();
     }
 
-    public ItemTagLoader(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture, Collection<String> materials) {
+    public ItemTagLoader(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, Collection<String> materials) {
         super(output, registriesFuture);
         this.materials = materials;
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        var vanillaSwords = getOrCreateTagBuilder(ItemTags.SWORDS);
+    protected void addTags(HolderLookup.Provider wrapperLookup) {
+        var vanillaSwords = tag(ItemTags.SWORDS);
 
         for (String material : materials) {
             for (String itemType : ItemInit.ITEM_STRINGS) {
-                Identifier id = MedievalMain.identifierOf(material + "_" + itemType);
+                ResourceLocation id = MedievalMain.identifierOf(material + "_" + itemType);
                 vanillaSwords.addOptional(id);
             }
         }

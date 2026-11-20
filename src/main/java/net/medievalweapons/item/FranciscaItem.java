@@ -3,33 +3,33 @@ package net.medievalweapons.item;
 import java.util.function.Supplier;
 
 import net.medievalweapons.entity.FranciscaEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ProjectileItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stats;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Position;
-import net.minecraft.world.World;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
 
 public class FranciscaItem extends SwordItem implements ProjectileItem {
 
     private final Supplier<EntityType<FranciscaEntity>> typeSupplier;
     private EntityType<FranciscaEntity> cachedType = null;
 
-    public FranciscaItem(ToolMaterial toolMaterial, Supplier<EntityType<FranciscaEntity>> typeSupplier, Item.Settings settings) {
+    public FranciscaItem(Tier toolMaterial, Supplier<EntityType<FranciscaEntity>> typeSupplier, Item.Properties settings) {
         super(toolMaterial, settings);
         this.typeSupplier = typeSupplier;
     }
@@ -42,65 +42,65 @@ public class FranciscaItem extends SwordItem implements ProjectileItem {
     }
 
     @Override
-    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (user instanceof PlayerEntity playerEntity) {
-            int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
+    public void releaseUsing(ItemStack stack, Level world, LivingEntity user, int remainingUseTicks) {
+        if (user instanceof Player playerEntity) {
+            int i = this.getUseDuration(stack, user) - remainingUseTicks;
             if (i >= 10) {
-                if (!world.isClient()) {
-                    stack.damage(1, playerEntity, LivingEntity.getSlotForHand(user.getActiveHand()));
+                if (!world.isClientSide()) {
+                    stack.hurtAndBreak(1, playerEntity, LivingEntity.getSlotForHand(user.getUsedItemHand()));
                     FranciscaEntity franciscaEntity = new FranciscaEntity(world, playerEntity, stack);
-                    franciscaEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 1.5F, 1.0F);
+                    franciscaEntity.shootFromRotation(playerEntity, playerEntity.getXRot(), playerEntity.getYRot(), 0.0F, 1.5F, 1.0F);
                     if (playerEntity.isCreative()) {
-                        franciscaEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
+                        franciscaEntity.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                     }
-                    world.spawnEntity(franciscaEntity);
-                    world.playSoundFromEntity(null, franciscaEntity, SoundEvents.ITEM_TRIDENT_THROW.value(), SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    world.addFreshEntity(franciscaEntity);
+                    world.playSound(null, franciscaEntity, SoundEvents.TRIDENT_THROW.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
                     if (!playerEntity.isCreative()) {
-                        playerEntity.getInventory().removeOne(stack);
+                        playerEntity.getInventory().removeItem(stack);
                     }
                 }
 
-                playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+                playerEntity.awardStat(Stats.ITEM_USED.get(this));
             }
         }
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
-            return TypedActionResult.fail(itemStack);
+    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
+        ItemStack itemStack = user.getItemInHand(hand);
+        if (itemStack.getDamageValue() >= itemStack.getMaxDamage() - 1) {
+            return InteractionResultHolder.fail(itemStack);
         } else {
-            user.setCurrentHand(hand);
-            return TypedActionResult.consume(itemStack);
+            user.startUsingItem(hand);
+            return InteractionResultHolder.consume(itemStack);
         }
     }
 
     @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.SPEAR;
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.SPEAR;
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
+    public int getUseDuration(ItemStack stack, LivingEntity user) {
         return 72000;
     }
 
     @Override
-    public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction) {
-        FranciscaEntity franciscaEntity = new FranciscaEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack.copyWithCount(1));
-        franciscaEntity.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+    public Projectile asProjectile(Level world, Position pos, ItemStack stack, Direction direction) {
+        FranciscaEntity franciscaEntity = new FranciscaEntity(world, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1));
+        franciscaEntity.pickup = AbstractArrow.Pickup.ALLOWED;
         return franciscaEntity;
     }
 
     @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         return true;
     }
 
     @Override
-    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
+    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
     }
 
 }

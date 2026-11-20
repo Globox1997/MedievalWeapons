@@ -8,14 +8,13 @@ import net.medievalweapons.MedievalMain;
 import net.medievalweapons.entity.renderer.FranciscaEntityRenderer;
 import net.medievalweapons.entity.renderer.JavelinEntityRenderer;
 import net.medievalweapons.init.ParticleInit.HealingAuraParticle;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderPhase;
-import net.minecraft.client.render.VertexFormat;
-import net.minecraft.client.render.VertexFormats;
-import net.minecraft.entity.EntityType;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
-
+import net.minecraft.client.renderer.RenderStateShard;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.DyeColor;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,10 +22,10 @@ import java.util.Map;
 @Environment(EnvType.CLIENT)
 public class RenderInit {
 
-    public static final Map<DyeColor, RenderLayer> CUSTOM_GLINT = customGlints();
+    public static final Map<DyeColor, RenderType> CUSTOM_GLINT = customGlints();
 
     public static void init() {
-        for (Map.Entry<Identifier, EntityType> entry : EntityInit.ENTITY_TYPES.entrySet()) {
+        for (Map.Entry<ResourceLocation, EntityType> entry : EntityInit.ENTITY_TYPES.entrySet()) {
             if (entry.getKey().getPath().contains("javelin")) {
                 EntityRendererRegistry.register(entry.getValue(), JavelinEntityRenderer::new);
             } else if (entry.getKey().getPath().contains("francisca")) {
@@ -37,16 +36,16 @@ public class RenderInit {
         ParticleFactoryRegistry.getInstance().register(ParticleInit.HEALING_AURA_PARTICLE, HealingAuraParticle.Factory::new);
     }
 
-    private static Map<DyeColor, RenderLayer> customGlints() {
-        Map<DyeColor, RenderLayer> map = new HashMap<>();
+    private static Map<DyeColor, RenderType> customGlints() {
+        Map<DyeColor, RenderType> map = new HashMap<>();
 
         for (DyeColor color : List.of(DyeColor.BLUE, DyeColor.RED, DyeColor.YELLOW)) {
-            final Identifier glintId = MedievalMain.identifierOf("textures/glint/" + color.getName() + "_item_glint.png");
-            map.put(color, RenderLayer.of(color.getName() + "_glint", VertexFormats.POSITION_TEXTURE,
-                    VertexFormat.DrawMode.QUADS, 256, RenderLayer.MultiPhaseParameters.builder().program(RenderPhase.GLINT_PROGRAM)
-                            .texture(new RenderPhase.Texture(glintId, true, false))
-                            .writeMaskState(RenderPhase.COLOR_MASK).cull(RenderPhase.DISABLE_CULLING).depthTest(RenderPhase.EQUAL_DEPTH_TEST)
-                            .transparency(RenderPhase.GLINT_TRANSPARENCY).texturing(RenderPhase.GLINT_TEXTURING).build(false)));
+            final ResourceLocation glintId = MedievalMain.identifierOf("textures/glint/" + color.getName() + "_item_glint.png");
+            map.put(color, RenderType.create(color.getName() + "_glint", DefaultVertexFormat.POSITION_TEX,
+                    VertexFormat.Mode.QUADS, 256, RenderType.CompositeState.builder().setShaderState(RenderStateShard.RENDERTYPE_GLINT_SHADER)
+                            .setTextureState(new RenderStateShard.TextureStateShard(glintId, true, false))
+                            .setWriteMaskState(RenderStateShard.COLOR_WRITE).setCullState(RenderStateShard.NO_CULL).setDepthTestState(RenderStateShard.EQUAL_DEPTH_TEST)
+                            .setTransparencyState(RenderStateShard.GLINT_TRANSPARENCY).setTexturingState(RenderStateShard.GLINT_TEXTURING).createCompositeState(false)));
         }
 
         return map;

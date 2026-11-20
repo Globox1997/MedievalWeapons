@@ -4,8 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.init.ItemInit;
-import net.minecraft.registry.RegistryWrapper;
-
+import net.minecraft.core.HolderLookup;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Map;
@@ -57,21 +56,21 @@ public class LangLoader extends FabricLanguageProvider {
             Map.entry("rapier", "Rapier")
     );
 
-    public LangLoader(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    public LangLoader(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, registryLookup);
         Set<String> compatMaterials = CompatItems.MATERIALS_BY_MOD.values().stream().flatMap(Set::stream).collect(Collectors.toSet());
         this.materials = ItemInit.MATERIAL_STRINGS.stream().filter(m -> !compatMaterials.contains(m)).toList();
         this.loadExisting = true;
     }
 
-    public LangLoader(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup, Collection<String> materials) {
+    public LangLoader(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup, Collection<String> materials) {
         super(dataOutput, registryLookup);
         this.materials = materials;
         this.loadExisting = false;
     }
 
     @Override
-    public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.Provider wrapperLookup, TranslationBuilder translationBuilder) {
         for (String material : materials) {
             for (String item : ItemInit.ITEM_STRINGS) {
                 String materialName = MATERIAL_NAMES.getOrDefault(material, prettifyMaterial(material));

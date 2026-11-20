@@ -3,11 +3,10 @@ package net.medievalweapons.data;
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.medievalweapons.MedievalMain;
-import net.minecraft.data.DataOutput;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.DataWriter;
-import net.minecraft.util.Identifier;
-
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,9 +40,9 @@ public class WeaponAttributesLoader implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(DataWriter writer) {
+    public CompletableFuture<?> run(CachedOutput writer) {
         List<CompletableFuture<?>> futures = new ArrayList<>();
-        DataOutput.PathResolver resolver = output.getResolver(DataOutput.OutputType.DATA_PACK, "weapon_attributes");
+        PackOutput.PathProvider resolver = output.createPathProvider(PackOutput.Target.DATA_PACK, "weapon_attributes");
 
         for (String material : materials) {
             for (var entry : PARENTS.entrySet()) {
@@ -53,9 +52,9 @@ public class WeaponAttributesLoader implements DataProvider {
                 JsonObject json = new JsonObject();
                 json.addProperty("parent", parent);
 
-                Identifier id = MedievalMain.identifierOf(material + "_" + item);
-                Path path = resolver.resolveJson(id);
-                futures.add(DataProvider.writeToPath(writer, json, path));
+                ResourceLocation id = MedievalMain.identifierOf(material + "_" + item);
+                Path path = resolver.json(id);
+                futures.add(DataProvider.saveStable(writer, json, path));
             }
         }
 

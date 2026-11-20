@@ -1,6 +1,6 @@
 package net.medievalweapons.access;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.world.entity.Entity;
 
 public interface PlayerAccess {
 

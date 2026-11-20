@@ -1,24 +1,24 @@
 package net.medievalweapons.effect;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
 
-public class StunEffect extends StatusEffect {
+public class StunEffect extends MobEffect {
 
-    public StunEffect(StatusEffectCategory category, int color) {
+    public StunEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
 
     @Override
-    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
-        livingEntity.slowMovement(livingEntity.getBlockStateAtPos(), new Vec3d(0.05F, 0.1F, 0.05F));
+    public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
+        livingEntity.makeStuckInBlock(livingEntity.getInBlockState(), new Vec3(0.05F, 0.1F, 0.05F));
         return true;
     }
 
     @Override
-    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 

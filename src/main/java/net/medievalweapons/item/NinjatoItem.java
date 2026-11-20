@@ -1,11 +1,11 @@
 package net.medievalweapons.item;
 
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 
 public class NinjatoItem extends SwordItem {
 
-    public NinjatoItem(ToolMaterial toolMaterial, Settings settings) {
+    public NinjatoItem(Tier toolMaterial, Properties settings) {
         super(toolMaterial, settings);
     }
 

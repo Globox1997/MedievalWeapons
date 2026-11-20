@@ -9,40 +9,40 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.init.ItemInit;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.RangedWeaponItem;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.level.Level;
 
 @Mixin(BowItem.class)
-public abstract class BowItemMixin extends RangedWeaponItem {
+public abstract class BowItemMixin extends ProjectileWeaponItem {
 
-    public BowItemMixin(Settings settings) {
+    public BowItemMixin(Properties settings) {
         super(settings);
     }
 
-    @Inject(method = "shoot", at = @At("TAIL"))
-    private void onStoppedUsingMixin(LivingEntity shooter, ProjectileEntity projectile, int index, float speed, float divergence, float yaw, @Nullable LivingEntity target, CallbackInfo info) {
+    @Inject(method = "shootProjectile", at = @At("TAIL"))
+    private void onStoppedUsingMixin(LivingEntity shooter, Projectile projectile, int index, float speed, float divergence, float yaw, @Nullable LivingEntity target, CallbackInfo info) {
         if (this == ItemInit.LONG_BOW_ITEM) {
-            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * ConfigInit.CONFIG.long_bow_speed, divergence);
+            projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, speed * ConfigInit.CONFIG.long_bow_speed, divergence);
         } else if (this == ItemInit.RECURVE_BOW_ITEM) {
-            projectile.setVelocity(shooter, shooter.getPitch(), shooter.getYaw(), 0.0F, speed * ConfigInit.CONFIG.recurve_bow_speed, divergence);
+            projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, speed * ConfigInit.CONFIG.recurve_bow_speed, divergence);
         }
     }
 
-    @ModifyVariable(method = "onStoppedUsing", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/BowItem;getPullProgress(I)F"), ordinal = 0)
-    private float onStoppedUsingPullProgressMixin(float original, ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+    @ModifyVariable(method = "releaseUsing", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/item/BowItem;getPowerForTime(I)F"), ordinal = 0)
+    private float onStoppedUsingPullProgressMixin(float original, ItemStack stack, Level world, LivingEntity user, int remainingUseTicks) {
         if (this == ItemInit.LONG_BOW_ITEM) {
-            float f = (float) (this.getMaxUseTime(stack, user) - remainingUseTicks) / 60.0F;
+            float f = (float) (this.getUseDuration(stack, user) - remainingUseTicks) / 60.0F;
             f = (f * f + f * 2.0F) / 3.0F;
             if (f > 1.0F) {
                 f = 1.0F;
             }
             return f;
         } else if (this == ItemInit.RECURVE_BOW_ITEM) {
-            float f = (float) (this.getMaxUseTime(stack, user) - remainingUseTicks) / 12.0F;
+            float f = (float) (this.getUseDuration(stack, user) - remainingUseTicks) / 12.0F;
             f = (f * f + f * 2.0F) / 3.0F;
             if (f > 1.0F) {
                 f = 1.0F;

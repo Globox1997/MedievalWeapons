@@ -1,12 +1,5 @@
 package net.medievalweapons.mixin.client;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.BlockPos;
-
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,84 +20,90 @@ import net.medievalweapons.item.BigAxeItem;
 import net.medievalweapons.item.LongSwordItem;
 import net.medievalweapons.item.NinjatoItem;
 import net.medievalweapons.network.packet.AttackPacket;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.network.ClientPlayerInteractionManager;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.MultiPlayerGameMode;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 
 @Environment(EnvType.CLIENT)
-@Mixin(value = MinecraftClient.class, priority = 999)
+@Mixin(value = Minecraft.class, priority = 999)
 public class MinecraftClientMixin {
     @Shadow
     @Nullable
-    public ClientPlayerEntity player;
+    public LocalPlayer player;
     @Shadow
-    public int attackCooldown;
-    @Shadow
-    @Nullable
-    public HitResult crosshairTarget;
+    public int missTime;
     @Shadow
     @Nullable
-    public ClientPlayerInteractionManager interactionManager;
+    public HitResult hitResult;
+    @Shadow
+    @Nullable
+    public MultiPlayerGameMode gameMode;
     @Unique
     private int offhandAttackCooldown;
     @Unique
     private boolean attackedOffhand;
 
-    @Inject(method = "Lnet/minecraft/client/MinecraftClient;tick()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;handleInputEvents()V"))
+    @Inject(method = "tick()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;handleKeybinds()V"))
     public void tickMixin(CallbackInfo info) {
         if (this.offhandAttackCooldown > 0) {
             --this.offhandAttackCooldown;
         }
     }
 
-    @Inject(method = "doAttack", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "startAttack", at = @At(value = "HEAD"), cancellable = true)
     private void doAttackMixin(CallbackInfoReturnable<Boolean> info) {
         if (player != null) {
-            if (player.hasStatusEffect(EffectInit.STUN_EFFECT)) {
+            if (player.hasEffect(EffectInit.STUN_EFFECT)) {
                 info.cancel();
             }
 
             if (!CompatInit.isBetterCombatLoaded) {
-                ItemStack itemStack = player.getMainHandStack();
-                if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
-                        || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
+                ItemStack itemStack = player.getMainHandItem();
+                if ((itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                        || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffhandItem().isEmpty() || player.isSwimming() || player.isPassenger())) {
                     info.setReturnValue(false);
                 }
 
-                if (this.crosshairTarget != null && this.offhandAttackCooldown == 0 && this.attackCooldown < 5 && !this.player.isRiding() && itemStack.getItem() instanceof NinjatoItem
-                        && player.getOffHandStack().getItem() instanceof NinjatoItem) {
+                if (this.hitResult != null && this.offhandAttackCooldown == 0 && this.missTime < 5 && !this.player.isHandsBusy() && itemStack.getItem() instanceof NinjatoItem
+                        && player.getOffhandItem().getItem() instanceof NinjatoItem) {
 
                     if (this.attackedOffhand) {
                         this.attackedOffhand = false;
 
-                        switch (this.crosshairTarget.getType()) {
+                        switch (this.hitResult.getType()) {
                             case ENTITY: {
-                                ClientPlayNetworking.send(new AttackPacket(((EntityHitResult) this.crosshairTarget).getEntity().getId()));
+                                ClientPlayNetworking.send(new AttackPacket(((EntityHitResult) this.hitResult).getEntity().getId()));
                                 if (!this.player.isSpectator()) {
-                                    ((PlayerAccess) this.player).doOffhandAttack(((EntityHitResult) this.crosshairTarget).getEntity());
+                                    ((PlayerAccess) this.player).doOffhandAttack(((EntityHitResult) this.hitResult).getEntity());
                                     ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
                                 }
                                 this.offhandAttackCooldown = 5;
                                 break;
                             }
                             case BLOCK: {
-                                BlockHitResult blockHitResult = (BlockHitResult) this.crosshairTarget;
+                                BlockHitResult blockHitResult = (BlockHitResult) this.hitResult;
                                 BlockPos blockPos = blockHitResult.getBlockPos();
-                                if (!this.player.getWorld().getBlockState(blockPos).isAir()) {
-                                    this.interactionManager.attackBlock(blockPos, blockHitResult.getSide());
-                                    if (!this.player.getWorld().getBlockState(blockPos).isAir())
+                                if (!this.player.level().getBlockState(blockPos).isAir()) {
+                                    this.gameMode.startDestroyBlock(blockPos, blockHitResult.getDirection());
+                                    if (!this.player.level().getBlockState(blockPos).isAir())
                                         break;
                                     break;
                                 }
                             }
                             case MISS: {
-                                if (this.interactionManager.hasLimitedAttackSpeed()) {
+                                if (this.gameMode.hasMissTime()) {
                                     this.offhandAttackCooldown = 10;
                                 }
                                 ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
                             }
                         }
-                        this.player.swingHand(Hand.OFF_HAND);
+                        this.player.swing(InteractionHand.OFF_HAND);
                         info.setReturnValue(false);
                     } else {
                         this.attackedOffhand = true;
@@ -114,23 +113,23 @@ public class MinecraftClientMixin {
         }
     }
 
-    @Inject(method = "doItemUse", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "startUseItem", at = @At(value = "HEAD"), cancellable = true)
     private void doItemUseMixin(CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded && player != null) {
-            ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
-                    || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
+            ItemStack itemStack = player.getMainHandItem();
+            if ((itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                    || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffhandItem().isEmpty() || player.isSwimming() || player.isPassenger())) {
                 info.cancel();
             }
         }
     }
 
-    @Inject(method = "handleBlockBreaking", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "continueAttack", at = @At(value = "HEAD"), cancellable = true)
     private void handleBlockBreakingMixin(boolean bl, CallbackInfo info) {
         if (!CompatInit.isBetterCombatLoaded && player != null) {
-            ItemStack itemStack = player.getMainHandStack();
-            if ((itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
-                    || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffHandStack().isEmpty() || player.isSwimming() || player.hasVehicle())) {
+            ItemStack itemStack = player.getMainHandItem();
+            if ((itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+                    || itemStack.getItem() instanceof BigAxeItem) && (!player.getOffhandItem().isEmpty() || player.isSwimming() || player.isPassenger())) {
                 info.cancel();
             }
         }

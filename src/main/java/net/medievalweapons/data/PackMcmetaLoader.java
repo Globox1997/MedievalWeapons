@@ -2,9 +2,8 @@ package net.medievalweapons.data;
 
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.DataWriter;
-
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
@@ -19,7 +18,7 @@ public class PackMcmetaLoader implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(DataWriter writer) {
+    public CompletableFuture<?> run(CachedOutput writer) {
         JsonObject root = new JsonObject();
         JsonObject pack = new JsonObject();
         pack.addProperty("pack_format", 15);
@@ -35,8 +34,8 @@ public class PackMcmetaLoader implements DataProvider {
 
         root.add("pack", pack);
 
-        Path path = output.getPath().resolve("pack.mcmeta");
-        return DataProvider.writeToPath(writer, root, path);
+        Path path = output.getOutputFolder().resolve("pack.mcmeta");
+        return DataProvider.saveStable(writer, root, path);
     }
 
     @Override

@@ -4,7 +4,7 @@ import net.medievalweapons.entity.*;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.FranciscaItem;
 import net.medievalweapons.item.JavelinItem;
-import net.minecraft.entity.EntityType;
+import net.minecraft.world.entity.EntityType;
 
 public class CompatEntities {
     // DragonLoot

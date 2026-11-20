@@ -1,20 +1,20 @@
 package net.medievalweapons.network.packet;
 
 import net.medievalweapons.MedievalMain;
-import net.minecraft.network.RegistryByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.network.packet.CustomPayload;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
-public record AttackPacket(int entityId) implements CustomPayload {
+public record AttackPacket(int entityId) implements CustomPacketPayload {
 
-    public static final CustomPayload.Id<AttackPacket> PACKET_ID = new CustomPayload.Id<>(MedievalMain.identifierOf("attack_packet"));
+    public static final CustomPacketPayload.Type<AttackPacket> PACKET_ID = new CustomPacketPayload.Type<>(MedievalMain.identifierOf("attack_packet"));
 
-    public static final PacketCodec<RegistryByteBuf, AttackPacket> PACKET_CODEC = PacketCodec.of((value, buf) -> {
+    public static final StreamCodec<RegistryFriendlyByteBuf, AttackPacket> PACKET_CODEC = StreamCodec.ofMember((value, buf) -> {
         buf.writeInt(value.entityId);
     }, buf -> new AttackPacket(buf.readInt()));
 
     @Override
-    public Id<? extends CustomPayload> getId() {
+    public Type<? extends CustomPacketPayload> type() {
         return PACKET_ID;
     }
 

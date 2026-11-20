@@ -6,131 +6,131 @@ import net.levelz.util.BonusHelper;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.JavelinItem;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FlyingItemEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.DataTracker.Builder;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.network.syncher.SynchedEntityData.Builder;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-public class JavelinEntity extends PersistentProjectileEntity implements FlyingItemEntity {
-    private static final TrackedData<Byte> LOYALTY;
-    private static final TrackedData<Boolean> ENCHANTMENT_GLINT;
+public class JavelinEntity extends AbstractArrow implements ItemSupplier {
+    private static final EntityDataAccessor<Byte> LOYALTY;
+    private static final EntityDataAccessor<Boolean> ENCHANTMENT_GLINT;
     private ItemStack javelin;
     private final Set<UUID> piercedEntities = new HashSet<>();
     public int returnTimer;
     private boolean dealtDamage;
 
-    public JavelinEntity(EntityType<? extends JavelinEntity> entityType, World world, JavelinItem item) {
+    public JavelinEntity(EntityType<? extends JavelinEntity> entityType, Level world, JavelinItem item) {
         super(entityType, world);
         this.javelin = new ItemStack(item);
     }
 
-    public JavelinEntity(World world, LivingEntity owner, ItemStack stack) {
+    public JavelinEntity(Level world, LivingEntity owner, ItemStack stack) {
         super(((JavelinItem) stack.getItem()).getType(), owner, world, stack, stack);
         this.javelin = stack;
-        this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
-        this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
+        this.entityData.set(LOYALTY, this.getLoyalty(stack));
+        this.entityData.set(ENCHANTMENT_GLINT, stack.hasFoil());
     }
 
-    public JavelinEntity(World world, double x, double y, double z, ItemStack stack) {
+    public JavelinEntity(Level world, double x, double y, double z, ItemStack stack) {
         super(((JavelinItem) stack.getItem()).getType(), x, y, z, world, stack, stack);
         this.javelin = stack;
-        this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
-        this.dataTracker.set(ENCHANTMENT_GLINT, stack.hasGlint());
+        this.entityData.set(LOYALTY, this.getLoyalty(stack));
+        this.entityData.set(ENCHANTMENT_GLINT, stack.hasFoil());
     }
 
     @Override
-    protected void initDataTracker(Builder builder) {
-        super.initDataTracker(builder);
-        builder.add(LOYALTY, (byte) 0);
-        builder.add(ENCHANTMENT_GLINT, false);
+    protected void defineSynchedData(Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(LOYALTY, (byte) 0);
+        builder.define(ENCHANTMENT_GLINT, false);
     }
 
     @Override
-    protected ItemStack asItemStack() {
+    protected ItemStack getPickupItem() {
         return this.javelin.copy();
     }
 
     @Environment(EnvType.CLIENT)
     public boolean enchantingGlint() {
-        return this.dataTracker.get(ENCHANTMENT_GLINT);
+        return this.entityData.get(ENCHANTMENT_GLINT);
     }
 
     @Override
-    protected void onEntityHit(EntityHitResult entityHitResult) {
+    protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity hitEntity = entityHitResult.getEntity();
-        if (this.dealtDamage || !this.piercedEntities.add(hitEntity.getUuid())) {
+        if (this.dealtDamage || !this.piercedEntities.add(hitEntity.getUUID())) {
             return;
         }
         boolean finished = this.piercedEntities.size() > this.getPierceLevel();
         if (finished) {
             this.dealtDamage = true;
         }
-        float damage = Math.max(1.0F, ((JavelinItem) this.javelin.getItem()).getMaterial().getAttackDamage()) * 2.35F;
+        float damage = Math.max(1.0F, ((JavelinItem) this.javelin.getItem()).getTier().getAttackDamageBonus()) * 2.35F;
 
         Entity owner = this.getOwner();
         DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
-        if (this.getWorld() instanceof ServerWorld serverWorld) {
-            damage = EnchantmentHelper.getDamage(serverWorld, this.getWeaponStack(), hitEntity, damageSource, damage);
+        if (this.level() instanceof ServerLevel serverWorld) {
+            damage = EnchantmentHelper.modifyDamage(serverWorld, this.getWeaponItem(), hitEntity, damageSource, damage);
         }
 
-        if (CompatInit.isLevelZLoaded && owner instanceof PlayerEntity playerEntity) {
+        if (CompatInit.isLevelZLoaded && owner instanceof Player playerEntity) {
             BonusHelper.bowBonus(playerEntity,this);
         }
 
-        if (hitEntity.damage(damageSource, damage)) {
+        if (hitEntity.hurt(damageSource, damage)) {
             if (hitEntity.getType() == EntityType.ENDERMAN) {
                 return;
             }
-            if (this.getWorld() instanceof ServerWorld serverWorld) {
-                EnchantmentHelper.onTargetDamaged(serverWorld, hitEntity, damageSource, this.getWeaponStack());
+            if (this.level() instanceof ServerLevel serverWorld) {
+                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverWorld, hitEntity, damageSource, this.getWeaponItem());
             }
             if (hitEntity instanceof LivingEntity livingEntity) {
-                this.knockback(livingEntity, damageSource);
-                this.onHit(livingEntity);
+                this.doKnockback(livingEntity, damageSource);
+                this.doPostHurtEffects(livingEntity);
             }
         }
 
         if (finished) {
-            this.setVelocity(this.getVelocity().multiply(-0.01D, -0.1D, -0.01D));
+            this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
         } else {
-            this.setVelocity(this.getVelocity().multiply(0.75));
+            this.setDeltaMovement(this.getDeltaMovement().scale(0.75));
         }
-        this.playSound(SoundEvents.ITEM_TRIDENT_HIT, 1.0f, 1.0f);
+        this.playSound(SoundEvents.TRIDENT_HIT, 1.0f, 1.0f);
     }
 
     @Override
     @Nullable
-    protected EntityHitResult getEntityCollision(Vec3d currentPosition, Vec3d nextPosition) {
-        return this.dealtDamage ? null : super.getEntityCollision(currentPosition, nextPosition);
+    protected EntityHitResult findHitEntity(Vec3 currentPosition, Vec3 nextPosition) {
+        return this.dealtDamage ? null : super.findHitEntity(currentPosition, nextPosition);
     }
 
     @Override
-    protected boolean canHit(Entity entity) {
-        return super.canHit(entity) && !this.piercedEntities.contains(entity.getUuid());
+    protected boolean canHitEntity(Entity entity) {
+        return super.canHitEntity(entity) && !this.piercedEntities.contains(entity.getUUID());
     }
 
     @Override
@@ -139,24 +139,24 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
             this.dealtDamage = true;
         }
         Entity entity = this.getOwner();
-        byte i = this.dataTracker.get(LOYALTY);
-        if (i > 0 && (this.dealtDamage || this.isNoClip()) && entity != null) {
+        byte i = this.entityData.get(LOYALTY);
+        if (i > 0 && (this.dealtDamage || this.isNoPhysics()) && entity != null) {
             if (!this.isOwnerAlive()) {
-                if (!this.getWorld().isClient() && this.pickupType == PersistentProjectileEntity.PickupPermission.ALLOWED) {
-                    this.dropStack(this.asItemStack(), 0.1f);
+                if (!this.level().isClientSide() && this.pickup == AbstractArrow.Pickup.ALLOWED) {
+                    this.spawnAtLocation(this.getPickupItem(), 0.1f);
                 }
                 this.discard();
             } else {
-                this.setNoClip(true);
-                Vec3d vec3d = entity.getEyePos().subtract(this.getPos());
-                this.setPos(this.getX(), this.getY() + vec3d.y * 0.015 * (double) i, this.getZ());
-                if (this.getWorld().isClient()) {
-                    this.lastRenderY = this.getY();
+                this.setNoPhysics(true);
+                Vec3 vec3d = entity.getEyePosition().subtract(this.position());
+                this.setPosRaw(this.getX(), this.getY() + vec3d.y * 0.015 * (double) i, this.getZ());
+                if (this.level().isClientSide()) {
+                    this.yOld = this.getY();
                 }
                 double d = 0.05 * (double) i;
-                this.setVelocity(this.getVelocity().multiply(0.95).add(vec3d.normalize().multiply(d)));
+                this.setDeltaMovement(this.getDeltaMovement().scale(0.95).add(vec3d.normalize().scale(d)));
                 if (this.returnTimer == 0) {
-                    this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0f, 1.0f);
+                    this.playSound(SoundEvents.TRIDENT_RETURN, 10.0f, 1.0f);
                 }
                 ++this.returnTimer;
             }
@@ -167,55 +167,55 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     private boolean isOwnerAlive() {
         Entity entity = this.getOwner();
         if (entity != null && entity.isAlive()) {
-            return !(entity instanceof ServerPlayerEntity) || !entity.isSpectator();
+            return !(entity instanceof ServerPlayer) || !entity.isSpectator();
         } else {
             return false;
         }
     }
 
     @Override
-    public void onPlayerCollision(PlayerEntity player) {
+    public void playerTouch(Player player) {
         Entity entity = this.getOwner();
-        if (entity == null || entity.getUuid().equals(player.getUuid())) {
-            super.onPlayerCollision(player);
+        if (entity == null || entity.getUUID().equals(player.getUUID())) {
+            super.playerTouch(player);
         }
     }
 
     @Override
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
+    public void readAdditionalSaveData(CompoundTag nbt) {
+        super.readAdditionalSaveData(nbt);
         if (nbt.contains("javelin", 10)) {
-            this.javelin = ItemStack.fromNbt(this.getRegistryManager(), nbt.getCompound("javelin")).orElse(this.getDefaultItemStack());
-            this.dataTracker.set(ENCHANTMENT_GLINT, this.javelin.hasGlint());
+            this.javelin = ItemStack.parse(this.registryAccess(), nbt.getCompound("javelin")).orElse(this.getDefaultPickupItem());
+            this.entityData.set(ENCHANTMENT_GLINT, this.javelin.hasFoil());
         }
 
         this.piercedEntities.clear();
         if (nbt.contains("javelin_hit", 9)) {
-            for (NbtElement hitEntity : nbt.getList("javelin_hit", 10)) {
-                this.piercedEntities.add(((NbtCompound) hitEntity).getUuid("UUID"));
+            for (Tag hitEntity : nbt.getList("javelin_hit", 10)) {
+                this.piercedEntities.add(((CompoundTag) hitEntity).getUUID("UUID"));
             }
         }
         this.dealtDamage = nbt.getBoolean("DealtDamage");
-        this.dataTracker.set(LOYALTY, this.getLoyalty(this.getItemStack()));
+        this.entityData.set(LOYALTY, this.getLoyalty(this.getPickupItemStackOrigin()));
     }
 
     private byte getLoyalty(ItemStack stack) {
-        if (this.getWorld() instanceof ServerWorld serverWorld) {
-            return (byte) MathHelper.clamp(EnchantmentHelper.getTridentReturnAcceleration(serverWorld, stack, this), 0, 127);
+        if (this.level() instanceof ServerLevel serverWorld) {
+            return (byte) Mth.clamp(EnchantmentHelper.getTridentReturnToOwnerAcceleration(serverWorld, stack, this), 0, 127);
         }
         return 0;
     }
 
     @Override
-    public void writeCustomDataToNbt(NbtCompound nbt) {
-        super.writeCustomDataToNbt(nbt);
+    public void addAdditionalSaveData(CompoundTag nbt) {
+        super.addAdditionalSaveData(nbt);
         if (!this.javelin.isEmpty()) {
-            nbt.put("javelin", this.javelin.encode(this.getRegistryManager()));
+            nbt.put("javelin", this.javelin.save(this.registryAccess()));
 
-            NbtList tags = new NbtList();
+            ListTag tags = new ListTag();
             for (UUID uuid : this.piercedEntities) {
-                NbtCompound c = new NbtCompound();
-                c.putUuid("UUID", uuid);
+                CompoundTag c = new CompoundTag();
+                c.putUUID("UUID", uuid);
                 tags.add(c);
             }
             nbt.putBoolean("DealtDamage", this.dealtDamage);
@@ -224,34 +224,34 @@ public class JavelinEntity extends PersistentProjectileEntity implements FlyingI
     }
 
     @Override
-    public void age() {
-        int i = this.dataTracker.get(LOYALTY);
-        if (this.pickupType != PersistentProjectileEntity.PickupPermission.ALLOWED || i <= 0) {
-            super.age();
+    public void tickDespawn() {
+        int i = this.entityData.get(LOYALTY);
+        if (this.pickup != AbstractArrow.Pickup.ALLOWED || i <= 0) {
+            super.tickDespawn();
         }
     }
 
     @Override
-    public ItemStack getWeaponStack() {
+    public ItemStack getWeaponItem() {
         return this.javelin.copy();
     }
 
     @Override
-    public ItemStack getStack() {
+    public ItemStack getItem() {
         return this.javelin;
     }
 
     static {
-        LOYALTY = DataTracker.registerData(JavelinEntity.class, TrackedDataHandlerRegistry.BYTE);
-        ENCHANTMENT_GLINT = DataTracker.registerData(JavelinEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        LOYALTY = SynchedEntityData.defineId(JavelinEntity.class, EntityDataSerializers.BYTE);
+        ENCHANTMENT_GLINT = SynchedEntityData.defineId(JavelinEntity.class, EntityDataSerializers.BOOLEAN);
     }
 
     private DamageSource createDamageSource(Entity source, Entity attacker) {
-        return attacker.getDamageSources().create(EntityInit.JAVELIN, source, attacker);
+        return attacker.damageSources().source(EntityInit.JAVELIN, source, attacker);
     }
 
     @Override
-    protected ItemStack getDefaultItemStack() {
+    protected ItemStack getDefaultPickupItem() {
         return this.javelin;
     }
 

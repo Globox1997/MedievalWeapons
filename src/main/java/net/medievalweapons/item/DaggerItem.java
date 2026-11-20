@@ -1,40 +1,40 @@
 package net.medievalweapons.item;
 
 import net.medievalweapons.MedievalMain;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
 
 public class DaggerItem extends SwordItem {
 
-    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("sneaking_attack_bonus");
-    private static final EntityAttributeModifier ATTACK_BONUS_MODIFIER;
+    public static final ResourceLocation ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("sneaking_attack_bonus");
+    private static final AttributeModifier ATTACK_BONUS_MODIFIER;
 
-    public DaggerItem(ToolMaterial material, Settings settings) {
+    public DaggerItem(Tier material, Properties settings) {
         super(material, settings);
     }
 
-    public static void updateAttackBonus(PlayerEntity player) {
-        EntityAttributeInstance entityAttributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+    public static void updateAttackBonus(Player player) {
+        AttributeInstance entityAttributeInstance = player.getAttribute(Attributes.ATTACK_DAMAGE);
         if (entityAttributeInstance == null) {
             return;
         }
-        boolean active = player.getMainHandStack().getItem() instanceof DaggerItem && (player.isSneaking() || player.hasStatusEffect(StatusEffects.INVISIBILITY));
+        boolean active = player.getMainHandItem().getItem() instanceof DaggerItem && (player.isShiftKeyDown() || player.hasEffect(MobEffects.INVISIBILITY));
         boolean hasModifier = entityAttributeInstance.hasModifier(ATTACK_BONUS_MODIFIER_ID);
         if (active && !hasModifier) {
-            entityAttributeInstance.addTemporaryModifier(ATTACK_BONUS_MODIFIER);
+            entityAttributeInstance.addTransientModifier(ATTACK_BONUS_MODIFIER);
         } else if (!active && hasModifier) {
             entityAttributeInstance.removeModifier(ATTACK_BONUS_MODIFIER_ID);
         }
     }
 
     static {
-        ATTACK_BONUS_MODIFIER = new EntityAttributeModifier(ATTACK_BONUS_MODIFIER_ID, 2.0D, EntityAttributeModifier.Operation.ADD_VALUE);
+        ATTACK_BONUS_MODIFIER = new AttributeModifier(ATTACK_BONUS_MODIFIER_ID, 2.0D, AttributeModifier.Operation.ADD_VALUE);
     }
 
 }

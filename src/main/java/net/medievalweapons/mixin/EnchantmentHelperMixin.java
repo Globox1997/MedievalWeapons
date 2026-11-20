@@ -11,34 +11,34 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.item.JavelinItem;
 import net.medievalweapons.item.LanceItem;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.core.Holder;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
 
-    @Inject(method = "getPossibleEntries", at = @At("TAIL"), cancellable = true)
-    private static void getPossibleEntriesMixin(int level, ItemStack stack, Stream<RegistryEntry<Enchantment>> possibleEnchantments, CallbackInfoReturnable<List<EnchantmentLevelEntry>> info) {
-        List<EnchantmentLevelEntry> currentEnchantments = info.getReturnValue();
+    @Inject(method = "getAvailableEnchantmentResults", at = @At("TAIL"), cancellable = true)
+    private static void getPossibleEntriesMixin(int level, ItemStack stack, Stream<Holder<Enchantment>> possibleEnchantments, CallbackInfoReturnable<List<EnchantmentInstance>> info) {
+        List<EnchantmentInstance> currentEnchantments = info.getReturnValue();
         if (currentEnchantments != null) {
             if (stack.getItem() instanceof JavelinItem) {
-                List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
+                List<EnchantmentInstance> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if ((enchantment.enchantment.value().isAcceptableItem(stack) && enchantment.enchantment.value().isPrimaryItem(stack)) || enchantment.enchantment.matchesKey(Enchantments.IMPALING)
-                            || enchantment.enchantment.matchesKey(Enchantments.PIERCING) || enchantment.enchantment.matchesKey(Enchantments.LOYALTY)) {
+                    if ((enchantment.enchantment.value().canEnchant(stack) && enchantment.enchantment.value().isPrimaryItem(stack)) || enchantment.enchantment.is(Enchantments.IMPALING)
+                            || enchantment.enchantment.is(Enchantments.PIERCING) || enchantment.enchantment.is(Enchantments.LOYALTY)) {
                         enchantments.add(enchantment);
                     }
                 });
 
                 info.setReturnValue(enchantments);
             } else if (stack.getItem() instanceof LanceItem) {
-                List<EnchantmentLevelEntry> enchantments = new ArrayList<>();
+                List<EnchantmentInstance> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if (enchantment.enchantment.value().isAcceptableItem(stack) && enchantment.enchantment.value().isPrimaryItem(stack) && !enchantment.enchantment.matchesKey(Enchantments.SWEEPING_EDGE)) {
+                    if (enchantment.enchantment.value().canEnchant(stack) && enchantment.enchantment.value().isPrimaryItem(stack) && !enchantment.enchantment.is(Enchantments.SWEEPING_EDGE)) {
                         enchantments.add(enchantment);
                     }
                 });

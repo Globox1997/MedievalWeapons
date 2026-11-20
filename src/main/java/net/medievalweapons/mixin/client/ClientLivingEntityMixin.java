@@ -1,6 +1,5 @@
 package net.medievalweapons.mixin.client;
 
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -12,21 +11,22 @@ import net.medievalweapons.init.SoundInit;
 import net.medievalweapons.init.TagInit;
 import net.medievalweapons.item.BigAxeItem;
 import net.medievalweapons.item.LongSwordItem;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 
 @Environment(EnvType.CLIENT)
 @Mixin(LivingEntity.class)
 public class ClientLivingEntityMixin {
 
-    @Inject(method = "handleStatus", at = @At(value = "FIELD", target = "Lnet/minecraft/sound/SoundEvents;ITEM_SHIELD_BLOCK:Lnet/minecraft/sound/SoundEvent;"), cancellable = true)
+    @Inject(method = "handleEntityEvent", at = @At(value = "FIELD", target = "Lnet/minecraft/sounds/SoundEvents;SHIELD_BLOCK:Lnet/minecraft/sounds/SoundEvent;"), cancellable = true)
     private void handleStatusMixin(byte status, CallbackInfo info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
-        ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof BigAxeItem) {
-            livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
+        ItemStack itemStack = livingEntity.getMainHandItem();
+        if (itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof BigAxeItem) {
+            livingEntity.playSound(SoundInit.PARRYING_EVENT, 1.0F, 0.9F + livingEntity.level().getRandom().nextFloat() * 0.2F);
             info.cancel();
-        } else if (itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem) {
-            livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F, 0.9F + livingEntity.getWorld().getRandom().nextFloat() * 0.2F);
+        } else if (itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem) {
+            livingEntity.playSound(SoundInit.SWORD_PARRYING_EVENT, 1.0F, 0.9F + livingEntity.level().getRandom().nextFloat() * 0.2F);
             info.cancel();
         }
     }

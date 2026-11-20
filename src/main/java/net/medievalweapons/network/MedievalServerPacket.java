@@ -5,11 +5,11 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.medievalweapons.access.PlayerAccess;
 import net.medievalweapons.item.NinjatoItem;
 import net.medievalweapons.network.packet.AttackPacket;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.ExperienceOrbEntity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 
 public class MedievalServerPacket {
 
@@ -19,10 +19,10 @@ public class MedievalServerPacket {
         PayloadTypeRegistry.playC2S().register(AttackPacket.PACKET_ID, AttackPacket.PACKET_CODEC);
         ServerPlayNetworking.registerGlobalReceiver(AttackPacket.PACKET_ID, (payload, context) -> {
             int entityId = payload.entityId();
-            ServerPlayerEntity player = context.player();
+            ServerPlayer player = context.player();
             player.server.execute(() -> {
-                player.updateLastActionTime();
-                Entity target = player.getServerWorld().getEntityById(entityId);
+                player.resetLastActionTime();
+                Entity target = player.serverLevel().getEntity(entityId);
                 if (canOffhandAttack(player, target)) {
                     ((PlayerAccess) player).doOffhandAttack(target);
                 }
@@ -30,20 +30,20 @@ public class MedievalServerPacket {
         });
     }
 
-    private static boolean canOffhandAttack(ServerPlayerEntity player, Entity target) {
+    private static boolean canOffhandAttack(ServerPlayer player, Entity target) {
         if (target == null || target == player || !player.isAlive() || player.isSpectator()) {
             return false;
         }
-        if (target instanceof ItemEntity || target instanceof ExperienceOrbEntity || target instanceof PersistentProjectileEntity) {
+        if (target instanceof ItemEntity || target instanceof ExperienceOrb || target instanceof AbstractArrow) {
             return false;
         }
-        if (!(player.getMainHandStack().getItem() instanceof NinjatoItem) || !(player.getOffHandStack().getItem() instanceof NinjatoItem)) {
+        if (!(player.getMainHandItem().getItem() instanceof NinjatoItem) || !(player.getOffhandItem().getItem() instanceof NinjatoItem)) {
             return false;
         }
         if (((PlayerAccess) player).getLastAttackedOffhandTicks() < MIN_OFFHAND_ATTACK_TICKS) {
             return false;
         }
-        return player.canInteractWithEntityIn(target.getBoundingBox(), 1.0);
+        return player.canInteractWithEntity(target.getBoundingBox(), 1.0);
     }
 
 }

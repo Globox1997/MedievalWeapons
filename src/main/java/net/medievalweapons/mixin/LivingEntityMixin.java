@@ -10,13 +10,13 @@ import net.medievalweapons.item.BigAxeItem;
 import net.medievalweapons.item.LanceItem;
 import net.medievalweapons.item.LongSwordItem;
 import net.medievalweapons.item.RapierItem;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,48 +25,48 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-    public LivingEntityMixin(EntityType<?> type, World world) {
+    public LivingEntityMixin(EntityType<?> type, Level world) {
         super(type, world);
     }
 
-    @Inject(method = "Lnet/minecraft/entity/LivingEntity;getHandSwingDuration()I", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getCurrentSwingDuration()I", at = @At("HEAD"), cancellable = true)
     private void getHandSwingDuration(CallbackInfoReturnable<Integer> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
-        ItemStack itemStack = livingEntity.getMainHandStack();
-        if (!CompatInit.isBetterCombatLoaded && itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+        ItemStack itemStack = livingEntity.getMainHandItem();
+        if (!CompatInit.isBetterCombatLoaded && itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                 || itemStack.getItem() instanceof BigAxeItem || itemStack.getItem() instanceof LanceItem) {
             info.setReturnValue(10);
         }
     }
 
     // Items can not block projectiles
-    @Inject(method = "blockedByShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/PersistentProjectileEntity;getPierceLevel()B"), cancellable = true)
+    @Inject(method = "isDamageSourceBlocked", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;getPierceLevel()B"), cancellable = true)
     private void blockedByShieldMixin(DamageSource source, CallbackInfoReturnable<Boolean> info) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
-        ItemStack itemStack = livingEntity.getMainHandStack();
-        if (itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+        ItemStack itemStack = livingEntity.getMainHandItem();
+        if (itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                 || itemStack.getItem() instanceof BigAxeItem) {
             info.setReturnValue(false);
         }
     }
 
-    @WrapWithCondition(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;takeKnockback(DDD)V"))
+    @WrapWithCondition(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V"))
     private boolean damageKnockbackMixin(LivingEntity instance, double strength, double x, double z, DamageSource source) {
-        return !(source.getAttacker() instanceof LivingEntity attacker && source.getSource() == attacker && attacker.getMainHandStack().getItem() instanceof RapierItem);
+        return !(source.getEntity() instanceof LivingEntity attacker && source.getDirectEntity() == attacker && attacker.getMainHandItem().getItem() instanceof RapierItem);
     }
 
-    @WrapOperation(method = "damage",at = @At(value = "INVOKE",target = "Lnet/minecraft/entity/LivingEntity;damageShield(F)V"))
+    @WrapOperation(method = "hurt",at = @At(value = "INVOKE",target = "Lnet/minecraft/world/entity/LivingEntity;hurtCurrentlyUsedShield(F)V"))
     private void damageMixin(LivingEntity instance, float amount, Operation<Void> original){
         LivingEntity livingEntity = (LivingEntity) (Object) this;
-        ItemStack itemStack = livingEntity.getActiveItem();
-        if (itemStack.isIn(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.isIn(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
+        ItemStack itemStack = livingEntity.getUseItem();
+        if (itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
                 || itemStack.getItem() instanceof BigAxeItem) {
-            if (livingEntity instanceof PlayerEntity) {
-                ((PlayerEntity) livingEntity).getItemCooldownManager().set(itemStack.getItem(), ConfigInit.CONFIG.weapon_blocking_cooldown);
+            if (livingEntity instanceof Player) {
+                ((Player) livingEntity).getCooldowns().addCooldown(itemStack.getItem(), ConfigInit.CONFIG.weapon_blocking_cooldown);
             }
-            livingEntity.clearActiveItem();
-            if (!this.getWorld().isClient()) {
-                livingEntity.getMainHandStack().damage(1, livingEntity, LivingEntity.getSlotForHand(livingEntity.getActiveHand()));
+            livingEntity.stopUsingItem();
+            if (!this.level().isClientSide()) {
+                livingEntity.getMainHandItem().hurtAndBreak(1, livingEntity, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
             }
         }else{
             original.call(instance,amount);

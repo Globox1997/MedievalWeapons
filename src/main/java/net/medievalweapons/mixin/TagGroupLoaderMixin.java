@@ -10,17 +10,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.compat.CompatItems;
-import net.minecraft.registry.tag.TagGroupLoader;
-import net.minecraft.registry.tag.TagGroupLoader.TrackedEntry;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagLoader;
+import net.minecraft.tags.TagLoader.EntryWithSource;
 
-@Mixin(TagGroupLoader.class)
+@Mixin(TagLoader.class)
 public class TagGroupLoaderMixin<T> {
 
-    @Inject(method = "buildGroup", at = @At("HEAD"))
-    private void buildGroupMixin(Map<Identifier, List<TrackedEntry>> map, CallbackInfoReturnable<Map<Identifier, Collection<T>>> info) {
+    @Inject(method = "build(Ljava/util/Map;)Ljava/util/Map;", at = @At("HEAD"))
+    private void buildGroupMixin(Map<ResourceLocation, List<EntryWithSource>> map, CallbackInfoReturnable<Map<ResourceLocation, Collection<T>>> info) {
         if (!CompatItems.isDragonLootLoaded) {
-            map.remove(Identifier.of("dragonloot", "explosion_resistant"));
+            map.remove(ResourceLocation.fromNamespaceAndPath("dragonloot", "explosion_resistant"));
         }
     }
 }
