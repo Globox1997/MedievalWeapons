@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/golden_dagger"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/golden_dagger_bc"
+    },
+    "property": "medievalweapons:bettercombat_loaded"
+  }
+}

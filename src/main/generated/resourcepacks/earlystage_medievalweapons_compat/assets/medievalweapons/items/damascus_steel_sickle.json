@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/damascus_steel_sickle_gui"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/damascus_steel_sickle"
+    },
+    "property": "minecraft:display_context"
+  }
+}

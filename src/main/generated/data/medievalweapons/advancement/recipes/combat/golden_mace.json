@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_mace"
+        "recipes": "medievalweapons:golden_mace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

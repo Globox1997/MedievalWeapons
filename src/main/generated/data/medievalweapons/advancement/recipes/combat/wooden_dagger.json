@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_air": {
+    "has_planks": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:air"
+            "items": "#minecraft:planks"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:wooden_dagger"
+        "recipes": "medievalweapons:wooden_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_air"
+      "has_planks"
     ]
   ],
   "rewards": {

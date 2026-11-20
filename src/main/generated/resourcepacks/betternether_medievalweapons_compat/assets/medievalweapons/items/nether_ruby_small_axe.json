@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/nether_ruby_small_axe_gui"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/nether_ruby_small_axe"
+    },
+    "property": "minecraft:display_context"
+  }
+}

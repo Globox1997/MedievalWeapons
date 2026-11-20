@@ -1,13 +1,5 @@
 {
   "parent": "medievalweapons:item/rapier",
-  "overrides": [
-    {
-      "model": "medievalweapons:item/dragon_rapier_gui",
-      "predicate": {
-        "medievalweapons:gui": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "medievalweapons:item/dragon_rapier"
   }

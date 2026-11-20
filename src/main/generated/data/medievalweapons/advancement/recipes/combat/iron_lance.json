@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:iron_lance"
+        "recipes": "medievalweapons:iron_lance"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

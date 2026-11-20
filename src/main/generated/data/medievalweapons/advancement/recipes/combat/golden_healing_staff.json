@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_healing_staff"
+        "recipes": "medievalweapons:golden_healing_staff"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

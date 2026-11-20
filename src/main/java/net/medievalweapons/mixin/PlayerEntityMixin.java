@@ -3,7 +3,6 @@ package net.medievalweapons.mixin;
 import java.util.List;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
-import com.mojang.authlib.GameProfile;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -13,17 +12,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.medievalweapons.access.PlayerAccess;
-import net.medievalweapons.init.TagInit;
-import net.medievalweapons.item.BigAxeItem;
-import net.medievalweapons.item.LongSwordItem;
 import net.medievalweapons.item.RapierItem;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -34,11 +30,10 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.boss.EnderDragonPart;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragonPart;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -49,8 +44,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
     @Unique
     private int lastAttackedOffhandTicks;
 
-    public PlayerEntityMixin(Level world, BlockPos pos, float yaw, GameProfile profile) {
-        super(EntityType.PLAYER, world);
+    public PlayerEntityMixin(EntityType<? extends LivingEntity> type, Level world) {
+        super(type, world);
     }
 
     @Inject(method = "tick()V", at = @At(value = "FIELD", target = "Lnet/minecraft/world/entity/player/Player;attackStrengthTicker:I", ordinal = 0))
@@ -66,7 +61,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
         if (target.skipAttackInteraction(this)) {
             return;
         }
-        target.invulnerableTime = 0;
+        target.setInvulnerableTime(0);
 
         ItemStack itemStack = this.getItemInHand(InteractionHand.OFF_HAND);
         float f = (float) (this.getAttributeValue(Attributes.ATTACK_DAMAGE) - getWeaponAttackDamage(this.getMainHandItem()) + getWeaponAttackDamage(itemStack));
@@ -88,7 +83,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 i += 1.0f;
                 bl2 = true;
             }
-            boolean bl3 = bl && this.fallDistance > 0.0f && !this.onGround() && !this.onClimbable() && !this.isInWater() && !this.hasEffect(MobEffects.BLINDNESS) && !this.isPassenger()
+            boolean bl3 = bl && this.fallDistance > 0.0 && !this.onGround() && !this.onClimbable() && !this.isInWater() && !this.hasEffect(MobEffects.BLINDNESS) && !this.isPassenger()
                     && target instanceof LivingEntity;
             bl3 = bl3 && !this.isSprinting();
             if (bl3) {
@@ -96,8 +91,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
             }
             f += g;
             boolean bl42 = false;
-            double d = this.walkDist - this.walkDistO;
-            if (bl && !bl3 && !bl2 && this.onGround() && d < (double) this.getSpeed() && itemStack.getItem() instanceof SwordItem) {
+            if (bl && !bl3 && !bl2 && this.onGround() && this.getKnownMovement().horizontalDistanceSqr() < Mth.square(this.getSpeed() * 2.5) && itemStack.is(ItemTags.SWORDS)) {
                 bl42 = true;
             }
             float j = 0.0f;
@@ -105,11 +99,12 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                 j = livingEntity.getHealth();
             }
             Vec3 vec3d = target.getDeltaMovement();
-            boolean bl6 = target.hurt(target.damageSources().playerAttack((Player) (Object) this), f);
+            DamageSource attackSource = target.damageSources().playerAttack((Player) (Object) this);
+            boolean bl6 = target.hurtOrSimulate(attackSource, f);
             if (bl6) {
                 if (i > 0) {
                     if (target instanceof LivingEntity livingEntity) {
-                        livingEntity.knockback((float) i * 0.5f, Mth.sin(this.getYRot() * ((float) Math.PI / 180)), -Mth.cos(this.getYRot() * ((float) Math.PI / 180)));
+                        livingEntity.knockback((float) i * 0.5f, Mth.sin(this.getYRot() * ((float) Math.PI / 180)), -Mth.cos(this.getYRot() * ((float) Math.PI / 180)), attackSource, f);
                     } else {
                         target.push(-Mth.sin(this.getYRot() * ((float) Math.PI / 180)) * (float) i * 0.5f, 0.1,
                                 Mth.cos(this.getYRot() * ((float) Math.PI / 180)) * (float) i * 0.5f);
@@ -117,22 +112,25 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                     this.setDeltaMovement(this.getDeltaMovement().multiply(0.6, 1.0, 0.6));
                     this.setSprinting(false);
                 }
-                if (bl42) {
+                if (bl42 && this.level() instanceof ServerLevel serverWorld) {
                     float l = 1.0f + (float) this.getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO) * f;
                     List<LivingEntity> list = this.level().getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1.0, 0.25, 1.0));
                     for (LivingEntity livingEntity : list) {
-                        if (livingEntity == this || livingEntity == target || this.isAlliedTo(livingEntity) || livingEntity instanceof ArmorStand && ((ArmorStand) livingEntity).isMarker()
+                        if (livingEntity == this || livingEntity == target || this.isAlliedTo(livingEntity) || livingEntity instanceof ArmorStand armorStand && armorStand.isMarker()
                                 || !(this.distanceToSqr(livingEntity) < 9.0))
                             continue;
-                        livingEntity.knockback(0.4f, Mth.sin(this.getYRot() * ((float) Math.PI / 180)), -Mth.cos(this.getYRot() * ((float) Math.PI / 180)));
-                        livingEntity.hurt(livingEntity.damageSources().playerAttack((Player) (Object) this), l);
+                        DamageSource sweepSource = livingEntity.damageSources().playerAttack((Player) (Object) this);
+                        livingEntity.knockback(0.4f, Mth.sin(this.getYRot() * ((float) Math.PI / 180)), -Mth.cos(this.getYRot() * ((float) Math.PI / 180)), sweepSource, l);
+                        livingEntity.hurtServer(serverWorld, sweepSource, l);
                     }
                     this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, this.getSoundSource(), 1.0f, 1.0f);
-                    ((Player) (Object) this).sweepAttack();
+                    double dx = -Mth.sin(this.getYRot() * ((float) Math.PI / 180));
+                    double dz = Mth.cos(this.getYRot() * ((float) Math.PI / 180));
+                    serverWorld.sendParticles(ParticleTypes.SWEEP_ATTACK, this.getX() + dx, this.getY(0.5), this.getZ() + dz, 0, dx, 0.0, dz, 0.0);
                 }
-                if (target instanceof ServerPlayer serverPlayerEntity && target.hurtMarked) {
+                if (target instanceof ServerPlayer serverPlayerEntity && target.syncVelocity) {
                     serverPlayerEntity.connection.send(new ClientboundSetEntityMotionPacket(target));
-                    target.hurtMarked = false;
+                    target.syncVelocity = false;
                     target.setDeltaMovement(vec3d);
                 }
                 if (bl3) {
@@ -174,7 +172,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
                         int n = (int) ((double) m * 0.5);
                         serverWorld.sendParticles(ParticleTypes.DAMAGE_INDICATOR, target.getX(), target.getY(0.5), target.getZ(), n, 0.1, 0.0, 0.1, 0.2);
                     }
-                    target.invulnerableTime = 0;
+                    target.setInvulnerableTime(0);
                 }
                 ((Player) (Object) this).causeFoodExhaustion(0.1f);
             } else {
@@ -194,22 +192,18 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerAc
         return damage[0];
     }
 
-    @WrapWithCondition(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V"))
-    private boolean attackKnockbackMixin(LivingEntity target, double strength, double x, double z) {
+    @WrapWithCondition(method = "doSweepAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDDLnet/minecraft/world/damagesource/DamageSource;F)V"))
+    private boolean attackKnockbackMixin(LivingEntity target, double strength, double x, double z, DamageSource source, float damage) {
         return !(this.getMainHandItem().getItem() instanceof RapierItem);
     }
 
-    @Override
-    public boolean canDisableShield() {
-        ItemStack itemStack = this.getMainHandItem();
-        return super.canDisableShield() || itemStack.is(TagInit.ACROSS_DOUBLE_HANDED_ITEMS) || itemStack.is(TagInit.DOUBLE_HANDED_ITEMS) || itemStack.getItem() instanceof LongSwordItem
-                || itemStack.getItem() instanceof BigAxeItem;
+    @WrapWithCondition(method = "causeExtraKnockback", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDDLnet/minecraft/world/damagesource/DamageSource;FZ)V"))
+    private boolean extraKnockbackMixin(LivingEntity target, double strength, double x, double z, DamageSource source, float damage, boolean comesFromEffect) {
+        return !(this.getMainHandItem().getItem() instanceof RapierItem);
     }
 
     @Shadow
-    public float getCurrentItemAttackStrengthDelay() {
-        return 0.0F;
-    }
+    public abstract float getCurrentItemAttackStrengthDelay();
 
     @Override
     public void doOffhandAttack(Entity entity) {

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:netherite_lance"
+        "recipes": "medievalweapons:netherite_lance"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

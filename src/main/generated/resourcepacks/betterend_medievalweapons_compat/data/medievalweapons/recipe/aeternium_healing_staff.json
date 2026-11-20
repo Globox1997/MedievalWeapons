@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "betterend:aeternium_ingot"
-    },
-    "e": {
-      "item": "betterend:leather_wrapped_stick"
-    }
+    "d": "betterend:aeternium_ingot",
+    "e": "betterend:leather_wrapped_stick"
   },
   "pattern": [
     "  d",

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:diamond_mace"
+        "recipes": "medievalweapons:diamond_mace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

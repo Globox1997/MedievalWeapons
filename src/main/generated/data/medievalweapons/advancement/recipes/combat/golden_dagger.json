@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_dagger"
+        "recipes": "medievalweapons:golden_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

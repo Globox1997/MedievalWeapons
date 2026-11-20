@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "deeperdarker:reinforced_echo_shard"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_long_sword"
-  },
+  "addition": "deeperdarker:reinforced_echo_shard",
+  "base": "medievalweapons:netherite_long_sword",
   "result": {
     "id": "medievalweapons:warden_long_sword"
   },
-  "template": {
-    "item": "deeperdarker:warden_upgrade_smithing_template"
-  }
+  "template": "deeperdarker:warden_upgrade_smithing_template"
 }

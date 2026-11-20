@@ -1,16 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "minecraft:netherite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:diamond_rapier"
-  },
+  "addition": "minecraft:netherite_ingot",
+  "base": "medievalweapons:diamond_rapier",
   "result": {
-    "count": 1,
     "id": "medievalweapons:netherite_rapier"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

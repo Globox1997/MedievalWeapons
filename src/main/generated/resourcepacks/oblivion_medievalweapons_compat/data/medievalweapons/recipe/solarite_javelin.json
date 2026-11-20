@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "oblivion:solarite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:scarlet_javelin"
-  },
+  "addition": "oblivion:solarite_ingot",
+  "base": "medievalweapons:scarlet_javelin",
   "result": {
     "id": "medievalweapons:solarite_javelin"
   },
-  "template": {
-    "item": "oblivion:solarite_upgrade_smithing_template"
-  }
+  "template": "oblivion:solarite_upgrade_smithing_template"
 }

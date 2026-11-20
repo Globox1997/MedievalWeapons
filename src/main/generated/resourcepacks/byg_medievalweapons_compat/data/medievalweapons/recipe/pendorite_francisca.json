@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "byg:pendorite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_francisca"
-  },
+  "addition": "byg:pendorite_ingot",
+  "base": "medievalweapons:netherite_francisca",
   "result": {
     "id": "medievalweapons:pendorite_francisca"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

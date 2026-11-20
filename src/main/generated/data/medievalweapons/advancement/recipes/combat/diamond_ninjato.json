@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:diamond_ninjato"
+        "recipes": "medievalweapons:diamond_ninjato"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

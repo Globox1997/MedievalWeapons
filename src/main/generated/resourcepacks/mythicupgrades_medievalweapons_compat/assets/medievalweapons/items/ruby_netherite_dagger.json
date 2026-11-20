@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/ruby_netherite_dagger"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/ruby_netherite_dagger_bc"
+    },
+    "property": "medievalweapons:bettercombat_loaded"
+  }
+}

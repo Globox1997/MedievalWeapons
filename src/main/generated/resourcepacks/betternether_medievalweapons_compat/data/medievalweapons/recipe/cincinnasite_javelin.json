@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "betternether:cincinnasite_ingot"
-    },
-    "e": {
-      "item": "betternether:nether_reed_stem"
-    }
+    "d": "betternether:cincinnasite_ingot",
+    "e": "betternether:nether_reed_stem"
   },
   "pattern": [
     "d  ",

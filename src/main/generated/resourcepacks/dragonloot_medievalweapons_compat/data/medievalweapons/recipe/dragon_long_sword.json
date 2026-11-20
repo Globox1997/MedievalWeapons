@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "dragonloot:dragon_scale"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_long_sword"
-  },
+  "addition": "dragonloot:dragon_scale",
+  "base": "medievalweapons:netherite_long_sword",
   "result": {
     "id": "medievalweapons:dragon_long_sword"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

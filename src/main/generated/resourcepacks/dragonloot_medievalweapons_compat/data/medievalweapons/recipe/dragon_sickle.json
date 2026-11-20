@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "dragonloot:dragon_scale"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_sickle"
-  },
+  "addition": "dragonloot:dragon_scale",
+  "base": "medievalweapons:netherite_sickle",
   "result": {
     "id": "medievalweapons:dragon_sickle"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

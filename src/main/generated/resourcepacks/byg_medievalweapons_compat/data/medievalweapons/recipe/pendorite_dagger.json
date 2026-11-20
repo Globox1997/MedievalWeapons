@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "byg:pendorite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_dagger"
-  },
+  "addition": "byg:pendorite_ingot",
+  "base": "medievalweapons:netherite_dagger",
   "result": {
     "id": "medievalweapons:pendorite_dagger"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

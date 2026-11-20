@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:netherite_rapier"
+        "recipes": "medievalweapons:netherite_rapier"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

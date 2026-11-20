@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "earlystage:damascus_steel_ingot"
-    },
-    "e": {
-      "item": "minecraft:stick"
-    }
+    "d": "earlystage:damascus_steel_ingot",
+    "e": "minecraft:stick"
   },
   "pattern": [
     "de",

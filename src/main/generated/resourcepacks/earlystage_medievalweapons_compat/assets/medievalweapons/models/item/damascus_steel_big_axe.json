@@ -1,25 +1,5 @@
 {
   "parent": "medievalweapons:item/big_axe",
-  "overrides": [
-    {
-      "model": "medievalweapons:item/damascus_steel_big_axe_bc",
-      "predicate": {
-        "bettercombat:loaded": 1.0
-      }
-    },
-    {
-      "model": "medievalweapons:item/damascus_steel_big_axe_bc",
-      "predicate": {
-        "medievalweapons:offhand": 1.0
-      }
-    },
-    {
-      "model": "medievalweapons:item/damascus_steel_big_axe_gui",
-      "predicate": {
-        "medievalweapons:gui": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "medievalweapons:item/damascus_steel_big_axe"
   }

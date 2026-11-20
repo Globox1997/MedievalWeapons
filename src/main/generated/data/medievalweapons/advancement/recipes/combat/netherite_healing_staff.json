@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:netherite_healing_staff"
+        "recipes": "medievalweapons:netherite_healing_staff"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

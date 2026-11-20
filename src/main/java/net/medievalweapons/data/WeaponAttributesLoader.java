@@ -1,12 +1,12 @@
 package net.medievalweapons.data;
 
 import com.google.gson.JsonObject;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.medievalweapons.MedievalMain;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,10 +31,10 @@ public class WeaponAttributesLoader implements DataProvider {
             Map.entry("small_axe", "bettercombat:axe")
     );
 
-    private final FabricDataOutput output;
+    private final FabricPackOutput output;
     private final Collection<String> materials;
 
-    public WeaponAttributesLoader(FabricDataOutput output, Collection<String> materials) {
+    public WeaponAttributesLoader(FabricPackOutput output, Collection<String> materials) {
         this.output = output;
         this.materials = materials;
     }
@@ -52,7 +52,7 @@ public class WeaponAttributesLoader implements DataProvider {
                 JsonObject json = new JsonObject();
                 json.addProperty("parent", parent);
 
-                ResourceLocation id = MedievalMain.identifierOf(material + "_" + item);
+                Identifier id = MedievalMain.identifierOf(material + "_" + item);
                 Path path = resolver.json(id);
                 futures.add(DataProvider.saveStable(writer, json, path));
             }

@@ -1,0 +1,35 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:display_context",
+    "cases": [
+      {
+        "when": "gui",
+        "model": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/deathsinger_sword_gui"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:condition",
+      "property": "medievalweapons:offhand",
+      "on_true": {
+        "type": "minecraft:model",
+        "model": "medievalweapons:item/deathsinger_sword_bc"
+      },
+      "on_false": {
+        "type": "minecraft:condition",
+        "property": "medievalweapons:bettercombat_loaded",
+        "on_true": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/deathsinger_sword_bc"
+        },
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/deathsinger_sword"
+        }
+      }
+    }
+  }
+}

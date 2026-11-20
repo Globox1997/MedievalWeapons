@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "dragonloot:dragon_scale"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_francisca"
-  },
+  "addition": "dragonloot:dragon_scale",
+  "base": "medievalweapons:netherite_francisca",
   "result": {
     "id": "medievalweapons:dragon_francisca"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

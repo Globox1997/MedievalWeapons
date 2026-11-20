@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicupgrades:sapphire"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_francisca"
-  },
+  "addition": "mythicupgrades:sapphire",
+  "base": "medievalweapons:netherite_francisca",
   "result": {
     "id": "medievalweapons:sapphire_netherite_francisca"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

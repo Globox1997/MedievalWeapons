@@ -1,18 +1,13 @@
 package net.medievalweapons.entity;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.levelz.util.BonusHelper;
 import net.medievalweapons.init.CompatInit;
 import net.medievalweapons.init.EntityInit;
 import net.medievalweapons.item.JavelinItem;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
+import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.network.syncher.SynchedEntityData.Builder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -20,24 +15,25 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class JavelinEntity extends AbstractArrow implements ItemSupplier {
-    private static final EntityDataAccessor<Byte> LOYALTY;
-    private static final EntityDataAccessor<Boolean> ENCHANTMENT_GLINT;
+    private static final EntityDataAccessor<Byte> LOYALTY = SynchedEntityData.defineId(JavelinEntity.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<Boolean> ENCHANTMENT_GLINT = SynchedEntityData.defineId(JavelinEntity.class, EntityDataSerializers.BOOLEAN);
     private ItemStack javelin;
     private final Set<UUID> piercedEntities = new HashSet<>();
     public int returnTimer;
@@ -63,7 +59,7 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    protected void defineSynchedData(Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(LOYALTY, (byte) 0);
         builder.define(ENCHANTMENT_GLINT, false);
@@ -74,7 +70,6 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
         return this.javelin.copy();
     }
 
-    @Environment(EnvType.CLIENT)
     public boolean enchantingGlint() {
         return this.entityData.get(ENCHANTMENT_GLINT);
     }
@@ -89,7 +84,7 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
         if (finished) {
             this.dealtDamage = true;
         }
-        float damage = Math.max(1.0F, ((JavelinItem) this.javelin.getItem()).getTier().getAttackDamageBonus()) * 2.35F;
+        float damage = Math.max(1.0F, ((JavelinItem) this.javelin.getItem()).getMaterial().attackDamageBonus()) * 2.35F;
 
         Entity owner = this.getOwner();
         DamageSource damageSource = createDamageSource(this, owner == null ? this : owner);
@@ -98,11 +93,11 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
         }
 
         if (CompatInit.isLevelZLoaded && owner instanceof Player playerEntity) {
-            BonusHelper.bowBonus(playerEntity,this);
+            BonusHelper.bowBonus(playerEntity, this);
         }
 
-        if (hitEntity.hurt(damageSource, damage)) {
-            if (hitEntity.getType() == EntityType.ENDERMAN) {
+        if (hitEntity.hurtOrSimulate(damageSource, damage)) {
+            if (hitEntity.getType() == EntityTypes.ENDERMAN) {
                 return;
             }
             if (this.level() instanceof ServerLevel serverWorld) {
@@ -123,9 +118,14 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    @Nullable
-    protected EntityHitResult findHitEntity(Vec3 currentPosition, Vec3 nextPosition) {
+    protected @Nullable EntityHitResult findHitEntity(Vec3 currentPosition, Vec3 nextPosition) {
         return this.dealtDamage ? null : super.findHitEntity(currentPosition, nextPosition);
+    }
+
+    @Override
+    protected Collection<EntityHitResult> findHitEntities(Vec3 from, Vec3 to) {
+        EntityHitResult hitResult = this.findHitEntity(from, to);
+        return hitResult != null ? List.of(hitResult) : List.of();
     }
 
     @Override
@@ -142,17 +142,14 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
         byte i = this.entityData.get(LOYALTY);
         if (i > 0 && (this.dealtDamage || this.isNoPhysics()) && entity != null) {
             if (!this.isOwnerAlive()) {
-                if (!this.level().isClientSide() && this.pickup == AbstractArrow.Pickup.ALLOWED) {
-                    this.spawnAtLocation(this.getPickupItem(), 0.1f);
+                if (this.level() instanceof ServerLevel serverLevel && this.pickup == AbstractArrow.Pickup.ALLOWED) {
+                    this.spawnAtLocation(serverLevel, this.getPickupItem(), 0.1f);
                 }
                 this.discard();
             } else {
                 this.setNoPhysics(true);
                 Vec3 vec3d = entity.getEyePosition().subtract(this.position());
                 this.setPosRaw(this.getX(), this.getY() + vec3d.y * 0.015 * (double) i, this.getZ());
-                if (this.level().isClientSide()) {
-                    this.yOld = this.getY();
-                }
                 double d = 0.05 * (double) i;
                 this.setDeltaMovement(this.getDeltaMovement().scale(0.95).add(vec3d.normalize().scale(d)));
                 if (this.returnTimer == 0) {
@@ -182,20 +179,17 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-        if (nbt.contains("javelin", 10)) {
-            this.javelin = ItemStack.parse(this.registryAccess(), nbt.getCompound("javelin")).orElse(this.getDefaultPickupItem());
-            this.entityData.set(ENCHANTMENT_GLINT, this.javelin.hasFoil());
-        }
-
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        input.read("javelin", ItemStack.CODEC).ifPresent(stack -> {
+            this.javelin = stack;
+            this.entityData.set(ENCHANTMENT_GLINT, stack.hasFoil());
+        });
         this.piercedEntities.clear();
-        if (nbt.contains("javelin_hit", 9)) {
-            for (Tag hitEntity : nbt.getList("javelin_hit", 10)) {
-                this.piercedEntities.add(((CompoundTag) hitEntity).getUUID("UUID"));
-            }
+        for (ValueInput hitEntity : input.childrenListOrEmpty("javelin_hit")) {
+            hitEntity.read("UUID", UUIDUtil.CODEC).ifPresent(this.piercedEntities::add);
         }
-        this.dealtDamage = nbt.getBoolean("DealtDamage");
+        this.dealtDamage = input.getBooleanOr("DealtDamage", false);
         this.entityData.set(LOYALTY, this.getLoyalty(this.getPickupItemStackOrigin()));
     }
 
@@ -207,24 +201,20 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
         if (!this.javelin.isEmpty()) {
-            nbt.put("javelin", this.javelin.save(this.registryAccess()));
-
-            ListTag tags = new ListTag();
+            output.store("javelin", ItemStack.CODEC, this.javelin);
+            ValueOutput.ValueOutputList hits = output.childrenList("javelin_hit");
             for (UUID uuid : this.piercedEntities) {
-                CompoundTag c = new CompoundTag();
-                c.putUUID("UUID", uuid);
-                tags.add(c);
+                hits.addChild().store("UUID", UUIDUtil.CODEC, uuid);
             }
-            nbt.putBoolean("DealtDamage", this.dealtDamage);
-            nbt.put("javelin_hit", tags);
+            output.putBoolean("DealtDamage", this.dealtDamage);
         }
     }
 
     @Override
-    public void tickDespawn() {
+    protected void tickDespawn() {
         int i = this.entityData.get(LOYALTY);
         if (this.pickup != AbstractArrow.Pickup.ALLOWED || i <= 0) {
             super.tickDespawn();
@@ -239,11 +229,6 @@ public class JavelinEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public ItemStack getItem() {
         return this.javelin;
-    }
-
-    static {
-        LOYALTY = SynchedEntityData.defineId(JavelinEntity.class, EntityDataSerializers.BYTE);
-        ENCHANTMENT_GLINT = SynchedEntityData.defineId(JavelinEntity.class, EntityDataSerializers.BOOLEAN);
     }
 
     private DamageSource createDamageSource(Entity source, Entity attacker) {

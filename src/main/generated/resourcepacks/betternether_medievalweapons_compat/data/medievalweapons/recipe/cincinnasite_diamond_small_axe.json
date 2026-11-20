@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "medievalweapons:cincinnasite_small_axe"
-    },
-    "e": {
-      "item": "minecraft:diamond"
-    }
+    "d": "medievalweapons:cincinnasite_small_axe",
+    "e": "minecraft:diamond"
   },
   "pattern": [
     "ede"

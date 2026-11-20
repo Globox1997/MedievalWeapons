@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:netherite_ninjato"
+        "recipes": "medievalweapons:netherite_ninjato"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

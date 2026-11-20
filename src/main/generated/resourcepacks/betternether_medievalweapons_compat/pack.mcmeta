@@ -3,10 +3,7 @@
     "description": {
       "text": "betternether medievalweapons compat"
     },
-    "pack_format": 15,
-    "supported_formats": {
-      "max_inclusive": 999,
-      "min_inclusive": 1
-    }
+    "max_format": 999,
+    "min_format": 97
   }
 }

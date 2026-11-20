@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_sickle"
+        "recipes": "medievalweapons:golden_sickle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

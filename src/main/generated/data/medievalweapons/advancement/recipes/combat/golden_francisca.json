@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_francisca"
+        "recipes": "medievalweapons:golden_francisca"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

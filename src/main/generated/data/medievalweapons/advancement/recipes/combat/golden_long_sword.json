@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_long_sword"
+        "recipes": "medievalweapons:golden_long_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

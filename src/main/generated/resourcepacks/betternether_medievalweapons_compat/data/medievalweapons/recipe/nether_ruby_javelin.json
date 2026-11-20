@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "betternether:nether_ruby"
-    },
-    "e": {
-      "item": "betternether:nether_reed_stem"
-    }
+    "d": "betternether:nether_ruby",
+    "e": "betternether:nether_reed_stem"
   },
   "pattern": [
     "d  ",

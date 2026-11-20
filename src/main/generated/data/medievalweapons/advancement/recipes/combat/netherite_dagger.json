@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:netherite_dagger"
+        "recipes": "medievalweapons:netherite_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

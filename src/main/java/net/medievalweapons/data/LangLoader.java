@@ -1,6 +1,6 @@
 package net.medievalweapons.data;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.init.ItemInit;
@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class LangLoader extends FabricLanguageProvider {
 
+    private final FabricPackOutput packOutput;
     private final Collection<String> materials;
     private final boolean loadExisting;
 
@@ -56,15 +57,17 @@ public class LangLoader extends FabricLanguageProvider {
             Map.entry("rapier", "Rapier")
     );
 
-    public LangLoader(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+    public LangLoader(FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, registryLookup);
+        this.packOutput = dataOutput;
         Set<String> compatMaterials = CompatItems.MATERIALS_BY_MOD.values().stream().flatMap(Set::stream).collect(Collectors.toSet());
         this.materials = ItemInit.MATERIAL_STRINGS.stream().filter(m -> !compatMaterials.contains(m)).toList();
         this.loadExisting = true;
     }
 
-    public LangLoader(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup, Collection<String> materials) {
+    public LangLoader(FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup, Collection<String> materials) {
         super(dataOutput, registryLookup);
+        this.packOutput = dataOutput;
         this.materials = materials;
         this.loadExisting = false;
     }
@@ -85,7 +88,7 @@ public class LangLoader extends FabricLanguageProvider {
         }
         if (loadExisting) {
             try {
-                Optional<Path> existing = dataOutput.getModContainer().findPath("assets/medievalweapons/lang/en_us.existing.json");
+                Optional<Path> existing = this.packOutput.getModContainer().findPath("assets/medievalweapons/lang/en_us.existing.json");
                 if (existing.isEmpty()) {
                     throw new IllegalStateException("Missing existing lang file");
                 }

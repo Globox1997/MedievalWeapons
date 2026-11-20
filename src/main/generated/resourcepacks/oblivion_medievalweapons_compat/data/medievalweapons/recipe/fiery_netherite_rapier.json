@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "oblivion:fiery_netherite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_rapier"
-  },
+  "addition": "oblivion:fiery_netherite_ingot",
+  "base": "medievalweapons:netherite_rapier",
   "result": {
     "id": "medievalweapons:fiery_netherite_rapier"
   },
-  "template": {
-    "item": "oblivion:fiery_netherite_upgrade_smithing_template"
-  }
+  "template": "oblivion:fiery_netherite_upgrade_smithing_template"
 }

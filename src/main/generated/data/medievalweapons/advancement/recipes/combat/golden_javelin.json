@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_javelin"
+        "recipes": "medievalweapons:golden_javelin"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

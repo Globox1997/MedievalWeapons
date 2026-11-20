@@ -1,0 +1,35 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/thallasium_long_sword_gui"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:condition",
+      "on_false": {
+        "type": "minecraft:condition",
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/thallasium_long_sword"
+        },
+        "on_true": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/thallasium_long_sword_bc"
+        },
+        "property": "medievalweapons:bettercombat_loaded"
+      },
+      "on_true": {
+        "type": "minecraft:model",
+        "model": "medievalweapons:item/thallasium_long_sword_bc"
+      },
+      "property": "medievalweapons:offhand"
+    },
+    "property": "minecraft:display_context"
+  }
+}

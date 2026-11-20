@@ -1,16 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "minecraft:netherite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:diamond_mace"
-  },
+  "addition": "minecraft:netherite_ingot",
+  "base": "medievalweapons:diamond_mace",
   "result": {
-    "count": 1,
     "id": "medievalweapons:netherite_mace"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

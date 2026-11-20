@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "byg:pendorite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_long_sword"
-  },
+  "addition": "byg:pendorite_ingot",
+  "base": "medievalweapons:netherite_long_sword",
   "result": {
     "id": "medievalweapons:pendorite_long_sword"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

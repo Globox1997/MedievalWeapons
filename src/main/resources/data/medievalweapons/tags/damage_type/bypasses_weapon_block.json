@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:bypasses_shield",
+    "#minecraft:is_projectile"
+  ]
+}

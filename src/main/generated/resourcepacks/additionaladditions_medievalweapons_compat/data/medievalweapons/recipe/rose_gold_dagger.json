@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "additionaladditions:rose_gold_alloy"
-  },
-  "base": {
-    "item": "medievalweapons:iron_dagger"
-  },
+  "addition": "additionaladditions:rose_gold_alloy",
+  "base": "medievalweapons:iron_dagger",
   "result": {
     "id": "medievalweapons:rose_gold_dagger"
   },
-  "template": {
-    "item": "additionaladditions:rose_gold_upgrade"
-  }
+  "template": "additionaladditions:rose_gold_upgrade"
 }

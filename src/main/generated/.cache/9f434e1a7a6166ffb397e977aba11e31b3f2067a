@@ -1,2 +1,4 @@
-// 1.21.1	2026-11-18T18:39:43.6608971	medievalweapons:earlystage_medievalweapons_compat/Tags for minecraft:item
-e136f329c2628267cf807d8d989840acf0d02b0b resourcepacks\earlystage_medievalweapons_compat\data\minecraft\tags\item\swords.json
+// 26.3	-999999999-01-01T00:00:00	medievalweapons:earlystage_medievalweapons_compat/Tags for minecraft:item
+864ff0fd1681cb4dc18f268e16abc2f0e69369e9 resourcepacks/earlystage_medievalweapons_compat/data/medievalweapons/tags/item/repair/damascus_steel.json
+0b84db04516202678a8868ea1c137ef4df5daf2e resourcepacks/earlystage_medievalweapons_compat/data/medievalweapons/tags/item/repair/steel.json
+e4a1433a657854176863332fb57351efbd183398 resourcepacks/earlystage_medievalweapons_compat/data/minecraft/tags/item/swords.json

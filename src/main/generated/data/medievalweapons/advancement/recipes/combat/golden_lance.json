@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:golden_lance"
+        "recipes": "medievalweapons:golden_lance"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

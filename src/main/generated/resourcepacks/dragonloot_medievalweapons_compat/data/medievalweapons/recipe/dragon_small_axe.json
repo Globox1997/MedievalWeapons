@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "dragonloot:dragon_scale"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_small_axe"
-  },
+  "addition": "dragonloot:dragon_scale",
+  "base": "medievalweapons:netherite_small_axe",
   "result": {
     "id": "medievalweapons:dragon_small_axe"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

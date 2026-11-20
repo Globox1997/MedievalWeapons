@@ -103,7 +103,10 @@ public class MinecraftClientMixin {
                                 ((PlayerAccess) this.player).resetLastAttackedOffhandTicks();
                             }
                         }
-                        this.player.swing(InteractionHand.OFF_HAND);
+                        this.player.swing(InteractionHand.OFF_HAND, this.player.getOffhandItem().getAttackAnimation(), false);
+                        if (this.hitResult.getType() != HitResult.Type.ENTITY) {
+                            ClientPlayNetworking.send(new AttackPacket(AttackPacket.SWING_ONLY));
+                        }
                         info.setReturnValue(false);
                     } else {
                         this.attackedOffhand = true;

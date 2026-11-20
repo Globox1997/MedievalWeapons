@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/fiery_netherite_rapier_gui"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/fiery_netherite_rapier"
+    },
+    "property": "minecraft:display_context"
+  }
+}

@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "betterend:thallasium_ingot"
-    },
-    "e": {
-      "item": "minecraft:stick"
-    }
+    "d": "betterend:thallasium_ingot",
+    "e": "minecraft:stick"
   },
   "pattern": [
     "d  ",

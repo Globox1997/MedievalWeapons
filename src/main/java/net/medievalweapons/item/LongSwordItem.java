@@ -1,48 +1,30 @@
 package net.medievalweapons.item;
 
-import java.util.List;
-
 import net.medievalweapons.MedievalMain;
 import net.medievalweapons.init.CompatInit;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.component.TooltipDisplay;
 
-public class LongSwordItem extends SwordItem {
+import java.util.function.Consumer;
 
-    public static final ResourceLocation ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("double_handed_attack_bonus");
+public class LongSwordItem extends Item {
 
-    public LongSwordItem(Tier material, Properties settings) {
-        super(material, settings);
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("double_handed_attack_bonus");
 
+    public LongSwordItem(Properties settings) {
+        super(settings);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-        super.appendHoverText(stack, context, tooltip, type);
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag type) {
+        super.appendHoverText(stack, context, display, builder, type);
         if (!CompatInit.isBetterCombatLoaded) {
-            tooltip.add(Component.translatable("item.medievalweapons.double_handed.tooltip"));
+            builder.accept(Component.translatable("item.medievalweapons.double_handed.tooltip"));
         }
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BLOCK;
-    }
-
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        ItemStack itemStack = user.getItemInHand(hand);
-        user.startUsingItem(hand);
-        return InteractionResultHolder.consume(itemStack);
     }
 
 }

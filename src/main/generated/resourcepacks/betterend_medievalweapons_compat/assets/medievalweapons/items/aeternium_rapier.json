@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "medievalweapons:item/aeternium_rapier_gui"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/aeternium_rapier"
+    },
+    "property": "minecraft:display_context"
+  }
+}

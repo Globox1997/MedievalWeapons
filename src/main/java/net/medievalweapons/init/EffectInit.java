@@ -6,7 +6,7 @@ import net.medievalweapons.effect.StunEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 
@@ -18,7 +18,7 @@ public class EffectInit {
     public static void init() {
     }
 
-    private static Holder<MobEffect> register(ResourceLocation id, MobEffect statusEffect) {
+    private static Holder<MobEffect> register(Identifier id, MobEffect statusEffect) {
         return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, id, statusEffect);
     }
 }

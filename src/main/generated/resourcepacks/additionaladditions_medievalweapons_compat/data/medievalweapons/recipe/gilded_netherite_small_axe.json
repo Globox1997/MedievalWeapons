@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "additionaladditions:gold_ring"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_small_axe"
-  },
+  "addition": "additionaladditions:gold_ring",
+  "base": "medievalweapons:netherite_small_axe",
   "result": {
     "id": "medievalweapons:gilded_netherite_small_axe"
   },
-  "template": {
-    "item": "additionaladditions:gilded_netherite_upgrade"
-  }
+  "template": "additionaladditions:gilded_netherite_upgrade"
 }

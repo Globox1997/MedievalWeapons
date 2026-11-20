@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "additionaladditions:gold_ring"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_mace"
-  },
+  "addition": "additionaladditions:gold_ring",
+  "base": "medievalweapons:netherite_mace",
   "result": {
     "id": "medievalweapons:gilded_netherite_mace"
   },
-  "template": {
-    "item": "additionaladditions:gilded_netherite_upgrade"
-  }
+  "template": "additionaladditions:gilded_netherite_upgrade"
 }

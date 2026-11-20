@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "oblivion:fiery_netherite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_long_sword"
-  },
+  "addition": "oblivion:fiery_netherite_ingot",
+  "base": "medievalweapons:netherite_long_sword",
   "result": {
     "id": "medievalweapons:fiery_netherite_long_sword"
   },
-  "template": {
-    "item": "oblivion:fiery_netherite_upgrade_smithing_template"
-  }
+  "template": "oblivion:fiery_netherite_upgrade_smithing_template"
 }

@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "additionaladditions:rose_gold_alloy"
-  },
-  "base": {
-    "item": "medievalweapons:iron_big_axe"
-  },
+  "addition": "additionaladditions:rose_gold_alloy",
+  "base": "medievalweapons:iron_big_axe",
   "result": {
     "id": "medievalweapons:rose_gold_big_axe"
   },
-  "template": {
-    "item": "additionaladditions:rose_gold_upgrade"
-  }
+  "template": "additionaladditions:rose_gold_upgrade"
 }

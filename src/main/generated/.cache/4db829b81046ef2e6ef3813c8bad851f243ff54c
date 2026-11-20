@@ -1,2 +1,4 @@
-// 1.21.1	2026-11-18T18:39:43.6548828	medievalweapons:additionaladditions_medievalweapons_compat/Tags for minecraft:item
-a8e52a2a8dbd134bb05af64e995cc87129786954 resourcepacks\additionaladditions_medievalweapons_compat\data\minecraft\tags\item\swords.json
+// 26.3	-999999999-01-01T00:00:00	medievalweapons:additionaladditions_medievalweapons_compat/Tags for minecraft:item
+aa397113b01e1985363641d1fc7a22949514e15e resourcepacks/additionaladditions_medievalweapons_compat/data/medievalweapons/tags/item/repair/gilded_netherite.json
+dd79ae1fc7e1c500c1f251c0bf5d8710d9df96ca resourcepacks/additionaladditions_medievalweapons_compat/data/medievalweapons/tags/item/repair/rose_gold.json
+04e7984c70a21d4d7c5acf9adad20bd28bd16e9d resourcepacks/additionaladditions_medievalweapons_compat/data/minecraft/tags/item/swords.json

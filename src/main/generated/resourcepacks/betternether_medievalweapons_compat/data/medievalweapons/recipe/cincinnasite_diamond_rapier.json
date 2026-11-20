@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "medievalweapons:cincinnasite_rapier"
-    },
-    "e": {
-      "item": "minecraft:diamond"
-    }
+    "d": "medievalweapons:cincinnasite_rapier",
+    "e": "minecraft:diamond"
   },
   "pattern": [
     "ede"

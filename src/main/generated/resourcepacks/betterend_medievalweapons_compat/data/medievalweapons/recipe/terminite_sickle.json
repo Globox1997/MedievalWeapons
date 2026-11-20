@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "betterend:terminite_ingot"
-    },
-    "e": {
-      "item": "minecraft:stick"
-    }
+    "d": "betterend:terminite_ingot",
+    "e": "minecraft:stick"
   },
   "pattern": [
     " dd",

@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "deeperdarker:reinforced_echo_shard"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_sickle"
-  },
+  "addition": "deeperdarker:reinforced_echo_shard",
+  "base": "medievalweapons:netherite_sickle",
   "result": {
     "id": "medievalweapons:warden_sickle"
   },
-  "template": {
-    "item": "deeperdarker:warden_upgrade_smithing_template"
-  }
+  "template": "deeperdarker:warden_upgrade_smithing_template"
 }

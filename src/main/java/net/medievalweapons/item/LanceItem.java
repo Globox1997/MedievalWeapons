@@ -1,21 +1,20 @@
 package net.medievalweapons.item;
 
 import net.medievalweapons.MedievalMain;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Item;
 
-public class LanceItem extends SwordItem {
+public class LanceItem extends Item {
 
-    public static final ResourceLocation ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("riding_attack_bonus");
+    public static final Identifier ATTACK_BONUS_MODIFIER_ID = MedievalMain.identifierOf("riding_attack_bonus");
     private static final AttributeModifier ATTACK_BONUS_MODIFIER;
 
-    public LanceItem(Tier material, Properties settings) {
-        super(material, settings);
+    public LanceItem(Properties settings) {
+        super(settings);
     }
 
     public static void updateAttackBonus(Player player) {

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_air": {
+    "has_stone_tool_materials": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:air"
+            "items": "#minecraft:stone_tool_materials"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "medievalweapons:stone_big_axe"
+        "recipes": "medievalweapons:stone_big_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_air"
+      "has_stone_tool_materials"
     ]
   ],
   "rewards": {

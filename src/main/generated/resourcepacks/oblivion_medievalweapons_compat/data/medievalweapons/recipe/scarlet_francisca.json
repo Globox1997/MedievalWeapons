@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "oblivion:scarlet_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:fiery_netherite_francisca"
-  },
+  "addition": "oblivion:scarlet_ingot",
+  "base": "medievalweapons:fiery_netherite_francisca",
   "result": {
     "id": "medievalweapons:scarlet_francisca"
   },
-  "template": {
-    "item": "oblivion:scarlet_upgrade_smithing_template"
-  }
+  "template": "oblivion:scarlet_upgrade_smithing_template"
 }

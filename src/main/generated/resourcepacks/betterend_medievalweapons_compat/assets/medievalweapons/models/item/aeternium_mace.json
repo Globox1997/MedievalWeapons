@@ -1,13 +1,5 @@
 {
   "parent": "medievalweapons:item/mace",
-  "overrides": [
-    {
-      "model": "medievalweapons:item/aeternium_mace_gui",
-      "predicate": {
-        "medievalweapons:gui": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "medievalweapons:item/aeternium_mace"
   }

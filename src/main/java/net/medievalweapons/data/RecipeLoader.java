@@ -1,233 +1,97 @@
 package net.medievalweapons.data;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.medievalweapons.compat.CompatRecipes;
+import net.medievalweapons.compat.RecipeGenerator;
 import net.medievalweapons.compat.ShapedRecipeMaterial;
 import net.medievalweapons.compat.SmithingRecipeMaterial;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class RecipeLoader extends FabricRecipeProvider {
+public class RecipeLoader implements DataProvider {
 
-    public RecipeLoader(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-        super(output, registriesFuture);
+    private final FabricPackOutput output;
+
+    public RecipeLoader(FabricPackOutput output) {
+        this.output = output;
     }
 
     @Override
-    public void buildRecipes(RecipeOutput exporter) {
+    public CompletableFuture<?> run(CachedOutput writer) {
+        PackOutput.PathProvider recipes = this.output.createPathProvider(PackOutput.Target.DATA_PACK, "recipe");
+        PackOutput.PathProvider advancements = this.output.createPathProvider(PackOutput.Target.DATA_PACK, "advancement");
+        List<CompletableFuture<?>> futures = new ArrayList<>();
         for (ShapedRecipeMaterial mat : CompatRecipes.VANILLA_SHAPED_RECIPES.values()) {
-            generateShaped(exporter, mat);
+            JsonObject recipe = RecipeGenerator.generateJson(mat.headItem, mat.handleItem, mat.headType, mat.handleType, mat.output, mat.itemName);
+            recipe.addProperty("category", "equipment");
+            futures.add(DataProvider.saveStable(writer, recipe, recipes.json(mat.output)));
+            futures.add(DataProvider.saveStable(writer, advancement(mat.output, mat.headItem, mat.headType), advancements.json(recipeAdvancementId(mat.output))));
         }
         for (SmithingRecipeMaterial mat : CompatRecipes.VANILLA_SMITHING_RECIPES.values()) {
-            generateSmithing(exporter, mat);
+            JsonObject recipe = RecipeGenerator.generateSmithingJson(mat.baseItem, mat.additionItem, mat.baseType, mat.additionType, mat.output, mat.template);
+            futures.add(DataProvider.saveStable(writer, recipe, recipes.json(mat.output)));
+            futures.add(DataProvider.saveStable(writer, advancement(mat.output, mat.baseItem, mat.baseType), advancements.json(recipeAdvancementId(mat.output))));
         }
+        return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
 
-    private void generateShaped(RecipeOutput exporter, ShapedRecipeMaterial mat) {
-        String[] pattern = getPattern(mat.itemName);
-        if (pattern == null) {
-            return;
-        }
-        Item output = BuiltInRegistries.ITEM.get(mat.output);
-
-        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, output);
-
-        for (String row : pattern) {
-            builder.pattern(row);
-        }
-
-        if ("tag".equals(mat.headType)) {
-            builder.define('d', TagKey.create(BuiltInRegistries.ITEM.key(), mat.headItem));
-        } else {
-            builder.define('d', BuiltInRegistries.ITEM.get(mat.headItem));
-        }
-
-        if ("tag".equals(mat.handleType)) {
-            builder.define('e', TagKey.create(BuiltInRegistries.ITEM.key(), mat.handleItem));
-        } else {
-            builder.define('e', BuiltInRegistries.ITEM.get(mat.handleItem));
-        }
-
-        builder.unlockedBy(getHasName(BuiltInRegistries.ITEM.get(mat.headItem)), has(BuiltInRegistries.ITEM.get(mat.headItem)));
-        builder.save(exporter, mat.output);
+    private static Identifier recipeAdvancementId(Identifier recipe) {
+        return Identifier.fromNamespaceAndPath(recipe.getNamespace(), "recipes/combat/" + recipe.getPath());
     }
 
-    private void generateSmithing(RecipeOutput exporter, SmithingRecipeMaterial mat) {
-        Item base = BuiltInRegistries.ITEM.get(mat.baseItem);
-        Item addition = BuiltInRegistries.ITEM.get(mat.additionItem);
-        Item output = BuiltInRegistries.ITEM.get(mat.output);
-        Item template = BuiltInRegistries.ITEM.get(mat.template);
+    private static JsonObject advancement(Identifier recipe, Identifier unlockItem, String unlockType) {
+        String criterion = "has_" + unlockItem.getPath();
 
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(base), Ingredient.of(addition), RecipeCategory.COMBAT, output)
-                .unlocks(getHasName(base), has(base)).save(exporter, mat.output);
+        JsonObject itemPredicate = new JsonObject();
+        itemPredicate.addProperty("items", RecipeGenerator.ingredient(unlockType, unlockItem));
+        JsonArray items = new JsonArray();
+        items.add(itemPredicate);
+        JsonObject hasItemConditions = new JsonObject();
+        hasItemConditions.add("items", items);
+        JsonObject hasItem = new JsonObject();
+        hasItem.add("conditions", hasItemConditions);
+        hasItem.addProperty("trigger", "minecraft:inventory_changed");
+
+        JsonObject hasRecipeConditions = new JsonObject();
+        hasRecipeConditions.addProperty("recipes", recipe.toString());
+        JsonObject hasRecipe = new JsonObject();
+        hasRecipe.add("conditions", hasRecipeConditions);
+        hasRecipe.addProperty("trigger", "minecraft:recipe_unlocked");
+
+        JsonObject criteria = new JsonObject();
+        criteria.add(criterion, hasItem);
+        criteria.add("has_the_recipe", hasRecipe);
+
+        JsonArray requirement = new JsonArray();
+        requirement.add("has_the_recipe");
+        requirement.add(criterion);
+        JsonArray requirements = new JsonArray();
+        requirements.add(requirement);
+
+        JsonArray rewardRecipes = new JsonArray();
+        rewardRecipes.add(recipe.toString());
+        JsonObject rewards = new JsonObject();
+        rewards.add("recipes", rewardRecipes);
+
+        JsonObject json = new JsonObject();
+        json.addProperty("parent", "minecraft:recipes/root");
+        json.add("criteria", criteria);
+        json.add("requirements", requirements);
+        json.add("rewards", rewards);
+        return json;
     }
 
-    private String[] getPattern(String itemName) {
-        return switch (itemName) {
-            case "big_axe" -> new String[]{" de", " ed", "ed "};
-            case "dagger" -> new String[]{"d", "e"};
-            case "francisca" -> new String[]{"de", " e"};
-            case "healing_staff" -> new String[]{"  d", " e ", "d  "};
-            case "javelin" -> new String[]{"d  ", " e ", "  e"};
-            case "lance" -> new String[]{"  d", "ee ", "ee "};
-            case "long_sword" -> new String[]{"  d", "dd ", "ed "};
-            case "mace" -> new String[]{" dd", " dd", "e  "};
-            case "small_axe" -> new String[]{" dd", " ed", "e  "};
-            case "ninjato" -> new String[]{" d ", "d  ", "e  "};
-            case "sickle" -> new String[]{" dd", "  d", " e "};
-            case "rapier" -> new String[]{"  d", " d ", "e  "};
-            default -> null;
-        };
+    @Override
+    public String getName() {
+        return "Recipes";
     }
+
 }
-
-//package net.medievalweapons.data;
-//
-//import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-//import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-//import net.medievalweapons.compat.CompatItems;
-//import net.medievalweapons.compat.CompatRecipes;
-//import net.medievalweapons.compat.ShapedRecipeMaterial;
-//import net.medievalweapons.compat.SmithingRecipeMaterial;
-//import net.minecraft.data.server.recipe.RecipeExporter;
-//import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-//import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
-//import net.minecraft.item.Item;
-//import net.minecraft.recipe.Ingredient;
-//import net.minecraft.recipe.book.RecipeCategory;
-//import net.minecraft.registry.Registries;
-//import net.minecraft.registry.RegistryWrapper;
-//import net.minecraft.registry.tag.TagKey;
-//import net.minecraft.util.Identifier;
-//
-//import java.util.Collection;
-//import java.util.Set;
-//import java.util.concurrent.CompletableFuture;
-//import java.util.stream.Collectors;
-//
-//public class RecipeLoader extends FabricRecipeProvider {
-//
-//    private final Collection<String> materials;
-//
-//    public RecipeLoader(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-//        this(output, registriesFuture, null);
-//    }
-//
-//    public RecipeLoader(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture, Collection<String> materials) {
-//        super(output, registriesFuture);
-//        this.materials = materials;
-//    }
-//
-//    @Override
-//    public void generate(RecipeExporter exporter) {
-//        if (materials == null) {
-//            generateVanilla(exporter);
-//        } else {
-//            generateCompat(exporter);
-//        }
-//    }
-//
-//    private void generateVanilla(RecipeExporter exporter) {
-//        Set<String> compatMaterials = CompatItems.MATERIALS_BY_MOD.values().stream()
-//                .flatMap(Set::stream)
-//                .collect(Collectors.toSet());
-//
-//        for (ShapedRecipeMaterial mat : CompatRecipes.VANILLA_SHAPED_RECIPES.values()) {
-//            if (compatMaterials.stream().noneMatch(m -> startsWithMaterial(mat.output, m))) {
-//                generateShaped(exporter, mat);
-//            }
-//        }
-//        for (SmithingRecipeMaterial mat : CompatRecipes.VANILLA_SMITHING_RECIPES.values()) {
-//            if (compatMaterials.stream().noneMatch(m -> startsWithMaterial(mat.output, m))) {
-//                generateSmithing(exporter, mat);
-//            }
-//        }
-//    }
-//
-//    private void generateCompat(RecipeExporter exporter) {
-//        for (ShapedRecipeMaterial mat : CompatRecipes.SHAPED_RECIPES.values()) {
-//            if (matchesMaterial(mat.output)) {
-//                generateShaped(exporter, mat);
-//            }
-//        }
-//        for (SmithingRecipeMaterial mat : CompatRecipes.SMITHING_RECIPES.values()) {
-//            if (matchesMaterial(mat.output)) {
-//                generateSmithing(exporter, mat);
-//            }
-//        }
-//    }
-//
-//    private boolean matchesMaterial(Identifier output) {
-//        return materials.stream().anyMatch(m -> startsWithMaterial(output, m));
-//    }
-//
-//    private static boolean startsWithMaterial(Identifier output, String material) {
-//        return output.getPath().startsWith(material + "_");
-//    }
-//
-//    private void generateShaped(RecipeExporter exporter, ShapedRecipeMaterial mat) {
-//        String[] pattern = getPattern(mat.itemName);
-//        if (pattern == null) {
-//            return;
-//        }
-//        Item output = Registries.ITEM.get(mat.output);
-//
-//        ShapedRecipeJsonBuilder builder = ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output);
-//
-//        for (String row : pattern) {
-//            builder.pattern(row);
-//        }
-//
-//        if ("tag".equals(mat.headType)) {
-//            builder.input('d', TagKey.of(Registries.ITEM.getKey(), mat.headItem));
-//        } else {
-//            builder.input('d', Registries.ITEM.get(mat.headItem));
-//        }
-//
-//        if ("tag".equals(mat.handleType)) {
-//            builder.input('e', TagKey.of(Registries.ITEM.getKey(), mat.handleItem));
-//        } else {
-//            builder.input('e', Registries.ITEM.get(mat.handleItem));
-//        }
-//
-//        builder.criterion(hasItem(Registries.ITEM.get(mat.headItem)), conditionsFromItem(Registries.ITEM.get(mat.headItem)));
-//        builder.offerTo(exporter, mat.output);
-//    }
-//
-//    private void generateSmithing(RecipeExporter exporter, SmithingRecipeMaterial mat) {
-//        Item base = Registries.ITEM.get(mat.baseItem);
-//        Item addition = Registries.ITEM.get(mat.additionItem);
-//        Item output = Registries.ITEM.get(mat.output);
-//        Item template = Registries.ITEM.get(mat.template);
-//
-//        SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(template), Ingredient.ofItems(base), Ingredient.ofItems(addition), RecipeCategory.COMBAT, output)
-//                .criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter, mat.output);
-//    }
-//
-//    private String[] getPattern(String itemName) {
-//        return switch (itemName) {
-//            case "big_axe" -> new String[]{" de", " ed", "ed "};
-//            case "dagger" -> new String[]{"d", "e"};
-//            case "francisca" -> new String[]{"de", " e"};
-//            case "healing_staff" -> new String[]{"  d", " e ", "d  "};
-//            case "javelin" -> new String[]{"d  ", " e ", "  e"};
-//            case "lance" -> new String[]{"  d", "ee ", "ee "};
-//            case "long_sword" -> new String[]{"  d", "dd ", "ed "};
-//            case "mace" -> new String[]{" dd", " dd", "e  "};
-//            case "small_axe" -> new String[]{" dd", " ed", "e  "};
-//            case "ninjato" -> new String[]{" d ", "d  ", "e  "};
-//            case "sickle" -> new String[]{" dd", "  d", " e "};
-//            case "rapier" -> new String[]{"  d", " d ", "e  "};
-//            default -> null;
-//        };
-//    }
-//}

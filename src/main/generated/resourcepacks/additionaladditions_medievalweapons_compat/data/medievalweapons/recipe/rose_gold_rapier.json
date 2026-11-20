@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "additionaladditions:rose_gold_alloy"
-  },
-  "base": {
-    "item": "medievalweapons:iron_rapier"
-  },
+  "addition": "additionaladditions:rose_gold_alloy",
+  "base": "medievalweapons:iron_rapier",
   "result": {
     "id": "medievalweapons:rose_gold_rapier"
   },
-  "template": {
-    "item": "additionaladditions:rose_gold_upgrade"
-  }
+  "template": "additionaladditions:rose_gold_upgrade"
 }

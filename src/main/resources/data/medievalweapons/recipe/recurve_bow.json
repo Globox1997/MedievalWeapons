@@ -6,12 +6,8 @@
     "d  "
   ],
   "key": {
-    "d": {
-      "item": "minecraft:string"
-    },
-    "e": {
-      "item": "minecraft:stick"
-    }
+    "d": "minecraft:string",
+    "e": "minecraft:stick"
   },
   "result": {
     "id": "medievalweapons:recurve_bow",

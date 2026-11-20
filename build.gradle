@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.17-SNAPSHOT'
+	id 'net.fabricmc.fabric-loom' version '1.19.4'
 	id 'maven-publish'
 }
 
@@ -16,78 +16,25 @@ fabricApi {
 
 repositories {
 	maven { url "https://maven.shedaniel.me/" }
-	maven { url "https://jitpack.io" }
 	maven { url "https://maven.terraformersmc.com/" }
-	maven { url "https://cursemaven.com" }
-	maven { url = uri("https://ueaj.dev/maven") }
 	maven { url "https://api.modrinth.com/maven" }
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Config
-	modImplementation ("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-    	exclude(group: "net.fabricmc.fabric-api")
-  	}
-	// Modmenu
-	modCompileOnly modRuntimeOnly ("com.terraformersmc:modmenu:${project.mod_menu_version}"), {
+	implementation ("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-    // DragonLoot
-	modCompileOnly ('maven.modrinth:dragonloot:1.1.8+1.21.1') {
+	compileOnly ("com.terraformersmc:modmenu:${project.mod_menu_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	//Better End/Nether
-	modCompileOnly ('maven.modrinth:bclib:21.0.13') {
+	localRuntime ("com.terraformersmc:modmenu:${project.mod_menu_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	modCompileOnly ('maven.modrinth:worldweaver:21.0.13') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	modCompileOnly ('maven.modrinth:betterend:21.0.11') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	modCompileOnly ('maven.modrinth:betternether:21.0.11') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// Mythic Metals
-	modCompileOnly ('maven.modrinth:mythicmetals:0.24.4+1.21') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// Paradise Lost
-	modCompileOnly ('maven.modrinth:paradise-lost:2.4.6-beta+1.21.1') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// BYG
-	modCompileOnly ('maven.modrinth:biomesyougo:1.19.2-2.0.1.2-fabric') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// Additional Additions
-	modCompileOnly ('maven.modrinth:addadd:5.3.0') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// Mythic Upgrades
-	modCompileOnly ('maven.modrinth:mythic-upgrades:4.2.0') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// LevelZ
-	modCompileOnly ('maven.modrinth:levelz:2.0.6+1.21.1') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// Deeper and Darker
-	modCompileOnly ('maven.modrinth:deeperdarker:1.3.3-plus-b-fabric+1.21') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// EarlyStage
-	modCompileOnly ('maven.modrinth:earlystage:1.2.2+1.21.1') {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	// Oblivion
-	modCompileOnly ('maven.modrinth:oblivion:1.1.2+1.21.1') {
+	compileOnly ('maven.modrinth:levelz:2.1.0+26.3-fabric') {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 }
@@ -101,21 +48,14 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
-}
-
-afterEvaluate {
-	tasks.named("remapJar") {
-		def originalClasspath = files(new ArrayList(classpath.from))
-		classpath.setFrom(originalClasspath.filter { !it.name.startsWith("paradise-lost") })
-	}
+	it.options.release = 25
 }
 
 java {
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
 }
 
 jar {

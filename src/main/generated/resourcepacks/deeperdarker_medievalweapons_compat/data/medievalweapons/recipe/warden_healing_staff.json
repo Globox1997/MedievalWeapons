@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "deeperdarker:reinforced_echo_shard"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_healing_staff"
-  },
+  "addition": "deeperdarker:reinforced_echo_shard",
+  "base": "medievalweapons:netherite_healing_staff",
   "result": {
     "id": "medievalweapons:warden_healing_staff"
   },
-  "template": {
-    "item": "deeperdarker:warden_upgrade_smithing_template"
-  }
+  "template": "deeperdarker:warden_upgrade_smithing_template"
 }

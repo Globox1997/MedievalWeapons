@@ -1,0 +1,42 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:using_item",
+    "on_true": {
+      "type": "minecraft:range_dispatch",
+      "property": "minecraft:use_duration",
+      "scale": 0.02,
+      "entries": [
+        {
+          "threshold": 0.4,
+          "model": {
+            "type": "minecraft:model",
+            "model": "medievalweapons:item/long_bow_pulling_1"
+          }
+        },
+        {
+          "threshold": 0.7,
+          "model": {
+            "type": "minecraft:model",
+            "model": "medievalweapons:item/long_bow_pulling_2"
+          }
+        },
+        {
+          "threshold": 0.9,
+          "model": {
+            "type": "minecraft:model",
+            "model": "medievalweapons:item/long_bow_pulling_3"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "medievalweapons:item/long_bow_pulling_0"
+      }
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "medievalweapons:item/long_bow"
+    }
+  }
+}

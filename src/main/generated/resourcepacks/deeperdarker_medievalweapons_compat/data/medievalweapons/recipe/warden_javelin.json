@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "deeperdarker:reinforced_echo_shard"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_javelin"
-  },
+  "addition": "deeperdarker:reinforced_echo_shard",
+  "base": "medievalweapons:netherite_javelin",
   "result": {
     "id": "medievalweapons:warden_javelin"
   },
-  "template": {
-    "item": "deeperdarker:warden_upgrade_smithing_template"
-  }
+  "template": "deeperdarker:warden_upgrade_smithing_template"
 }

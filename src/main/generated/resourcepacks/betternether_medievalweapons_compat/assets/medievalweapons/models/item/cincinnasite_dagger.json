@@ -1,13 +1,5 @@
 {
   "parent": "medievalweapons:item/dagger",
-  "overrides": [
-    {
-      "model": "medievalweapons:item/cincinnasite_dagger_bc",
-      "predicate": {
-        "bettercombat:loaded": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "medievalweapons:item/cincinnasite_dagger"
   }

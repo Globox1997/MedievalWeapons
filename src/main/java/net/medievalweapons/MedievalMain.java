@@ -3,7 +3,7 @@ package net.medievalweapons;
 import net.fabricmc.api.ModInitializer;
 import net.medievalweapons.init.*;
 import net.medievalweapons.network.MedievalServerPacket;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class MedievalMain implements ModInitializer {
 
@@ -24,8 +24,8 @@ public class MedievalMain implements ModInitializer {
         TagInit.init();
     }
 
-    public static ResourceLocation identifierOf(String path) {
-        return ResourceLocation.fromNamespaceAndPath("medievalweapons", path);
+    public static Identifier identifierOf(String path) {
+        return Identifier.fromNamespaceAndPath("medievalweapons", path);
     }
 
 }

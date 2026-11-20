@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "d": {
-      "item": "mythicmetals:adamantite_ingot"
-    },
-    "e": {
-      "item": "minecraft:stick"
-    }
+    "d": "mythicmetals:adamantite_ingot",
+    "e": "minecraft:stick"
   },
   "pattern": [
     "de",

@@ -28,8 +28,8 @@ public class EnchantmentHelperMixin {
             if (stack.getItem() instanceof JavelinItem) {
                 List<EnchantmentInstance> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if ((enchantment.enchantment.value().canEnchant(stack) && enchantment.enchantment.value().isPrimaryItem(stack)) || enchantment.enchantment.is(Enchantments.IMPALING)
-                            || enchantment.enchantment.is(Enchantments.PIERCING) || enchantment.enchantment.is(Enchantments.LOYALTY)) {
+                    if ((enchantment.enchantment().value().canEnchant(stack) && enchantment.enchantment().value().isPrimaryItem(stack)) || enchantment.enchantment().is(Enchantments.IMPALING)
+                            || enchantment.enchantment().is(Enchantments.PIERCING) || enchantment.enchantment().is(Enchantments.LOYALTY)) {
                         enchantments.add(enchantment);
                     }
                 });
@@ -38,7 +38,7 @@ public class EnchantmentHelperMixin {
             } else if (stack.getItem() instanceof LanceItem) {
                 List<EnchantmentInstance> enchantments = new ArrayList<>();
                 currentEnchantments.forEach(enchantment -> {
-                    if (enchantment.enchantment.value().canEnchant(stack) && enchantment.enchantment.value().isPrimaryItem(stack) && !enchantment.enchantment.is(Enchantments.SWEEPING_EDGE)) {
+                    if (enchantment.enchantment().value().canEnchant(stack) && enchantment.enchantment().value().isPrimaryItem(stack) && !enchantment.enchantment().is(Enchantments.SWEEPING_EDGE)) {
                         enchantments.add(enchantment);
                     }
                 });

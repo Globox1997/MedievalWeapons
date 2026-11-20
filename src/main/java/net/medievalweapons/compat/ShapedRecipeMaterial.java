@@ -1,17 +1,17 @@
 package net.medievalweapons.compat;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class ShapedRecipeMaterial {
 
-    public ResourceLocation headItem;
-    public ResourceLocation handleItem;
+    public Identifier headItem;
+    public Identifier handleItem;
     public String headType;
     public String handleType;
-    public ResourceLocation output;
+    public Identifier output;
     public String itemName;
 
-    public ShapedRecipeMaterial(ResourceLocation headItem, ResourceLocation handleItem, String headType, String handleType, ResourceLocation output, String itemName) {
+    public ShapedRecipeMaterial(Identifier headItem, Identifier handleItem, String headType, String handleType, Identifier output, String itemName) {
         this.headItem = headItem;
         this.handleItem = handleItem;
         this.headType = headType;

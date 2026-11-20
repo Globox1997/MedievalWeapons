@@ -1,13 +1,5 @@
 {
   "parent": "medievalweapons:item/small_axe",
-  "overrides": [
-    {
-      "model": "medievalweapons:item/terminite_small_axe_gui",
-      "predicate": {
-        "medievalweapons:gui": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "medievalweapons:item/terminite_small_axe"
   }

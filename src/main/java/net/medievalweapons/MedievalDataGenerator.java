@@ -2,11 +2,11 @@ package net.medievalweapons;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.medievalweapons.compat.CompatItems;
 import net.medievalweapons.data.*;
 import net.medievalweapons.init.ItemInit;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,21 +16,21 @@ public class MedievalDataGenerator implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-        pack.addProvider((FabricDataOutput output) -> new ModelLoader(output));
-        pack.addProvider(RecipeLoader::new);
+        pack.addProvider((FabricPackOutput output) -> new ModelLoader(output));
+        pack.addProvider((FabricPackOutput output) -> new RecipeLoader(output));
         pack.addProvider(LangLoader::new);
         pack.addProvider(ItemTagLoader::new);
-        pack.addProvider((FabricDataOutput output) -> new WeaponAttributesLoader(output, coreMaterials()));
+        pack.addProvider((FabricPackOutput output) -> new WeaponAttributesLoader(output, coreMaterials()));
 
         for (String modId : CompatItems.MATERIALS_BY_MOD.keySet()) {
-            ResourceLocation packId = MedievalMain.identifierOf(modId + "_medievalweapons_compat");
+            Identifier packId = MedievalMain.identifierOf(modId + "_medievalweapons_compat");
             FabricDataGenerator.Pack compatPack = fabricDataGenerator.createBuiltinResourcePack(packId);
-            compatPack.addProvider((FabricDataOutput output) -> new ModelLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
+            compatPack.addProvider((FabricPackOutput output) -> new ModelLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
             compatPack.addProvider((output, lookup) -> new LangLoader(output, lookup, CompatItems.MATERIALS_BY_MOD.get(modId)));
-            compatPack.addProvider((FabricDataOutput output) -> new CompatRecipeLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
-            compatPack.addProvider((FabricDataOutput output) -> new PackMcmetaLoader(output, modId + " medievalweapons compat"));
+            compatPack.addProvider((FabricPackOutput output) -> new CompatRecipeLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
+            compatPack.addProvider((FabricPackOutput output) -> new PackMcmetaLoader(output, modId + " medievalweapons compat"));
             compatPack.addProvider((output, lookup) -> new ItemTagLoader(output, lookup, CompatItems.MATERIALS_BY_MOD.get(modId)));
-            compatPack.addProvider((FabricDataOutput output) -> new WeaponAttributesLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
+            compatPack.addProvider((FabricPackOutput output) -> new WeaponAttributesLoader(output, CompatItems.MATERIALS_BY_MOD.get(modId)));
         }
     }
 

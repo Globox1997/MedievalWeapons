@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "oblivion:solarite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:scarlet_healing_staff"
-  },
+  "addition": "oblivion:solarite_ingot",
+  "base": "medievalweapons:scarlet_healing_staff",
   "result": {
     "id": "medievalweapons:solarite_healing_staff"
   },
-  "template": {
-    "item": "oblivion:solarite_upgrade_smithing_template"
-  }
+  "template": "oblivion:solarite_upgrade_smithing_template"
 }

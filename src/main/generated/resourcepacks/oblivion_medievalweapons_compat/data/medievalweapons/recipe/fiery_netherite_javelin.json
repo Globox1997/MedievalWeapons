@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "oblivion:fiery_netherite_ingot"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_javelin"
-  },
+  "addition": "oblivion:fiery_netherite_ingot",
+  "base": "medievalweapons:netherite_javelin",
   "result": {
     "id": "medievalweapons:fiery_netherite_javelin"
   },
-  "template": {
-    "item": "oblivion:fiery_netherite_upgrade_smithing_template"
-  }
+  "template": "oblivion:fiery_netherite_upgrade_smithing_template"
 }

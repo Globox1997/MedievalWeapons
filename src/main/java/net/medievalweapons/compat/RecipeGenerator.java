@@ -2,11 +2,11 @@ package net.medievalweapons.compat;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class RecipeGenerator {
 
-    public static JsonObject generateJson(ResourceLocation headItem, ResourceLocation handleItem, String headType, String handleType, ResourceLocation output, String itemName) {
+    public static JsonObject generateJson(Identifier headItem, Identifier handleItem, String headType, String handleType, Identifier output, String itemName) {
         JsonObject json = new JsonObject();
 
         json.addProperty("type", "minecraft:crafting_shaped");
@@ -78,19 +78,12 @@ public class RecipeGenerator {
 
         json.add("pattern", jsonArray);
 
-        JsonObject obj = new JsonObject();
         JsonObject key = new JsonObject();
-
-        obj.addProperty(headType, headItem.toString());
-        key.add("d", obj);
-
-        obj = new JsonObject();
-        obj.addProperty(handleType, handleItem.toString());
-        key.add("e", obj);
-
+        key.addProperty("d", ingredient(headType, headItem));
+        key.addProperty("e", ingredient(handleType, handleItem));
         json.add("key", key);
 
-        obj = new JsonObject();
+        JsonObject obj = new JsonObject();
         obj.addProperty("id", output.toString());
         obj.addProperty("count", 1);
         json.add("result", obj);
@@ -98,26 +91,23 @@ public class RecipeGenerator {
         return json;
     }
 
-    public static JsonObject generateSmithingJson(ResourceLocation base, ResourceLocation addition, String baseType, String additionType, ResourceLocation output, ResourceLocation template) {
+    public static JsonObject generateSmithingJson(Identifier base, Identifier addition, String baseType, String additionType, Identifier output, Identifier template) {
         JsonObject json = new JsonObject();
         json.addProperty("type", "minecraft:smithing_transform");
 
+        json.addProperty("base", ingredient(baseType, base));
+        json.addProperty("addition", ingredient(additionType, addition));
+
         JsonObject obj = new JsonObject();
-        obj.addProperty(baseType, base.toString());
-        json.add("base", obj);
-
-        obj = new JsonObject();
-        obj.addProperty(additionType, addition.toString());
-        json.add("addition", obj);
-
-        obj = new JsonObject();
         obj.addProperty("id", output.toString());
         json.add("result", obj);
 
-        obj = new JsonObject();
-        obj.addProperty("item", template.toString());
-        json.add("template", obj);
+        json.addProperty("template", template.toString());
 
         return json;
+    }
+
+    public static String ingredient(String type, Identifier id) {
+        return "tag".equals(type) ? "#" + id : id.toString();
     }
 }

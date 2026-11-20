@@ -1,13 +1,5 @@
 {
   "parent": "medievalweapons:item/sickle",
-  "overrides": [
-    {
-      "model": "medievalweapons:item/dragon_sickle_gui",
-      "predicate": {
-        "medievalweapons:gui": 1.0
-      }
-    }
-  ],
   "textures": {
     "layer0": "medievalweapons:item/dragon_sickle"
   }

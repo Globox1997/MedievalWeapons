@@ -1,5 +1,6 @@
 package net.medievalweapons.effect;
 
+import net.minecraft.server.level.ServerLevel;
 import net.medievalweapons.init.EntityInit;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -14,8 +15,8 @@ public class BleedEffect extends MobEffect {
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        entity.hurt(createDamageSource(entity), 1.0f);
+    public boolean applyEffectTick(ServerLevel serverLevel, LivingEntity entity, int amplifier) {
+        entity.hurtServer(serverLevel, createDamageSource(entity), 1.0f);
         return true;
     }
 

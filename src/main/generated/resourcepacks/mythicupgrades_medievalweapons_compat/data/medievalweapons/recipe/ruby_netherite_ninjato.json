@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicupgrades:ruby"
-  },
-  "base": {
-    "item": "medievalweapons:netherite_ninjato"
-  },
+  "addition": "mythicupgrades:ruby",
+  "base": "medievalweapons:netherite_ninjato",
   "result": {
     "id": "medievalweapons:ruby_netherite_ninjato"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }
