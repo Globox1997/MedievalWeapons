@@ -1,0 +1,148 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:solarite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:solarite_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:scarlet_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:fiery_netherite_rapier",
+      "required": false
+    }
+  ]
+}

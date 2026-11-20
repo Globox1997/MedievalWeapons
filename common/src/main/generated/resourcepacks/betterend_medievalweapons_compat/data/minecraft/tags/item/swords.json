@@ -1,0 +1,148 @@
+{
+  "values": [
+    {
+      "id": "medievalweapons:terminite_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:terminite_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:thallasium_rapier",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_small_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_long_sword",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_dagger",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_francisca",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_big_axe",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_javelin",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_lance",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_healing_staff",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_mace",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_ninjato",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_sickle",
+      "required": false
+    },
+    {
+      "id": "medievalweapons:aeternium_rapier",
+      "required": false
+    }
+  ]
+}

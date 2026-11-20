@@ -1,0 +1,55 @@
+plugins {
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+}
+
+sourceSets.main.resources.srcDir('src/main/generated')
+
+dependencies {
+    compileOnly('net.fabricmc:sponge-mixin:0.17.5+mixin.0.8.7')
+    compileOnly('io.github.llamalad7:mixinextras-common:0.5.5')
+    compileOnly("me.shedaniel.cloth:cloth-config:${cloth_config_version}") {
+        transitive = false
+    }
+    compileOnly("maven.modrinth:levelz:${levelz_version}") {
+        transitive = false
+    }
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources file('src/main/resources')
+    commonResources file('src/main/generated')
+}
+
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements'].each { variant ->
+    configurations.named(variant) {
+        attributes {
+            attribute(loaderAttribute, 'common')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant ->
+        configurations.named(variant) {
+            attributes {
+                attribute(loaderAttribute, 'common')
+            }
+        }
+    }
+}

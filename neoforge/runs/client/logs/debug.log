@@ -1,0 +1,174 @@
+[20Nov2026 13:29:17.450] [main/INFO] [net.neoforged.fml.startup.Entrypoint/]: JVM Uptime at startup: 268ms
+[20Nov2026 13:29:17.468] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Starting FancyModLoader version 12.0.16 (CLIENT in DEV)
+[20Nov2026 13:29:17.469] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Game directory: C:\Users\Micha\Documents\VCode\MedievalWeapons\neoforge\runs\client
+[20Nov2026 13:29:17.545] [main/INFO] [net.neoforged.fml.loading.EarlyServiceDiscovery/]: Found 2 early service jars (out of 107) in 33ms
+[20Nov2026 13:29:17.546] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Loading FML Early Services:
+[20Nov2026 13:29:17.546] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Micha/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/loader/12.0.16/edbb2ee8211a867215970bc15ae9c354fa56dc09/loader-12.0.16.jar
+[20Nov2026 13:29:17.547] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Micha/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/earlydisplay/12.0.16/efa2e56115d22853d10524874a7bbb64555c2a28/earlydisplay-12.0.16.jar
+[20Nov2026 13:29:17.552] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[20Nov2026 13:29:18.176] [main/INFO] [net.neoforged.fml.earlydisplay.render.backend.opengl.GlRenderer/]: GL info: AMD Radeon RX 6700 XT GL version 3.3.0 Core Profile Context 26.6.4.260608, ATI Technologies Inc.
+[20Nov2026 13:29:18.244] [ForkJoinPool.commonPool-worker-8/INFO] [net.neoforged.fml.loading.moddiscovery.locators.GameLocator/]: Detected a joined NeoForge and Minecraft configuration. Applying filtering...
+[20Nov2026 13:29:18.331] [ForkJoinPool.commonPool-worker-8/INFO] [net.neoforged.fml.loading.moddiscovery.locators.InDevFolderLocator/CORE]: Got mod coordinates medievalweapons%%C:\Users\Micha\Documents\VCode\MedievalWeapons\neoforge\build\classes\java\main;medievalweapons%%C:\Users\Micha\Documents\VCode\MedievalWeapons\neoforge\build\resources\main from env
+[20Nov2026 13:29:18.503] [ForkJoinPool.commonPool-worker-8/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[20Nov2026 13:29:18.505] [ForkJoinPool.commonPool-worker-8/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Cloth Config v26.3 API 26.3.159 (cloth_config)
+		Medieval Weapons 1.7.1+26.3 (medievalweapons)
+		Minecraft 26.3 (minecraft)
+		NeoForge 26.3.0.115 (neoforge)
+[20Nov2026 13:29:18.983] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Micha/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/cef8519a91129d0c21fa03bb9378f0e8ca810e5/sponge-mixin-0.17.5+mixin.0.8.7.jar Service=FML Env=CLIENT
+[20Nov2026 13:29:19.052] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Loading FML Plugins:
+[20Nov2026 13:29:19.052] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Micha/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.3.0.115/e3b5ff81f585f0d6fcdd9d7343b7115fa6401a12/neoforge-26.3.0.115-universal.jar > net.neoforged.neoforge-coremods-26.3.0.115.jar
+[20Nov2026 13:29:19.135] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Building game content classloader:
+ - cloth_config (jar(C:/Users/Micha/.gradle/caches/modules-2/files-2.1/me.shedaniel.cloth/cloth-config-neoforge/26.3.159/d57fa1419228ee371b0c29abf943288d384e2d08/cloth-config-neoforge-26.3.159.jar))
+ - medievalweapons (composite(folder(C:/Users/Micha/Documents/VCode/MedievalWeapons/neoforge/build/classes/java/main), folder(C:/Users/Micha/Documents/VCode/MedievalWeapons/neoforge/build/resources/main)))
+ - minecraft (composite(filtered(jar(C:/Users/Micha/Documents/VCode/MedievalWeapons/neoforge/build/moddev/artifacts/minecraft-patched-26.3.0.115.jar)), filtered(jar(C:/Users/Micha/Documents/VCode/MedievalWeapons/neoforge/build/moddev/artifacts/minecraft-patched-26.3.0.115.jar))))
+ - mixinextras.neoforge (jar(C:/Users/Micha/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.3.0.115/e3b5ff81f585f0d6fcdd9d7343b7115fa6401a12/neoforge-26.3.0.115-universal.jar > mixinextras-neoforge-0.5.5.jar))
+ - neoforge (composite(filtered(jar(C:/Users/Micha/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.3.0.115/e3b5ff81f585f0d6fcdd9d7343b7115fa6401a12/neoforge-26.3.0.115-universal.jar))))
+ - net.neoforged.fml.generated (empty(VirtualJar/net.neoforged.fml.generated))
+[20Nov2026 13:29:19.147] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Built game content classloader in 21ms
+[20Nov2026 13:29:19.186] [main/WARN] [mixin/]: Compatibility level JAVA_25 specified by medievalweapons.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[20Nov2026 13:29:19.192] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[20Nov2026 13:29:19.192] [main/INFO] [mixin/]: Selecting config medievalweapons.mixins.json
+[20Nov2026 13:29:19.197] [main/INFO] [mixin/]: Selecting config neoforge.mixins.json
+[20Nov2026 13:29:19.197] [main/INFO] [mixin/]: Selecting config mixinextras.init.mixins.json
+[20Nov2026 13:29:19.261] [main/INFO] [mixin/]: Preparing medievalweapons.mixins.json (13)
+[20Nov2026 13:29:19.400] [main/INFO] [mixin/]: Preparing neoforge.mixins.json (2)
+[20Nov2026 13:29:19.403] [main/INFO] [mixin/]: Preparing mixinextras.init.mixins.json (0)
+[20Nov2026 13:29:20.867] [main/WARN] [oshi.driver.windows.perfmon.PerfmonDisabled/]: Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[20Nov2026 13:29:20.907] [Datafixer Bootstrap #0/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 310 Datafixer optimizations took 514 milliseconds
+[20Nov2026 13:29:20.945] [main/ERROR] [oshi.driver.windows.registry.HkeyPerformanceDataUtil/]: Unable to locate English counter names in registry Perflib 009. Counters may need to be rebuilt: 
+com.sun.jna.platform.win32.Win32Exception: The parameter is incorrect.
+	at com.sun.jna.platform.win32.Advapi32Util.registryGetStringArray(Advapi32Util.java:921) ~[jna-platform-5.17.0.jar:5.17.0 (b0)]
+	at com.sun.jna.platform.win32.Advapi32Util.registryGetStringArray(Advapi32Util.java:898) ~[jna-platform-5.17.0.jar:5.17.0 (b0)]
+	at oshi.driver.windows.registry.HkeyPerformanceDataUtil.mapCounterIndicesFromRegistry(HkeyPerformanceDataUtil.java:274) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.driver.windows.registry.HkeyPerformanceDataUtil.<clinit>(HkeyPerformanceDataUtil.java:51) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.driver.windows.registry.ProcessPerformanceData.buildProcessMapFromRegistry(ProcessPerformanceData.java:45) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.windows.WindowsOperatingSystem.queryProcessMapFromRegistry(WindowsOperatingSystem.java:328) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.windows.WindowsOperatingSystem.processMapToList(WindowsOperatingSystem.java:298) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.windows.WindowsOperatingSystem.getProcess(WindowsOperatingSystem.java:292) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.OperatingSystem.getCurrentProcess(OperatingSystem.java:246) ~[oshi-core-6.9.0.jar:6.9.0]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putSoftware$0(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putSoftware(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.<init>(CrashReport.java:32) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.preload(CrashReport.java:226) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:161) [minecraft-patched-26.3.0.115.jar:?]
+	at net.neoforged.fml.startup.Client.main(Client.java:19) [loader-12.0.16.jar:12.0]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[20Nov2026 13:29:20.960] [main/WARN] [oshi.util.platform.windows.PerfCounterQuery/]: Unable to locate English counter names in registry Perflib 009. Assuming English counters. Error 0x80070057. See https://support.microsoft.com/en-us/help/300956/how-to-manually-rebuild-performance-counter-library-values
+[20Nov2026 13:29:21.209] [main/WARN] [net.minecraft.SystemReport/]: Failed to get system info for Process Loads
+java.lang.NullPointerException: Cannot invoke "oshi.software.os.OSProcess.getUserTime()" because "process" is null
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putProcessDetails$0(SystemReport.java:191) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.setDetail(SystemReport.java:96) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putProcessDetails(SystemReport.java:188) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putSoftware$0(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putSoftware(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.<init>(CrashReport.java:32) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.preload(CrashReport.java:226) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:161) [minecraft-patched-26.3.0.115.jar:?]
+	at net.neoforged.fml.startup.Client.main(Client.java:19) [loader-12.0.16.jar:12.0]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[20Nov2026 13:29:21.211] [main/WARN] [net.minecraft.SystemReport/]: Failed to get system info for Process Virtual Size (MiB)
+java.lang.NullPointerException: Cannot invoke "oshi.software.os.OSProcess.getVirtualSize()" because "process" is null
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putProcessDetails$1(SystemReport.java:208) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.setDetail(SystemReport.java:96) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putProcessDetails(SystemReport.java:208) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putSoftware$0(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putSoftware(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.<init>(CrashReport.java:32) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.preload(CrashReport.java:226) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:161) [minecraft-patched-26.3.0.115.jar:?]
+	at net.neoforged.fml.startup.Client.main(Client.java:19) [loader-12.0.16.jar:12.0]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[20Nov2026 13:29:21.213] [main/WARN] [net.minecraft.SystemReport/]: Failed to get system info for Process Resident Size (MiB)
+java.lang.NullPointerException: Cannot invoke "oshi.software.os.OSProcess.getResidentSetSize()" because "process" is null
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putProcessDetails$2(SystemReport.java:209) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.setDetail(SystemReport.java:96) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putProcessDetails(SystemReport.java:209) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$putSoftware$0(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.putSoftware(SystemReport.java:115) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.<init>(CrashReport.java:32) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.CrashReport.preload(CrashReport.java:226) [minecraft-patched-26.3.0.115.jar:?]
+	at TRANSFORMER/minecraft@26.3/net.minecraft.client.main.Main.main(Main.java:161) [minecraft-patched-26.3.0.115.jar:?]
+	at net.neoforged.fml.startup.Client.main(Client.java:19) [loader-12.0.16.jar:12.0]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[20Nov2026 13:29:21.234] [pool-9-thread-1/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[20Nov2026 13:29:21.245] [pool-9-thread-1/INFO] [mixin/]: Mixing MappedRegistryAccessor from neoforge.mixins.json into net.minecraft.core.MappedRegistry
+[20Nov2026 13:29:21.406] [pool-9-thread-1/INFO] [mixin/]: Mixing LivingEntityMixin from medievalweapons.mixins.json into net.minecraft.world.entity.LivingEntity
+[20Nov2026 13:29:21.491] [pool-9-thread-1/INFO] [mixin/]: Mixing PlayerEntityMixin from medievalweapons.mixins.json into net.minecraft.world.entity.player.Player
+[20Nov2026 13:29:21.498] [pool-9-thread-1/INFO] [mixin/]: Renaming synthetic method lambda$getWeaponAttackDamage$0([DLnet/minecraft/core/Holder;Lnet/minecraft/world/entity/ai/attributes/AttributeModifier;)V to md23bf41$medievalweapons$lambda$getWeaponAttackDamage$0$0 in medievalweapons.mixins.json:PlayerEntityMixin from mod medievalweapons
+[20Nov2026 13:29:22.112] [pool-9-thread-1/INFO] [mixin/]: Mixing BlockEntityTypeAccessor from neoforge.mixins.json into net.minecraft.world.level.block.entity.BlockEntityType
+[20Nov2026 13:29:23.707] [pool-9-thread-1/INFO] [mixin/]: Mixing AreaEffectCloudEntityMixin from medievalweapons.mixins.json into net.minecraft.world.entity.AreaEffectCloud
+[20Nov2026 13:29:24.059] [pool-9-thread-1/INFO] [mixin/]: Mixing BowItemMixin from medievalweapons.mixins.json into net.minecraft.world.item.BowItem
+[20Nov2026 13:29:26.128] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20Nov2026 13:29:26.130] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20Nov2026 13:29:26.133] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[20Nov2026 13:29:26.136] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[20Nov2026 13:29:26.138] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20Nov2026 13:29:26.141] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [time, set, time] and [time, set, timemarker] with inputs: [0, 0s, 0d, 0t]
+[20Nov2026 13:29:26.143] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [time, set, timemarker] and [time, set, time] with inputs: [012]
+[20Nov2026 13:29:26.146] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [time, of, clock, set, time] and [time, of, clock, set, timemarker] with inputs: [0, 0s, 0d, 0t]
+[20Nov2026 13:29:26.147] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [time, of, clock, set, timemarker] and [time, of, clock, set, time] with inputs: [012]
+[20Nov2026 13:29:26.223] [modloading-worker-2/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 26.3.0.115, for MC 26.3
+[20Nov2026 13:29:26.302] [modloading-worker-2/INFO] [mixin/]: Mixing client.AbstractClientPlayerEntityMixin from medievalweapons.mixins.json into net.minecraft.client.player.AbstractClientPlayer
+[20Nov2026 13:29:26.381] [modloading-worker-2/INFO] [mixin/]: Mixing client.MinecraftClientMixin from medievalweapons.mixins.json into net.minecraft.client.Minecraft
+[20Nov2026 13:29:26.915] [Render thread/INFO] [com.mojang.authlib.services.MinecraftServicesDiscoveryService/]: Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[20Nov2026 13:29:26.930] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[20Nov2026 13:29:27.018] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.4.3+4
+[20Nov2026 13:29:27.604] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Using graphics backend OpenGL, using drivers: 3.3.0 Core Profile Context 26.6.4.260608
+[20Nov2026 13:29:27.604] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Using graphics device: AMD Radeon RX 6700 XT (ATI Technologies Inc.)
+[20Nov2026 13:29:27.604] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Using graphics device extensions: GL_ARB_multi_draw_indirect, GL_ARB_buffer_storage, GL_ARB_shader_draw_parameters, GL_ARB_base_instance, GL_KHR_debug, GL_ARB_draw_indirect, GL_ARB_clip_control, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access, GL_EXT_texture_filter_anisotropic
+[20Nov2026 13:29:27.627] [Render thread/INFO] [com.mojang.blaze3d.platform.Window/]: Created window using SDL video driver: windows
+[20Nov2026 13:29:28.037] [Render thread/INFO] [mixin/]: Mixing client.RenderTypeAccessor from medievalweapons.mixins.json into net.minecraft.client.renderer.rendertype.RenderType
+[20Nov2026 13:29:28.038] [Render thread/INFO] [mixin/]: Renaming @Invoker method invokeCreate(Ljava/lang/String;Lnet/minecraft/client/renderer/rendertype/RenderSetup;)Lnet/minecraft/client/renderer/rendertype/RenderType; to invokeCreate$medievalweapons_$md$23bf41$0 in medievalweapons.mixins.json:client.RenderTypeAccessor from mod medievalweapons
+[20Nov2026 13:29:28.174] [Render thread/INFO] [mixin/]: Mixing client.ItemRendererMixin from medievalweapons.mixins.json into net.minecraft.client.renderer.FirstPersonHandsAndItemsRenderer
+[20Nov2026 13:29:28.240] [Render thread/INFO] [mixin/]: Mixing client.InGameHudMixin from medievalweapons.mixins.json into net.minecraft.client.gui.Hud
+[20Nov2026 13:29:28.346] [Render thread/INFO] [mixin/]: Mixing client.BipedEntityModelMixin from medievalweapons.mixins.json into net.minecraft.client.model.HumanoidModel
+[20Nov2026 13:29:28.484] [modloading-worker-2/INFO] [net.neoforged.neoforge.common.VersionChecker/]: No mods enabled for version check
+[20Nov2026 13:29:28.540] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, vanilla, mod_resources, mod/cloth_config, mod/medievalweapons, mod/neoforge
+[20Nov2026 13:29:28.819] [resourceLoad/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_pua-17.0.01.hex, loading
+[20Nov2026 13:29:28.819] [resourceLoad/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-17.0.01.hex, loading
+[20Nov2026 13:29:28.835] [resourceLoad/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-17.0.01.hex, loading
+[20Nov2026 13:29:29.827] [resourceLoad/INFO] [mixin/]: Mixing client.BakedQuadMaterialInfoMixin from medievalweapons.mixins.json into net.minecraft.client.resources.model.geometry.BakedQuad$MaterialInfo
+[20Nov2026 13:29:30.379] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
+[20Nov2026 13:29:30.382] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[20Nov2026 13:29:30.383] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[20Nov2026 13:29:30.401] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[20Nov2026 13:29:30.402] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[20Nov2026 13:29:30.403] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20Nov2026 13:29:30.404] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[20Nov2026 13:29:30.406] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[20Nov2026 13:29:30.407] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[20Nov2026 13:29:30.470] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x0 minecraft:textures/atlas/items.png-atlas
+[20Nov2026 13:29:30.516] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[20Nov2026 13:29:30.535] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[20Nov2026 13:29:30.535] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[20Nov2026 13:29:30.536] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20Nov2026 13:29:30.643] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
